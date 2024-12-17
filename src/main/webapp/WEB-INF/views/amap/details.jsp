@@ -5,7 +5,7 @@
     <title>Détails de l'AMAP</title>
 </head>
 <body>
-    <h1>Détails de l'AMAP</h1>
+    <h1>Détails de l'AMAP_testDelph</h1>
     <p><strong>ID :</strong> ${amap.id}</p>
     <p><strong>Nom :</strong> ${amap.nom}</p>
     <p><strong>Blason :</strong> ${amap.blason}</p>
