@@ -1,4 +1,4 @@
-package com.formation.controller;
+package fr.seve.controller;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.formation.entities.AMAP;
-import com.formation.service.AmapService;
+import fr.seve.entities.AMAP;
+import fr.seve.service.AmapService;
 
 @Controller
 @RequestMapping("/amaps")

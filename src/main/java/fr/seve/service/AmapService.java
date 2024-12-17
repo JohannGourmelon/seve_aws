@@ -1,8 +1,8 @@
-package com.formation.service;
+package fr.seve.service;
 
 import java.util.List;
 
-import com.formation.entities.AMAP;
+import fr.seve.entities.AMAP;
 
 
 public interface AmapService {

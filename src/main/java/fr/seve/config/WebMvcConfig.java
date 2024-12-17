@@ -1,4 +1,4 @@
-package com.formation.config;
+package fr.seve.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
  
 @Configuration
-@ComponentScan("com.formation")
+@ComponentScan("fr.seve")
 public class WebMvcConfig {
     @Bean(name = "viewResolver")
     public InternalResourceViewResolver getViewResolver() {

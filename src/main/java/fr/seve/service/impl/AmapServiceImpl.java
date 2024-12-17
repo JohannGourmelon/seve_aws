@@ -1,13 +1,13 @@
-package com.formation.service.impl;
+package fr.seve.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.formation.entities.AMAP;
-import com.formation.repository.AmapRepository;
-import com.formation.service.AmapService;
+import fr.seve.entities.AMAP;
+import fr.seve.repository.AmapRepository;
+import fr.seve.service.AmapService;
 
 @Service
 public class AmapServiceImpl implements AmapService{

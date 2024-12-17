@@ -1,4 +1,4 @@
-package com.formation.controller;
+package fr.seve.controller;
 
 
 import org.springframework.stereotype.Controller;

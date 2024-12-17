@@ -1,4 +1,4 @@
-package com.formation.config;
+package fr.seve.config;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;

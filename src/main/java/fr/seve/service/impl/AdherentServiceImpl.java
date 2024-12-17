@@ -1,13 +1,13 @@
-package com.formation.service.impl;
+package fr.seve.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.formation.entities.Adherent;
-import com.formation.repository.AdherentRepository;
-import com.formation.service.AdherentService;
+import fr.seve.entities.Adherent;
+import fr.seve.repository.AdherentRepository;
+import fr.seve.service.AdherentService;
 
 @Service
 public class AdherentServiceImpl implements AdherentService{

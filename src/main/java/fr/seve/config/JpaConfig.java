@@ -1,4 +1,4 @@
-package com.formation.config;
+package fr.seve.config;
 
 
 import javax.persistence.EntityManagerFactory;
@@ -12,13 +12,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
  
 @Configuration
-@EnableJpaRepositories(basePackages = {"com.formation.repository"})
+@EnableJpaRepositories(basePackages = {"fr.seve.repository"})
 @EnableTransactionManagement
 public class JpaConfig {
     @Bean
     public LocalEntityManagerFactoryBean entityManagerFactory() {
         LocalEntityManagerFactoryBean factoryBean = new LocalEntityManagerFactoryBean();
-        factoryBean.setPersistenceUnitName("AmapDB");
+        factoryBean.setPersistenceUnitName("SeveDB");
           
         return factoryBean;
     }

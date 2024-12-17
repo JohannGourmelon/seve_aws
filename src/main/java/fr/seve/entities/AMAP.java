@@ -1,4 +1,4 @@
-package com.formation.entities;
+package fr.seve.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
