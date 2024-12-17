@@ -35,3 +35,4 @@ ehthumbs.db
 *.jar
 *.war
 *.ear
+src/main/resources/META-INF/persistence.xml
