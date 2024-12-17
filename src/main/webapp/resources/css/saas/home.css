@@ -1,8 +1,9 @@
 @charset "UTF-8";
+
 .presentation-container img {
 	display: block;
 	margin: 0 auto;
-	height: 450px;
+	height: 30vw;
 }
 
 .ctas-home {
@@ -52,13 +53,13 @@
 }
 
 .step {
-	width: 60vw;
-	height: 17vw;
+	width: 250px;
+	aspect-ratio: 1;
 	border-radius: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 25px 40px;
+	border-radius: 100%;
 }
 
 .number {
@@ -71,4 +72,40 @@
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 20%;
+}
+
+/* ------------------------ Format tablette ---------------------------*/
+@media screen and (max-width: 992px) {
+	.presentation-container img {
+		height: 50vw;
+	}
+	.ctas-home {
+		flex-wrap: wrap;
+	}
+	.package-btn {
+		margin: 10px 0 20px 0;
+	}
+	.features {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.feature-card {
+		width: 100%;
+		margin-bottom: 50px;
+	}
+	.steps {
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+	.step {
+		margin-bottom: 50px;
+	}
+}
+
+/* ------------------------ Format mobile ---------------------------*/
+@media screen and (max-width: 768px) {
+	.steps {
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
 }
