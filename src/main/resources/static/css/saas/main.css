@@ -1,0 +1,161 @@
+@charset "UTF-8";
+body {
+	box-sizing: border-box;
+	background-color: #fafafa;
+}
+
+main {
+	margin: 0 150px;
+}
+
+h1 {
+	margin: 50px 0;
+}
+
+h2 {
+	margin: 40px 0;
+}
+
+h3 {
+	margin: 60px 0 25px 0;
+}
+
+ul {
+	padding-left: 15px;
+}
+
+a {
+	color: black;
+}
+
+a:hover {
+	cursor: pointer;
+}
+
+section {
+	margin-bottom: 70px;
+}
+
+input {
+	border: 1px solid #cfd8dc;
+	border-radius: 30px;
+	height: 40px;
+	padding: 0 15px;
+}
+
+input:focus {
+	border: 1px solid #b3d9e2;
+	outline: none;
+}
+
+/********* Background colors **************/
+
+.bg-o {
+	background-color: #d9a89c;
+}
+
+.bg-b {
+	background-color: #b3d9e2;
+}
+
+.bg-g {
+	background-color: #a8b5a2;
+}
+
+.bg-grey {
+	background-color: #cfd8dc;
+}
+
+/********* Box shadows **************/
+
+.shadow {
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-o {
+	box-shadow: 0 8px 15px rgba(217, 168, 156, 0.4),
+		0 3px 10px rgba(217, 168, 156, 0.25);
+}
+
+.shadow-b {
+	box-shadow: 0 8px 15px rgba(139, 183, 199, 0.4),
+		0 3px 10px rgba(139, 183, 199, 0.25);
+}
+
+.shadow-g {
+	box-shadow: 0 8px 15px rgba(168, 181, 162, 0.4),
+		0 3px 10px rgba(168, 181, 162, 0.25);
+}
+
+/********* Boutons **************/
+
+.btn {
+	border-radius: 30px;
+	padding: 10px;
+	background-color: white;
+}
+
+.btn:hover {
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.btn-secondary {
+	border-radius: 30px;
+	padding: 15px 50px;
+	background-color: #b3d9e2;
+	color: black;
+	font-weight: 600;
+	border: none;
+}
+
+.btn:hover {
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.package-btn {
+	margin: 30px 0 35px 0;
+}
+
+.btn-o {
+	border: 2px solid #d9a89c;
+}
+
+.btn-o:hover {
+	transition: background-color 0.3s ease;
+	background-color: #d9a89c;
+}
+
+.btn-b {
+	border: 2px solid #b3d9e2;
+}
+
+.btn-b:hover {
+	transition: background-color 0.3s ease;
+	background-color: #b3d9e2;
+}
+
+.btn-g {
+	border: 2px solid #a8b5a2;
+}
+
+.btn-g:hover {
+	transition: background-color 0.3s ease;
+	background-color: #a8b5a2;
+}
+
+/**************************** Footer ******************************/
+
+footer {
+	padding: 15px 0;
+}
+
+footer p {
+	margin-bottom: 1px;
+	font-size: 14px;
+}
+
+.cr {
+	font-size: 13px;
+}
