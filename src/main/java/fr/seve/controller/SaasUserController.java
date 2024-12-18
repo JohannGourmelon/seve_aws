@@ -9,12 +9,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.seve.entities.SaasUser;
 import fr.seve.entities.SaasUserLevel;
 import fr.seve.service.SaasUserService;
 
 @Controller
+@RequestMapping("/saasuser")
 public class SaasUserController {
 	
 	@Autowired
@@ -25,13 +27,13 @@ public class SaasUserController {
 		return new SaasUser();
 	}
 	
-	@GetMapping("/showSignupForm")
+	@GetMapping("/showSignUpForm")
 	public String showForm() {
 		return "saasuser/signup-form";
 		
 	}
 	
-	@PostMapping
+	@PostMapping("/saveSignUpForm")
 	public String saveUserSaas (@ModelAttribute("saasUser") SaasUser saasUser, Model model) {
 		System.out.println("Firstname : " + saasUser.getFirstname());
         System.out.println("Name : " + saasUser.getName());
