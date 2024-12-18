@@ -5,21 +5,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Sève</title>
 </head>
 <body>
-	<h1>Hello World Spring MVC</h1>
- 	<p>${message}</p>
+	<h1>Sève</h1>
+	<%-- 	<p>${message}</p>
 	<ol>
-		<c:forEach var="saasUser" items="${saasUsers}">
-			<li>${saasUser.name} ${saasUser.firstname} - ${saasUser.phone}</li>
-			<p>${saasUser.email} (${saasUser.password}) = ${saasUser.saasUserLevel}</p>
-			<p>${saasUser.createDate} </p>
-		</c:forEach>
-	</ol> 
-	
-<!-- 	<ul> -->
-<%-- 		<li> <a href="${pageContext.request.contextPath}/amaps">Gestion des amaps</a></li> --%>
-<!-- 	</ul> -->
+		<toto:forEach var="adh" items="${adherents}">
+			<li>${adh.nom} (${adh.email}) - ${adh.type}</li>
+		</toto:forEach>
+	</ol> --%>
+
+	<ul>
+		<li><a href="${pageContext.request.contextPath}/amaps">Gestion
+				des amaps</a></li>
+		<li><a href="${pageContext.request.contextPath}/saas">Saas</a></li>
+	</ul>
 </body>
 </html>
