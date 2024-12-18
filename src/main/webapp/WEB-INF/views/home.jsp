@@ -9,17 +9,14 @@
 </head>
 <body>
 	<h1>Sève</h1>
-	<%-- 	<p>${message}</p>
-	<ol>
-		<toto:forEach var="adh" items="${adherents}">
-			<li>${adh.nom} (${adh.email}) - ${adh.type}</li>
-		</toto:forEach>
-	</ol> --%>
 
 	<ul>
 		<li><a href="${pageContext.request.contextPath}/amaps">Gestion
 				des amaps</a></li>
 		<li><a href="${pageContext.request.contextPath}/saas">Saas</a></li>
+		<li><a
+			href="${pageContext.request.contextPath}/saasuser/showSignUpForm">Sign
+				up form</a></li>
 	</ul>
 </body>
 </html>

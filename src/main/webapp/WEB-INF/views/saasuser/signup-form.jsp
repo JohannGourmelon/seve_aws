@@ -94,7 +94,7 @@
 							</div>
 
 							<div class="form-group signup-field">
-								<label for="password" class="control-label">Mot de Passe</label>
+								<label for="password" class="control-label">Mot de passe</label>
 								<div>
 									<form:password path="password" cssClass="form-control" />
 								</div>
