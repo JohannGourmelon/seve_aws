@@ -21,7 +21,7 @@
 		<h1 class="text-center">Commencez aujourd'hui avec Essentiel</h1>
 		<section class="signup-section">
 			<div class="signup-container">
-				<!-- Partie gauche -->
+				<!-- Info -->
 				<div class="signup-info">
 					<p>Démarrez dès aujourd'hui avec Essentiel. Aucune carte
 						bancaire requise, aucun logiciel à installer.</p>
@@ -49,7 +49,7 @@
 								plateforme</p>
 						</div>
 					</div>
-					<div class="contact-info mt-5">
+					<div class="contact-info">
 						<p class="font-weight-bold">Des questions ? Nous sommes là
 							pour vous aider !</p>
 						<p class="mb-1">Échangez avec un expert : (+33) 4 48 26 55 32</p>
@@ -58,61 +58,58 @@
 						</p>
 					</div>
 				</div>
-				<!-- Partie droite -->
+				<!-- Form -->
 				<div class="signup-form-container shadow">
 					<p class="font-weight-bold pb-2">Remplissez le formulaire pour
 						démarrer votre abonnement</p>
-								<div class="panel-body">
-									<form:form action="saveSignUpForm" cssClass="form-horizontal"
-										method="post" modelAttribute="saasUser">
+					<div class="panel-body">
+						<form:form action="saveSignUpForm" cssClass="form-horizontal"
+							method="post" modelAttribute="saasUser">
 
-										<div class="form-group signup-field">
-											<label for="firstname" class="control-label">Prénom</label>
-											<div>
-												<form:input path="firstname" cssClass="form-control" />
-											</div>
-										</div>
-										<div class="form-group signup-field">
-											<label for="name" class="control-label">Nom</label>
-											<div>
-												<form:input path="name" cssClass="form-control" />
-											</div>
-										</div>
-
-										<div class="form-group signup-field">
-											<label for="phone" class="control-label">Téléphone</label>
-											<div>
-												<form:input path="phone" cssClass="form-control" />
-											</div>
-										</div>
-
-										<div class="form-group signup-field">
-											<label for="email" class="control-label">Email</label>
-											<div>
-												<form:input path="email" cssClass="form-control" />
-											</div>
-										</div>
-
-										<div class="form-group signup-field">
-											<label for="password" class="control-label">Mot
-												de Passe</label>
-											<div>
-												<form:password path="password" cssClass="form-control" />
-											</div>
-										</div>
-
-
-
-										<div class="form-group">
-											<div id="btns" class="form-buttons text-center"">
-												<form:button class="btn btn-b">Valider</form:button>
-											</div>
-										</div>
-
-									</form:form>
+							<div class="form-group signup-field">
+								<label for="firstname" class="control-label">Prénom</label>
+								<div>
+									<form:input path="firstname" cssClass="form-control" />
 								</div>
 							</div>
-						</div>
+							<div class="form-group signup-field">
+								<label for="name" class="control-label">Nom</label>
+								<div>
+									<form:input path="name" cssClass="form-control" />
+								</div>
+							</div>
+
+							<div class="form-group signup-field">
+								<label for="phone" class="control-label">Téléphone</label>
+								<div>
+									<form:input path="phone" cssClass="form-control" />
+								</div>
+							</div>
+
+							<div class="form-group signup-field">
+								<label for="email" class="control-label">Email</label>
+								<div>
+									<form:input path="email" cssClass="form-control" />
+								</div>
+							</div>
+
+							<div class="form-group signup-field">
+								<label for="password" class="control-label">Mot de Passe</label>
+								<div>
+									<form:password path="password" cssClass="form-control" />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div id="btns" class="form-buttons text-center"">
+									<form:button class="btn btn-b">Valider</form:button>
+								</div>
+							</div>
+
+						</form:form>
+					</div>
+				</div>
+			</div>
 		</section>
 		<section class="features pb-5">
 			<h2>Fonctionnalités comprises avec Essentiel</h2>
