@@ -20,8 +20,8 @@ import fr.seve.service.SaasUserService;
 @RequestMapping("/") // http://localhost/mvc/
 public class HomeController {
 
-	@Autowired
-	private SaasUserService service;
+//	@Autowired
+//	private SaasUserService service;
 
 	@GetMapping
 	public String redirectMainPage() {
@@ -31,22 +31,22 @@ public class HomeController {
 	@GetMapping("/home")
 	public String home(Model model) {
 
-		// code de connexion pour la BDD
-		SaasUser saasUser = new SaasUser();
-		saasUser.setName("Doe");
-		saasUser.setFirstname("Jonh");
-		saasUser.setEmail("doe@gmail.com");
-		saasUser.setPassword("password");
-		saasUser.setPhone("0635847410");
-		saasUser.setCreateDate(LocalDateTime.now().toString());
-		saasUser.setLastModifyDate(LocalDateTime.now().toString());
-		saasUser.setSaasUserLevel(SaasUserLevel.ADMIN);
-		service.save(saasUser);
-
-		// Récupérer tous les adhérents
-		model.addAttribute("saasUsers", service.findAll());
-
-		model.addAttribute("message", "HADOKEN !!!");
+//		// code de connexion pour la BDD
+//		SaasUser saasUser = new SaasUser();
+//		saasUser.setName("Doe");
+//		saasUser.setFirstname("Jonh");
+//		saasUser.setEmail("doe@gmail.com");
+//		saasUser.setPassword("password");
+//		saasUser.setPhone("0635847410");
+//		saasUser.setCreateDate(LocalDateTime.now().toString());
+//		saasUser.setLastModifyDate(LocalDateTime.now().toString());
+//		saasUser.setSaasUserLevel(SaasUserLevel.ADMIN);
+//		service.save(saasUser);
+//
+//		// Récupérer tous les adhérents
+//		model.addAttribute("saasUsers", service.findAll());
+//
+//		model.addAttribute("message", "HADOKEN !!!");
 		return "home";
 	}
 
