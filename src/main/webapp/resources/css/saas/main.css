@@ -49,6 +49,10 @@ input:focus {
 	outline: none;
 }
 
+.form-control {
+		border-radius: 30px;
+}
+
 /********* Background colors **************/
 .bg-o {
 	background-color: #d9a89c;
