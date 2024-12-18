@@ -50,9 +50,9 @@ public class HomeController {
 		return "home";
 	}
 
-	@PostMapping
+	@GetMapping("/home2")
 	public String home2() {
-		return "home";
+		return "amap";
 	}
 
 }
