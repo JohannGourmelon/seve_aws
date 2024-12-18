@@ -27,12 +27,12 @@
 			<version>${spring.version}</version>
 		</dependency>
 		
-		<!-- Formattage Date -->
+		<!-- Library Tags -->
 		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>2.2</version>
-		</dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+            <version>1.1.2</version>
+        </dependency>
 
 		<!-- Hibernate JPA -->
 		<dependency>

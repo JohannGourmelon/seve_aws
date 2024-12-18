@@ -12,7 +12,9 @@
  	<p>${message}</p>
 	<ol>
 		<c:forEach var="saasUser" items="${saasUsers}">
-			<li>${saasUser.name} (${saasUser.email}) - ${saasUser.phone}</li>
+			<li>${saasUser.name} ${saasUser.firstname} - ${saasUser.phone}</li>
+			<p>${saasUser.email} (${saasUser.password}) = ${saasUser.saasUserLevel}</p>
+			<p>${saasUser.createDate} </p>
 		</c:forEach>
 	</ol> 
 	

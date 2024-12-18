@@ -1,8 +1,6 @@
 package fr.seve.entities;
 
 
-import java.time.LocalDate;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 
-import org.springframework.format.annotation.DateTimeFormat;
+
+
+
 
 
 @Entity
@@ -27,9 +27,11 @@ public class SaasUser {
 	private String name;
 	
 	@Column(nullable=true)
-	private String firstName; 
+	private String firstname; 
 	
 	@Column(nullable=false, unique=false) 
+
+	
 	private String email;
 	
 	@Column(nullable=true)
@@ -39,13 +41,11 @@ public class SaasUser {
 	private String phone; 
 	
 	@Column
-	@DateTimeFormat(pattern="dd-MM-yyyy")
-	private LocalDate createDate; 
+	private String createDate; 
 	
-//	@Column
-//	@DateTimeFormat(pattern="dd-MM-yyyy")
-//	private Date lastModifyDate; 
-//	
+	@Column
+	private String lastModifyDate; 
+	
 	
 	@Column
 	private SaasUserLevel saasUserLevel; 
@@ -58,8 +58,8 @@ public class SaasUser {
 		return name;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getFirstname() {
+		return firstname;
 	}
 
 	public String getEmail() {
@@ -74,13 +74,13 @@ public class SaasUser {
 		return phone;
 	}
 
-	public LocalDate getCreateDate() {
+	public String getCreateDate() {
 		return createDate;
 	}
 
-//	public Date getLastModifyDate() {
-//		return lastModifyDate;
-//	}
+	public String getLastModifyDate() {
+		return lastModifyDate;
+	}
 
 	public SaasUserLevel getSaasUserLevel() {
 		return saasUserLevel;
@@ -98,8 +98,8 @@ public class SaasUser {
 		this.name = name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
 	public void setEmail(String email) {
@@ -114,13 +114,13 @@ public class SaasUser {
 		this.phone = phone;
 	}
 
-	public void setCreateDate(LocalDate localDate) {
+	public void setCreateDate(String localDate) {
 		this.createDate = localDate;
 	}
 
-//	public void setLastModifyDate(Date lastModifyDate) {
-//		this.lastModifyDate = lastModifyDate;
-//	}
+	public void setLastModifyDate(String lastModifyDate) {
+		this.lastModifyDate = lastModifyDate;
+	}
 
 
 	
