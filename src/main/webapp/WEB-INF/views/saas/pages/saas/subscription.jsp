@@ -53,7 +53,7 @@
 						<p class="font-weight-bold">Prix : 9,99 € / mois</p>
 					</div>
 					<div class="d-flex justify-content-center package-btn">
-						<button class="btn btn-o btn-package-card">Commencez avec
+						<button class="btn btn-o btn-package-card" onclick="window.location.href='${pageContext.request.contextPath}/saasuser/showSignUpForm'">Commencez avec
 							Essentiel</button>
 					</div>
 				</div>

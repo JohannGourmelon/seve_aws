@@ -22,14 +22,14 @@
 								<div class="dot bg-b"></div>
 							</div>
 							<p>Gagnez en efficacité et stimulez votre performance grâce à
-								des éclairages, modes d'emploi et bonnes pratiques</p>
+								outils adaptés et des solutions concrètes</p>
 						</div>
 						<div class="signup-bp">
 							<div class="dot-container">
 								<div class="dot bg-g"></div>
 							</div>
 							<p>Dynamisez les ventes, renforcez le service client et
-								accédez à des outils d'emailing, le tout sur une seule et même
+								accédez à une expérience unique, le tout sur une seule et même
 								plateforme</p>
 						</div>
 					</div>

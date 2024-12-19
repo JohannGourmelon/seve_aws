@@ -10,8 +10,7 @@
 		<div class="ctas-home">
 			<div class="d-flex justify-content-center package-btn">
 				<button class="btn btn-o btn-home"
-					onclick="window.location.href='${pageContext.request.contextPath}/saasuser/showSignUpForm'">Créer
-					mon compte</button>
+					>Voir la démo</button>
 			</div>
 			<div class="d-flex justify-content-center package-btn">
 				<button class="btn btn-b btn-home"
