@@ -20,6 +20,23 @@
 			value="/WEB-INF/views/saas/layouts/saasDefaultFooter.jsp" />
 	</definition>
 
+
+	<!-- Template SaaS Account -->
+
+	<definition name="template-saas-account"
+		template="/WEB-INF/views/saas/layouts/saasAccountLayout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header"
+			value="/WEB-INF/views/saas/layouts/saasDefaultHeader.jsp" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/saasDefaultMain.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/saas/layouts/saasDefaultFooter.jsp" />
+		<put-attribute name="secondaryNav"
+			value="/WEB-INF/views/saas/layouts/saasAccountNav.jsp" />
+	</definition>
+
+
 	<!-- Home -->
 
 	<definition name="home"
@@ -77,11 +94,32 @@
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/saasUser/signup-form-st.jsp" />
 	</definition>
-	
-		<definition name="saas-signup-pr" extends="template-saas">
+
+	<definition name="saas-signup-pr" extends="template-saas">
 		<put-attribute name="title" value="Souscription" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/saasUser/signup-form-pr.jsp" />
+	</definition>
+
+	<definition name="saas-account-config-amap"
+		extends="template-saas-account">
+		<put-attribute name="title" value="Configuration" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/saas/account/configAmap.jsp" />
+	</definition>
+
+	<definition name="saas-account-config-text"
+		extends="template-saas-account">
+		<put-attribute name="title" value="Configuration" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/saas/account/configText.jsp" />
+	</definition>
+
+	<definition name="saas-account-config-design"
+		extends="template-saas-account">
+		<put-attribute name="title" value="Configuration" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/saas/account/configDesign.jsp" />
 	</definition>
 
 	<!-- Pages /saasUser -->

@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-    <h1>${amap.id != null ? 'Modifier' : 'Ajouter'} une AMAP</h1>
+    <h1>Informations de votre AMAP</h1>
 	<c:choose>
 	    <c:when test="${amap.id != null}">
 	        <form action="${pageContext.request.contextPath}/amaps/edit/${amap.id}" method="post">
@@ -23,6 +23,5 @@
         </p>
         <p>
             <button type="submit">Enregistrer</button>
-            <a href="${pageContext.request.contextPath}/amaps">Annuler</a>
         </p>
     </form>

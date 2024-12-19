@@ -7,8 +7,8 @@
 			<tr>
 				<th>ID</th>
 				<th>Nom</th>
-				<th>Blason</th>
-				<th>Valeurs</th>
+				<th>Adresse</th>
+				<th>Siret</th>
 				<th>Actions</th>
 			</tr>
 		</thead>
@@ -16,9 +16,9 @@
 			<c:forEach var="amap" items="${amaps}">
 				<tr>
 					<td>${amap.id}</td>
-					<td>${amap.nom}</td>
-					<td>${amap.blason}</td>
-					<td>${amap.valeurs}</td>
+					<td>${amap.name}</td>
+					<td>${amap.address}</td>
+					<td>${amap.siret}</td>
 					<td>
 						<a href="${pageContext.request.contextPath}/amaps/${amap.id}">Details</a> |
 						<a href="${pageContext.request.contextPath}/amaps/edit/${amap.id}">Modifier</a> |

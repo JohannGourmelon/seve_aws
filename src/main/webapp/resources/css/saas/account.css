@@ -1,0 +1,30 @@
+@charset "UTF-8";
+.layout-container {
+    display: flex;
+}
+
+.vertical-nav {
+    width: 250px;
+    background-color: #36393B;
+    padding: 20px;
+    color: #E0E2E3;
+}
+
+.vertical-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.vertical-nav li {
+    margin-bottom: 10px;
+}
+
+.vertical-nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
