@@ -2,6 +2,7 @@ package fr.seve.entities;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,17 +17,18 @@ public class Subscription {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column
 	private String name;
-	
+	@Column
 	private String price;
-	
+	@Column
 	private String description;
-	
+	@Column
 	private String subscribeDate;
-	
+	@Column
 	private SubStatus substatus;
 	
-	List<Function> functions;
+	private int functionId; 
 	
 	
 	
@@ -47,9 +49,7 @@ public class Subscription {
 		return description;
 	}
 
-	public List<Function> getFunctions() {
-		return functions;
-	}
+	
 	public String getSubscribeDate() {
 		return subscribeDate;
 	}
@@ -59,6 +59,14 @@ public class Subscription {
 	}
 
 	
+
+	public int getFunctionId() {
+		return functionId;
+	}
+
+	public void setFunctionId(int functionId) {
+		this.functionId = functionId;
+	}
 
 	public void setId(Long id) {
 		this.id = id;
@@ -76,9 +84,7 @@ public class Subscription {
 		this.description = description;
 	}
 
-	public void setFunctions(List<Function> functions) {
-		this.functions = functions;
-	}
+	
 	
 	public void setSubscribeDate(String subscribeDate) {
 		this.subscribeDate = subscribeDate;

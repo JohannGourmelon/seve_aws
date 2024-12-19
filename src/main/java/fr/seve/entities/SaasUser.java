@@ -50,7 +50,8 @@ public class SaasUser {
 	@Column
 	private SaasUserLevel saasUserLevel; 
 	
-	private Subscription subscription;
+	@Column
+	private int subscriptionId;
 
 	public Long getId() {
 		return id;
@@ -88,8 +89,14 @@ public class SaasUser {
 		return saasUserLevel;
 	}
 	
-	public Subscription getSubscription() {
-		return subscription;
+
+
+	public int getSubscriptionId() {
+		return subscriptionId;
+	}
+
+	public void setSubscriptionId(int subscriptionId) {
+		this.subscriptionId = subscriptionId;
 	}
 
 	public void setSaasUserLevel(SaasUserLevel saasUserLevel) {
@@ -128,8 +135,5 @@ public class SaasUser {
 		this.lastModifyDate = lastModifyDate;
 	}
 
-	public void setSubscription(Subscription subscription) {
-		this.subscription = subscription;
-	}
 	
 }

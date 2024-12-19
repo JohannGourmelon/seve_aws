@@ -51,7 +51,7 @@ public class SaasUserController {
         model.addAttribute("message", "Inscription Validée !");
         model.addAttribute("saasUser", saasUser);
 
-        return "saasuser-signup-success";
+        return "saasuser-subscription-list";
 		
 	}
 	

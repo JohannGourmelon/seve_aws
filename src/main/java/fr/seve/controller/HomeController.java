@@ -2,7 +2,7 @@ package fr.seve.controller;
 
 
 import java.time.LocalDateTime;
-
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,14 +15,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import fr.seve.entities.SaasUser;
 import fr.seve.entities.SaasUserLevel;
+import fr.seve.entities.Subscription;
 import fr.seve.service.SaasUserService;
+import fr.seve.service.SubscriptionService;
 
 @Controller
 @RequestMapping("/") // http://localhost/mvc/
 public class HomeController {
 
-//	@Autowired
-//	private SaasUserService service;
+	@Autowired
+	private SubscriptionService subscriptionService;
 
 	@GetMapping
 	public String redirectMainPage() {
@@ -32,6 +34,12 @@ public class HomeController {
 	@GetMapping("/home")
 	public String home(Model model) {
 
+		List<Subscription> subscriptions = subscriptionService.findAll();
+		if (subscriptions.isEmpty()) {
+			subscriptionService.initialize(subscriptions);	
+		}
+		model.addAttribute("subscriptions", subscriptions);
+		
 //		// code de connexion pour la BDD
 //		SaasUser saasUser = new SaasUser();
 //		saasUser.setName("Doe");

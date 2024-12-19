@@ -12,6 +12,6 @@ public interface SubscriptionService {
 	
 	Subscription save(Subscription subscription);
 	
-	Subscription initialize(Subscription subscription);
+	List<Subscription> initialize(List<Subscription> subscriptions);
 
 }

@@ -80,6 +80,13 @@
 			value="/WEB-INF/views/saas/pages/saasUser/signup-success.jsp" />
 	</definition>
 	
+	<definition name="saasuser-subscription-list" extends="template-saas">
+		<put-attribute name="title"
+			value="Succes!" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/saasUser/subscription-list.jsp" />
+	</definition>
+	
 <!-- <<<<<<<<<<<<<<<<<<< Fin Pages SaaS >>>>>>>>>>>>>>>>>>>>> -->
 
 </tiles-definitions>
