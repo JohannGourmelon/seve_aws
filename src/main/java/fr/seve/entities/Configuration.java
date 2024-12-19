@@ -16,7 +16,7 @@ public class Configuration {
 	private Long Id;
 	
 	@Column
-	private String text;
+	private String presentationText;
 
 	public Long getId() {
 		return Id;
@@ -26,12 +26,13 @@ public class Configuration {
 		Id = id;
 	}
 
-	public String getText() {
-		return text;
+	public String getPresentationText() {
+		return presentationText;
 	}
 
-	public void setText(String text) {
-		this.text = text;
+	public void setPresentationText(String presentationText) {
+		this.presentationText = presentationText;
 	}
+
 	
 }

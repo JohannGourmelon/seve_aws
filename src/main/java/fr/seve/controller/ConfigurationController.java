@@ -44,7 +44,7 @@ public class ConfigurationController {
 	public String saveConfigAmap(@ModelAttribute Configuration configuration, RedirectAttributes redirectAttributes) {
 		configurationService.save(configuration);
 	   	redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
-	    return "redirect:/saas/configuration-amap";
+	    return "redirect:/saas/configuration-texte";
 	}
 	
 	
