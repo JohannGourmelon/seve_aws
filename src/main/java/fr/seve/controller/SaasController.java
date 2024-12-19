@@ -24,27 +24,20 @@ public class SaasController {
 	@Autowired
 	private SubscriptionService subscriptionService;
 	
-	
-
-	@GetMapping
-	public String homeSaas(Model model) {
-		List<Subscription> subscriptions = subscriptionService.findAll();
-		if (subscriptions.isEmpty()) {
-			subscriptionService.initialize(subscriptions);	
-		}
-		model.addAttribute("subscriptions", subscriptions);
-		
-		
-		
-		
-		return "saas-home";
-	}
 
 	
 	@GetMapping
 	public ModelAndView homeSaas() {
 		ModelAndView mv = new ModelAndView("saas-home");
         mv.addObject("css", "/resources/css/saas/home.css");
+        
+        List<Subscription> subscriptions = subscriptionService.findAll();
+		if (subscriptions.isEmpty()) {
+			subscriptionService.initialize(subscriptions);	
+		}
+		
+		
+        
         return mv;
 		}
 	

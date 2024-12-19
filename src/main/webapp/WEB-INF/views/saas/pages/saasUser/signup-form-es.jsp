@@ -46,40 +46,40 @@
 					<p class="font-weight-bold pb-2">Remplissez le formulaire pour
 						démarrer votre abonnement</p>
 					<div class="panel-body">
-						<form:form action="saveSignUpForm" cssClass="form-horizontal"
+						<form:form action="saveSignUpEssential" cssClass="form-horizontal"
 							method="post" modelAttribute="saasUser">
 
 							<div class="form-group signup-field">
 								<label for="firstname" class="control-label">Prénom</label>
 								<div>
-									<form:input path="firstname" cssClass="form-control" />
+									<form:input path="firstname" cssClass="form-control" value= "${saasUser.firstname}" />
 								</div>
 							</div>
 							<div class="form-group signup-field">
 								<label for="name" class="control-label">Nom</label>
 								<div>
-									<form:input path="name" cssClass="form-control" />
+									<form:input path="name" cssClass="form-control" value= "${saasUser.name}" />
 								</div>
 							</div>
 
 							<div class="form-group signup-field">
 								<label for="phone" class="control-label">Téléphone</label>
 								<div>
-									<form:input path="phone" cssClass="form-control" />
+									<form:input path="phone" cssClass="form-control" value= "${saasUser.phone}" />
 								</div>
 							</div>
 
 							<div class="form-group signup-field">
 								<label for="email" class="control-label">Email</label>
 								<div>
-									<form:input path="email" cssClass="form-control" />
+									<form:input path="email" cssClass="form-control" value= "${saasUser.email}"/>
 								</div>
 							</div>
 
 							<div class="form-group signup-field">
 								<label for="password" class="control-label">Mot de passe</label>
 								<div>
-									<form:password path="password" cssClass="form-control" />
+									<form:password path="password" cssClass="form-control" value= "${saasUser.password}"/>
 								</div>
 							</div>
 

@@ -64,7 +64,7 @@ public class SaasUserController {
 	}
 	
 	
-	@PostMapping("/saveSignUpForm")
+	@PostMapping("/saveSignUpEssential")
 	public String saveUserSaas (@ModelAttribute("saasUser") SaasUser saasUser, Model model) {
 
 		System.out.println("Firstname : " + saasUser.getFirstname());
@@ -85,7 +85,7 @@ public class SaasUserController {
         service.save(saasUser);
    
 
-        return "saasuser-subscription-list";
+        return "saasuser-signup-success";
 		
 	}
 	
@@ -109,7 +109,7 @@ public class SaasUserController {
         service.save(saasUser);
    
 
-        return "saasuser-subscription-list";
+        return "saasuser-form-st";
 		
 	}
 	
@@ -133,7 +133,7 @@ public class SaasUserController {
         service.save(saasUser);
    
 
-        return "saasuser-subscription-list";
+        return "saasuser-form-pr";
 		
 	}
 	
