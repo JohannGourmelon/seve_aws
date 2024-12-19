@@ -1,4 +1,8 @@
 @charset "UTF-8";
+
+main {
+	margin: 0 80px;
+}
 .layout-container {
     display: flex;
 }
@@ -26,5 +30,4 @@
 
 .main-content {
     flex-grow: 1;
-    padding: 20px;
 }

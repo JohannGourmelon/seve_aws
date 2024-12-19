@@ -6,7 +6,7 @@
 	        <form action="${pageContext.request.contextPath}/amaps/edit/${amap.id}" method="post">
 	    </c:when>
 	    <c:otherwise>
-	        <form action="${pageContext.request.contextPath}/amaps/add" method="post">
+	        <form action="${pageContext.request.contextPath}/amaps/addConfigAmap" method="post">
 	    </c:otherwise>
 	</c:choose>
         <p>

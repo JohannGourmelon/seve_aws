@@ -54,6 +54,19 @@ public class AmapController {
 		return "redirect:/amaps";
 	}
 	
+	@GetMapping("/addConfigAmap")
+	public String addConfigAmap(Model model) {
+		model.addAttribute("amap", new AMAP());
+		return "amap-form";
+	}
+	
+	
+	@PostMapping("addConfigAmap")
+	public String saveConfigAmap(@ModelAttribute AMAP amap) {
+		amapService.save(amap);
+		return "saas-account-config-amap";
+	}
+	
 	@GetMapping("/delete/{id}")
 	public String deleteAdherent(@PathVariable Long id) {
 		amapService.deleteById(id);
