@@ -16,8 +16,6 @@
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/saas/main.css" />
-<script
-	src="${pageContext.request.contextPath}/resources/js/bootstrap.bundle.min.js"></script>
 
 <!-- CSS dynamiques -->
 <c:if test="${not empty css}">
@@ -42,6 +40,7 @@
 
 	<script
 		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
