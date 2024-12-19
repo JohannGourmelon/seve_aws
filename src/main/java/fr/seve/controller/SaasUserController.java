@@ -109,11 +109,11 @@ public class SaasUserController {
         service.save(saasUser);
    
 
-        return "saasuser-form-st";
+        return "saasuser-signup-success";
 		
 	}
 	
-	@PostMapping("/saveSignUpPremi")
+	@PostMapping("/saveSignUpPremium")
 	public String saveUserSaasPremium (@ModelAttribute("saasUser") SaasUser saasUser, Model model) {
 		System.out.println("Firstname : " + saasUser.getFirstname());
         System.out.println("Name : " + saasUser.getName());
@@ -133,7 +133,7 @@ public class SaasUserController {
         service.save(saasUser);
    
 
-        return "saasuser-form-pr";
+        return "saasuser-signup-success";
 		
 	}
 	
