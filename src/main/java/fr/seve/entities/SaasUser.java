@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -50,9 +54,12 @@ public class SaasUser {
 	@Column
 	private SaasUserLevel saasUserLevel; 
 	
-	@Column
-	private int subscriptionId;
-
+		
+	//Relation avec Subscription
+	@ManyToOne
+	@JoinColumn (name = "subscription_id")
+	private Subscription subscription;
+	
 	public Long getId() {
 		return id;
 	}
@@ -90,13 +97,12 @@ public class SaasUser {
 	}
 	
 
-
-	public int getSubscriptionId() {
-		return subscriptionId;
+	public Subscription getSubscription() {
+		return subscription;
 	}
 
-	public void setSubscriptionId(int subscriptionId) {
-		this.subscriptionId = subscriptionId;
+	public void setSubscription(Subscription subscription) {
+		this.subscription = subscription;
 	}
 
 	public void setSaasUserLevel(SaasUserLevel saasUserLevel) {

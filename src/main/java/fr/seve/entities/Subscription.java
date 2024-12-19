@@ -1,12 +1,20 @@
 package fr.seve.entities;
 
+
+
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,11 +36,18 @@ public class Subscription {
 	@Column
 	private SubStatus substatus;
 	
-	private int functionId; 
+	// Relation avec Function
+	@ManyToMany
+	@JoinTable( name= "subscription_functions",
+		joinColumns = @JoinColumn (name="subscription_id"),
+		inverseJoinColumns = @JoinColumn(name="functions_id")
+			)
+	private List<Function> functionsList = new ArrayList<>();
 	
+	//Relation avec SaasUser
+	@OneToMany(mappedBy = "subscription", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<SaasUser> saasUserList = new ArrayList<>();
 	
-	
-
 	public Long getId() {
 		return id;
 	}
@@ -59,13 +74,22 @@ public class Subscription {
 	}
 
 	
-
-	public int getFunctionId() {
-		return functionId;
+	public List<Function> getFunctionsList() {
+		return functionsList;
 	}
 
-	public void setFunctionId(int functionId) {
-		this.functionId = functionId;
+	
+	
+	public List<SaasUser> getSaasUserList() {
+		return saasUserList;
+	}
+
+	public void setSaasUserList(List<SaasUser> saasUserList) {
+		this.saasUserList = saasUserList;
+	}
+
+	public void setFunctionsList(List<Function> functionsList) {
+		this.functionsList = functionsList;
 	}
 
 	public void setId(Long id) {

@@ -12,6 +12,8 @@ public interface SubscriptionService {
 	
 	Subscription save(Subscription subscription);
 	
+	//Subscription linkFunctionsListToSubscription(Long subscriptionId, List<Long> functionIds);
+	
 	List<Subscription> initialize(List<Subscription> subscriptions);
 
 }
