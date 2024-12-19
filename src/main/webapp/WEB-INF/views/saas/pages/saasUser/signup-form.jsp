@@ -1,23 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<title>Inscription</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/saas/main.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/saas/signup-form.css" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-</head>
-<body>
-	<main>
+	
 		<h1 class="text-center">Commencez aujourd'hui avec Essentiel</h1>
 		<section class="signup-section">
 			<div class="signup-container">
@@ -140,6 +124,3 @@
 			</div>
 		</section>
 
-	</main>
-</body>
-</html>

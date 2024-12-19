@@ -1,12 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>${amap.id != null ? 'Modifier' : 'Ajouter'} une AMAP</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
-</head>
-<body>
+
     <h1>${amap.id != null ? 'Modifier' : 'Ajouter'} une AMAP</h1>
 	<c:choose>
 	    <c:when test="${amap.id != null}">
@@ -33,5 +26,3 @@
             <a href="${pageContext.request.contextPath}/amaps">Annuler</a>
         </p>
     </form>
-</body>
-</html>

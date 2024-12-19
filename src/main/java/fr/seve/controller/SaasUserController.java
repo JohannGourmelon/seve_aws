@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import fr.seve.entities.SaasUser;
 import fr.seve.entities.SaasUserLevel;
@@ -28,10 +29,13 @@ public class SaasUserController {
 	}
 	
 	@GetMapping("/showSignUpForm")
-	public String showForm() {
-		return "saasuser/signup-form";
+	public ModelAndView showForm() {
+		ModelAndView mv = new ModelAndView("saasuser-signup-form");
+        mv.addObject("css", "/resources/css/saas/signup-form.css");
+        return mv;
 		
 	}
+	
 	
 	@PostMapping("/saveSignUpForm")
 	public String saveUserSaas (@ModelAttribute("saasUser") SaasUser saasUser, Model model) {
@@ -51,13 +55,13 @@ public class SaasUserController {
         model.addAttribute("message", "Inscription Validée !");
         model.addAttribute("saasUser", saasUser);
 
-        return "saasuser/signup-succes";
+        return "saasuser-signup-success";
 		
 	}
 	
 	@GetMapping
 	public String showSuccesForm() {
-		return "saasuser/signup-succes";
+		return "saasuser-signup-success";
 		
 	}
 

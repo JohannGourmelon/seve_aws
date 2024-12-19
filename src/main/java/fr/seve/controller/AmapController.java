@@ -29,7 +29,7 @@ public class AmapController {
 		List<AMAP> amaps = amapService.findAll();
 		model.addAttribute("amaps", amaps);
 		
-		return "amap/list";
+		return "amap-list";
 	}
 	
 	@GetMapping("{id}")
@@ -37,14 +37,14 @@ public class AmapController {
 		
 		AMAP amap = amapService.findById(id);
 		model.addAttribute("amap", amap);
-		return "amap/details";
+		return "amap-details";
 		
 	}
 	
 	@GetMapping("/add")
 	public String showAddForm(Model model) {
 		model.addAttribute("amap", new AMAP());
-		return "amap/form";
+		return "amap-form";
 	}
 	
 	
@@ -65,7 +65,7 @@ public class AmapController {
     public String showEditForm(@PathVariable Long id, Model model) {
         AMAP amap = amapService.findById(id);
         model.addAttribute("amap", amap);
-        return "amap/form";
+        return "amap-form";
     }
 
     @PostMapping("/edit/{id}")
