@@ -1,13 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Liste des AMAPs</title>
-</head>
-<body>
+
 	<h1>Liste des AMAPs</h1>
 	<a href="${pageContext.request.contextPath}/amaps/add">Ajouter AMAP</a>
 	<table border="1">
@@ -36,5 +28,4 @@
 			</c:forEach>
 		</tbody>
 	</table>
-</body>
-</html>
+	<a href="${pageContext.request.contextPath}/home">Acceuil</a>

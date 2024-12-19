@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import fr.seve.entities.SaasUser;
 import fr.seve.entities.SaasUserLevel;
@@ -51,8 +52,10 @@ public class HomeController {
 	}
 
 	@GetMapping("/home2")
-	public String home2() {
-		return "amap";
-	}
+	public ModelAndView home2() {
+		ModelAndView mv = new ModelAndView("home2");
+        mv.addObject("css", "/resources/css/saas/test.css");
+        return mv;
+		}
 
 }

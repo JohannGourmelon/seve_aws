@@ -1,31 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE tiles-definitions PUBLIC
     "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
     "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <!-- Layout de base -->
-    <definition name="template-def" template="/WEB-INF/views/layouts/defaultLayout.jsp">
-        <put-attribute name="title" value="" />
-        <put-attribute name="header" value="/WEB-INF/views/layouts/header.jsp" />
-        <put-attribute name="menu" value="/WEB-INF/views/layouts/menu.jsp" />
-        <put-attribute name="body" value="" />
-        <put-attribute name="footer" value="/WEB-INF/views/layouts/footer.jsp" />
-    </definition>
-    <definition name="templateAMAP" template="/WEB-INF/views/layouts/AMAP/defaultLayout.jsp">
-        <put-attribute name="title" value="AMAP" />
-        <put-attribute name="header" value="/WEB-INF/views/layouts/AMAP/header.jsp" />
-        <put-attribute name="menu" value="/WEB-INF/views/layouts/AMAP/menu.jsp" />
-        <put-attribute name="body" value="" />
-        <put-attribute name="footer" value="/WEB-INF/views/layouts/AMAP/footer.jsp" />
-    </definition>
 
-    <!-- Page d'accueil -->
-    <definition name="home2" extends="template-def">
-        <put-attribute name="title" value="Page d'accueil" />
-        <put-attribute name="body" value="/WEB-INF/views/pages/home.jsp" />
-    </definition>
-    <definition name="amap" extends="templateAMAP">
-        <put-attribute name="title" value="Page d'accueil" />
-        <put-attribute name="body" value="/WEB-INF/views/saas/packages.jsp" />
-    </definition>
+<!-- <<<<<<<<<<<<<<<<<<< Pages SaaS >>>>>>>>>>>>>>>>>>>>> -->
+
+<!--  					Template SaaS					 -->
+
+	<definition name="template-saas"
+		template="/WEB-INF/views/saas/layouts/saasDefaultLayout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header"
+			value="/WEB-INF/views/saas/layouts/saasDefaultHeader.jsp" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/saasDefaultMain.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/saas/layouts/saasDefaultFooter.jsp" />
+	</definition>
+
+<!--  					Home 					 -->
+
+	<definition name="home" extends="template-saas">
+		<put-attribute name="title"
+			value="Seve" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/home.jsp" />
+	</definition>
+	<definition name="home2" extends="template-saas">
+		<put-attribute name="title"
+			value="HOME2" />
+		<put-attribute name="main"
+			value="Plouf" />
+	</definition>
+	
+<!--  				Pages /amap					 -->
+
+	<definition name="amap-list" extends="template-saas">
+		<put-attribute name="title"
+			value="Liste des Amaps" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/amap/amapList.jsp" />
+	</definition>
+	<definition name="amap-details" extends="template-saas">
+		<put-attribute name="title"
+			value="Détails de l'AMAP" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/amap/amapDetails.jsp" />
+	</definition>
+	<definition name="amap-form" extends="template-saas">
+		<put-attribute name="title"
+			value="Formulaire de création d'Amap" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/amap/amapForm.jsp" />
+	</definition>
+
+<!--  				Pages /saas 					 -->
+	
+	<definition name="saas-home"
+		template="/WEB-INF/views/saas/pages/saas/home.jsp">
+	</definition>
+	<definition name="saas-packages"
+		template="/WEB-INF/views/saas/pages/saas/packages.jsp">
+	</definition>
+	
+<!--  				Pages /saasUser 					 -->
+
+	<definition name="saasuser-signup-form" extends="template-saas">
+		<put-attribute name="title"
+			value="Formulaire de création d'utilisateur" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/saasUser/signup-form.jsp" />
+	</definition>
+	<definition name="saasuser-signup-success" extends="template-saas">
+		<put-attribute name="title"
+			value="Succes!" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/saasUser/signup-success.jsp" />
+	</definition>
+	
+<!-- <<<<<<<<<<<<<<<<<<< Fin Pages SaaS >>>>>>>>>>>>>>>>>>>>> -->
+
 </tiles-definitions>

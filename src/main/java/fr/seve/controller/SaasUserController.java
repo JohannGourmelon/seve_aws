@@ -29,7 +29,7 @@ public class SaasUserController {
 	
 	@GetMapping("/showSignUpForm")
 	public String showForm() {
-		return "saasuser/signup-form";
+		return "saasuser-signup-form";
 		
 	}
 	
@@ -51,13 +51,13 @@ public class SaasUserController {
         model.addAttribute("message", "Inscription Validée !");
         model.addAttribute("saasUser", saasUser);
 
-        return "saasuser/signup-succes";
+        return "saasuser-signup-success";
 		
 	}
 	
 	@GetMapping
 	public String showSuccesForm() {
-		return "saasuser/signup-succes";
+		return "saasuser-signup-success";
 		
 	}
 
