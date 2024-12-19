@@ -49,6 +49,8 @@ public class SaasUser {
 	
 	@Column
 	private SaasUserLevel saasUserLevel; 
+	
+	private Subscription subscription;
 
 	public Long getId() {
 		return id;
@@ -84,6 +86,10 @@ public class SaasUser {
 
 	public SaasUserLevel getSaasUserLevel() {
 		return saasUserLevel;
+	}
+	
+	public Subscription getSubscription() {
+		return subscription;
 	}
 
 	public void setSaasUserLevel(SaasUserLevel saasUserLevel) {
@@ -122,6 +128,8 @@ public class SaasUser {
 		this.lastModifyDate = lastModifyDate;
 	}
 
-
+	public void setSubscription(Subscription subscription) {
+		this.subscription = subscription;
+	}
 	
 }
