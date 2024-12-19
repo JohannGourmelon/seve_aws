@@ -5,9 +5,9 @@
 
 <tiles-definitions>
 
-<!-- <<<<<<<<<<<<<<<<<<< Pages SaaS >>>>>>>>>>>>>>>>>>>>> -->
+	<!-- <<<<<<<<<<<<<<<<<<< Pages SaaS >>>>>>>>>>>>>>>>>>>>> -->
 
-<!--  					Template SaaS					 -->
+	<!-- Template SaaS -->
 
 	<definition name="template-saas"
 		template="/WEB-INF/views/saas/layouts/saasDefaultLayout.jsp">
@@ -20,32 +20,22 @@
 			value="/WEB-INF/views/saas/layouts/saasDefaultFooter.jsp" />
 	</definition>
 
-<!--  					Home 					 -->
+	<!-- Home -->
 
-	<definition name="home" extends="template-saas">
-		<put-attribute name="title"
-			value="Seve" />
-		<put-attribute name="main"
-			value="/WEB-INF/views/saas/pages/home.jsp" />
+	<definition name="home"
+		template="/WEB-INF/views/saas/pages/home.jsp">
 	</definition>
-	<definition name="home2" extends="template-saas">
-		<put-attribute name="title"
-			value="HOME2" />
-		<put-attribute name="main"
-			value="Plouf" />
-	</definition>
-	
-<!--  				Pages /amap					 -->
+
+
+	<!-- Pages /amap -->
 
 	<definition name="amap-list" extends="template-saas">
-		<put-attribute name="title"
-			value="Liste des Amaps" />
+		<put-attribute name="title" value="Liste des Amaps" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/amap/amapList.jsp" />
 	</definition>
 	<definition name="amap-details" extends="template-saas">
-		<put-attribute name="title"
-			value="Détails de l'AMAP" />
+		<put-attribute name="title" value="Détails de l'AMAP" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/amap/amapDetails.jsp" />
 	</definition>
@@ -56,29 +46,60 @@
 			value="/WEB-INF/views/saas/pages/amap/amapForm.jsp" />
 	</definition>
 
-<!--  				Pages /saas 					 -->
-	
-	<definition name="saas-home"
-		template="/WEB-INF/views/saas/pages/saas/home.jsp">
-	</definition>
-	<definition name="saas-packages"
-		template="/WEB-INF/views/saas/pages/saas/packages.jsp">
-	</definition>
-	
-<!--  				Pages /saasUser 					 -->
+	<!-- Pages /saas -->
 
-	<definition name="saasuser-signup-form" extends="template-saas">
+	<definition name="saas-home" extends="template-saas">
+		<put-attribute name="title" value="Sève" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/saas/home.jsp" />
+	</definition>
+
+	<definition name="saas-subscription" extends="template-saas">
+		<put-attribute name="title" value="Nos forfaits" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/saas/subscription.jsp" />
+	</definition>
+
+	<definition name="saas-signup" extends="template-saas">
+		<put-attribute name="title" value="Souscription" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/saasUser/signup-form.jsp" />
+	</definition>
+
+	<definition name="saas-signup-es" extends="template-saas">
+		<put-attribute name="title" value="Souscription" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/saasUser/signup-form-es.jsp" />
+	</definition>
+
+	<definition name="saas-signup-st" extends="template-saas">
+		<put-attribute name="title" value="Souscription" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/saasUser/signup-form-st.jsp" />
+	</definition>
+	
+		<definition name="saas-signup-pr" extends="template-saas">
+		<put-attribute name="title" value="Souscription" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/saasUser/signup-form-pr.jsp" />
+	</definition>
+
+	<!-- Pages /saasUser -->
+
+	<definition name="saasuser-signup-form"
+		extends="template-saas">
 		<put-attribute name="title"
 			value="Formulaire de création d'utilisateur" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/saasUser/signup-form.jsp" />
 	</definition>
-	<definition name="saasuser-signup-success" extends="template-saas">
-		<put-attribute name="title"
-			value="Succes!" />
+	<definition name="saasuser-signup-success"
+		extends="template-saas">
+		<put-attribute name="title" value="Succes!" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/saasUser/signup-success.jsp" />
 	</definition>
+
 	
 	<definition name="saasuser-subscription-list" extends="template-saas">
 		<put-attribute name="title"
@@ -88,5 +109,6 @@
 	</definition>
 	
 <!-- <<<<<<<<<<<<<<<<<<< Fin Pages SaaS >>>>>>>>>>>>>>>>>>>>> -->
+
 
 </tiles-definitions>

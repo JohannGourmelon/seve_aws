@@ -49,7 +49,7 @@
 .steps {
 	display: flex;
 	justify-content: space-between;
-	gap: 5%;
+	gap: 20px;
 }
 
 .step {

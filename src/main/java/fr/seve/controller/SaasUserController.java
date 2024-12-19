@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import fr.seve.entities.SaasUser;
 import fr.seve.entities.SaasUserLevel;
@@ -34,13 +35,38 @@ public class SaasUserController {
 	}
 	
 	@GetMapping("/showSignUpForm")
-	public String showForm() {
-		return "saasuser-signup-form";
+	public ModelAndView showForm() {
+		ModelAndView mv = new ModelAndView("saasuser-signup-form");
+        mv.addObject("css", "/resources/css/saas/signup-form.css");
+        return mv;
 		
 	}
 	
-	@PostMapping("/saveSignUpEssential")
-	public String saveUserSaasEssential (@ModelAttribute("saasUser") SaasUser saasUser, Model model) {
+	@GetMapping("/souscription-essentiel")
+	public ModelAndView showFormEs() {
+		ModelAndView mv = new ModelAndView("saas-signup-es");
+        mv.addObject("css", "/resources/css/saas/signup-form.css");
+        return mv;	
+	}
+	
+	@GetMapping("/souscription-standard")
+	public ModelAndView showFormSt() {
+		ModelAndView mv = new ModelAndView("saas-signup-st");
+        mv.addObject("css", "/resources/css/saas/signup-form.css");
+        return mv;
+	}
+	
+	@GetMapping("/souscription-premium")
+	public ModelAndView showFormPr() {
+		ModelAndView mv = new ModelAndView("saas-signup-pr");
+        mv.addObject("css", "/resources/css/saas/signup-form.css");
+        return mv;
+	}
+	
+	
+	@PostMapping("/saveSignUpForm")
+	public String saveUserSaas (@ModelAttribute("saasUser") SaasUser saasUser, Model model) {
+
 		System.out.println("Firstname : " + saasUser.getFirstname());
         System.out.println("Name : " + saasUser.getName());
         System.out.println("Phone : " + saasUser.getPhone());

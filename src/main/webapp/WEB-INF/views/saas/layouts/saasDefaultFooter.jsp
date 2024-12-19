@@ -1,11 +1,8 @@
-<div class="card">
-  <div class="card-header">
-    Quote
-  </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      <p>A well-known quote, contained in a blockquote element.</p>
-      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
+<footer class="bg-o text-center">
+<div class="footer-content">
+		<p>Sève</p>
+		<p>3 boulevard Michelet 13008 Marseille</p>
+		<p>contact@seve.com</p>
+		<p class="cr mt-3">© 2025 - Tous droits réservés</p>
+		</div>
+</footer>

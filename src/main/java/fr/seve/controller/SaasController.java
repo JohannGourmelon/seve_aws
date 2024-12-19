@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import fr.seve.entities.Subscription;
 import fr.seve.service.FunctionService;
@@ -38,10 +39,21 @@ public class SaasController {
 		
 		return "saas-home";
 	}
+
 	
-	@GetMapping("/packages")
-	public String packagesSaas() {
-		return "saas-packages";
-	}
+	@GetMapping
+	public ModelAndView homeSaas() {
+		ModelAndView mv = new ModelAndView("saas-home");
+        mv.addObject("css", "/resources/css/saas/home.css");
+        return mv;
+		}
+	
+	
+	@GetMapping("/forfaits")
+	public ModelAndView subscriptionSaas() {
+		ModelAndView mv = new ModelAndView("saas-subscription");
+        mv.addObject("css", "/resources/css/saas/subscription.css");
+        return mv;
+		}
 	
 }

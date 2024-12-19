@@ -4,37 +4,43 @@
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title><tiles:insertAttribute name="title" /></title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
-        
-    <!-- CSS dynamiques -->
-    <c:if test="${not empty css}">
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}${css}" />
-    </c:if>
+<title><tiles:insertAttribute name="title" /></title>
+
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/saas/main.css" />
+
+<!-- CSS dynamiques -->
+<c:if test="${not empty css}">
+	<link rel="stylesheet" type="text/css"
+		href="${pageContext.request.contextPath}${css}" />
+</c:if>
 
 </head>
 
 <body>
-    <header>
-        <tiles:insertAttribute name="header" />
-    </header>
-    
-    <main>
-        <tiles:insertAttribute name="main" />
-    </main>
+	<header class="stickyHeader">
+		<tiles:insertAttribute name="header" />
+	</header>
+
+	<main>
+		<tiles:insertAttribute name="main" />
+	</main>
 
 	<footer>
 		<tiles:insertAttribute name="footer" />
 	</footer>
-	
-	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

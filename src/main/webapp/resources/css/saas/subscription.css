@@ -1,4 +1,7 @@
 /***************** Presentation *******************/
+.container {
+	padding: 0;
+}
 .presentation-container {
 	display: flex;
 	align-items: center;
