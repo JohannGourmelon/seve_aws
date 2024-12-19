@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.seve.entities.AMAP;
 import fr.seve.service.AmapService;
@@ -54,17 +55,11 @@ public class AmapController {
 		return "redirect:/amaps";
 	}
 	
-	@GetMapping("/addConfigAmap")
-	public String addConfigAmap(Model model) {
-		model.addAttribute("amap", new AMAP());
-		return "amap-form";
-	}
-	
-	
 	@PostMapping("addConfigAmap")
-	public String saveConfigAmap(@ModelAttribute AMAP amap) {
-		amapService.save(amap);
-		return "saas-account-config-amap";
+	public String saveConfigAmap(@ModelAttribute AMAP amap, RedirectAttributes redirectAttributes) {
+	    amapService.save(amap);
+	   	redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
+	    return "redirect:/saas/configuration-amap";
 	}
 	
 	@GetMapping("/delete/{id}")

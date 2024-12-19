@@ -1,12 +1,18 @@
 @charset "UTF-8";
 
-body {
-	box-sizing: border-box;
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    	box-sizing: border-box;
 	background-color: #fafafa;
 }
 
 main {
 	margin: 0 150px;
+	flex-grow: 1;
+	height: 100%;
 }
 
 h1 {
@@ -52,6 +58,7 @@ input:focus {
 .form-control {
 		border-radius: 30px;
 }
+
 
 /********* Background colors **************/
 .bg-o {
@@ -155,7 +162,7 @@ input:focus {
 
 footer {
     width: 100%;
-    margin-top: auto; /* Pousse le footer en bas */
+    margin-top: auto;
 }
 
 footer p {

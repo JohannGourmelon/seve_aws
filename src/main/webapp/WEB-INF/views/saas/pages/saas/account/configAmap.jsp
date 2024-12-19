@@ -25,3 +25,10 @@
             <button type="submit">Enregistrer</button>
         </p>
     </form>
+    
+    <!-- Affichage du message de succès si présent -->
+<c:if test="${not empty message}">
+    <div class="alert alert-success">
+        ${message}  <!-- Affiche le message "ok" -->
+    </div>
+</c:if>
