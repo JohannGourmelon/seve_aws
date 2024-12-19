@@ -74,11 +74,11 @@
 	<div class="steps">
 		<div class="step shadow p-3">
 			<p class="text-center number bg-grey">1</p>
-			<p class="text-center">Je crée mon compte</p>
+			<p class="text-center">Je choisis le forfait adapté à mes besoins</p>
 		</div>
 		<div class="step shadow-b p-3">
 			<p class="text-center number bg-b">2</p>
-			<p class="text-center">Je choisis le forfait adapté à mes besoins</p>
+			<p class="text-center">Je souscris à l'offre</p>
 		</div>
 		<div class="step shadow-g p-3">
 			<p class="text-center number bg-g">3</p>
@@ -95,7 +95,7 @@
 		?</h3>
 	<div class="d-flex justify-content-center package-btn">
 		<button class="btn btn-secondary m-3"
-			onclick="window.location.href='${pageContext.request.contextPath}/saas/packages'">Découvrez
+			onclick="window.location.href='${pageContext.request.contextPath}/saas/forfaits'">Découvrez
 			nos forfaits</button>
 	</div>
 </section>

@@ -21,7 +21,7 @@
 	</definition>
 
 	<!-- Home -->
-	
+
 	<definition name="home"
 		template="/WEB-INF/views/saas/pages/home.jsp">
 	</definition>
@@ -53,19 +53,36 @@
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/saas/home.jsp" />
 	</definition>
-	
+
 	<definition name="saas-subscription" extends="template-saas">
 		<put-attribute name="title" value="Nos forfaits" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/saas/subscription.jsp" />
 	</definition>
-	
-		<definition name="saas-signup" extends="template-saas">
+
+	<definition name="saas-signup" extends="template-saas">
 		<put-attribute name="title" value="Souscription" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/saasUser/signup-form.jsp" />
 	</definition>
 
+	<definition name="saas-signup-es" extends="template-saas">
+		<put-attribute name="title" value="Souscription" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/saasUser/signup-form-es.jsp" />
+	</definition>
+
+	<definition name="saas-signup-st" extends="template-saas">
+		<put-attribute name="title" value="Souscription" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/saasUser/signup-form-st.jsp" />
+	</definition>
+	
+		<definition name="saas-signup-pr" extends="template-saas">
+		<put-attribute name="title" value="Souscription" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/saasUser/signup-form-pr.jsp" />
+	</definition>
 
 	<!-- Pages /saasUser -->
 

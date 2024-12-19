@@ -36,6 +36,27 @@ public class SaasUserController {
 		
 	}
 	
+	@GetMapping("/souscription-essentiel")
+	public ModelAndView showFormEs() {
+		ModelAndView mv = new ModelAndView("saas-signup-es");
+        mv.addObject("css", "/resources/css/saas/signup-form.css");
+        return mv;	
+	}
+	
+	@GetMapping("/souscription-standard")
+	public ModelAndView showFormSt() {
+		ModelAndView mv = new ModelAndView("saas-signup-st");
+        mv.addObject("css", "/resources/css/saas/signup-form.css");
+        return mv;
+	}
+	
+	@GetMapping("/souscription-premium")
+	public ModelAndView showFormPr() {
+		ModelAndView mv = new ModelAndView("saas-signup-pr");
+        mv.addObject("css", "/resources/css/saas/signup-form.css");
+        return mv;
+	}
+	
 	
 	@PostMapping("/saveSignUpForm")
 	public String saveUserSaas (@ModelAttribute("saasUser") SaasUser saasUser, Model model) {

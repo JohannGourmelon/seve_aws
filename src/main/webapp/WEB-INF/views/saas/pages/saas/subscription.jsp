@@ -53,7 +53,7 @@
 						<p class="font-weight-bold">Prix : 9,99 € / mois</p>
 					</div>
 					<div class="d-flex justify-content-center package-btn">
-						<button class="btn btn-o btn-package-card" onclick="window.location.href='${pageContext.request.contextPath}/saasuser/showSignUpForm'">Commencez avec
+						<button class="btn btn-o btn-package-card" onclick="window.location.href='${pageContext.request.contextPath}/saasuser/souscription-essentiel'">Commencez avec
 							Essentiel</button>
 					</div>
 				</div>
@@ -78,7 +78,7 @@
 					</div>
 
 					<div class="d-flex justify-content-center package-btn">
-						<button class="btn btn-b btn-package-card">Commencez avec
+						<button class="btn btn-b btn-package-card" onclick="window.location.href='${pageContext.request.contextPath}/saasuser/souscription-standard'">Commencez avec
 							Standard</button>
 					</div>
 				</div>
@@ -103,7 +103,7 @@
 						<p class="font-weight-bold">Prix : 29,99 € / mois</p>
 					</div>
 					<div class="d-flex justify-content-center package-btn">
-						<button class="btn btn-g btn-package-card">Commencez avec
+						<button class="btn btn-g btn-package-card" onclick="window.location.href='${pageContext.request.contextPath}/saasuser/souscription-premium'">Commencez avec
 							Premium</button>
 					</div>
 				</div>

@@ -7,8 +7,7 @@
 			<div class="signup-container">
 				<!-- Info -->
 				<div class="signup-info">
-					<p>Démarrez dès aujourd'hui avec Essentiel. Aucune carte
-						bancaire requise, aucun logiciel à installer.</p>
+					<p>Démarrez dès aujourd'hui avec le forfait Standard. Aucun logiciel à installer.</p>
 					<div class="my-4">
 						<div class="signup-bp">
 							<div class="dot-container">

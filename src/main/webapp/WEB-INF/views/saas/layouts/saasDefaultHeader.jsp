@@ -25,12 +25,12 @@
 				<div class="dropdown-menu mt-0" aria-labelledby="Preview">
 					<a class="dropdown-item" data-bs-toggle="collapse"
 						data-bs-target=".navbar-collapse.show"
-						onclick="window.location.href='${pageContext.request.contextPath}/saasuser/showSignUpForm'">Forfait
+						onclick="window.location.href='${pageContext.request.contextPath}/saasuser/souscription-essentiel'">Forfait
 						Essentiel</a> <a class="dropdown-item" href="#"
 						data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-						href="index.html">Forfait Standard</a> <a
+						onclick="window.location.href='${pageContext.request.contextPath}/saasuser/souscription-standard'">Forfait Standard</a> <a
 						class="dropdown-item" href="#" data-bs-toggle="collapse"
-						data-bs-target=".navbar-collapse.show" href="index.html">Forfait
+						data-bs-target=".navbar-collapse.show" onclick="window.location.href='${pageContext.request.contextPath}/saasuser/souscription-premium'">Forfait
 						Premium</a>
 					<!-- <li role="separator" class="divider"></li> -->
 				</div></li>
