@@ -1,0 +1,22 @@
+@charset "UTF-8";
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    background-color: #f8f9fa; /* Couleur de fond optionnelle */
+    padding: 20px 0;
+    width: 100%;
+    margin-top: auto; /* Pousse le footer en bas */
+}

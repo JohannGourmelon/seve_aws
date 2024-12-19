@@ -11,12 +11,12 @@ public class SaasController {
 	@GetMapping
 	public String homeSaas() {
 		
-		return "saas/home";
+		return "saas-home";
 	}
 	
 	@GetMapping("/packages")
 	public String packagesSaas() {
-		return "saas/packages";
+		return "saas-packages";
 	}
 	
 }
