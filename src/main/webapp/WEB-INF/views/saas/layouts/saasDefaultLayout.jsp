@@ -16,6 +16,9 @@
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/saas/main.css" />
+<script
+	src="${pageContext.request.contextPath}/resources/js/bootstrap.bundle.min.js"></script>
+
 <!-- CSS dynamiques -->
 <c:if test="${not empty css}">
 	<link rel="stylesheet" type="text/css"
@@ -25,7 +28,7 @@
 </head>
 
 <body>
-	<header>
+	<header class="stickyHeader">
 		<tiles:insertAttribute name="header" />
 	</header>
 

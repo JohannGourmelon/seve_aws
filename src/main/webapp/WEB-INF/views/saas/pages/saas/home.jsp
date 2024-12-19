@@ -14,7 +14,7 @@
 			</div>
 			<div class="d-flex justify-content-center package-btn">
 				<button class="btn btn-b btn-home"
-					onclick="window.location.href='${pageContext.request.contextPath}/saas/packages'">Voir
+					onclick="window.location.href='${pageContext.request.contextPath}/saas/forfaits'">Voir
 					les offres</button>
 			</div>
 			<div class="d-flex justify-content-center package-btn">

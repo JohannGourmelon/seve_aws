@@ -18,8 +18,8 @@ public class SaasController {
 		}
 	
 	
-	@GetMapping("/packages")
-	public ModelAndView packagesSaas() {
+	@GetMapping("/forfaits")
+	public ModelAndView subscriptionSaas() {
 		ModelAndView mv = new ModelAndView("saas-subscription");
         mv.addObject("css", "/resources/css/saas/subscription.css");
         return mv;
