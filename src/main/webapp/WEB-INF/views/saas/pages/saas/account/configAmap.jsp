@@ -22,7 +22,7 @@
             <input id="siret" name="siret" value="${amap.siret}" required>
         </p>
         <p>
-            <button type="submit">Enregistrer</button>
+            <button class="btn btn-secondary" type="submit">Enregistrer</button>
         </p>
     </form>
     
