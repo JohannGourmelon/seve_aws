@@ -15,8 +15,6 @@ main {
 }
 
 footer {
-    background-color: #f8f9fa; /* Couleur de fond optionnelle */
-    padding: 20px 0;
     width: 100%;
     margin-top: auto; /* Pousse le footer en bas */
 }

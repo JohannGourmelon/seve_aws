@@ -1,0 +1,45 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    	box-sizing: border-box;
+	background-color: #fafafa;
+}
+
+main {
+	margin: 0 150px;
+	flex-grow: 1;
+	height: 100%;
+}
+
+main {
+	margin: 0 80px;
+}
+
+.layout-container {
+    display: flex;
+    flex-direction: row; 
+    height: 100%;
+}
+
+.vertical-nav {
+    width: 250px;
+    background-color: #36393B;
+    padding: 20px;
+    color: #E0E2E3;
+}
+
+.vertical-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.vertical-nav li {
+    margin-bottom: 10px;
+}
+
+.vertical-nav a {
+    text-decoration: none;
+    color: #333;
+}

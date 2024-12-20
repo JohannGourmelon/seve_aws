@@ -1,12 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-    <h1>${amap.id != null ? 'Modifier' : 'Ajouter'} une AMAP</h1>
+    <h1>Informations de votre AMAP</h1>
 	<c:choose>
 	    <c:when test="${amap.id != null}">
 	        <form action="${pageContext.request.contextPath}/amaps/edit/${amap.id}" method="post">
 	    </c:when>
 	    <c:otherwise>
-	        <form action="${pageContext.request.contextPath}/amaps/add" method="post">
+	        <form action="${pageContext.request.contextPath}/amaps/addConfigAmap" method="post">
 	    </c:otherwise>
 	</c:choose>
         <p>
@@ -22,7 +22,13 @@
             <input id="siret" name="siret" value="${amap.siret}" required>
         </p>
         <p>
-            <button type="submit">Enregistrer</button>
-            <a href="${pageContext.request.contextPath}/amaps">Annuler</a>
+            <button class="btn btn-secondary" type="submit">Enregistrer</button>
         </p>
     </form>
+    
+    <!-- Affichage du message de succès si présent -->
+<c:if test="${not empty message}">
+    <div class="alert alert-success">
+        ${message}  <!-- Affiche le message "ok" -->
+    </div>
+</c:if>

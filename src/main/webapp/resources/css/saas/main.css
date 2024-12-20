@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 body {
+	margin: 0;
 	box-sizing: border-box;
 	background-color: #fafafa;
 }
@@ -47,6 +48,10 @@ input {
 input:focus {
 	border: 1px solid #b3d9e2;
 	outline: none;
+}
+
+.form-control {
+	border-radius: 30px;
 }
 
 /********* Background colors **************/
@@ -144,8 +149,13 @@ input:focus {
 }
 
 /**************************** Footer ******************************/
-footer {
+.footer-content {
 	padding: 15px 0;
+}
+
+footer {
+	width: 100%;
+	margin-top: auto;
 }
 
 footer p {
@@ -154,7 +164,18 @@ footer p {
 }
 
 .cr {
-	font-size: 13px;
+	font-size: 12px;
+}
+
+/****************************** Header************************************/
+header {
+	box-shadow: 0 2px 4px rgba(217, 168, 156, 0.8), 0 1px 3px
+		rgba(217, 168, 156, 0.7);
+	display: flex;
+}
+
+.nav-item {
+	margin: 0 20px;
 }
 
 /* ------------------------ Format tablette ---------------------------*/
@@ -188,7 +209,7 @@ footer p {
 		font-size: 26px;
 	}
 	h2 {
-		font-size: 22px;		
+		font-size: 22px;
 	}
 	h3 {
 		font-size: 18px;

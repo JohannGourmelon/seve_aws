@@ -7,12 +7,12 @@ import fr.seve.entities.AMAP;
 
 public interface AmapService {
 	
-List<AMAP> findAll();
-	
+	List<AMAP> findAll();
+
 	AMAP save(AMAP amap);
-	
-	AMAP findById (Long id);
-	
+
+	AMAP findById(Long id);
+
 	void deleteById(Long Id);
 
 }

@@ -16,6 +16,8 @@
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/saas/main.css" />
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/saas/account.css" />
 
 <!-- CSS dynamiques -->
 <c:if test="${not empty css}">
@@ -30,9 +32,15 @@
 		<tiles:insertAttribute name="header" />
 	</header>
 
-	<main>
-		<tiles:insertAttribute name="main" />
-	</main>
+	<div class="layout-container">
+		<nav class="vertical-nav">
+			<tiles:insertAttribute name="secondaryNav" />
+		</nav>
+
+		<main class="main-content">
+			<tiles:insertAttribute name="main" />
+		</main>
+	</div>
 
 	<footer>
 		<tiles:insertAttribute name="footer" />

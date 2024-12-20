@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -49,7 +53,13 @@ public class SaasUser {
 	
 	@Column
 	private SaasUserLevel saasUserLevel; 
-
+	
+		
+	//Relation avec Subscription
+	@ManyToOne
+	@JoinColumn (name = "subscription_id")
+	private Subscription subscription;
+	
 	public Long getId() {
 		return id;
 	}
@@ -84,6 +94,15 @@ public class SaasUser {
 
 	public SaasUserLevel getSaasUserLevel() {
 		return saasUserLevel;
+	}
+	
+
+	public Subscription getSubscription() {
+		return subscription;
+	}
+
+	public void setSubscription(Subscription subscription) {
+		this.subscription = subscription;
 	}
 
 	public void setSaasUserLevel(SaasUserLevel saasUserLevel) {
@@ -121,7 +140,6 @@ public class SaasUser {
 	public void setLastModifyDate(String lastModifyDate) {
 		this.lastModifyDate = lastModifyDate;
 	}
-
 
 	
 }

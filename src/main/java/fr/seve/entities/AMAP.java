@@ -16,47 +16,46 @@ public class AMAP {
 	private Long Id;
 	
 	@Column(nullable=false)
-	private String nom;
+	private String name;
 	
 	@Column(nullable=false)
-	private String blason;
+	private String address;
 	
-	@Column
-	private String valeurs;
-	
+	@Column(nullable=false)
+	private String siret;
 	
 
 	public Long getId() {
 		return Id;
 	}
 
-	public String getNom() {
-		return nom;
-	}
-
-	public String getBlason() {
-		return blason;
-	}
-
-	public String getValeurs() {
-		return valeurs;
-	}
-
 	public void setId(Long id) {
 		Id = id;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public String getName() {
+		return name;
 	}
 
-	public void setBlason(String blason) {
-		this.blason = blason;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public void setValeurs(String valeur) {
-		this.valeurs = valeur;
+	public String getAddress() {
+		return address;
 	}
 
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getSiret() {
+		return siret;
+	}
+
+	public void setSiret(String siret) {
+		this.siret = siret;
+	}
+	
 	
 }
