@@ -60,12 +60,21 @@ public class SaasUser {
 	@ManyToOne
 	@JoinColumn(name = "subscription_id")
 	private Subscription subscription;
+<<<<<<< HEAD
 
 	// Relation avec AMAP
 	@OneToOne
 	@JoinColumn(name = "amap_id")
 	private AMAP amap;
 
+=======
+	
+	//Relation avec AMAP
+	@OneToOne
+	@JoinColumn(name= "amap_id")
+	private AMAP amap;
+	
+>>>>>>> 5e56cca6bdd2bef0fba6750f45f1141cb27459bc
 	public Long getId() {
 		return id;
 	}
@@ -106,6 +115,10 @@ public class SaasUser {
 		return subscription;
 	}
 
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 5e56cca6bdd2bef0fba6750f45f1141cb27459bc
 	public AMAP getAmap() {
 		return amap;
 	}

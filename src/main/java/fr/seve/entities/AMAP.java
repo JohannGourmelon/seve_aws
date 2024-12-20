@@ -26,6 +26,7 @@ public class AMAP {
 	@Column(nullable = true)
 	private String siret;
 
+
 	// Relation avec SaasUser
 	@OneToOne(mappedBy = "amap", cascade = CascadeType.ALL, orphanRemoval = true)
 	private SaasUser saasUser;
