@@ -51,8 +51,9 @@ public class ConfigurationController {
 	    AMAP amap = amapService.findById(2L);
 	    model.addAttribute("configuration", configuration);
 	    model.addAttribute("amap", amap);
-//      mv.addObject("css", "/resources/css/saas/subscription.css");
-	    return new ModelAndView("saas-account-config-content");
+		ModelAndView mv = new ModelAndView("saas-account-config-content");
+		 mv.addObject("css", "/resources/css/saas/config.css");
+	        return mv;
 	}
 	
 	@GetMapping("/design")
@@ -62,7 +63,7 @@ public class ConfigurationController {
 	    model.addAttribute("configuration", configuration);
 	    model.addAttribute("amap", amap);
 		ModelAndView mv = new ModelAndView("saas-account-config-design");
-//        mv.addObject("css", "/resources/css/saas/subscription.css");
+        mv.addObject("css", "/resources/css/saas/config.css");
         return mv;
 		}
 
