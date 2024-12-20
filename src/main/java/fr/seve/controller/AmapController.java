@@ -103,7 +103,7 @@ public class AmapController {
 	    amapService.save(newAmap);
 		
 	   	redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
-	    return "redirect:/configuration/amap";
+	    return "redirect:/amap/info";
 	}
 	
 	@PostMapping("editAmap/{id}")

@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import fr.seve.entities.AMAP;
 import fr.seve.entities.Configuration;
+import fr.seve.service.AmapService;
 import fr.seve.service.ConfigurationService;
 
 @Controller
@@ -19,10 +21,13 @@ import fr.seve.service.ConfigurationService;
 public class ConfigurationController {
 
 	private final ConfigurationService configurationService;
+	
+	private final AmapService amapService;
 
-	public ConfigurationController(ConfigurationService configurationService) {
+	public ConfigurationController(ConfigurationService configurationService, AmapService amapService) {
 		super();
 		this.configurationService = configurationService;
+		this.amapService = amapService;
 	}
 
 	@GetMapping
@@ -33,35 +38,29 @@ public class ConfigurationController {
 	}
 
 	@GetMapping("{id}")
-	public String getAmap(@PathVariable Long id, Model model) {
+	public String getConfig(@PathVariable Long id, Model model) {
 		Configuration configuration = configurationService.findById(id);
 		model.addAttribute("configuration", configuration);
 		return "";
 	}
-	
-//	@GetMapping("/amap")
-//	public ModelAndView configAmap(Model model) {
-//		AMAP amap = amapService.findById(2L);
-//	    model.addAttribute("configuration", amap);
-//		ModelAndView mv = new ModelAndView("saas-account-config-amap");
-////        mv.addObject("css", "/resources/css/saas/subscription.css");
-//        return mv;
-//		}
-	
+
 	
 	@GetMapping("/contenu")
 	public ModelAndView configContent(Model model) {
-		Configuration configuration = configurationService.findById(2L);
+	    Configuration configuration = configurationService.findById(2L);
+	    AMAP amap = amapService.findById(2L);
 	    model.addAttribute("configuration", configuration);
-		ModelAndView mv = new ModelAndView("saas-account-config-content");
-//        mv.addObject("css", "/resources/css/saas/subscription.css");
-        return mv;
-		}
+	    model.addAttribute("amap", amap);
+//      mv.addObject("css", "/resources/css/saas/subscription.css");
+	    return new ModelAndView("saas-account-config-content");
+	}
 	
 	@GetMapping("/design")
 	public ModelAndView configDesign(Model model) {
 		Configuration configuration = configurationService.findById(2L);
+	    AMAP amap = amapService.findById(2L);
 	    model.addAttribute("configuration", configuration);
+	    model.addAttribute("amap", amap);
 		ModelAndView mv = new ModelAndView("saas-account-config-design");
 //        mv.addObject("css", "/resources/css/saas/subscription.css");
         return mv;
