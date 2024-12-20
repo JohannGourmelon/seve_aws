@@ -3,10 +3,10 @@
     <h1>Informations de votre AMAP</h1>
 	<c:choose>
 	    <c:when test="${amap.id != null}">
-	        <form action="${pageContext.request.contextPath}/amaps/edit/${amap.id}" method="post">
+	        <form action="${pageContext.request.contextPath}/amap/editAmap/${amap.id}" method="post">
 	    </c:when>
 	    <c:otherwise>
-	        <form action="${pageContext.request.contextPath}/amaps/addConfigAmap" method="post">
+	        <form action="${pageContext.request.contextPath}/amap/addAmap" method="post">
 	    </c:otherwise>
 	</c:choose>
         <p>

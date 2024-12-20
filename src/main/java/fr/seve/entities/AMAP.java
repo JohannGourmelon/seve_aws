@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,7 +30,6 @@ public class AMAP {
 	@Column(nullable = true)
 	private String siret;
 
-
 	// Relation avec SaasUser
 	@OneToOne(mappedBy = "amap", cascade = CascadeType.ALL, orphanRemoval = true)
 	private SaasUser saasUser;
@@ -38,6 +41,16 @@ public class AMAP {
 	public void setSaasUser(SaasUser saasUser) {
 		this.saasUser = saasUser;
 	}
+
+	//Relation Configuration
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinTable(
+	    name = "espaces_amap",
+	    joinColumns = @JoinColumn(name = "amap_id"),
+	    inverseJoinColumns = @JoinColumn(name = "configuration_id")
+	)
+	private Configuration configuration;
+	
 
 	public Long getId() {
 		return Id;
@@ -70,5 +83,15 @@ public class AMAP {
 	public void setSiret(String siret) {
 		this.siret = siret;
 	}
+
+	
+    public Configuration getConfiguration() {
+        return configuration;
+    }
+
+    public void setConfiguration(Configuration configuration) {
+        this.configuration = configuration;
+    }
+	
 
 }

@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +18,18 @@ public class Configuration {
 	
 	@Column
 	private String presentationText;
+	
+	@Column
+	private String primaryColor;
+	
+	@Column
+	private String secondaryColor;
+	
+	@Column
+	private String tertiaryColor;
+	
+	@OneToOne(mappedBy = "configuration") 
+    private AMAP amap;
 
 	public Long getId() {
 		return Id;
@@ -34,5 +47,36 @@ public class Configuration {
 		this.presentationText = presentationText;
 	}
 
+    public AMAP getAmap() {
+        return amap;
+    }
+
+    public void setAmap(AMAP amap) {
+        this.amap = amap;
+    }
+
+	public String getPrimaryColor() {
+		return primaryColor;
+	}
+
+	public void setPrimaryColor(String primaryColor) {
+		this.primaryColor = primaryColor;
+	}
+
+	public String getSecondaryColor() {
+		return secondaryColor;
+	}
+
+	public void setSecondaryColor(String secondaryColor) {
+		this.secondaryColor = secondaryColor;
+	}
+
+	public String getTertiaryColor() {
+		return tertiaryColor;
+	}
+
+	public void setTertiaryColor(String tertiaryColor) {
+		this.tertiaryColor = tertiaryColor;
+	}
 	
 }

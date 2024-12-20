@@ -3,4 +3,4 @@
     <p><strong>Nom :</strong> ${amap.name}</p>
     <p><strong>Adresse :</strong> ${amap.address}</p>
     <p><strong>Numéro Siret :</strong> ${amap.siret}</p>
-    <a href="${pageContext.request.contextPath}/amaps">Retour à la liste</a>
+    <a href="${pageContext.request.contextPath}/amap">Retour à la liste</a>
