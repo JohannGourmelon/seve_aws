@@ -1,10 +1,12 @@
 package fr.seve.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +26,9 @@ public class AMAP {
 	@Column(nullable=false)
 	private String siret;
 	
+	
+	@OneToOne(mappedBy= "amap", cascade = CascadeType.ALL)
+	private SaasUser saasUser;
 
 	public Long getId() {
 		return Id;
@@ -56,6 +61,16 @@ public class AMAP {
 	public void setSiret(String siret) {
 		this.siret = siret;
 	}
+
+	public SaasUser getSaasUser() {
+		return saasUser;
+	}
+
+	public void setSaasUser(SaasUser saasUser) {
+		this.saasUser = saasUser;
+	}
+	
+	
 	
 	
 }

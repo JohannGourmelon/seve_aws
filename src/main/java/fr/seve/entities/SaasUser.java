@@ -60,6 +60,11 @@ public class SaasUser {
 	@JoinColumn (name = "subscription_id")
 	private Subscription subscription;
 	
+	//Relation avec AMAP
+	@OneToOne
+	@JoinColumn(name= "amap_id")
+	private AMAP amap;
+	
 	public Long getId() {
 		return id;
 	}
@@ -99,6 +104,15 @@ public class SaasUser {
 
 	public Subscription getSubscription() {
 		return subscription;
+	}
+
+	
+	public AMAP getAmap() {
+		return amap;
+	}
+
+	public void setAmap(AMAP amap) {
+		this.amap = amap;
 	}
 
 	public void setSubscription(Subscription subscription) {
