@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.seve.entities.AMAP;
@@ -17,7 +18,7 @@ import fr.seve.entities.Configuration;
 import fr.seve.service.AmapService;
 
 @Controller
-@RequestMapping("/amaps")
+@RequestMapping("/amap")
 public class AmapController {
 
 	private final AmapService amapService;
@@ -43,20 +44,17 @@ public class AmapController {
 		
 	}
 	
-	@GetMapping("/add")
-	public String showAddForm(Model model) {
-		model.addAttribute("amap", new AMAP());
-		return "amap-form";
-	}
 	
+	@GetMapping("/info")
+	public ModelAndView configAmap(Model model) {
+		AMAP amap = amapService.findById(2L);
+	    model.addAttribute("amap", amap);
+		ModelAndView mv = new ModelAndView("saas-account-config-amap");
+//        mv.addObject("css", "/resources/css/saas/subscription.css");
+        return mv;
+		}
 	
-	@PostMapping("add")
-	public String saveAmap(@ModelAttribute AMAP amap) {
-		amapService.save(amap);
-		return "redirect:/amaps";
-	}
-	
-	@PostMapping("addConfigAmap")
+	@PostMapping("addAmap")
 	public String saveConfigAmap(@ModelAttribute AMAP amap, RedirectAttributes redirectAttributes) {
 
 	    AMAP newAmap = new AMAP();
@@ -71,7 +69,19 @@ public class AmapController {
 	    amapService.save(newAmap);
 		
 	   	redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
-	    return "redirect:/configuration/amap";
+	    return "redirect:/amap/info";
+	}
+	
+	@PostMapping("editAmap/{id}")
+	public String editDesign(@PathVariable Long id, AMAP amap, RedirectAttributes redirectAttributes) {
+		AMAP newAmap = amapService.findById(id);
+		newAmap.setName(amap.getName());
+		newAmap.setAddress(amap.getAddress());
+		newAmap.setSiret(amap.getSiret());
+		amapService.save(newAmap);
+
+		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
+		return  "redirect:/amap/info";
 	}
 	
 	@GetMapping("/delete/{id}")
@@ -81,17 +91,5 @@ public class AmapController {
 		
 	}
 	
-    @GetMapping("/edit/{id}")
-    public String showEditForm(@PathVariable Long id, Model model) {
-        AMAP amap = amapService.findById(id);
-        model.addAttribute("amap", amap);
-        return "amap-form";
-    }
-
-    @PostMapping("/edit/{id}")
-    public String updateAmap(@ModelAttribute AMAP amap) {
-        amapService.save(amap);
-        return "redirect:/amaps";
-    }
 
 }

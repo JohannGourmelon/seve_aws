@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +26,7 @@ public class ConfigurationController {
 	}
 
 	@GetMapping
-	public String listAmaps(Model model) {
+	public String listConfig(Model model) {
 		List<Configuration> configurations = configurationService.findAll();
 		model.addAttribute("configurations", configurations);
 		return "";
@@ -40,12 +39,14 @@ public class ConfigurationController {
 		return "";
 	}
 	
-	@GetMapping("/amap")
-	public ModelAndView configAmap(Model model) {
-		ModelAndView mv = new ModelAndView("saas-account-config-amap");
-//        mv.addObject("css", "/resources/css/saas/subscription.css");
-        return mv;
-		}
+//	@GetMapping("/amap")
+//	public ModelAndView configAmap(Model model) {
+//		AMAP amap = amapService.findById(2L);
+//	    model.addAttribute("configuration", amap);
+//		ModelAndView mv = new ModelAndView("saas-account-config-amap");
+////        mv.addObject("css", "/resources/css/saas/subscription.css");
+//        return mv;
+//		}
 	
 	
 	@GetMapping("/contenu")
@@ -66,16 +67,6 @@ public class ConfigurationController {
         return mv;
 		}
 
-	@PostMapping("addConfigContent")
-	public String saveConfigText(@ModelAttribute Configuration configuration, RedirectAttributes redirectAttributes) {
-		
-		Configuration newConf = configurationService.findById(1L);
-		newConf.setPresentationText(configuration.getPresentationText());
-		configurationService.save(newConf);;
-
-		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
-		return "redirect:/configuration/contenu";
-	}
 
 	@PostMapping("editDesign/{id}")
 	public String editDesign(@PathVariable Long id, Configuration configuration, RedirectAttributes redirectAttributes) {
