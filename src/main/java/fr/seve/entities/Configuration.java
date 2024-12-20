@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +18,9 @@ public class Configuration {
 	
 	@Column
 	private String presentationText;
+	
+	@OneToOne(mappedBy = "configuration") 
+    private AMAP amap;
 
 	public Long getId() {
 		return Id;
@@ -34,5 +38,12 @@ public class Configuration {
 		this.presentationText = presentationText;
 	}
 
+    public AMAP getAmap() {
+        return amap;
+    }
+
+    public void setAmap(AMAP amap) {
+        this.amap = amap;
+    }
 	
 }

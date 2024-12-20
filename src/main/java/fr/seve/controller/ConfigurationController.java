@@ -2,7 +2,6 @@ package fr.seve.controller;
 
 import java.util.List;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import fr.seve.entities.AMAP;
 import fr.seve.entities.Configuration;
+import fr.seve.entities.Subscription;
+import fr.seve.service.AmapService;
 import fr.seve.service.ConfigurationService;
 
 @Controller
@@ -21,38 +23,46 @@ public class ConfigurationController {
 
 	private final ConfigurationService configurationService;
 
-	public ConfigurationController(ConfigurationService configService) {
-		this.configurationService = configService;
+	private final AmapService amapService;
+
+	public ConfigurationController(ConfigurationService configurationService, AmapService amapService) {
+		super();
+		this.configurationService = configurationService;
+		this.amapService = amapService;
 	}
-	
+
 	@GetMapping
 	public String listAmaps(Model model) {
 		List<Configuration> configurations = configurationService.findAll();
 		model.addAttribute("configurations", configurations);
 		return "";
 	}
-	
+
 	@GetMapping("{id}")
 	public String getAmap(@PathVariable Long id, Model model) {
 		Configuration configuration = configurationService.findById(id);
 		model.addAttribute("configuration", configuration);
 		return "";
 	}
-	
-	
+
 	@PostMapping("addConfigText")
 	public String saveConfigAmap(@ModelAttribute Configuration configuration, RedirectAttributes redirectAttributes) {
+		AMAP amap = amapService.findById(2L);
+		System.out.println("-----------------AMAP------------------------" + amap);
+		configuration.setAmap(amap);
+		amap.setConfiguration(configuration);
+		amapService.save(amap);
 		configurationService.save(configuration);
-	   	redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
-	    return "redirect:/saas/configuration-texte";
+
+		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
+		return "redirect:/saas/configuration-texte";
 	}
-	
-	
-    @GetMapping("/edit/{id}")
-    public String showEditForm(@PathVariable Long id, Model model) {
-        Configuration configuration = configurationService.findById(id);
-        model.addAttribute("configuration", configuration);
-        return "";
-    }
+
+	@GetMapping("/edit/{id}")
+	public String showEditForm(@PathVariable Long id, Model model) {
+		Configuration configuration = configurationService.findById(id);
+		model.addAttribute("configuration", configuration);
+		return "";
+	}
 
 }

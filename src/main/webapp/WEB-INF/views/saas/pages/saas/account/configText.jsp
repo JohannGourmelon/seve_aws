@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
     <h1>Textes et images pour votre AMAP</h1>
+    <p>Config pour l'AMAP 2</p>
 	<c:choose>
 	    <c:when test="${configuration.id != null}">
 	        <form action="${pageContext.request.contextPath}/configuration/edit/${configuration.id}" method="post">

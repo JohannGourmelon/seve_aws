@@ -1,10 +1,14 @@
 package fr.seve.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +27,14 @@ public class AMAP {
 	
 	@Column(nullable=false)
 	private String siret;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinTable(
+	    name = "espaces_amap",
+	    joinColumns = @JoinColumn(name = "amap_id"),
+	    inverseJoinColumns = @JoinColumn(name = "configuration_id")
+	)
+	private Configuration configuration;
 	
 
 	public Long getId() {
@@ -57,5 +69,12 @@ public class AMAP {
 		this.siret = siret;
 	}
 	
+    public Configuration getConfiguration() {
+        return configuration;
+    }
+
+    public void setConfiguration(Configuration configuration) {
+        this.configuration = configuration;
+    }
 	
 }
