@@ -1,7 +1,5 @@
 package fr.seve.entities;
 
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,53 +11,61 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
-
-
-
-
+import javax.validation.constraints.*;
 
 @Entity
-@Table(name="saasUsers")
+@Table(name = "saasUsers")
 public class SaasUser {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
-	
-	@Column(nullable=false)
-	private String name;
-	
-	@Column(nullable=true)
-	private String firstname; 
-	
-	@Column(nullable=false, unique=false) 
 
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@Column(nullable = false)
+	@NotBlank(message = "Le nom est obligatoire")
+	@Size(min = 2, max = 50, message = "Le nom doit contenir entre 2 et 50 caractères")
+	private String name;
+
+	@Column(nullable = false)
+	@NotBlank
+	@Size(min = 2, max = 50, message = "Le prénom doit contenir entre 2 et 50 caractères")
+	private String firstname;
+
+	@Column(nullable = false, unique = true)
+	@NotBlank
+	@Email(message = "L'adresse email n'est pas valide")
 	private String email;
-	
-	@Column(nullable=true)
-	private String password; 
-	
+
+	@Column(nullable = false)
+	@NotBlank(message = "Le mot de passe est obligatoire")
+	@Size(min = 8, message = "Le mot de passe doit contenir au moins 8 caractères")
+	@Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d).{8,}$", message = "Le mot de passe doit contenir au moins une majuscule, une minuscule et un chiffre")
+	private String password;
+
+	@Column(nullable = false)
+	@NotBlank(message = "Le numéro de téléphone est obligatoire")
+	@Pattern(regexp = "^\\d{10}$", message = "Le numéro de téléphone doit contenir exactement 10 chiffres")
+	private String phone;
+
 	@Column
-	private String phone; 
-	
+	private String createDate;
+
 	@Column
-	private String createDate; 
-	
+	private String lastModifyDate;
+
 	@Column
-	private String lastModifyDate; 
-	
-	
-	@Column
-	private SaasUserLevel saasUserLevel; 
-	
-		
-	//Relation avec Subscription
+	private SaasUserLevel saasUserLevel;
+
+	// Relation avec Subscription
 	@ManyToOne
-	@JoinColumn (name = "subscription_id")
+	@JoinColumn(name = "subscription_id")
 	private Subscription subscription;
-	
+
+	// Relation avec AMAP
+	@OneToOne
+	@JoinColumn(name = "amap_id")
+	private AMAP amap;
+
 	public Long getId() {
 		return id;
 	}
@@ -95,10 +101,17 @@ public class SaasUser {
 	public SaasUserLevel getSaasUserLevel() {
 		return saasUserLevel;
 	}
-	
 
 	public Subscription getSubscription() {
 		return subscription;
+	}
+
+	public AMAP getAmap() {
+		return amap;
+	}
+
+	public void setAmap(AMAP amap) {
+		this.amap = amap;
 	}
 
 	public void setSubscription(Subscription subscription) {
@@ -141,5 +154,4 @@ public class SaasUser {
 		this.lastModifyDate = lastModifyDate;
 	}
 
-	
 }

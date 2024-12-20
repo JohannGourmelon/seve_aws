@@ -52,20 +52,23 @@
 							<div class="form-group signup-field">
 								<label for="firstname" class="control-label">Prénom</label>
 								<div>
-									<form:input path="firstname" cssClass="form-control" value= "${saasUser.firstname}" />
+									<form:input path="firstname" cssClass="form-control" value= "${saasUser.firstname}" required="true"/>
+									 <form:errors path="firstname" cssClass="error" />
 								</div>
 							</div>
 							<div class="form-group signup-field">
 								<label for="name" class="control-label">Nom</label>
 								<div>
 									<form:input path="name" cssClass="form-control" value= "${saasUser.name}" />
+									 <form:errors path="name" cssClass="error" />
 								</div>
 							</div>
 
 							<div class="form-group signup-field">
 								<label for="phone" class="control-label">Téléphone</label>
 								<div>
-									<form:input path="phone" cssClass="form-control" value= "${saasUser.phone}" />
+									<form:input path="phone" cssClass="form-control" value= "${saasUser.phone}" required="true" />
+									 <form:errors path="phone" cssClass="error" />
 								</div>
 							</div>
 
@@ -73,13 +76,15 @@
 								<label for="email" class="control-label">Email</label>
 								<div>
 									<form:input path="email" cssClass="form-control" value= "${saasUser.email}"/>
+									 <form:errors path="email" cssClass="error" />
 								</div>
 							</div>
 
 							<div class="form-group signup-field">
 								<label for="password" class="control-label">Mot de passe</label>
 								<div>
-									<form:password path="password" cssClass="form-control" value= "${saasUser.password}"/>
+									<form:password path="password" cssClass="form-control" value= "${saasUser.password}" />
+									 <form:errors path="password" cssClass="error" />
 								</div>
 							</div>
 
