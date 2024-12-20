@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import fr.seve.entities.AMAP;
 import fr.seve.entities.Configuration;
 import fr.seve.service.ConfigurationService;
 
@@ -50,7 +49,9 @@ public class ConfigurationController {
 	
 	
 	@GetMapping("/contenu")
-	public ModelAndView configContent() {
+	public ModelAndView configContent(Model model) {
+		Configuration configuration = configurationService.findById(2L);
+	    model.addAttribute("configuration", configuration);
 		ModelAndView mv = new ModelAndView("saas-account-config-content");
 //        mv.addObject("css", "/resources/css/saas/subscription.css");
         return mv;
@@ -86,6 +87,16 @@ public class ConfigurationController {
 
 		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
 		return  "redirect:/configuration/design";
+	}
+	
+	@PostMapping("editContent/{id}")
+	public String editContent(@PathVariable Long id, Configuration configuration, RedirectAttributes redirectAttributes) {
+		Configuration newConf = configurationService.findById(id);
+		newConf.setPresentationText(configuration.getPresentationText());
+		configurationService.save(newConf);;
+
+		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
+		return "redirect:/configuration/contenu";
 	}
 
 }

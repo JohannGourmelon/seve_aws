@@ -1,27 +1,20 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-    <h1>Textes et images pour votre AMAP</h1>
-    <p>Config pour l'AMAP 2</p>
-	<c:choose>
-	    <c:when test="${configuration.id != null}">
-	        <form action="${pageContext.request.contextPath}/configuration/edit/${configuration.id}" method="post">
-	    </c:when>
-	    <c:otherwise>
-	        <form action="${pageContext.request.contextPath}/configuration/addConfigContent" method="post">
-	    </c:otherwise>
-	</c:choose>
-        <p>
-            <label for="pres-text-1">Texte de présentation :</label>
-            <input type="text" id="pres-text-1" name="presentationText" value="${configuration.presentationText}">
-        </p>
-        <p>
-            <button class="btn btn-secondary" type="submit">Enregistrer</button>
-        </p>
-    </form>
-    
-    <!-- Affichage du message de succès si présent -->
+<h1>Contenu de présentation de votre AMAP</h1>
+<form
+	action="${pageContext.request.contextPath}/configuration/editContent/${configuration.id}"
+	method="post">
+
+	<p>
+		<label for="presentationText">Texte de présentation :</label> <input
+			type="text" id="presentationText" name="presentationText"
+			value="${configuration.presentationText}">
+	</p>
+	<p>
+		<button class="btn btn-secondary" type="submit">Enregistrer</button>
+	</p>
+</form>
+
 <c:if test="${not empty message}">
-    <div class="alert alert-success">
-        ${message}  <!-- Affiche le message "ok" -->
-    </div>
+	<div class="alert alert-success">${message}</div>
 </c:if>
