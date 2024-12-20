@@ -8,13 +8,13 @@ html, body {
 }
 
 main {
-	margin: 0 150px;
+	margin: 0 80px;
 	flex-grow: 1;
 	height: 100%;
 }
 
-main {
-	margin: 0 80px;
+h1 {
+	font-size: 28px;
 }
 
 .layout-container {

@@ -77,14 +77,12 @@ public class AmapController {
         return "redirect:/amap";
     }
     
-    
-    
 	@GetMapping("/info")
 	public ModelAndView configAmap(Model model) {
 		AMAP amap = amapService.findById(2L);
 	    model.addAttribute("amap", amap);
 		ModelAndView mv = new ModelAndView("saas-account-config-amap");
-//        mv.addObject("css", "/resources/css/saas/subscription.css");
+        mv.addObject("css", "/resources/css/saas/config.css");
         return mv;
 		}
 	

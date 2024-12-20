@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<h1>Contenu de présentation de votre AMAP</h1>
+<h1>Configuration du contenu de votre Amap</h1>
 
 
 <c:if test="${not empty amap}">
