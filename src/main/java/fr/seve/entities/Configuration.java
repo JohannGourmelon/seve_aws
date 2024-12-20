@@ -19,6 +19,9 @@ public class Configuration {
 	@Column
 	private String presentationText;
 	
+	@Column
+	private String primaryColor;
+	
 	@OneToOne(mappedBy = "configuration") 
     private AMAP amap;
 
@@ -45,5 +48,13 @@ public class Configuration {
     public void setAmap(AMAP amap) {
         this.amap = amap;
     }
+
+	public String getPrimaryColor() {
+		return primaryColor;
+	}
+
+	public void setPrimaryColor(String primaryColor) {
+		this.primaryColor = primaryColor;
+	}
 	
 }

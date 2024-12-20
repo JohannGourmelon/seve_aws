@@ -46,16 +46,25 @@ public class ConfigurationController {
 	}
 
 	@PostMapping("addConfigText")
-	public String saveConfigAmap(@ModelAttribute Configuration configuration, RedirectAttributes redirectAttributes) {
-		AMAP amap = amapService.findById(2L);
-		System.out.println("-----------------AMAP------------------------" + amap);
-		configuration.setAmap(amap);
-		amap.setConfiguration(configuration);
-		amapService.save(amap);
-		configurationService.save(configuration);
+	public String saveConfigText(@ModelAttribute Configuration configuration, RedirectAttributes redirectAttributes) {
+		
+		Configuration newConf = configurationService.findById(1L);
+		newConf.setPresentationText(configuration.getPresentationText());
+		configurationService.save(newConf);;
 
 		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
 		return "redirect:/saas/configuration-texte";
+	}
+	
+	@PostMapping("addConfigDesign")
+	public String saveConfigDesign(@ModelAttribute Configuration configuration, RedirectAttributes redirectAttributes) {
+		
+		Configuration newConf = configurationService.findById(1L);
+		newConf.setPrimaryColor(configuration.getPrimaryColor());
+		configurationService.save(newConf);
+
+		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
+		return "redirect:/saas/configuration-design";
 	}
 
 	@GetMapping("/edit/{id}")

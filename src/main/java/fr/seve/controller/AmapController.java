@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.seve.entities.AMAP;
+import fr.seve.entities.Configuration;
 import fr.seve.service.AmapService;
 
 @Controller
@@ -57,7 +58,24 @@ public class AmapController {
 	
 	@PostMapping("addConfigAmap")
 	public String saveConfigAmap(@ModelAttribute AMAP amap, RedirectAttributes redirectAttributes) {
-	    amapService.save(amap);
+	    //amapService.save(amap);
+		
+	    // Créer l'AMAP
+	    AMAP newAmap = new AMAP();
+	    newAmap.setName(amap.getName());
+	    newAmap.setAddress(amap.getAddress());
+	    newAmap.setSiret(amap.getSiret());
+	    
+	    // Créer une nouvelle configuration vide
+	    Configuration emptyConfig = new Configuration();
+	    emptyConfig.setPresentationText("");
+
+	    // Associer la configuration vide à l'AMAP
+	    newAmap.setConfiguration(emptyConfig);
+
+	    // Sauvegarder l'AMAP (et grâce à la cascade, la configuration vide sera aussi persistée)
+	    amapService.save(newAmap);
+		
 	   	redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
 	    return "redirect:/saas/configuration-amap";
 	}
