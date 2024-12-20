@@ -11,7 +11,7 @@
 	<h1>Sève</h1>
 
 	<ul>
-		<li><a href="${pageContext.request.contextPath}/amaps">Gestion
+		<li><a href="${pageContext.request.contextPath}/amap">Gestion
 				des amaps</a></li>
 		<li><a href="${pageContext.request.contextPath}/saas">Saas</a></li>
 		<li><a

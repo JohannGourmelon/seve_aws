@@ -3,10 +3,10 @@
     <h1>${amap.id != null ? 'Modifier' : 'Ajouter'} une AMAP</h1>
 	<c:choose>
 	    <c:when test="${amap.id != null}">
-	        <form action="${pageContext.request.contextPath}/amaps/edit/${amap.id}" method="post">
+	        <form action="${pageContext.request.contextPath}/amap/edit/${amap.id}" method="post">
 	    </c:when>
 	    <c:otherwise>
-	        <form action="${pageContext.request.contextPath}/amaps/add" method="post">
+	        <form action="${pageContext.request.contextPath}/amap/add" method="post">
 	    </c:otherwise>
 	</c:choose>
         <p>
@@ -23,6 +23,6 @@
         </p>
         <p>
             <button type="submit">Enregistrer</button>
-            <a href="${pageContext.request.contextPath}/amaps">Annuler</a>
+            <a href="${pageContext.request.contextPath}/amap">Annuler</a>
         </p>
     </form>

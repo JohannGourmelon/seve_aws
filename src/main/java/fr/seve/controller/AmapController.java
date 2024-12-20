@@ -44,7 +44,41 @@ public class AmapController {
 		
 	}
 	
+	@GetMapping("/add")
+	public String showAddForm(Model model) {
+		model.addAttribute("amap", new AMAP());
+		return "amap-form";
+	}
 	
+	
+	@PostMapping("add")
+	public String saveAmap(@ModelAttribute AMAP amap) {
+		amapService.save(amap);
+		return "redirect:/amap";
+	}
+	
+	@GetMapping("/delete/{id}")
+	public String deleteAdherent(@PathVariable Long id) {
+		amapService.deleteById(id);
+		return "redirect:/amap";
+		
+	}
+	
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable Long id, Model model) {
+        AMAP amap = amapService.findById(id);
+        model.addAttribute("amap", amap);
+        return "amap-form";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String updateAmap(@ModelAttribute AMAP amap) {
+        amapService.save(amap);
+        return "redirect:/amap";
+    }
+    
+    
+    
 	@GetMapping("/info")
 	public ModelAndView configAmap(Model model) {
 		AMAP amap = amapService.findById(2L);
@@ -69,7 +103,7 @@ public class AmapController {
 	    amapService.save(newAmap);
 		
 	   	redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
-	    return "redirect:/amap/info";
+	    return "redirect:/configuration/amap";
 	}
 	
 	@PostMapping("editAmap/{id}")
@@ -83,13 +117,5 @@ public class AmapController {
 		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
 		return  "redirect:/amap/info";
 	}
-	
-	@GetMapping("/delete/{id}")
-	public String deleteAdherent(@PathVariable Long id) {
-		amapService.deleteById(id);
-		return "redirect:/amaps";
-		
-	}
-	
 
 }
