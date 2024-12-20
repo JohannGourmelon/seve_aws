@@ -43,11 +43,11 @@ public class ConfigurationController {
 	
 	@GetMapping("/amap")
 	public ModelAndView configAmap(Model model) {
-        model.addAttribute("amap", new AMAP());
 		ModelAndView mv = new ModelAndView("saas-account-config-amap");
 //        mv.addObject("css", "/resources/css/saas/subscription.css");
         return mv;
 		}
+	
 	
 	@GetMapping("/contenu")
 	public ModelAndView configContent() {
@@ -57,7 +57,9 @@ public class ConfigurationController {
 		}
 	
 	@GetMapping("/design")
-	public ModelAndView configDesign() {
+	public ModelAndView configDesign(Model model) {
+		Configuration configuration = configurationService.findById(2L);
+	    model.addAttribute("configuration", configuration);
 		ModelAndView mv = new ModelAndView("saas-account-config-design");
 //        mv.addObject("css", "/resources/css/saas/subscription.css");
         return mv;
@@ -73,24 +75,17 @@ public class ConfigurationController {
 		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
 		return "redirect:/configuration/contenu";
 	}
-	
-	@PostMapping("addConfigDesign")
-	public String saveConfigDesign(@ModelAttribute Configuration configuration, RedirectAttributes redirectAttributes) {
-		
-		Configuration newConf = configurationService.findById(1L);
+
+	@PostMapping("editDesign/{id}")
+	public String editDesign(@PathVariable Long id, Configuration configuration, RedirectAttributes redirectAttributes) {
+		Configuration newConf = configurationService.findById(id);
 		newConf.setPrimaryColor(configuration.getPrimaryColor());
 		newConf.setSecondaryColor(configuration.getSecondaryColor());
+		newConf.setTertiaryColor(configuration.getTertiaryColor());
 		configurationService.save(newConf);
 
 		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
-		return "redirect:/configuration/design";
-	}
-
-	@GetMapping("/edit/{id}")
-	public String showEditForm(@PathVariable Long id, Model model) {
-		Configuration configuration = configurationService.findById(id);
-		model.addAttribute("configuration", configuration);
-		return "";
+		return  "redirect:/configuration/design";
 	}
 
 }
