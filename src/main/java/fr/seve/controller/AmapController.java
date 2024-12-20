@@ -77,7 +77,7 @@ public class AmapController {
 	    amapService.save(newAmap);
 		
 	   	redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
-	    return "redirect:/saas/configuration-amap";
+	    return "redirect:/configuration/amap";
 	}
 	
 	@GetMapping("/delete/{id}")

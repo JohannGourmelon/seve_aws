@@ -9,12 +9,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.seve.entities.AMAP;
 import fr.seve.entities.Configuration;
-import fr.seve.entities.Subscription;
-import fr.seve.service.AmapService;
 import fr.seve.service.ConfigurationService;
 
 @Controller
@@ -23,12 +22,9 @@ public class ConfigurationController {
 
 	private final ConfigurationService configurationService;
 
-	private final AmapService amapService;
-
-	public ConfigurationController(ConfigurationService configurationService, AmapService amapService) {
+	public ConfigurationController(ConfigurationService configurationService) {
 		super();
 		this.configurationService = configurationService;
-		this.amapService = amapService;
 	}
 
 	@GetMapping
@@ -44,8 +40,30 @@ public class ConfigurationController {
 		model.addAttribute("configuration", configuration);
 		return "";
 	}
+	
+	@GetMapping("/amap")
+	public ModelAndView configAmap(Model model) {
+        model.addAttribute("amap", new AMAP());
+		ModelAndView mv = new ModelAndView("saas-account-config-amap");
+//        mv.addObject("css", "/resources/css/saas/subscription.css");
+        return mv;
+		}
+	
+	@GetMapping("/contenu")
+	public ModelAndView configContent() {
+		ModelAndView mv = new ModelAndView("saas-account-config-content");
+//        mv.addObject("css", "/resources/css/saas/subscription.css");
+        return mv;
+		}
+	
+	@GetMapping("/design")
+	public ModelAndView configDesign() {
+		ModelAndView mv = new ModelAndView("saas-account-config-design");
+//        mv.addObject("css", "/resources/css/saas/subscription.css");
+        return mv;
+		}
 
-	@PostMapping("addConfigText")
+	@PostMapping("addConfigContent")
 	public String saveConfigText(@ModelAttribute Configuration configuration, RedirectAttributes redirectAttributes) {
 		
 		Configuration newConf = configurationService.findById(1L);
@@ -53,7 +71,7 @@ public class ConfigurationController {
 		configurationService.save(newConf);;
 
 		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
-		return "redirect:/saas/configuration-texte";
+		return "redirect:/configuration/contenu";
 	}
 	
 	@PostMapping("addConfigDesign")
@@ -61,10 +79,11 @@ public class ConfigurationController {
 		
 		Configuration newConf = configurationService.findById(1L);
 		newConf.setPrimaryColor(configuration.getPrimaryColor());
+		newConf.setSecondaryColor(configuration.getSecondaryColor());
 		configurationService.save(newConf);
 
 		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
-		return "redirect:/saas/configuration-design";
+		return "redirect:/configuration/design";
 	}
 
 	@GetMapping("/edit/{id}")

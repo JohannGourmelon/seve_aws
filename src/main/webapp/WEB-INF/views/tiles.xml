@@ -108,11 +108,11 @@
 			value="/WEB-INF/views/saas/pages/saas/account/configAmap.jsp" />
 	</definition>
 
-	<definition name="saas-account-config-text"
+	<definition name="saas-account-config-content"
 		extends="template-saas-account">
 		<put-attribute name="title" value="Configuration" />
 		<put-attribute name="main"
-			value="/WEB-INF/views/saas/pages/saas/account/configText.jsp" />
+			value="/WEB-INF/views/saas/pages/saas/account/configContent.jsp" />
 	</definition>
 
 	<definition name="saas-account-config-design"

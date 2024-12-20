@@ -48,26 +48,5 @@ public class SaasController {
         return mv;
 		}
 	
-	@GetMapping("/configuration-amap")
-	public ModelAndView configAmap(Model model) {
-        model.addAttribute("amap", new AMAP());
-		ModelAndView mv = new ModelAndView("saas-account-config-amap");
-//        mv.addObject("css", "/resources/css/saas/subscription.css");
-        return mv;
-		}
-	
-	@GetMapping("/configuration-texte")
-	public ModelAndView configText() {
-		ModelAndView mv = new ModelAndView("saas-account-config-text");
-//        mv.addObject("css", "/resources/css/saas/subscription.css");
-        return mv;
-		}
-	
-	@GetMapping("/configuration-design")
-	public ModelAndView configDesign() {
-		ModelAndView mv = new ModelAndView("saas-account-config-design");
-//        mv.addObject("css", "/resources/css/saas/subscription.css");
-        return mv;
-		}
 	
 }

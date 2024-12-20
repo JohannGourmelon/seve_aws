@@ -7,7 +7,7 @@
 	        <form action="${pageContext.request.contextPath}/configuration/edit/${configuration.id}" method="post">
 	    </c:when>
 	    <c:otherwise>
-	        <form action="${pageContext.request.contextPath}/configuration/addConfigText" method="post">
+	        <form action="${pageContext.request.contextPath}/configuration/addConfigContent" method="post">
 	    </c:otherwise>
 	</c:choose>
         <p>

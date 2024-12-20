@@ -13,6 +13,14 @@
             <label for="primaryColor">Couleur primaire :</label>
             <input type="text" id="primaryColor" name="primaryColor" value="${configuration.primaryColor}">
         </p>
+               <p>
+            <label for="secondaryColor">Couleur secondaire :</label>
+            <input type="text" id="secondaryColor" name="secondaryColor" value="${configuration.secondaryColor}">
+        </p>
+               <p>
+            <label for="tertiaryColor">Couleur tertiaire :</label>
+            <input type="text" id="tertiaryColor" name="tertiaryColor" value="${configuration.tertiaryColor}">
+        </p>
         <p>
             <button class="btn btn-secondary" type="submit">Enregistrer</button>
         </p>
