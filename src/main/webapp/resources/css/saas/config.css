@@ -1,3 +1,7 @@
+.layout-container {
+	background-color : #F0F3F5;
+}
+
 input[type="color"] {
 	width: 30px;
 	height: 30px;

@@ -74,6 +74,8 @@ public class ConfigurationController {
 		newConf.setPrimaryColor(configuration.getPrimaryColor());
 		newConf.setSecondaryColor(configuration.getSecondaryColor());
 		newConf.setTertiaryColor(configuration.getTertiaryColor());
+		newConf.setPolice(configuration.getPolice());
+		newConf.setIsRoundedBorders(configuration.getIsRoundedBorders());
 		configurationService.save(newConf);
 
 		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");

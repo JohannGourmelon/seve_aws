@@ -97,8 +97,6 @@ public class AmapController {
 	    newAmap.setSiret(amap.getSiret());
 	    
 	    Configuration emptyConfig = new Configuration();
-	    emptyConfig.setPresentationText("");
-
 	    newAmap.setConfiguration(emptyConfig);
 	    amapService.save(newAmap);
 		

@@ -28,6 +28,12 @@ public class Configuration {
 	@Column
 	private String tertiaryColor;
 	
+	@Column
+	private String police;
+	
+	@Column
+	private Boolean isRoundedBorders;
+	
 	@OneToOne(mappedBy = "configuration") 
     private AMAP amap;
 
@@ -77,6 +83,22 @@ public class Configuration {
 
 	public void setTertiaryColor(String tertiaryColor) {
 		this.tertiaryColor = tertiaryColor;
+	}
+
+	public String getPolice() {
+		return police;
+	}
+
+	public void setPolice(String police) {
+		this.police = police;
+	}
+
+	public Boolean getIsRoundedBorders() {
+	    return isRoundedBorders;
+	}
+
+	public void setIsRoundedBorders(Boolean isRoundedBorders) {
+	    this.isRoundedBorders = isRoundedBorders;
 	}
 	
 }
