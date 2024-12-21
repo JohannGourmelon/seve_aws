@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.seve.entities.AMAP;
-import fr.seve.entities.Payment;
+
 import fr.seve.entities.SaasUser;
 import fr.seve.entities.SaasUserLevel;
 import fr.seve.entities.Subscription;
-import fr.seve.repository.PaymentRepository;
+
 import fr.seve.service.AmapService;
 import fr.seve.service.SaasUserService;
 import fr.seve.service.SubscriptionService;
@@ -39,9 +39,7 @@ public class SaasUserController {
 
 	@Autowired
 	private SubscriptionService subscriptionService;
-	
-	@Autowired
-	private PaymentRepository paymentrepository;
+
 
 	@ModelAttribute("saasUser")
 	public SaasUser setSaasUser() {
@@ -166,25 +164,10 @@ public class SaasUserController {
 
 	}
 
-	@GetMapping
-	public String showSuccesForm(@ModelAttribute("saasUser")SaasUser saasUser, Model model) {
-		Payment payment = new Payment();
 
-	    model.addAttribute("saasUser", saasUser); 
-	    model.addAttribute("payment", payment); 
-		return "saasuser-signup-payment";
+	
+	
 
-	}
-	
-	
-	
-	@PostMapping("/savePayment")
-
-	public String savePayment(@ModelAttribute("payment")Payment payment, Model model) {
-	
-		paymentrepository.save(payment);
-		return "saas-account-configAmap";
-		}
 
 	
 

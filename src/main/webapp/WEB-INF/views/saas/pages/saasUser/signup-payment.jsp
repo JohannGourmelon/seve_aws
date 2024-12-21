@@ -32,61 +32,56 @@
 				</div>
 			</div>
 		</div>
-<!-- 		<!-- Form --> -->
-<!-- 		<div class="signup-form-container shadow"> -->
-<!-- 			<p class="font-weight-bold pb-2">Paiement par CB</p> -->
-<!-- 			<div class="panel-body"> -->
-<%-- 				<form:form action="/saasUser/savePayment" cssClass="form-horizontal" --%>
-<%-- 				method="post" modelAttribute="payment">  --%>
+		<!-- Form -->
+		<div class="signup-form-container shadow">
+			<p class="font-weight-bold pb-2">Paiement par CB</p>
+			<div class="panel-body">
+				 
 
-<!-- 					<div class="form-group signup-field"> -->
-<!-- 						<label for="cardNumber" class="control-label">Numéro de -->
-<!-- 							carte</label> -->
-<!-- 						<div> -->
-<%-- 							<form:input path="cardNumber" cssClass="form-control" --%>
-<%-- 							value="${payment.cardNumber}" required="true" /> --%>
+					<div class="form-group signup-field">
+						<label for="cardNumber" class="control-label">Numéro de
+							carte</label>
+						<div>
+							<input/> 
 
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 					<div class="form-group signup-field"> -->
-<!-- 						<label for="cardDate" class="control-label">Date -->
-<!-- 							d'Expiration</label> -->
-<!-- 						<div> -->
-<%-- 							<form:input path="cardDate" cssClass="form-control" --%>
-<%-- 							value="${payment.cardDate}" />  --%>
+						</div>
+					</div>
+					<div class="form-group signup-field">
+						<label for="cardDate" class="control-label">Date
+							d'Expiration</label>
+						<div>
+							<input/>
 
-<!-- 						</div> -->
-<!-- 					</div> -->
+						</div>
+					</div>
 
-<!-- 					<div class="form-group signup-field"> -->
-<!-- 						<label for="cvv" class="control-label">CVV</label> -->
-<!-- 						<div> -->
-<%-- 							<form:input path="cvv" cssClass="form-control" value="${payment.cvv}" --%>
-<%-- 							required="true" />  --%>
+					<div class="form-group signup-field">
+						<label for="cvv" class="control-label">CVV</label>
+						<div>
+							<input/>
 
-<!-- 						</div> -->
-<!-- 					</div> -->
+						</div> 
+ 					</div> 
 
-<!-- 					<div class="form-group signup-field"> -->
-<!-- 						<label for="cardName" class="control-label">Nom du -->
-<!-- 							Propriétaire de la carte</label> -->
-<!-- 						<div> -->
-<%-- 							<form:input path="cardName" cssClass="form-control" --%>
-<%-- 							value="${payment.cardName}" />  --%>
+					<div class="form-group signup-field">
+						<label for="cardName" class="control-label">Nom du
+							Propriétaire de la carte</label>
+						<div>
+							<input/>
 
-<!-- 						</div> -->
-<!-- 					</div> -->
+						</div>
+					</div>
 
 
 
-<!-- 					<div class="form-group"> -->
-<!-- 						<div id="btns" class="form-buttons text-center"> -->
-<%-- 							<form:button class="btn btn-b">Payer</form:button> --%>
-<!-- 						</div> -->
-<!-- 					</div> -->
+					<div class="form-group">
+						<div id="btns" class="form-buttons text-center">
+							<button> Payer </button>
+						</div>
+					</div>
 
-<%-- 				</form:form> --%>
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-<!-- </section> -->
+		
+			</div>
+		</div>
+	</div>
+</section>
