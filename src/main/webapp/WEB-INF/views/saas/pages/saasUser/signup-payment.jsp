@@ -22,13 +22,13 @@
 					<div class="dot-container">
 						<div class="dot bg-b"></div>
 					</div>
-					<p>Abonnement Essentiel</p>
+					<p>Abonnement ${saasUser.subscription.name} </p>
 				</div>
 				<div class="signup-bp">
 					<div class="dot-container">
 						<div class="dot bg-g"></div>
 					</div>
-					<p>Prix : 9,99€/mois</p>
+					<p>Prix : ${saasUser.subscription.price}</p>
 				</div>
 			</div>
 		</div>
@@ -76,7 +76,7 @@
 
 					<div class="form-group">
 						<div id="btns" class="form-buttons text-center">
-							<button> Payer </button>
+							<button class="btn btn-b btn-package-card" onclick="window.location.href='${pageContext.request.contextPath}/amap/info/${saasUser.id}'"> Payer </button>
 						</div>
 					</div>
 

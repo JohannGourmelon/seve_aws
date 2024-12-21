@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.seve.entities.AMAP;
 
@@ -85,7 +86,8 @@ public class SaasUserController {
 	}
 
 	@PostMapping("/saveSignUpEssential")
-	public String saveUserSaas(@Valid @ModelAttribute("saasUser") SaasUser saasUser, AMAP amap,BindingResult bindingResult,
+	public String saveUserSaas(@Valid @ModelAttribute("saasUser") SaasUser saasUser, AMAP amap, BindingResult bindingResult,
+		
 			Model model) {
 
 		System.out.println("Firstname : " + saasUser.getFirstname());
@@ -105,6 +107,7 @@ public class SaasUserController {
 
 		if (bindingResult.hasErrors()) {
 			// Si des erreurs de validation sont présentes, retour à la page du formulaire
+			
 			return "redirect:/saasuser/souscription-essentiel";
 		} else {
 			amap.setSaasUser(saasUser);
@@ -117,7 +120,10 @@ public class SaasUserController {
 	}
 
 	@PostMapping("/saveSignUpStandard")
-	public String saveUserSaasStandard(@ModelAttribute("saasUser") SaasUser saasUser, Model model) {
+	public String saveUserSaasStandard(@ModelAttribute("saasUser") SaasUser saasUser, AMAP amap,
+			BindingResult bindingResult,
+			
+			Model model) {
 		System.out.println("Firstname : " + saasUser.getFirstname());
 		System.out.println("Name : " + saasUser.getName());
 		System.out.println("Phone : " + saasUser.getPhone());
@@ -133,14 +139,25 @@ public class SaasUserController {
 		Subscription standard = subscriptionService.findById(2l);
 		saasUser.setSubscription(standard);
 
-		service.save(saasUser);
-
-		return "saasuser-signup-success";
+		if (bindingResult.hasErrors()) {
+			// Si des erreurs de validation sont présentes, retour à la page du formulaire
+			
+			return "redirect:/saasuser/souscription-standart";
+		} else {
+			amap.setSaasUser(saasUser);
+			amapService.save(amap);
+			saasUser.setAmap(amap);
+			service.save(saasUser);
+			return "saasuser-signup-payment";
+		}
 
 	}
 
 	@PostMapping("/saveSignUpPremium")
-	public String saveUserSaasPremium(@ModelAttribute("saasUser") SaasUser saasUser, Model model) {
+	public String saveUserSaasPremium(@ModelAttribute("saasUser") SaasUser saasUser, AMAP amap,
+			BindingResult bindingResult,
+			
+			Model model) {
 		System.out.println("Firstname : " + saasUser.getFirstname());
 		System.out.println("Name : " + saasUser.getName());
 		System.out.println("Phone : " + saasUser.getPhone());
@@ -156,11 +173,17 @@ public class SaasUserController {
 		Subscription premium = subscriptionService.findById(3l);
 		saasUser.setSubscription(premium);
 
-		service.save(saasUser);
-		
-		
-
-		return "saasuser-signup-success";
+		if (bindingResult.hasErrors()) {
+			// Si des erreurs de validation sont présentes, retour à la page du formulaire
+			
+			return "redirect:/saasuser/souscription-premium";
+		} else {
+			amap.setSaasUser(saasUser);
+			amapService.save(amap);
+			saasUser.setAmap(amap);
+			service.save(saasUser);
+			return "saasuser-signup-payment";
+		}
 
 	}
 

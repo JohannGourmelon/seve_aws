@@ -89,7 +89,7 @@
 							</div>
 
 							<div class="form-group">
-								<div id="btns" class="form-buttons text-center"">
+								<div id="btns" class="form-buttons text-center">
 									<form:button class="btn btn-b">Valider</form:button>
 								</div>
 							</div>
