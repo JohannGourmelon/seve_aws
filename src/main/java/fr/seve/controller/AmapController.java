@@ -86,21 +86,21 @@ public class AmapController {
         return mv;
 		}
 	
-	@PostMapping("addAmap")
-	public String saveConfigAmap(@ModelAttribute AMAP amap, RedirectAttributes redirectAttributes) {
-
-	    AMAP newAmap = new AMAP();
-	    newAmap.setName(amap.getName());
-	    newAmap.setAddress(amap.getAddress());
-	    newAmap.setSiret(amap.getSiret());
-	    
-	    Configuration emptyConfig = new Configuration();
-	    newAmap.setConfiguration(emptyConfig);
-	    amapService.save(newAmap);
-		
-	   	redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
-	    return "redirect:/amap/info";
-	}
+//	@PostMapping("addAmap")
+//	public String saveConfigAmap(@ModelAttribute AMAP amap, RedirectAttributes redirectAttributes) {
+//
+//	    AMAP newAmap = new AMAP();
+//	    newAmap.setName(amap.getName());
+//	    newAmap.setAddress(amap.getAddress());
+//	    newAmap.setSiret(amap.getSiret());
+//	    
+//	    Configuration emptyConfig = new Configuration();
+//	    newAmap.setConfiguration(emptyConfig);
+//	    amapService.save(newAmap);
+//		
+//	   	redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
+//	    return "redirect:/amap/info";
+//	}
 	
 	@PostMapping("editAmap/{id}")
 	public String editDesign(@PathVariable Long id, AMAP amap, RedirectAttributes redirectAttributes) {
@@ -111,7 +111,7 @@ public class AmapController {
 		amapService.save(newAmap);
 
 		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
-		return  "redirect:/amap/info";
+		return  "redirect:/amap/info/{id}";
 	}
 
 }

@@ -42,14 +42,8 @@ public class AMAP {
 		this.saasUser = saasUser;
 	}
 
-	//Relation Configuration
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinTable(
-	    name = "amap_spaces",
-	    joinColumns = @JoinColumn(name = "amap_id"),
-	    inverseJoinColumns = @JoinColumn(name = "configuration_id")
-	)
-	private Configuration configuration;
+	@OneToOne(mappedBy = "amap", cascade = CascadeType.ALL, orphanRemoval = true)
+	private AmapSpace amapSpace;
 	
 
 	public Long getId() {
@@ -85,13 +79,13 @@ public class AMAP {
 	}
 
 	
-    public Configuration getConfiguration() {
-        return configuration;
-    }
+	public AmapSpace getAmapSpace() {
+	    return amapSpace;
+	}
 
-    public void setConfiguration(Configuration configuration) {
-        this.configuration = configuration;
-    }
+	public void setAmapSpace(AmapSpace amapSpace) {
+	    this.amapSpace = amapSpace;
+	}
 	
 
 }

@@ -1,14 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
     <h1>Informations de votre AMAP</h1>
-	<c:choose>
-	    <c:when test="${amap.id != null}">
-	        <form action="${pageContext.request.contextPath}/amap/editAmap/${amap.id}" method="post">
-	    </c:when>
-	    <c:otherwise>
-	        <form action="${pageContext.request.contextPath}/amap/addAmap" method="post">
-	    </c:otherwise>
-	</c:choose>
+	   <form action="${pageContext.request.contextPath}/amap/editAmap/${amap.id}" method="post">
+
         <p>
             <label for="name">Nom :</label>
             <input type="text" id="name" name="name" value="${amap.name}" required>

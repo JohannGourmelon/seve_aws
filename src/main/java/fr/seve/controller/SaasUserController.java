@@ -19,7 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.seve.entities.AMAP;
-
+import fr.seve.entities.AmapSpace;
+import fr.seve.entities.Configuration;
 import fr.seve.entities.SaasUser;
 import fr.seve.entities.SaasUserLevel;
 import fr.seve.entities.Subscription;
@@ -114,6 +115,14 @@ public class SaasUserController {
 			amap.setAddress(""); 
 			amap.setName("");
 			amap.setSiret("");
+
+		    Configuration configuration = new Configuration();
+
+		    AmapSpace amapSpace = new AmapSpace();
+		    amapSpace.setAmap(amap);
+		    amapSpace.setConfiguration(configuration);
+		    amapSpace.setSaasUser(saasUser);
+		    
 			amap.setSaasUser(saasUser);
 			amapService.save(amap);
 			saasUser.setAmap(amap);

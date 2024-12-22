@@ -1,5 +1,6 @@
 package fr.seve.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,8 +35,8 @@ public class Configuration {
 	@Column
 	private Boolean isRoundedBorders;
 	
-	@OneToOne(mappedBy = "configuration") 
-    private AMAP amap;
+	@OneToOne(mappedBy = "configuration", cascade = CascadeType.ALL, orphanRemoval = true)
+	private AmapSpace amapSpace;
 
 	public Long getId() {
 		return Id;
@@ -53,13 +54,13 @@ public class Configuration {
 		this.presentationText = presentationText;
 	}
 
-    public AMAP getAmap() {
-        return amap;
-    }
+	public AmapSpace getAmapSpace() {
+	    return amapSpace;
+	}
 
-    public void setAmap(AMAP amap) {
-        this.amap = amap;
-    }
+	public void setAmapSpace(AmapSpace amapSpace) {
+	    this.amapSpace = amapSpace;
+	}
 
 	public String getPrimaryColor() {
 		return primaryColor;
