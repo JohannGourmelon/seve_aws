@@ -86,7 +86,7 @@ public class SaasUserController {
 	}
 
 	@PostMapping("/saveSignUpEssential")
-	public String saveUserSaas(@Valid @ModelAttribute("saasUser") SaasUser saasUser, AMAP amap, BindingResult bindingResult,
+	public String saveUserSaas(@Valid @ModelAttribute("saasUser") SaasUser saasUser, BindingResult bindingResult,
 		
 			Model model) {
 
@@ -110,6 +110,10 @@ public class SaasUserController {
 			
 			return "redirect:/saasuser/souscription-essentiel";
 		} else {
+			AMAP amap = new AMAP();
+			amap.setAddress(""); 
+			amap.setName("");
+			amap.setSiret("");
 			amap.setSaasUser(saasUser);
 			amapService.save(amap);
 			saasUser.setAmap(amap);
