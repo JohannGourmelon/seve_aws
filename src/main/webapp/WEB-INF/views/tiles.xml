@@ -101,6 +101,8 @@
 			value="/WEB-INF/views/saas/pages/saasUser/signup-form-pr.jsp" />
 	</definition>
 
+	
+
 	<definition name="saas-account-config-amap"
 		extends="template-saas-account">
 		<put-attribute name="title" value="Configuration" />
@@ -137,16 +139,23 @@
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/saasUser/signup-success.jsp" />
 	</definition>
-
 	
-	<definition name="saasuser-subscription-list" extends="template-saas">
-		<put-attribute name="title"
-			value="Succes!" />
+	<definition name="saasuser-signup-payment"
+		extends="template-saas">
+		<put-attribute name="title" value="Paiement" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/saasUser/signup-payment.jsp" />
+	</definition>
+
+
+	<definition name="saasuser-subscription-list"
+		extends="template-saas">
+		<put-attribute name="title" value="Succes!" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/saasUser/subscription-list.jsp" />
 	</definition>
-	
-<!-- <<<<<<<<<<<<<<<<<<< Fin Pages SaaS >>>>>>>>>>>>>>>>>>>>> -->
+
+	<!-- <<<<<<<<<<<<<<<<<<< Fin Pages SaaS >>>>>>>>>>>>>>>>>>>>> -->
 
 
 </tiles-definitions>
