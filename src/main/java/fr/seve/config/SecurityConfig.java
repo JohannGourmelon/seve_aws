@@ -1,40 +1,42 @@
 package fr.seve.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.SecurityFilterChain;
+import fr.seve.service.impl.CustomUserDetailsService;
 
-@Configuration
 @EnableWebSecurity
-public class SecurityConfig {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-            .csrf().disable() // Désactiver CSRF pour simplifier, à réactiver en production
-            .authorizeRequests()
-                .antMatchers("/login", "/resources/**").permitAll() // Autoriser la page de connexion
-                .anyRequest().authenticated() // Protéger toutes les autres URL
-                .and()
-            .formLogin()
-                .loginPage("/login") // Page de connexion personnalisée
-                .defaultSuccessUrl("/home") // Redirection après connexion
-                .permitAll()
-                .and()
-            .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login")
-                .permitAll();
-        return http.build();
-    }
+    @Autowired
+    private CustomUserDetailsService userDetailsService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(); // Utiliser BCrypt pour le hachage des mots de passe
     }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+            .csrf().disable() // Désactivez CSRF pour simplifier le débogage
+            .authorizeRequests()
+                .antMatchers("/login", "/resources/**").permitAll() // Autoriser l’accès à ces URL
+                .anyRequest().authenticated()
+                .and()
+            .formLogin()
+                .loginPage("/login") // Page de connexion personnalisée
+                .permitAll();
+    }
+
 }

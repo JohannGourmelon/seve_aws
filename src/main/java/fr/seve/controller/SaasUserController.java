@@ -24,7 +24,7 @@ import fr.seve.service.SubscriptionService;
 public class SaasUserController {
 	
 	@Autowired
-	private SaasUserService service;
+	private SaasUserService saasUserService;
 	
 	@Autowired
 	private SubscriptionService subscriptionService;
@@ -72,7 +72,7 @@ public class SaasUserController {
         System.out.println("Phone : " + saasUser.getPhone());
         System.out.println("Email : " + saasUser.getEmail());
         System.out.println("Password : " + saasUser.getPassword());
-        saasUser.setSaasUserLevel(SaasUserLevel.CUSTOM);
+        saasUser.setSaasUserLevel(SaasUserLevel.SAAS_CUSTOM);
         System.out.println("UserLevel : " + saasUser.getSaasUserLevel());
         saasUser.setCreateDate(LocalDateTime.now().toString());
         System.out.println("DateCreated : " + saasUser.getCreateDate());
@@ -82,7 +82,7 @@ public class SaasUserController {
         Subscription essential = subscriptionService.findById(1l);
         saasUser.setSubscription(essential);
         
-        service.save(saasUser);
+        saasUserService.save(saasUser);
    
 
         return "saasuser-signup-success";
@@ -96,7 +96,7 @@ public class SaasUserController {
         System.out.println("Phone : " + saasUser.getPhone());
         System.out.println("Email : " + saasUser.getEmail());
         System.out.println("Password : " + saasUser.getPassword());
-        saasUser.setSaasUserLevel(SaasUserLevel.CUSTOM);
+        saasUser.setSaasUserLevel(SaasUserLevel.SAAS_CUSTOM);
         System.out.println("UserLevel : " + saasUser.getSaasUserLevel());
         saasUser.setCreateDate(LocalDateTime.now().toString());
         System.out.println("DateCreated : " + saasUser.getCreateDate());
@@ -106,7 +106,7 @@ public class SaasUserController {
         Subscription standard = subscriptionService.findById(2l);
         saasUser.setSubscription(standard);
         
-        service.save(saasUser);
+        saasUserService.save(saasUser);
    
 
         return "saasuser-signup-success";
@@ -120,7 +120,7 @@ public class SaasUserController {
         System.out.println("Phone : " + saasUser.getPhone());
         System.out.println("Email : " + saasUser.getEmail());
         System.out.println("Password : " + saasUser.getPassword());
-        saasUser.setSaasUserLevel(SaasUserLevel.CUSTOM);
+        saasUser.setSaasUserLevel(SaasUserLevel.SAAS_CUSTOM);
         System.out.println("UserLevel : " + saasUser.getSaasUserLevel());
         saasUser.setCreateDate(LocalDateTime.now().toString());
         System.out.println("DateCreated : " + saasUser.getCreateDate());
@@ -130,21 +130,23 @@ public class SaasUserController {
         Subscription premium = subscriptionService.findById(3l);
         saasUser.setSubscription(premium);
         
-        service.save(saasUser);
+        saasUserService.save(saasUser);
    
 
         return "saasuser-signup-success";
 		
 	}
 	
-	
+    @GetMapping("/register")
+    public String showRegistrationForm(Model model) {
+        model.addAttribute("user", new SaasUser());
+        return "register";
+    }
 
-	
-	
-	@GetMapping
-	public String showSuccesForm() {
-		return "saasuser-signup-success";
-		
-	}
+    @PostMapping("/register")
+    public String registerUser(@ModelAttribute("user") SaasUser saasUser) {
+        saasUserService.save(saasUser); // Appel du service pour sauvegarder l'utilisateur
+        return "redirect:/login"; // Redirection vers la page de connexion
+    }
 
 }

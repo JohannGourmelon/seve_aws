@@ -1,7 +1,5 @@
 package fr.seve.entities;
 
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,11 +10,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-
-
-
-
 
 
 @Entity
@@ -33,12 +26,10 @@ public class SaasUser {
 	@Column(nullable=true)
 	private String firstname; 
 	
-	@Column(nullable=false, unique=false) 
-
-	
+	@Column(nullable=false, unique=true) 
 	private String email;
 	
-	@Column(nullable=true)
+	@Column(nullable=false)
 	private String password; 
 	
 	@Column
