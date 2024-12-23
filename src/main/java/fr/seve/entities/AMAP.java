@@ -7,9 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -33,6 +30,11 @@ public class AMAP {
 	// Relation avec SaasUser
 	@OneToOne(mappedBy = "amap", cascade = CascadeType.ALL, orphanRemoval = true)
 	private SaasUser saasUser;
+	
+	// Relation avec AmapSpace
+	@OneToOne(mappedBy = "amap", cascade = CascadeType.ALL, orphanRemoval = true)
+	private AmapSpace amapSpace;
+	
 
 	public SaasUser getSaasUser() {
 		return saasUser;
@@ -41,10 +43,6 @@ public class AMAP {
 	public void setSaasUser(SaasUser saasUser) {
 		this.saasUser = saasUser;
 	}
-
-	@OneToOne(mappedBy = "amap", cascade = CascadeType.ALL, orphanRemoval = true)
-	private AmapSpace amapSpace;
-	
 
 	public Long getId() {
 		return Id;

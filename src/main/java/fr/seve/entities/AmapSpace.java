@@ -10,18 +10,13 @@ public class AmapSpace {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "amap_id", nullable = false)
     private AMAP amap;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "configuration_id", nullable = false)
     private Configuration configuration;
-
-    @OneToOne
-    @JoinColumn(name = "saas_user_id", nullable = false)
-    private SaasUser saasUser;
-
 
     public Long getId() {
         return id;
@@ -47,11 +42,4 @@ public class AmapSpace {
         this.configuration = configuration;
     }
 
-    public SaasUser getSaasUser() {
-        return saasUser;
-    }
-
-    public void setSaasUser(SaasUser saasUser) {
-        this.saasUser = saasUser;
-    }
 }

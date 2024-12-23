@@ -14,19 +14,30 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.seve.entities.AMAP;
+import fr.seve.entities.AmapSpace;
 import fr.seve.entities.Configuration;
+import fr.seve.entities.SaasUser;
 import fr.seve.service.AmapService;
+import fr.seve.service.AmapSpaceService;
+import fr.seve.service.SaasUserService;
 
 @Controller
 @RequestMapping("/amap")
 public class AmapController {
 
 	private final AmapService amapService;
-
-	public AmapController(AmapService amapService) {
-		this.amapService = amapService;
-	}
 	
+	private final SaasUserService saasUserService;
+	
+	private final AmapSpaceService amapSpaceService;
+
+	public AmapController(AmapService amapService, SaasUserService saasUserService, AmapSpaceService amapSpaceService) {
+		super();
+		this.amapService = amapService;
+		this.saasUserService = saasUserService;
+		this.amapSpaceService = amapSpaceService;
+	}
+
 	@GetMapping
 	public String listAmaps(Model model) {
 		List<AMAP> amaps = amapService.findAll();
@@ -79,27 +90,57 @@ public class AmapController {
     
 	@GetMapping("/info/{id}")
 	public ModelAndView configAmap(@PathVariable Long id, Model model) {
-		AMAP amap = amapService.findById(id);
+	    SaasUser user = saasUserService.findById(id);
+	    AMAP amap = user.getAmap();
 	    model.addAttribute("amap", amap);
 		ModelAndView mv = new ModelAndView("saas-account-config-amap");
         mv.addObject("css", "/resources/css/saas/config.css");
         return mv;
 		}
 	
+	@GetMapping("/info")
+	public ModelAndView configContent(Model model) {
+	    SaasUser user = saasUserService.findById(1L);
+	    model.addAttribute("user", user);
+		ModelAndView mv = new ModelAndView("saas-account-config-amap");
+        mv.addObject("css", "/resources/css/saas/config.css");
+        return mv;
+	}
+	
 //	@PostMapping("addAmap")
-//	public String saveConfigAmap(@ModelAttribute AMAP amap, RedirectAttributes redirectAttributes) {
+//	public String saveConfigAmap(@PathVariable Long id, @ModelAttribute AMAP amap, RedirectAttributes redirectAttributes) {
 //
 //	    AMAP newAmap = new AMAP();
 //	    newAmap.setName(amap.getName());
 //	    newAmap.setAddress(amap.getAddress());
 //	    newAmap.setSiret(amap.getSiret());
+//	    newAmap.setSaasUser(saasUserService.findById(id));
 //	    
-//	    Configuration emptyConfig = new Configuration();
-//	    newAmap.setConfiguration(emptyConfig);
+//	    AmapSpace amapSpace = new AmapSpace();
+//	    amapSpace.setAmap(newAmap);
+//	    amapSpaceService.save(amapSpace);
 //	    amapService.save(newAmap);
 //		
 //	   	redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
-//	    return "redirect:/amap/info";
+//	    return "redirect:/amap/info/{id}";
+//	}
+	
+//	@PostMapping("addAmap/{id}")
+//	public String saveConfigAmap(@PathVariable Long id, @ModelAttribute AMAP amap, RedirectAttributes redirectAttributes) {
+//
+//	    AMAP newAmap = new AMAP();
+//	    newAmap.setName(amap.getName());
+//	    newAmap.setAddress(amap.getAddress());
+//	    newAmap.setSiret(amap.getSiret());
+//	    newAmap.setSaasUser(saasUserService.findById(id));
+//	    
+//	    AmapSpace amapSpace = new AmapSpace();
+//	    amapSpace.setAmap(newAmap);
+//	    amapSpaceService.save(amapSpace);
+//	    amapService.save(newAmap);
+//		
+//	   	redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
+//	    return "redirect:/amap/info/{id}";
 //	}
 	
 	@PostMapping("editAmap/{id}")
@@ -111,7 +152,7 @@ public class AmapController {
 		amapService.save(newAmap);
 
 		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
-		return  "redirect:/amap/info/{id}";
+		return  "redirect:/amap/info";
 	}
 
 }

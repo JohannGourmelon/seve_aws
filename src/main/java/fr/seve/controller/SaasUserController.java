@@ -26,6 +26,8 @@ import fr.seve.entities.SaasUserLevel;
 import fr.seve.entities.Subscription;
 
 import fr.seve.service.AmapService;
+import fr.seve.service.AmapSpaceService;
+import fr.seve.service.ConfigurationService;
 import fr.seve.service.SaasUserService;
 import fr.seve.service.SubscriptionService;
 
@@ -38,6 +40,12 @@ public class SaasUserController {
 	
 	@Autowired
 	private AmapService amapService;
+	
+	@Autowired
+	private AmapSpaceService amapSpaceService;
+	
+	@Autowired
+	private ConfigurationService configurationService;
 
 	@Autowired
 	private SubscriptionService subscriptionService;
@@ -87,7 +95,7 @@ public class SaasUserController {
 	}
 
 	@PostMapping("/saveSignUpEssential")
-	public String saveUserSaas(@Valid @ModelAttribute("saasUser") SaasUser saasUser, BindingResult bindingResult,
+	public String saveUserSaas(@Valid @ModelAttribute("saasUser") SaasUser saasUser, AMAP amap, BindingResult bindingResult,
 		
 			Model model) {
 
@@ -111,23 +119,21 @@ public class SaasUserController {
 			
 			return "redirect:/saasuser/souscription-essentiel";
 		} else {
-			AMAP amap = new AMAP();
-			amap.setAddress(""); 
-			amap.setName("");
-			amap.setSiret("");
-
-		    Configuration configuration = new Configuration();
+			
+			amap.setSaasUser(saasUser);
+			saasUser.setAmap(amap);
+			
+			Configuration configuration = new Configuration();
 
 		    AmapSpace amapSpace = new AmapSpace();
 		    amapSpace.setAmap(amap);
 		    amapSpace.setConfiguration(configuration);
-		    amapSpace.setSaasUser(saasUser);
 		    
-			amap.setSaasUser(saasUser);
-			amapService.save(amap);
-			saasUser.setAmap(amap);
+		    amapSpaceService.save(amapSpace);
 			service.save(saasUser);
+
 			return "saasuser-signup-payment";
+						
 		}
 
 	}

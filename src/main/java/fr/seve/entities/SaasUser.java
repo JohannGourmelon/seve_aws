@@ -68,9 +68,6 @@ public class SaasUser {
 	@JoinColumn(name = "amap_id")
 	private AMAP amap;
 
-	@OneToOne(mappedBy = "saasUser", cascade = CascadeType.ALL, orphanRemoval = true)
-	private AmapSpace amapSpace;
-
 	public Long getId() {
 		return id;
 	}
@@ -158,14 +155,6 @@ public class SaasUser {
 
 	public void setLastModifyDate(String lastModifyDate) {
 		this.lastModifyDate = lastModifyDate;
-	}
-	
-	public AmapSpace getAmapSpace() {
-	    return amapSpace;
-	}
-
-	public void setAmapSpace(AmapSpace amapSpace) {
-	    this.amapSpace = amapSpace;
 	}
 
 }
