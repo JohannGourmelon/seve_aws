@@ -39,9 +39,6 @@ public class SaasUserController {
 	private SaasUserService service;
 
 	@Autowired
-	private AmapService amapService;
-
-	@Autowired
 	private AmapSpaceService amapSpaceService;
 
 	@Autowired
@@ -124,6 +121,7 @@ public class SaasUserController {
 			AmapSpace amapSpace = new AmapSpace();
 			amapSpace.setAmap(amap);
 			amapSpace.setConfiguration(configuration);
+			amapSpace.setSubscription(essential);
 
 			amapSpaceService.save(amapSpace);
 			service.save(saasUser);
@@ -169,6 +167,7 @@ public class SaasUserController {
 			AmapSpace amapSpace = new AmapSpace();
 			amapSpace.setAmap(amap);
 			amapSpace.setConfiguration(configuration);
+			amapSpace.setSubscription(standard);
 
 			amapSpaceService.save(amapSpace);
 			service.save(saasUser);
@@ -213,6 +212,7 @@ public class SaasUserController {
 			AmapSpace amapSpace = new AmapSpace();
 			amapSpace.setAmap(amap);
 			amapSpace.setConfiguration(configuration);
+			amapSpace.setSubscription(premium);
 
 			amapSpaceService.save(amapSpace);
 			service.save(saasUser);

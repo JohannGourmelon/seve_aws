@@ -17,6 +17,10 @@ public class AmapSpace {
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "configuration_id", nullable = false)
     private Configuration configuration;
+    
+	@ManyToOne
+	@JoinColumn(name = "subscription_id")
+	private Subscription subscription;
 
     public Long getId() {
         return id;
@@ -41,5 +45,13 @@ public class AmapSpace {
     public void setConfiguration(Configuration configuration) {
         this.configuration = configuration;
     }
+
+	public Subscription getSubscription() {
+		return subscription;
+	}
+
+	public void setSubscription(Subscription subscription) {
+		this.subscription = subscription;
+	}
 
 }
