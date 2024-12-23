@@ -29,6 +29,17 @@
 	gap: 50px;
 }
 
+.designForm-radios {
+	display: flex;
+	gap: 50px;
+}
+
+.designForm-radios div {
+	display: flex;
+	align-items: flex-end;
+	gap: 15px;
+	margin-top: 10px;
+}
 
 .formItem {
 	width: 25vw;

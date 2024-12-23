@@ -37,16 +37,15 @@ public class SaasUserController {
 
 	@Autowired
 	private SaasUserService service;
-	
+
 	@Autowired
 	private AmapService amapService;
-	
+
 	@Autowired
 	private AmapSpaceService amapSpaceService;
 
 	@Autowired
 	private SubscriptionService subscriptionService;
-
 
 	@ModelAttribute("saasUser")
 	public SaasUser setSaasUser() {
@@ -81,8 +80,6 @@ public class SaasUserController {
 		mv.addObject("css", "/resources/css/saas/signup-form.css");
 		return mv;
 	}
-	
-	
 
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
@@ -93,7 +90,7 @@ public class SaasUserController {
 
 	@PostMapping("/saveSignUpEssential")
 	public String saveUserSaas(@Valid @ModelAttribute("saasUser") SaasUser saasUser, BindingResult bindingResult,
-		
+
 			Model model) {
 
 		System.out.println("Firstname : " + saasUser.getFirstname());
@@ -113,34 +110,33 @@ public class SaasUserController {
 
 		if (bindingResult.hasErrors()) {
 			// Si des erreurs de validation sont présentes, retour à la page du formulaire
-			
+
 			return "redirect:/saasuser/souscription-essentiel";
 		} else {
-			
+
 			// Création du user avec une amap, une configuration et un espace AMAP
 			AMAP amap = new AMAP();
 			amap.setSaasUser(saasUser);
 			saasUser.setAmap(amap);
-			
+
 			Configuration configuration = new Configuration();
 
-		    AmapSpace amapSpace = new AmapSpace();
-		    amapSpace.setAmap(amap);
-		    amapSpace.setConfiguration(configuration);
-		    
-		    amapSpaceService.save(amapSpace);
+			AmapSpace amapSpace = new AmapSpace();
+			amapSpace.setAmap(amap);
+			amapSpace.setConfiguration(configuration);
+
+			amapSpaceService.save(amapSpace);
 			service.save(saasUser);
 
 			return "saasuser-signup-payment";
-						
+
 		}
 
 	}
 
 	@PostMapping("/saveSignUpStandard")
-	public String saveUserSaasStandard(@ModelAttribute("saasUser") SaasUser saasUser, AMAP amap,
-			BindingResult bindingResult,
-			
+	public String saveUserSaasStandard(@ModelAttribute("saasUser") SaasUser saasUser, BindingResult bindingResult,
+
 			Model model) {
 		System.out.println("Firstname : " + saasUser.getFirstname());
 		System.out.println("Name : " + saasUser.getName());
@@ -159,22 +155,32 @@ public class SaasUserController {
 
 		if (bindingResult.hasErrors()) {
 			// Si des erreurs de validation sont présentes, retour à la page du formulaire
-			
+
 			return "redirect:/saasuser/souscription-standart";
 		} else {
+
+			// Création du user avec une amap, une configuration et un espace AMAP
+			AMAP amap = new AMAP();
 			amap.setSaasUser(saasUser);
-			amapService.save(amap);
 			saasUser.setAmap(amap);
+
+			Configuration configuration = new Configuration();
+
+			AmapSpace amapSpace = new AmapSpace();
+			amapSpace.setAmap(amap);
+			amapSpace.setConfiguration(configuration);
+
+			amapSpaceService.save(amapSpace);
 			service.save(saasUser);
+
 			return "saasuser-signup-payment";
 		}
 
 	}
 
 	@PostMapping("/saveSignUpPremium")
-	public String saveUserSaasPremium(@ModelAttribute("saasUser") SaasUser saasUser, AMAP amap,
-			BindingResult bindingResult,
-			
+	public String saveUserSaasPremium(@ModelAttribute("saasUser") SaasUser saasUser, BindingResult bindingResult,
+
 			Model model) {
 		System.out.println("Firstname : " + saasUser.getFirstname());
 		System.out.println("Name : " + saasUser.getName());
@@ -193,23 +199,27 @@ public class SaasUserController {
 
 		if (bindingResult.hasErrors()) {
 			// Si des erreurs de validation sont présentes, retour à la page du formulaire
-			
+
 			return "redirect:/saasuser/souscription-premium";
 		} else {
+
+			// Création du user avec une amap, une configuration et un espace AMAP
+			AMAP amap = new AMAP();
 			amap.setSaasUser(saasUser);
-			amapService.save(amap);
 			saasUser.setAmap(amap);
+
+			Configuration configuration = new Configuration();
+
+			AmapSpace amapSpace = new AmapSpace();
+			amapSpace.setAmap(amap);
+			amapSpace.setConfiguration(configuration);
+
+			amapSpaceService.save(amapSpace);
 			service.save(saasUser);
+
 			return "saasuser-signup-payment";
 		}
 
 	}
-
-
-	
-	
-
-
-	
 
 }

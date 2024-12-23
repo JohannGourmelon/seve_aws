@@ -26,11 +26,15 @@
 				</div>
 				<div class="designForm-inputs">
 					<input type="text" id="police" name="police" value="${configuration.police}">
-					<div>
-						<input type="radio" id="roundedNo" name="isRoundedBorders" value="false" ${!configuration.isRoundedBorders ? 'checked' : ''}>
-						<label for="roundedNo">Droit</label> 
-						<input type="radio" id="roundedYes" name="isRoundedBorders" value="true" ${configuration.isRoundedBorders ? 'checked' : ''}>
-						<label for="roundedYes">Arrondi</label>
+					<div class="designForm-radios">
+						<div>
+							<input type="radio" id="roundedNo" name="isRoundedBorders" value="false" ${!configuration.isRoundedBorders ? 'checked' : ''}>
+							<label for="roundedNo">Droit</label> 
+						</div>
+						<div>
+							<input type="radio" id="roundedYes" name="isRoundedBorders" value="true" ${configuration.isRoundedBorders ? 'checked' : ''}>
+							<label for="roundedYes">Arrondi</label>
+						</div>
 					</div>
 				</div>
 			</div>
