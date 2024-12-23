@@ -24,14 +24,28 @@
 	gap: 15px;
 }
 
+.contentForm-inputs {
+	display: flex;
+	gap: 50px;
+}
+
+
 .formItem {
 	width: 25vw;
 	padding-bottom: 10px;
 	border-bottom: 1px solid #A8B5A2;
 }
 
+#amapForm label {
+	width: 150px;
+}
 
-.designForm-submit {
+#amapForm input {
+	width: 400px;
+}
+
+
+.configForm-submit {
 	display: flex;
 	align-items: center;
 	justify-content:center;

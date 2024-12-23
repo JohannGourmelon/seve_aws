@@ -35,7 +35,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="designForm-submit">
+		<div class="configForm-submit">
 			<button class="btn btn-secondary" type="submit">Enregistrer</button>
 		</div>
 	</form>

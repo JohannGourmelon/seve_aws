@@ -22,11 +22,9 @@ public class SaasController {
 	@Autowired 
 	private FunctionService functionservice;
 
-	
 	@Autowired
 	private SubscriptionService subscriptionService;
 	
-
 	
 	@GetMapping
 	public ModelAndView homeSaas() {
@@ -47,6 +45,5 @@ public class SaasController {
         mv.addObject("css", "/resources/css/saas/subscription.css");
         return mv;
 		}
-	
 	
 }

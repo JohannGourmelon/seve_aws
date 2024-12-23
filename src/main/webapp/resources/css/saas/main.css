@@ -45,10 +45,22 @@ input {
 	padding: 0 15px;
 }
 
+textarea {
+	border: 1px solid #cfd8dc;
+	border-radius: 15px;
+	padding: 10px 20px;
+}
+
 input:focus {
 	border: 1px solid #b3d9e2;
 	outline: none;
 }
+
+textarea:focus {
+	border: 1px solid #b3d9e2;
+	outline: none;
+}
+
 
 .form-control {
 	border-radius: 30px;

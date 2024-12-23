@@ -51,20 +51,4 @@ public class SaasUserServiceImpl implements SaasUserService{
 		
 	}
 
-	@Override
-	public void create(SaasUser saasUser) {
-		AMAP amap = new AMAP();
-	    amap.setSaasUser(saasUser);
-	    amapService.save(amap);
-
-	    saasUser.setAmap(amap);
-	    save(saasUser);
-
-	    AmapSpace amapSpace = new AmapSpace();
-	    amapSpace.setAmap(amap);
-	    amapSpaceService.save(amapSpace);
-	}
-	
-	
-
 }

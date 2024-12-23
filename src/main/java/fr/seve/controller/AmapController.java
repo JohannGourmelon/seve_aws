@@ -2,7 +2,7 @@ package fr.seve.controller;
 
 import java.util.List;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,29 +14,20 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.seve.entities.AMAP;
-import fr.seve.entities.AmapSpace;
-import fr.seve.entities.Configuration;
 import fr.seve.entities.SaasUser;
 import fr.seve.service.AmapService;
-import fr.seve.service.AmapSpaceService;
 import fr.seve.service.SaasUserService;
 
 @Controller
 @RequestMapping("/amap")
 public class AmapController {
 
-	private final AmapService amapService;
+	@Autowired
+	private AmapService amapService;
 	
-	private final SaasUserService saasUserService;
+	@Autowired
+	private SaasUserService saasUserService;
 	
-	private final AmapSpaceService amapSpaceService;
-
-	public AmapController(AmapService amapService, SaasUserService saasUserService, AmapSpaceService amapSpaceService) {
-		super();
-		this.amapService = amapService;
-		this.saasUserService = saasUserService;
-		this.amapSpaceService = amapSpaceService;
-	}
 
 	@GetMapping
 	public String listAmaps(Model model) {
@@ -98,50 +89,17 @@ public class AmapController {
         return mv;
 		}
 	
+	
 	@GetMapping("/info")
 	public ModelAndView configContent(Model model) {
 	    SaasUser user = saasUserService.findById(1L);
-	    model.addAttribute("user", user);
+	    AMAP amap = user.getAmap();
+	    model.addAttribute("amap", amap);
 		ModelAndView mv = new ModelAndView("saas-account-config-amap");
         mv.addObject("css", "/resources/css/saas/config.css");
         return mv;
 	}
 	
-//	@PostMapping("addAmap")
-//	public String saveConfigAmap(@PathVariable Long id, @ModelAttribute AMAP amap, RedirectAttributes redirectAttributes) {
-//
-//	    AMAP newAmap = new AMAP();
-//	    newAmap.setName(amap.getName());
-//	    newAmap.setAddress(amap.getAddress());
-//	    newAmap.setSiret(amap.getSiret());
-//	    newAmap.setSaasUser(saasUserService.findById(id));
-//	    
-//	    AmapSpace amapSpace = new AmapSpace();
-//	    amapSpace.setAmap(newAmap);
-//	    amapSpaceService.save(amapSpace);
-//	    amapService.save(newAmap);
-//		
-//	   	redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
-//	    return "redirect:/amap/info/{id}";
-//	}
-	
-//	@PostMapping("addAmap/{id}")
-//	public String saveConfigAmap(@PathVariable Long id, @ModelAttribute AMAP amap, RedirectAttributes redirectAttributes) {
-//
-//	    AMAP newAmap = new AMAP();
-//	    newAmap.setName(amap.getName());
-//	    newAmap.setAddress(amap.getAddress());
-//	    newAmap.setSiret(amap.getSiret());
-//	    newAmap.setSaasUser(saasUserService.findById(id));
-//	    
-//	    AmapSpace amapSpace = new AmapSpace();
-//	    amapSpace.setAmap(newAmap);
-//	    amapSpaceService.save(amapSpace);
-//	    amapService.save(newAmap);
-//		
-//	   	redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
-//	    return "redirect:/amap/info/{id}";
-//	}
 	
 	@PostMapping("editAmap/{id}")
 	public String editDesign(@PathVariable Long id, AMAP amap, RedirectAttributes redirectAttributes) {
@@ -152,7 +110,7 @@ public class AmapController {
 		amapService.save(newAmap);
 
 		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
-		return  "redirect:/amap/info";
+		return  "redirect:/amap/info/{id}";
 	}
 
 }

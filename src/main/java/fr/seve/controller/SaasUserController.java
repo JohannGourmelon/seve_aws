@@ -43,9 +43,6 @@ public class SaasUserController {
 	
 	@Autowired
 	private AmapSpaceService amapSpaceService;
-	
-	@Autowired
-	private ConfigurationService configurationService;
 
 	@Autowired
 	private SubscriptionService subscriptionService;
@@ -95,7 +92,7 @@ public class SaasUserController {
 	}
 
 	@PostMapping("/saveSignUpEssential")
-	public String saveUserSaas(@Valid @ModelAttribute("saasUser") SaasUser saasUser, AMAP amap, BindingResult bindingResult,
+	public String saveUserSaas(@Valid @ModelAttribute("saasUser") SaasUser saasUser, BindingResult bindingResult,
 		
 			Model model) {
 
@@ -120,6 +117,8 @@ public class SaasUserController {
 			return "redirect:/saasuser/souscription-essentiel";
 		} else {
 			
+			// Création du user avec une amap, une configuration et un espace AMAP
+			AMAP amap = new AMAP();
 			amap.setSaasUser(saasUser);
 			saasUser.setAmap(amap);
 			

@@ -14,6 +14,4 @@ public interface SaasUserService {
 	
 	void deleteById(Long Id);
 	
-	void create(SaasUser saasUser);
-
 }

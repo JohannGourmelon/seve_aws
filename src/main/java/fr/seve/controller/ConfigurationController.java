@@ -2,6 +2,7 @@ package fr.seve.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,16 +20,12 @@ import fr.seve.service.ConfigurationService;
 @Controller
 @RequestMapping("/configuration")
 public class ConfigurationController {
-
-	private final ConfigurationService configurationService;
 	
-	private final AmapService amapService;
-
-	public ConfigurationController(ConfigurationService configurationService, AmapService amapService) {
-		super();
-		this.configurationService = configurationService;
-		this.amapService = amapService;
-	}
+	@Autowired
+	private ConfigurationService configurationService;
+	
+	@Autowired
+	private AmapService amapService;
 
 	@GetMapping
 	public String listConfig(Model model) {
@@ -47,8 +44,8 @@ public class ConfigurationController {
 	
 	@GetMapping("/contenu")
 	public ModelAndView configContent(Model model) {
-	    Configuration configuration = configurationService.findById(2L);
-	    AMAP amap = amapService.findById(2L);
+	    Configuration configuration = configurationService.findById(1L);
+	    AMAP amap = amapService.findById(1L);
 	    model.addAttribute("configuration", configuration);
 	    model.addAttribute("amap", amap);
 		ModelAndView mv = new ModelAndView("saas-account-config-content");
@@ -58,8 +55,8 @@ public class ConfigurationController {
 	
 	@GetMapping("/design")
 	public ModelAndView configDesign(Model model) {
-		Configuration configuration = configurationService.findById(2L);
-	    AMAP amap = amapService.findById(2L);
+		Configuration configuration = configurationService.findById(1L);
+	    AMAP amap = amapService.findById(1L);
 	    model.addAttribute("configuration", configuration);
 	    model.addAttribute("amap", amap);
 		ModelAndView mv = new ModelAndView("saas-account-config-design");
