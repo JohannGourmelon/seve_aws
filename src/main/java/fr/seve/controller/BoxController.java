@@ -1,5 +1,6 @@
 package fr.seve.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,7 @@ public class BoxController {
 	
 	@PostMapping("add")
 	public String saveBox(@ModelAttribute Box box) {
+		box.setCreationDate(LocalDateTime.now().toString());
 		boxService.save(box);
 		return "redirect:/box";
 	}
@@ -67,7 +69,10 @@ public class BoxController {
     }
 
     @PostMapping("/edit/{id}")
-    public String updateBox(@ModelAttribute Box box) {
+    public String updateBox(@PathVariable Long id, @ModelAttribute Box box) {
+    	Box oldBox = boxService.findById(id);
+    	box.setCreationDate(oldBox.getCreationDate());
+		box.setLastModifiedDate(LocalDateTime.now().toString());
     	boxService.save(box);
         return "redirect:/box";
     }

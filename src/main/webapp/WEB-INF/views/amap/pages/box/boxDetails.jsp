@@ -7,20 +7,20 @@
 <p><strong>Prix :</strong> ${box.price}</p>
 <p><strong>Stock :</strong> ${box.stock}</p>
 
-<%-- <p><strong>Date de disponibilité :</strong>
-    <fmt:formatDate value="${box.availableDate}" pattern="yyyy-MM-dd" />
+ <p><strong>Date de disponibilité :</strong>
+    ${box.availableDate}
 </p>
 
 <p><strong>Date limite d'achat :</strong>
-    <fmt:formatDate value="${box.purchaseDeadlineDate}" pattern="yyyy-MM-dd" />
+   ${box.purchaseDeadlineDate}
 </p>
 
 <p><strong>Date de création :</strong>
-    <fmt:formatDate value="${box.creationDate}" pattern="yyyy-MM-dd" />
+    ${box.creationDate}
 </p>
 
 <p><strong>Date dernière modification :</strong>
-    <fmt:formatDate value="${box.lastModifiedDate}" pattern="yyyy-MM-dd" />
-</p> --%>
+   ${box.lastModifiedDate}
+</p> 
 
 <a href="${pageContext.request.contextPath}/box">Retour à la liste</a>

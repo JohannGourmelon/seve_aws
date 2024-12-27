@@ -1,6 +1,10 @@
 package fr.seve.entities;
 
 import javax.persistence.*;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -23,17 +27,19 @@ public class Box {
     @Column(nullable = true)
     private int stock;
 
-//    @Column(nullable = true)
-//    private Date availableDate;
-//
-//    @Column(nullable = true)
-//    private Date purchaseDeadlineDate;
-//
-//    @Column(nullable = true)
-//    private Date creationDate;
-//
-//    @Column(nullable = true)
-//    private Date lastModifiedDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(nullable = true)
+    private Date availableDate;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(nullable = true)
+    private Date purchaseDeadlineDate;
+
+    @Column(nullable = true)
+    private String creationDate;
+
+    @Column(nullable = true)
+    private String lastModifiedDate;
     
 //    @Column(nullable = true)
 //    private String imageUrl;
@@ -110,20 +116,36 @@ public class Box {
         this.purchaseDeadlineDate = purchaseDeadlineDate;
     }
 
-    public Date getCreationDate() {
+    public String getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(String creationDate) {
         this.creationDate = creationDate;
     }
 
-    public Date getLastModifiedDate() {
+    public String getLastModifiedDate() {
         return lastModifiedDate;
     }
 
-    public void setLastModifiedDate(Date lastModifiedDate) {
+    public void setLastModifiedDate(String lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
+    }
+    
+    public String getFormattedAvailableDate() {
+        if (availableDate != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            return sdf.format(availableDate);
+        }
+        return "";
+    }
+
+    public String getFormattedPurchaseDeadlineDate() {
+        if (purchaseDeadlineDate != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            return sdf.format(purchaseDeadlineDate);
+        }
+        return "";
     }
     
 //    public String getImageUrl() {

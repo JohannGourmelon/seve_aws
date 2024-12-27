@@ -31,29 +31,12 @@
     <input type="number" id="stock" name="stock" value="${box.stock}" required>
 </p>
 
-<%-- <p>
-    <label for="availableDate">Date de disponibilité :</label>
-    <input type="date" id="availableDate" name="availableDate" 
-           value="${box.availableDate != null ? box.availableDate.toString().substring(0, 10) : ''}" required>
-</p>
+<label for="availableDate">Date de disponibilité :</label>
 
-<p>
+    <input type="date" id="availableDate" name="availableDate" value="${box.formattedAvailableDate}" />
+
     <label for="purchaseDeadlineDate">Date limite d'achat :</label>
-    <input type="date" id="purchaseDeadlineDate" name="purchaseDeadlineDate" 
-           value="${box.purchaseDeadlineDate != null ? box.purchaseDeadlineDate.toString().substring(0, 10) : ''}" required>
-</p>
-
-<p>
-    <label for="creationDate">Date de création :</label>
-    <input type="date" id="creationDate" name="creationDate" 
-           value="${box.creationDate != null ? box.creationDate.toString().substring(0, 10) : ''}" required>
-</p>
-
-<p>
-    <label for="lastModifiedDate">Date dernière modification :</label>
-    <input type="date" id="lastModifiedDate" name="lastModifiedDate" 
-           value="${box.lastModifiedDate != null ? box.lastModifiedDate.toString().substring(0, 10) : ''}" required>
-</p> --%>
+    <input type="date" id="purchaseDeadlineDate" name="purchaseDeadlineDate" value="${box.formattedPurchaseDeadlineDate}" />
 
 <p>
     <button type="submit">Enregistrer</button>

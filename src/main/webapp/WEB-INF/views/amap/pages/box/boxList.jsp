@@ -11,10 +11,10 @@
 			<th>Description</th>
 			<th>Prix</th>
 			<th>Stock</th>
-<!-- 			<th>Date de disponibilité</th>
+ 			<th>Date de disponibilité</th>
 			<th>Date limite d'achat</th>
 			<th>Date de création</th>
-			<th>Date de dernière modification</th> -->
+			<th>Date de dernière modification</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -25,10 +25,10 @@
 				<td>${box.description}</td>
 				<td>${box.price}</td>
 				<td>${box.stock}</td>
-<%-- 				<td>${box.availableDate}</td>
+ 				<td>${box.availableDate}</td>
 				<td>${box.purchaseDeadlineDate}</td>
-				<td>${amap.creationDate}</td>
-				<td>${amap.lastModifiedDate}</td> --%>
+				<td>${box.creationDate}</td>
+				<td>${box.lastModifiedDate}</td>
 				<td><a
 					href="${pageContext.request.contextPath}/box/${box.id}">Details</a>
 					| <a href="${pageContext.request.contextPath}/box/edit/${box.id}">Modifier</a>
