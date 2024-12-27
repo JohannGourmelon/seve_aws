@@ -34,7 +34,7 @@ public class SaasUser {
 
 	@Column(nullable = false, unique = true)
 	@NotBlank
-	@Email(message = "L'adresse email n'est pas valide")
+	@Email(message = "L''adresse email n''est pas valide")
 	private String email;
 
 	@Column(nullable = false)

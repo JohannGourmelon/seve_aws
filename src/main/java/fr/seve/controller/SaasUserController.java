@@ -86,8 +86,7 @@ public class SaasUserController {
 	}
 
 	@PostMapping("/saveSignUpEssential")
-	public String saveUserSaas(@Valid @ModelAttribute("saasUser") SaasUser saasUser, BindingResult bindingResult,
-
+	public ModelAndView saveUserSaas(@Valid @ModelAttribute("saasUser") SaasUser saasUser, BindingResult bindingResult,
 			Model model) {
 
 		System.out.println("Firstname : " + saasUser.getFirstname());
@@ -108,7 +107,12 @@ public class SaasUserController {
 		if (bindingResult.hasErrors()) {
 			// Si des erreurs de validation sont présentes, retour à la page du formulaire
 
-			return "redirect:/saasuser/souscription-essentiel";
+			ModelAndView mv = new ModelAndView("saas-signup-es");
+			mv.addObject("css", "/resources/css/saas/signup-form.css");
+			mv.addObject("saasUser", saasUser); // renvoie le user pour garder les informations saisies
+			mv.addObject("errors", bindingResult.getAllErrors()); // renvoie les erreurs
+			return mv;
+
 		} else {
 
 			// Création du user avec une amap, une configuration et un espace AMAP
@@ -126,16 +130,14 @@ public class SaasUserController {
 			amapSpaceService.save(amapSpace);
 			service.save(saasUser);
 
-			return "saasuser-signup-payment";
+			return new ModelAndView("saasuser-signup-payment");
 
 		}
 
 	}
 
 	@PostMapping("/saveSignUpStandard")
-	public String saveUserSaasStandard(@ModelAttribute("saasUser") SaasUser saasUser, BindingResult bindingResult,
-
-			Model model) {
+	public ModelAndView saveUserSaasStandard(@Valid @ModelAttribute("saasUser") SaasUser saasUser, BindingResult bindingResult, Model model) {
 		System.out.println("Firstname : " + saasUser.getFirstname());
 		System.out.println("Name : " + saasUser.getName());
 		System.out.println("Phone : " + saasUser.getPhone());
@@ -154,7 +156,12 @@ public class SaasUserController {
 		if (bindingResult.hasErrors()) {
 			// Si des erreurs de validation sont présentes, retour à la page du formulaire
 
-			return "redirect:/saasuser/souscription-standart";
+			ModelAndView mv = new ModelAndView("saas-signup-st");
+			mv.addObject("css", "/resources/css/saas/signup-form.css");
+			mv.addObject("saasUser", saasUser); // renvoie le user pour garder les informations saisies
+			mv.addObject("errors", bindingResult.getAllErrors()); // renvoie les erreurs
+			return mv;
+			
 		} else {
 
 			// Création du user avec une amap, une configuration et un espace AMAP
@@ -172,15 +179,14 @@ public class SaasUserController {
 			amapSpaceService.save(amapSpace);
 			service.save(saasUser);
 
-			return "saasuser-signup-payment";
+			return new ModelAndView("saasuser-signup-payment");
 		}
 
 	}
 
 	@PostMapping("/saveSignUpPremium")
-	public String saveUserSaasPremium(@ModelAttribute("saasUser") SaasUser saasUser, BindingResult bindingResult,
-
-			Model model) {
+	public ModelAndView saveUserSaasPremium(@Valid @ModelAttribute("saasUser") SaasUser saasUser, BindingResult bindingResult, Model model) {
+		
 		System.out.println("Firstname : " + saasUser.getFirstname());
 		System.out.println("Name : " + saasUser.getName());
 		System.out.println("Phone : " + saasUser.getPhone());
@@ -199,7 +205,12 @@ public class SaasUserController {
 		if (bindingResult.hasErrors()) {
 			// Si des erreurs de validation sont présentes, retour à la page du formulaire
 
-			return "redirect:/saasuser/souscription-premium";
+			ModelAndView mv = new ModelAndView("saas-signup-pr");
+			mv.addObject("css", "/resources/css/saas/signup-form.css");
+			mv.addObject("saasUser", saasUser); // renvoie le user pour garder les informations saisies
+			mv.addObject("errors", bindingResult.getAllErrors()); // renvoie les erreurs
+			return mv;
+			
 		} else {
 
 			// Création du user avec une amap, une configuration et un espace AMAP
@@ -217,7 +228,7 @@ public class SaasUserController {
 			amapSpaceService.save(amapSpace);
 			service.save(saasUser);
 
-			return "saasuser-signup-payment";
+			return new ModelAndView("saasuser-signup-payment");
 		}
 
 	}

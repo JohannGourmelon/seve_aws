@@ -59,7 +59,7 @@
 							<div class="form-group signup-field">
 								<label for="name" class="control-label">Nom</label>
 								<div>
-									<form:input path="name" cssClass="form-control" value= "${saasUser.name}" />
+									<form:input path="name" cssClass="form-control" value= "${saasUser.name}" required="true"/>
 									 <form:errors path="name" cssClass="error" />
 								</div>
 							</div>
@@ -75,7 +75,7 @@
 							<div class="form-group signup-field">
 								<label for="email" class="control-label">Email</label>
 								<div>
-									<form:input path="email" cssClass="form-control" value= "${saasUser.email}"/>
+									<form:input path="email" cssClass="form-control" value= "${saasUser.email}" required="true"/>
 									 <form:errors path="email" cssClass="error" />
 								</div>
 							</div>
@@ -83,7 +83,7 @@
 							<div class="form-group signup-field">
 								<label for="password" class="control-label">Mot de passe</label>
 								<div>
-									<form:password path="password" cssClass="form-control" value= "${saasUser.password}" />
+									<form:password path="password" cssClass="form-control" value= "${saasUser.password}" required="true" />
 									 <form:errors path="password" cssClass="error" />
 								</div>
 							</div>
