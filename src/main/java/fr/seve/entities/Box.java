@@ -57,7 +57,6 @@ public class Box {
 //    @JoinColumn(name = "producteur_id", nullable = true)
 //    private Producteur producteur;
 
-    // Getters et setters
 
     public Long getId() {
         return id;
