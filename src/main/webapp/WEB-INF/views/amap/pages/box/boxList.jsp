@@ -11,6 +11,8 @@
 			<th>Description</th>
 			<th>Prix</th>
 			<th>Stock</th>
+			<th>Fréquence</th>
+			<th>Categorie</th>
  			<th>Date de disponibilité</th>
 			<th>Date limite d'achat</th>
 			<th>Date de création</th>
@@ -25,6 +27,8 @@
 				<td>${box.description}</td>
 				<td>${box.price}</td>
 				<td>${box.stock}</td>
+				<td>${box.frequency}</td>
+				<td>${box.category}</td>
  				<td>${box.availableDate}</td>
 				<td>${box.purchaseDeadlineDate}</td>
 				<td>${box.creationDate}</td>

@@ -42,6 +42,8 @@ public class BoxController {
 	
 	@GetMapping("/add")
 	public String showAddForm(Model model) {
+		model.addAttribute("categories", Box.Category.values());
+        model.addAttribute("frequencies", Box.Frequency.values());
 		model.addAttribute("box", new Box());
 		return "box-form";
 	}
@@ -64,6 +66,8 @@ public class BoxController {
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable Long id, Model model) {
         Box box = boxService.findById(id);
+        model.addAttribute("categories", Box.Category.values());
+        model.addAttribute("frequencies", Box.Frequency.values());
         model.addAttribute("box", box);
         return "box-form";
     }

@@ -6,6 +6,8 @@
 <p><strong>Description :</strong> ${box.description}</p>
 <p><strong>Prix :</strong> ${box.price}</p>
 <p><strong>Stock :</strong> ${box.stock}</p>
+<p><strong>Fréquence :</strong> ${box.frequency}</p>
+<p><strong>Catégorie :</strong> ${box.category}</p>
 
  <p><strong>Date de disponibilité :</strong>
     ${box.availableDate}

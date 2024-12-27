@@ -32,15 +32,32 @@
 </p>
 
 <label for="availableDate">Date de disponibilité :</label>
+<input type="date" id="availableDate" name="availableDate" value="${box.formattedAvailableDate}" />
 
-    <input type="date" id="availableDate" name="availableDate" value="${box.formattedAvailableDate}" />
+<label for="purchaseDeadlineDate">Date limite d'achat :</label>
+<input type="date" id="purchaseDeadlineDate" name="purchaseDeadlineDate" value="${box.formattedPurchaseDeadlineDate}" />
 
-    <label for="purchaseDeadlineDate">Date limite d'achat :</label>
-    <input type="date" id="purchaseDeadlineDate" name="purchaseDeadlineDate" value="${box.formattedPurchaseDeadlineDate}" />
+<p>
+    <label for="category">Catégorie :</label>
+    <select id="category" name="category" required>
+        <c:forEach var="category" items="${categories}">
+            <option value="${category}" ${category == box.category ? 'selected' : ''}>${category}</option>
+        </c:forEach>
+    </select>
+</p>
+
+<p>
+    <label for="frequency">Fréquence :</label>
+    <select id="frequency" name="frequency" required>
+        <c:forEach var="frequency" items="${frequencies}">
+            <option value="${frequency}" ${frequency == box.frequency ? 'selected' : ''}>${frequency}</option>
+        </c:forEach>
+    </select>
+</p>
 
 <p>
     <button type="submit">Enregistrer</button>
-    <a href="${pageContext.request.contextPath}/amap">Annuler</a>
+    <a href="${pageContext.request.contextPath}/box">Annuler</a>
 </p>
 
 </form>

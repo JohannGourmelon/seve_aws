@@ -41,17 +41,16 @@ public class Box {
     @Column(nullable = true)
     private String lastModifiedDate;
     
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = true)
+    private Category category;
+    
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = true)
+    private Frequency frequency;
+    
 //    @Column(nullable = true)
 //    private String imageUrl;
-
-//    
-//  @Enumerated(EnumType.STRING)
-//  @Column(nullable = true)
-//  private Category category;
-    
-//    @Enumerated(EnumType.STRING)
-//    @Column(nullable = true)
-//    private Frequency frequency;
 
     // Relation avec Producteur
 //    @ManyToOne
@@ -148,6 +147,22 @@ public class Box {
         return "";
     }
     
+    public Frequency getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(Frequency frequency) {
+        this.frequency = frequency;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+    
 //    public String getImageUrl() {
 //        return imageUrl;
 //    }
@@ -156,21 +171,7 @@ public class Box {
 //        this.imageUrl = imageUrl;
 //    }
     
-//    public Frequency getFrequency() {
-//        return frequency;
-//    }
-//
-//    public void setFrequency(Frequency frequency) {
-//        this.frequency = frequency;
-//    }
-//
-//    public Category getCategory() {
-//        return category;
-//    }
-//
-//    public void setCategory(Category category) {
-//        this.category = category;
-//    }
+
 
 //    public Producteur getProducteur() {
 //        return producteur;
@@ -180,17 +181,17 @@ public class Box {
 //        this.producteur = producteur;
 //    }
     
-//    // Enum pour la fréquence
-//    public enum Frequency {
-//        WEEKLY,
-//        BIMONTHLY,
-//        MONTHLY
-//    }
-//
-//    // Enum pour la catégorie
-//    public enum Category {
-//        FRUITS,
-//        VEGETABLES,
-//        MIXED
-//    }
+    // Enum pour la fréquence
+    public enum Frequency {
+        WEEKLY,
+        BIMONTHLY,
+        MONTHLY
+    }
+
+    // Enum pour la catégorie
+    public enum Category {
+        FRUITS,
+        VEGETABLES,
+        MIXED
+    }
 }
