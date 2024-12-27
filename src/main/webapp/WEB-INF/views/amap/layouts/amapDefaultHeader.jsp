@@ -6,26 +6,24 @@
 			aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<a class="navbar-brand" href="${pageContext.request.contextPath}/saas">Amap
-			name</a>
+		<a class="navbar-brand" href="${pageContext.request.contextPath}/box">Amap name</a>
 	</div>
 
 	<div class="collapse navbar-collapse" id="nav-content">
 		<ul class="navbar-nav ml-auto">
-			<li class="nav-item"><a class="nav-link"
-				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-				onclick="window.location.href='${pageContext.request.contextPath}/saas'">Accueil</a></li>
-			<li class="nav-item"><a class="nav-link"
-				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-				onclick="window.location.href='${pageContext.request.contextPath}/box'">Liste
-					des paniers</a></li>
-
-			<li class="nav-item"><a class="nav-link" href="index.html"
-				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Contactez-nous</a>
+			<li class="nav-item">
+				<a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Accueil</a>
 			</li>
-			<li class="nav-item"><a class="nav-link" href="index.html"
-				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Se
-					connecter</a></li>
+			<li class="nav-item">
+				<a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
+				onclick="window.location.href='${pageContext.request.contextPath}/box'">Liste des paniers</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="index.html" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Contactez-nous</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="index.html" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Se connecter</a>
+			</li>
 		</ul>
 	</div>
 </nav>

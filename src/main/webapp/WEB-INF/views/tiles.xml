@@ -110,19 +110,19 @@
 
 	<!-- Pages /amap -->
 
-	<definition name="amap-list" extends="template-saas">
+	<definition name="amap-list" extends="template-saas-account">
 		<put-attribute name="title" value="Liste des AMAPs" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/amap/amapList.jsp" />
 	</definition>
 	
-	<definition name="amap-details" extends="template-saas">
+	<definition name="amap-details" extends="template-saas-account">
 		<put-attribute name="title" value="Détails de l'AMAP" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/amap/amapDetails.jsp" />
 	</definition>
 	
-	<definition name="amap-form" extends="template-saas">
+	<definition name="amap-form" extends="template-saas-account">
 		<put-attribute name="title"
 			value="Formulaire de création d'AMAP" />
 		<put-attribute name="main"

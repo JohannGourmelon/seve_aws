@@ -23,7 +23,7 @@
 				<td>${box.id}</td>
 				<td>${box.name}</td>
 				<td>${box.description}</td>
-				<td>${amap.price}</td>
+				<td>${box.price}</td>
 				<td>${box.stock}</td>
 <%-- 				<td>${box.availableDate}</td>
 				<td>${box.purchaseDeadlineDate}</td>

@@ -30,11 +30,12 @@ public class AmapController {
 	
 
 	@GetMapping
-	public String listAmaps(Model model) {
+	public ModelAndView listAmaps(Model model) {
 		List<AMAP> amaps = amapService.findAll();
 		model.addAttribute("amaps", amaps);
-		
-		return "amap-list";
+		ModelAndView mv = new ModelAndView("amap-list");
+        mv.addObject("css", "/resources/css/saas/config.css");
+        return mv;
 	}
 	
 	@GetMapping("{id}")

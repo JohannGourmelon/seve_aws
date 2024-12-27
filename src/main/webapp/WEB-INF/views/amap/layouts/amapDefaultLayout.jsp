@@ -16,6 +16,8 @@
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/style.css" />
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/amap/main.css" />
 
 <!-- CSS dynamiques -->
 <c:if test="${not empty css}">
