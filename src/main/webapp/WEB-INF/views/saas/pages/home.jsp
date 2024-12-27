@@ -4,7 +4,7 @@
 	<li><a href="${pageContext.request.contextPath}/amap">Gestion
 			des amaps</a></li>
 	<li><a href="${pageContext.request.contextPath}/saas">Saas</a></li>
-	<li><a href="${pageContext.request.contextPath}/amap">Espace
+	<li><a href="${pageContext.request.contextPath}/box">Espace
 			Amap</a></li>
 
 </ul>

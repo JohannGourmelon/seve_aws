@@ -23,20 +23,20 @@ public class Box {
     @Column(nullable = true)
     private int stock;
 
-    @Column(nullable = true)
-    private String imageUrl;
-
-    @Column(nullable = true)
-    private Date availableDate;
-
-    @Column(nullable = true)
-    private Date purchaseDeadlineDate;
-
-    @Column(nullable = true)
-    private Date creationDate;
-
-    @Column(nullable = true)
-    private Date lastModifiedDate;
+//    @Column(nullable = true)
+//    private Date availableDate;
+//
+//    @Column(nullable = true)
+//    private Date purchaseDeadlineDate;
+//
+//    @Column(nullable = true)
+//    private Date creationDate;
+//
+//    @Column(nullable = true)
+//    private Date lastModifiedDate;
+    
+//    @Column(nullable = true)
+//    private String imageUrl;
 
 //    
 //  @Enumerated(EnumType.STRING)
@@ -94,14 +94,6 @@ public class Box {
         this.stock = stock;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public Date getAvailableDate() {
         return availableDate;
     }
@@ -134,6 +126,14 @@ public class Box {
         this.lastModifiedDate = lastModifiedDate;
     }
     
+//    public String getImageUrl() {
+//        return imageUrl;
+//    }
+//
+//    public void setImageUrl(String imageUrl) {
+//        this.imageUrl = imageUrl;
+//    }
+    
 //    public Frequency getFrequency() {
 //        return frequency;
 //    }
@@ -156,7 +156,7 @@ public class Box {
 //
 //    public void setProducteur(Producteur producteur) {
 //        this.producteur = producteur;
-    }
+//    }
     
 //    // Enum pour la fréquence
 //    public enum Frequency {

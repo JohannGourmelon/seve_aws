@@ -17,13 +17,8 @@
 				onclick="window.location.href='${pageContext.request.contextPath}/saas'">Accueil</a></li>
 			<li class="nav-item"><a class="nav-link"
 				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-				onclick="window.location.href='${pageContext.request.contextPath}/saas/forfaits'">Liste
+				onclick="window.location.href='${pageContext.request.contextPath}/box'">Liste
 					des paniers</a></li>
-
-			<li class="nav-item"><a class="nav-link"
-				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-				onclick="window.location.href='${pageContext.request.contextPath}/saas/forfaits'">Ajouter
-					un panier</a></li>
 
 			<li class="nav-item"><a class="nav-link" href="index.html"
 				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Contactez-nous</a>
