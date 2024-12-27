@@ -44,28 +44,9 @@ h1 {
     color: #E0E2E3;
 }
 
-
-/******************* Account nav **********************/
-
-
-
-.secondary-nav li {
-    display: block;
-    position: relative;
+.submenus:hover {
+	cursor: pointer;
 }
 
 
-.dropdown-content {
-    display: none;
-    position: relative;
-    z-index: 1;
-}
-
-.dropdown-content li {
-    padding: 0px 20px;
-}
-
-.dropdown-content li a {
-    display: block;
-}
 

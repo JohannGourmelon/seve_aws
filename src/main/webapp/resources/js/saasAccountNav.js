@@ -1,17 +1,20 @@
-// Fonction pour basculer l'affichage du sous-menu
-function toggleSubMenu() {
-    var subMenu = document.querySelector('.dropdown');
-    var menu = document.querySelector('.secondary-nav');
+function toggleSubMenu(event) {
+	event.preventDefault();
+	event.stopPropagation();
+	const subMenu = document.querySelector('.submenus');
 
-    if (subMenu.style.display === "none" || subMenu.style.display === "") {
-        subMenu.style.display = "block"; // Affiche le sous-menu
-    } else {
-        subMenu.style.display = "none"; // Cache le sous-menu
-    }
+	if (subMenu.style.display === "none" || subMenu.style.display === "") {
+		subMenu.style.display = "block";
+	} else {
+		subMenu.style.display = "none";
+	}
 }
 
-// Cache le sous-menu au départ
+
 document.addEventListener('DOMContentLoaded', function() {
-    var subMenu = document.querySelector('.dropdown-content');
-    subMenu.style.display = "none";
+	const subMenu = document.querySelector('.submenus');
+	if (subMenu) {
+		subMenu.style.display = "block";
+	}
 });
+
