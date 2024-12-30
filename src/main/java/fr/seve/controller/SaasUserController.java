@@ -56,13 +56,6 @@ public class SaasUserController {
 		return mv;
 
 	}
-	
-	@GetMapping("/saveSignUpStandard")
-	public ModelAndView payment() {
-		ModelAndView mv = new ModelAndView("saasuser-signup-payment");
-		mv.addObject("css", "/resources/css/saas/payment.css");
-		return mv;
-	}
 
 	@GetMapping("/souscription-essentiel")
 	public ModelAndView showFormEs() {
