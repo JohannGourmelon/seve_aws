@@ -41,7 +41,7 @@
     <label for="category">Catégorie :</label>
     <select id="category" name="category" required>
         <c:forEach var="category" items="${categories}">
-            <option value="${category}" ${category == box.category ? 'selected' : ''}>${category}</option>
+            <option value="${category}" ${category == box.category ? 'selected' : ''}>${category.displayName}</option>
         </c:forEach>
     </select>
 </p>
@@ -50,7 +50,7 @@
     <label for="frequency">Fréquence :</label>
     <select id="frequency" name="frequency" required>
         <c:forEach var="frequency" items="${frequencies}">
-            <option value="${frequency}" ${frequency == box.frequency ? 'selected' : ''}>${frequency}</option>
+            <option value="${frequency}" ${frequency == box.frequency ? 'selected' : ''}>${frequency.displayName}</option>
         </c:forEach>
     </select>
 </p>

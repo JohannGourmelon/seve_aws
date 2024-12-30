@@ -27,8 +27,8 @@
 				<td>${box.description}</td>
 				<td>${box.price}</td>
 				<td>${box.stock}</td>
-				<td>${box.frequency}</td>
-				<td>${box.category}</td>
+				<td>${box.frequency.displayName}</td>
+				<td>${box.category.displayName}</td>
  				<td>${box.availableDate}</td>
 				<td>${box.purchaseDeadlineDate}</td>
 				<td>${box.creationDate}</td>
