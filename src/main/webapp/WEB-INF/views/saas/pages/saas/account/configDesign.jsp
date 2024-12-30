@@ -25,7 +25,13 @@
 					<label class="formItem">Style des bordures</label>
 				</div>
 				<div class="designForm-inputs">
-					<input type="text" id="police" name="police" value="${configuration.police}">
+					<select id="police" name="police" class="formItem">
+        				<c:forEach var="police" items="${polices}">
+            				<option value="${police}" ${police == configuration.police ? 'selected' : ''}>
+                				${police.displayName}
+            				</option>
+        				</c:forEach>
+    				</select>
 					<div class="designForm-radios">
 						<div>
 							<input type="radio" id="roundedNo" name="isRoundedBorders" value="false" ${!configuration.isRoundedBorders ? 'checked' : ''}>

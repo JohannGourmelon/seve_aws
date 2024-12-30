@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.seve.entities.AMAP;
+import fr.seve.entities.Box;
 import fr.seve.entities.Configuration;
 import fr.seve.service.AmapService;
 import fr.seve.service.ConfigurationService;
@@ -58,6 +59,7 @@ public class ConfigurationController {
 		Configuration configuration = configurationService.findById(1L);
 	    AMAP amap = amapService.findById(1L);
 	    model.addAttribute("configuration", configuration);
+		model.addAttribute("polices", Configuration.Police.values());
 	    model.addAttribute("amap", amap);
 		ModelAndView mv = new ModelAndView("saas-account-config-design");
         mv.addObject("css", "/resources/css/saas/config.css");

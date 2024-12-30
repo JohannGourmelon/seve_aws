@@ -3,11 +3,15 @@ package fr.seve.entities;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import fr.seve.entities.Box.Category;
 
 @Entity
 @Table(name= "configurations")
@@ -29,8 +33,9 @@ public class Configuration {
 	@Column
 	private String tertiaryColor;
 	
-	@Column
-	private String police;
+    @Enumerated(EnumType.STRING)
+    @Column
+    private Police police;
 	
 	@Column
 	private Boolean isRoundedBorders;
@@ -86,11 +91,11 @@ public class Configuration {
 		this.tertiaryColor = tertiaryColor;
 	}
 
-	public String getPolice() {
+	public Police getPolice() {
 		return police;
 	}
 
-	public void setPolice(String police) {
+	public void setPolice(Police police) {
 		this.police = police;
 	}
 
@@ -101,5 +106,35 @@ public class Configuration {
 	public void setIsRoundedBorders(Boolean isRoundedBorders) {
 	    this.isRoundedBorders = isRoundedBorders;
 	}
+	
+	public enum Police {
+	    ARIAL("Arial"),
+	    BASKERVILLE("Baskerville"),
+	    CALIBRI("Calibri"),
+	    COURIER_NEW("Courier New"),
+	    CONSOLAS("Consolas"),
+	    FUTURA("Futura"),
+	    GARAMOND("Garamond"),
+	    GEORGIA("Georgia"),
+	    HELVETICA("Helvetica"),
+	    LATO("Lato"),
+	    OPEN_SANS("Open Sans"),
+	    PALATINO("Palatino"),
+	    ROBOTO("Roboto"),
+	    TIMES_NEW_ROMAN("Times New Roman"),
+	    VERDANA("Verdana");
+
+	    private final String displayName;
+
+	    Police(String displayName) {
+	        this.displayName = displayName;
+	    }
+
+	    public String getDisplayName() {
+	        return displayName;
+	    }
+	}
+
+
 	
 }
