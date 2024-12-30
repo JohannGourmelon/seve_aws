@@ -39,7 +39,14 @@
 		</div>
 		<!-- Form -->
 		<div class="card shadow payment-form">
-			<p class="font-weight-bold pb-4">Paiement par CB</p>
+			<div class="payment-form-header">
+				<p class="font-weight-bold">Paiement par CB</p>
+				<div class="payment-icons">
+					<img src="${pageContext.request.contextPath}/resources/images/saas/visa.png" alt="" />
+					<img src="${pageContext.request.contextPath}/resources/images/saas/mastercard.png" alt="" />
+					<img src="${pageContext.request.contextPath}/resources/images/saas/amex.png" alt="" />
+				</div>
+			</div>
 			<div class="panel-body">
 
 				<div class="form-group signup-field">
@@ -80,7 +87,8 @@
 
 				<div id="btns" class="form-buttons text-center mt-4">
 					<button class="btn btn-b btn-package-card px-5"
-						onclick="window.location.href='${pageContext.request.contextPath}/amap/info/${saasUser.id}'">Confirmer le paiement</button>
+						onclick="window.location.href='${pageContext.request.contextPath}/amap/info/${saasUser.id}'">Confirmer
+						le paiement</button>
 				</div>
 
 			</div>
