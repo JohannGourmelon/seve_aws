@@ -25,7 +25,7 @@
 					<label class="formItem">Style des bordures</label>
 				</div>
 				<div class="designForm-inputs">
-					<select id="police" name="police" class="formItem">
+					<select id="police" name="police" class="formSelectItem">
         				<c:forEach var="police" items="${polices}">
             				<option value="${police}" ${police == configuration.police ? 'selected' : ''}>
                 				${police.displayName}

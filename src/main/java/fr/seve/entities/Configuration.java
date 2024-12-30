@@ -111,6 +111,7 @@ public class Configuration {
 	    ARIAL("Arial"),
 	    BASKERVILLE("Baskerville"),
 	    CALIBRI("Calibri"),
+	    CAMBRIA("Cambria"),
 	    COURIER_NEW("Courier New"),
 	    CONSOLAS("Consolas"),
 	    FUTURA("Futura"),
@@ -118,9 +119,13 @@ public class Configuration {
 	    GEORGIA("Georgia"),
 	    HELVETICA("Helvetica"),
 	    LATO("Lato"),
+	    MONTSERRAT("Montserrat"),
 	    OPEN_SANS("Open Sans"),
 	    PALATINO("Palatino"),
+	    POPPINS("Poppins"),
 	    ROBOTO("Roboto"),
+	    SOURCE_SANS_PRO("Source Sans Pro"),
+	    TAHOMA("Tahoma"),
 	    TIMES_NEW_ROMAN("Times New Roman"),
 	    VERDANA("Verdana");
 

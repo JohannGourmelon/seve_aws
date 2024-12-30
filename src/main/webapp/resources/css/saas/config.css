@@ -24,6 +24,14 @@
 	gap: 15px;
 }
 
+.formSelectItem {
+	padding: 5px 15px;
+	width: 200px;
+	border-radius: 30px;
+	border: 1px solid #cfd8dc;
+}
+
+
 .contentForm-inputs {
 	display: flex;
 	gap: 50px;
