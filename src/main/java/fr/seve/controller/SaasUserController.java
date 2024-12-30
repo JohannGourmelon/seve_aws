@@ -188,7 +188,9 @@ public class SaasUserController {
 			amapSpaceService.save(amapSpace);
 			service.save(saasUser);
 
-			return new ModelAndView("saasuser-signup-payment");
+			ModelAndView mv = new ModelAndView("saasuser-signup-payment");
+			mv.addObject("css", "/resources/css/saas/payment.css");
+			return mv;
 		}
 
 	}
@@ -237,7 +239,9 @@ public class SaasUserController {
 			amapSpaceService.save(amapSpace);
 			service.save(saasUser);
 
-			return new ModelAndView("saasuser-signup-payment");
+			ModelAndView mv = new ModelAndView("saasuser-signup-payment");
+			mv.addObject("css", "/resources/css/saas/payment.css");
+			return mv;
 		}
 
 	}
