@@ -1,0 +1,67 @@
+.payment-container {
+	display: flex;
+	justify-content: center;
+	gap: 7vw;
+}
+
+.payment-container > div {
+	width: 42%;
+}
+
+
+.payment-form {
+	background-color: #f0f3f5;
+	border-radius: 30px;
+	padding: 35px 50px;
+	border: none;
+	margin-top: 50px;
+	height: 100%;
+	
+}
+.payment-form input {
+	width: 100%;
+}
+
+.left {
+		display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+}
+
+.recap {
+	border-radius: 30px;
+	padding: 25px 30px 0 40px;
+	border: 2px solid #a8b5a2;
+}
+
+.recap p {
+	margin-bottom: 2px;
+}
+
+.recap-part {
+	display: flex;
+	align-items: center;
+	gap: 2vw;
+	margin-bottom: 30px;
+}
+
+.form-group {
+	margin-bottom: 1.3rem;
+}
+
+.flex {
+	display: flex;
+	justify-content: space-between;
+	gap: 2vw;
+}
+
+.dot-container {
+	width: 15px;
+}
+
+.dot {
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+}
