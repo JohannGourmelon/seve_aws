@@ -29,14 +29,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .csrf().disable() // Désactivez CSRF pour simplifier le débogage
+            .csrf().disable() // Désactive CSRF pour simplifier
             .authorizeRequests()
-                .antMatchers("/login", "/resources/**").permitAll() // Autoriser l’accès à ces URL
+                .antMatchers("/login", "/resources/**").permitAll() // Autorise l'accès à /login
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
-                .loginPage("/login") // Page de connexion personnalisée
+                .loginPage("/login") // Spécifie la page personnalisée pour la connexion
+                .defaultSuccessUrl("/profile", true) // Redirection après succès
+                .failureUrl("/login?error=true") // Redirection en cas d'échec
                 .permitAll();
     }
+
+
 
 }
