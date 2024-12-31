@@ -3,9 +3,8 @@ package fr.seve.entities;
 import javax.persistence.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "boxes")
@@ -15,38 +14,40 @@ public class Box {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(nullable = true)
+	@Column
 	private String name;
 
-	@Column(nullable = true)
+	@Column
 	private String description;
 
-	@Column(nullable = true)
+	@Column
 	private double price;
 
-	@Column(nullable = true)
+	@Column
 	private int stock;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(nullable = true)
-	private Date availableDate;
+	@Column
+	private LocalDate availableDate;
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column
+	private LocalDate purchaseDeadlineDate;
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column
+	private LocalDate creationDate;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(nullable = true)
-	private Date purchaseDeadlineDate;
-
-	@Column(nullable = true)
-	private String creationDate;
-
-	@Column(nullable = true)
-	private String lastModifiedDate;
+	private LocalDate lastModifiedDate;
 
 	@Enumerated(EnumType.STRING)
-	@Column(nullable = true)
+	@Column
 	private Category category;
 
 	@Enumerated(EnumType.STRING)
-	@Column(nullable = true)
+	@Column
 	private Frequency frequency;
 
 //    @Column(nullable = true)
@@ -97,52 +98,36 @@ public class Box {
 		this.stock = stock;
 	}
 
-	public Date getAvailableDate() {
+	public LocalDate getAvailableDate() {
 		return availableDate;
 	}
 
-	public void setAvailableDate(Date availableDate) {
+	public void setAvailableDate(LocalDate availableDate) {
 		this.availableDate = availableDate;
 	}
 
-	public Date getPurchaseDeadlineDate() {
+	public LocalDate getPurchaseDeadlineDate() {
 		return purchaseDeadlineDate;
 	}
 
-	public void setPurchaseDeadlineDate(Date purchaseDeadlineDate) {
+	public void setPurchaseDeadlineDate(LocalDate purchaseDeadlineDate) {
 		this.purchaseDeadlineDate = purchaseDeadlineDate;
 	}
-
-	public String getCreationDate() {
+	
+	public LocalDate getCreationDate() {
 		return creationDate;
 	}
 
-	public void setCreationDate(String creationDate) {
+	public void setCreationDate(LocalDate creationDate) {
 		this.creationDate = creationDate;
 	}
 
-	public String getLastModifiedDate() {
+	public LocalDate getLastModifiedDate() {
 		return lastModifiedDate;
 	}
 
-	public void setLastModifiedDate(String lastModifiedDate) {
+	public void setLastModifiedDate(LocalDate lastModifiedDate) {
 		this.lastModifiedDate = lastModifiedDate;
-	}
-
-	public String getFormattedAvailableDate() {
-		if (availableDate != null) {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			return sdf.format(availableDate);
-		}
-		return "";
-	}
-
-	public String getFormattedPurchaseDeadlineDate() {
-		if (purchaseDeadlineDate != null) {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			return sdf.format(purchaseDeadlineDate);
-		}
-		return "";
 	}
 
 	public Frequency getFrequency() {
@@ -176,6 +161,30 @@ public class Box {
 //    public void setProducteur(Producteur producteur) {
 //        this.producteur = producteur;
 //    }
+	
+	
+	
+	// Formattage des dates
+	
+	private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+	public String getFormattedAvailableDate() {
+	    return availableDate != null ? availableDate.format(FORMATTER) : "";
+	}
+
+	public String getFormattedPurchaseDeadlineDate() {
+	    return purchaseDeadlineDate != null ? purchaseDeadlineDate.format(FORMATTER) : "";
+	}
+	
+	public String getFormattedCreationDate() {
+	    return creationDate != null ? creationDate.format(FORMATTER) : "";
+	}
+
+	public String getFormattedLastModifiedDate() {
+	    return lastModifiedDate != null ? lastModifiedDate.format(FORMATTER) : "";
+	}
+	
+	
 
 	// Enum pour la fréquence
 	public enum Frequency {

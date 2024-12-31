@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<h1>${box.id != null ? 'Modifier' : 'Ajouter'}un panier</h1>
+<h1>${box.id != null ? 'Modifier' : 'Ajouter'} un panier</h1>
 
 <c:choose>
 	<c:when test="${box.id != null}">
@@ -36,11 +36,11 @@
 
 <label for="availableDate">Date de disponibilité :</label>
 <input type="date" id="availableDate" name="availableDate"
-	value="${box.formattedAvailableDate}" required />
+	value="${box.availableDate}" required />
 
 <label for="purchaseDeadlineDate">Date limite d'achat :</label>
 <input type="date" id="purchaseDeadlineDate" name="purchaseDeadlineDate"
-	value="${box.formattedPurchaseDeadlineDate}" required />
+	value="${box.purchaseDeadlineDate}" required />
 
 <p>
 	<label for="category">Catégorie :</label> <select id="category"

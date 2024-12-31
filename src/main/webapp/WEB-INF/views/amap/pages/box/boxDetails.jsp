@@ -10,19 +10,19 @@
 <p><strong>Catégorie :</strong> ${box.category.displayName}</p>
 
  <p><strong>Date de disponibilité :</strong>
-    ${box.availableDate}
+    ${box.formattedAvailableDate}
 </p>
 
 <p><strong>Date limite d'achat :</strong>
-   ${box.purchaseDeadlineDate}
+   ${box.formattedPurchaseDeadlineDate}
 </p>
 
 <p><strong>Date de création :</strong>
-    ${box.creationDate}
+    ${box.formattedCreationDate}
 </p>
 
 <p><strong>Date dernière modification :</strong>
-   ${box.lastModifiedDate}
+   ${box.formattedLastModifiedDate}
 </p> 
 
 <a href="${pageContext.request.contextPath}/box">Retour à la liste</a>

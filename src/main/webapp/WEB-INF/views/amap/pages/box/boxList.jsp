@@ -29,10 +29,10 @@
 				<td>${box.stock}</td>
 				<td>${box.frequency.displayName}</td>
 				<td>${box.category.displayName}</td>
- 				<td>${box.availableDate}</td>
-				<td>${box.purchaseDeadlineDate}</td>
-				<td>${box.creationDate}</td>
-				<td>${box.lastModifiedDate}</td>
+ 				<td>${box.formattedAvailableDate}</td>
+				<td>${box.formattedPurchaseDeadlineDate}</td>
+				<td>${box.formattedCreationDate}</td>
+				<td>${box.formattedLastModifiedDate}</td>
 				<td><a
 					href="${pageContext.request.contextPath}/box/${box.id}">Details</a>
 					| <a href="${pageContext.request.contextPath}/box/edit/${box.id}">Modifier</a>
