@@ -71,3 +71,6 @@
 </p>
 
 </form>
+
+<script src="${pageContext.request.contextPath}/resources/js/formValidation.js"></script>
+

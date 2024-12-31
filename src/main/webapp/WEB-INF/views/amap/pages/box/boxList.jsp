@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <h1>Liste des paniers disponibles</h1>
@@ -11,12 +12,12 @@
 			<th>Description</th>
 			<th>Prix</th>
 			<th>Stock</th>
-			<th>Fréquence</th>
+			<th>FrÃ©quence</th>
 			<th>Categorie</th>
- 			<th>Date de disponibilité</th>
+ 			<th>Date de disponibilitÃ©</th>
 			<th>Date limite d'achat</th>
-			<th>Date de création</th>
-			<th>Date de dernière modification</th>
+			<th>Date de crÃ©ation</th>
+			<th>Date de derniÃ¨re modification</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -25,7 +26,7 @@
 				<td>${box.id}</td>
 				<td>${box.name}</td>
 				<td>${box.description}</td>
-				<td>${box.price}</td>
+				<td>${box.price} â‚¬</td>
 				<td>${box.stock}</td>
 				<td>${box.frequency.displayName}</td>
 				<td>${box.category.displayName}</td>
@@ -38,7 +39,7 @@
 					| <a href="${pageContext.request.contextPath}/box/edit/${box.id}">Modifier</a>
 					| <a
 					href="${pageContext.request.contextPath}/box/delete/${box.id}"
-					onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce panier ?')">Supprimer</a></td>
+					onclick="return confirm('ÃŠtes-vous sÃ»r de vouloir supprimer ce panier ?')">Supprimer</a></td>
 			</tr>
 		</c:forEach>
 	</tbody>
