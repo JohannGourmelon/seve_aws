@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import fr.seve.entities.AMAP;
 import fr.seve.entities.Box;
+import fr.seve.entities.Configuration;
 import fr.seve.service.BoxService;
 
 
@@ -24,12 +27,13 @@ public class BoxController {
 	private BoxService boxService;
 	
 	@GetMapping
-	public String listBoxes(Model model) {
+	public ModelAndView listBoxes(Model model) {
 		List<Box> boxes = boxService.findAll();
 		model.addAttribute("boxes", boxes);
-		
-		return "box-list";
-	}
+		ModelAndView mv = new ModelAndView("box-list");
+		mv.addObject("css", "/resources/css/amap/boForms.css");
+	    return mv;
+	}	
 	
 	@GetMapping("{id}")
 	public String getBox(@PathVariable Long id, Model model) {

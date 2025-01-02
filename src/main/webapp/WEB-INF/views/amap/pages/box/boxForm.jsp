@@ -1,76 +1,92 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<h1>${box.id != null ? 'Modifier' : 'Ajouter'} un panier</h1>
+<div class="container mt-3">
+    <h1 class="mb-4 text-center">${box.id != null ? 'Modifier' : 'Ajouter'} un panier</h1>
 
-<c:choose>
-	<c:when test="${box.id != null}">
-		<form action="${pageContext.request.contextPath}/box/edit/${box.id}"
-			method="post">
-	</c:when>
-	<c:otherwise>
-		<form action="${pageContext.request.contextPath}/box/add"
-			method="post">
-	</c:otherwise>
-</c:choose>
+    <c:choose>
+        <c:when test="${box.id != null}">
+            <form action="${pageContext.request.contextPath}/box/edit/${box.id}" method="post" class="needs-validation" novalidate>
+        </c:when>
+        <c:otherwise>
+            <form action="${pageContext.request.contextPath}/box/add" method="post" class="needs-validation" novalidate>
+        </c:otherwise>
+    </c:choose>
 
-<p>
-	<label for="name">Nom :</label> <input type="text" id="name"
-		name="name" value="${box.name}" required>
-</p>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nom :</label>
+                    <input type="text" id="name" name="name" class="form-control" value="${box.name}" required>
+                    <div class="invalid-feedback">Veuillez saisir un nom.</div>
+                </div>
 
-<p>
-	<label for="description">Description :</label> <input type="text"
-		id="description" name="description" value="${box.description}"
-		required>
-</p>
+                <div class="mb-4">
+                    <label for="description" class="form-label">Description :</label>
+                    <textarea id="description" name="description" class="form-control" rows="4" required>${box.description}</textarea>
+                    <div class="invalid-feedback">Veuillez saisir une description.</div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="category" class="form-label">Cat√©gorie :</label>
+                    <select id="category" name="category" class="form-select" required>
+                        <option value="" selected disabled>Choisissez une cat√©gorie</option>
+                        <c:forEach var="category" items="${categories}">
+                            <option value="${category}" ${category == box.category ? 'selected' : ''}>${category.displayName}</option>
+                        </c:forEach>
+                    </select>
+                    <div class="invalid-feedback">Veuillez choisir une cat√©gorie.</div>
+                </div>
+                             
+                <div class="mb-3">
+                    <label for="frequency" class="form-label">Fr√©quence :</label>
+                    <select id="frequency" name="frequency" class="form-select" required>
+                        <option value="" selected disabled>Choisissez une fr√©quence</option>
+                        <c:forEach var="frequency" items="${frequencies}">
+                            <option value="${frequency}" ${frequency == box.frequency ? 'selected' : ''}>${frequency.displayName}</option>
+                        </c:forEach>
+                    </select>
+                    <div class="invalid-feedback">Veuillez choisir une fr√©quence.</div>
+                </div>
+               
+            </div>
+            
+            <div class="col-md-1"></div>
 
-<p>
-	<label for="price">Prix :</label> <input type="number" id="price"
-		name="price" value="${box.price}" step="0.01" min="0.01" required>
-</p>
+            <div class="col-md-3">
+                <div class="mb-3">
+                    <label for="availableDate" class="form-label">Date de disponibilit√© :</label>
+                    <input type="date" id="availableDate" name="availableDate" class="form-control" value="${box.availableDate}" required>
+                    <div class="invalid-feedback">Veuillez choisir une date de disponibilit√©.</div>
+                </div>
 
-<p>
-	<label for="stock">Stock :</label> <input type="number" id="stock"
-		name="stock" value="${box.stock}" min="1" required>
-</p>
+                <div class="mb-3">
+                    <label for="purchaseDeadlineDate" class="form-label">Date limite d'achat :</label>
+                    <input type="date" id="purchaseDeadlineDate" name="purchaseDeadlineDate" class="form-control" value="${box.purchaseDeadlineDate}" required>
+                    <div class="invalid-feedback">Veuillez choisir une date limite d'achat.</div>
+                </div>
 
-<label for="availableDate">Date de disponibilitÈ :</label>
-<input type="date" id="availableDate" name="availableDate"
-	value="${box.availableDate}" required />
+                <div class="mb-3">
+                    <label for="price" class="form-label">Prix :</label>
+                    <input type="number" id="price" name="price" class="form-control" value="${box.price}" step="0.01" min="0.01" required>
+                    <div class="invalid-feedback">Veuillez saisir un prix valide.</div>
+                </div>
 
-<label for="purchaseDeadlineDate">Date limite d'achat :</label>
-<input type="date" id="purchaseDeadlineDate" name="purchaseDeadlineDate"
-	value="${box.purchaseDeadlineDate}" required />
+                <div class="mb-3">
+                    <label for="stock" class="form-label">Stock :</label>
+                    <input type="number" id="stock" name="stock" class="form-control" value="${box.stock}" min="1" required>
+                    <div class="invalid-feedback">Veuillez saisir une quantit√© en stock valide.</div>
+                </div>
+                
+            </div>
+        </div>
 
-<p>
-	<label for="category">CatÈgorie :</label> <select id="category"
-		name="category" required>
-		<option value="" selected disabled>Choisissez une catÈgorie</option>
-
-		<c:forEach var="category" items="${categories}">
-			<option value="${category}"
-				${category == box.category ? 'selected' : ''}>${category.displayName}</option>
-		</c:forEach>
-	</select>
-</p>
-
-<p>
-	<label for="frequency">FrÈquence :</label> <select id="frequency"
-		name="frequency" required>
-		<option value="" selected disabled>Choisissez une frÈquence</option>
-		<c:forEach var="frequency" items="${frequencies}">
-			<option value="${frequency}"
-				${frequency == box.frequency ? 'selected' : ''}>${frequency.displayName}</option>
-		</c:forEach>
-	</select>
-</p>
-
-<p>
-	<button type="submit">Enregistrer</button>
-	<a href="${pageContext.request.contextPath}/box">Annuler</a>
-</p>
-
-</form>
+        <div class="d-flex justify-content-center mt-4 mb-5">
+                    <a href="${pageContext.request.contextPath}/box" class="btn btn-secondary mx-3">Annuler</a>
+        
+            <button type="submit" class="btn btn-primary mx-3">Enregistrer</button>
+        </div>
+    </form>
+</div>
 
 <script src="${pageContext.request.contextPath}/resources/js/formValidation.js"></script>
-
