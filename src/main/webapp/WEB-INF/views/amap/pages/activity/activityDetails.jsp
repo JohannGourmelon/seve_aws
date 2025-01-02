@@ -9,8 +9,16 @@
 <p><strong>Nombre de places disponibles :</strong> ${activity.availableSpace}</p>
 
 
- <p><strong>Date et horaire de l'atelier :</strong>
-    ${activity.formattedDateAndTime}
+ <p><strong>Date de l'atelier :</strong>
+    ${activity.formattedDate}
+</p>
+
+<p><strong>Heure de début de l'atelier :</strong>
+    ${activity.formattedStartTime}
+</p>
+
+<p><strong>Heure de fin de l'atelier :</strong>
+    ${activity.formattedEndTime}
 </p>
 
 <p><strong>Lieu de l'atelier:</strong> ${activity.place}</p>

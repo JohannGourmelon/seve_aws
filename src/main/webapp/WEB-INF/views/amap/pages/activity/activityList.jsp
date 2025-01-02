@@ -13,7 +13,9 @@
 			<th>Prix</th>
 			<th>Nombre de participants maximum</th>
 			<th>Nombre de places disponibles</th>
-			<th>Date et horaire de l'atelier</th>
+			<th>Date de l'atelier</th>
+			<th>Heure de début</th>
+			<th>Heure de fin</th>
  			<th>Lieu de l'atelier</th>
 			<th>Date de création</th>
 			<th>Date de dernière modification</th>
@@ -28,7 +30,9 @@
 				<td>${activity.price} €</td>
 				<td>${activity.maxParticipant}</td>
 				<td>${activity.availableSpace}</td>
- 				<td>${activity.formattedDateAndTime}</td>
+ 				<td>${activity.formattedDate}</td>
+ 				<td>${activity.formattedStartTime}</td>
+ 				<td>${activity.formattedStartTime}</td>
 				<td>${activity.place}</td>
 				<td>${activity.formattedCreationDate}</td>
 				<td>${activity.formattedLastModifiedDate}</td>

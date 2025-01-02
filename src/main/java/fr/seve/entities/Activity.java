@@ -2,6 +2,7 @@ package fr.seve.entities;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Column;
@@ -37,9 +38,15 @@ public class Activity {
 	@Column
 	private int availableSpace;
 
-	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column
-	private LocalDateTime dateAndTime;
+	private LocalDate date;
+	
+	@Column
+    private LocalTime startTime;
+
+    @Column
+    private LocalTime endTime;
 
 	@Column
 	private String place;
@@ -107,12 +114,30 @@ public class Activity {
 		this.availableSpace = availableSpace;
 	}
 
-	public LocalDateTime getDateAndTime() {
-		return dateAndTime;
+	public LocalDate getDate() {
+		return date;
+	}
+	
+
+
+	public void setDate(LocalDate date) {
+		this.date = date;
 	}
 
-	public void setDateAndTime(LocalDateTime dateAndTime) {
-		this.dateAndTime = dateAndTime;
+	public LocalTime getStartTime() {
+		return startTime;
+	}
+
+	public LocalTime getEndTime() {
+		return endTime;
+	}
+
+	public void setStartTime(LocalTime startTime) {
+		this.startTime = startTime;
+	}
+
+	public void setEndTime(LocalTime endTime) {
+		this.endTime = endTime;
 	}
 
 	public String getPlace() {
@@ -157,10 +182,10 @@ public class Activity {
 	
 	// Formattage des dates
 	
-		private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+		private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-		public String getFormattedDateAndTime() {
-		    return dateAndTime != null ? dateAndTime.format(FORMATTER) : "";
+		public String getFormattedDate() {
+		    return date != null ? date.format(FORMATTER) : "";
 		}
 		
 		public String getFormattedCreationDate() {
@@ -171,6 +196,18 @@ public class Activity {
 		    return lastModifiedDate != null ? lastModifiedDate.format(FORMATTER) : "";
 		}
 	
+
+		// Formattage des horaires
+		
+		private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
+
+		public String getFormattedStartTime() {
+		    return startTime != null ? startTime.format(TIME_FORMATTER) : "";
+		}
+
+		public String getFormattedEndTime() {
+		    return endTime != null ? endTime.format(TIME_FORMATTER) : "";
+		}
 	
 
 }

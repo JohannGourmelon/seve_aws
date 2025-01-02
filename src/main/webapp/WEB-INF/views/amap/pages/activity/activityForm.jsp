@@ -39,9 +39,17 @@
 		name="availableSpace" value="${activity.availableSpace}" min="1" required>
 </p>
 
-<label for="dateAndTime">Date et horaire de l'atelier :</label>
-<input type="date" id="dateAndTime" name="dateAndTime"
-	value="${activity.dateAndTime}" required />
+<label for="date">Date de l'atelier :</label>
+<input type="date" id="dateAndTime" name="date"
+	value="${activity.date}" required />
+	
+	<label for="startTime">Heure de début :</label>
+<input type="time" id="startTime" name="startTime"
+	value="${activity.startTime}" required />
+	
+	<label for="endTime">Heure de fin :</label>
+<input type="time" id="endTime" name="endTime"
+	value="${activity.endTime}" required />
 	
 <p>
 	<label for="place">Lieu de l'atelier :</label> <input type="text" id="place"
