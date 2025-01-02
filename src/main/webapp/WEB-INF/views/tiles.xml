@@ -5,6 +5,16 @@
 
 <tiles-definitions>
 
+
+	<!-- Dev Home -->
+
+	<definition name="home"
+		template="/WEB-INF/views/home.jsp">
+	</definition>
+	
+	
+	
+
 	<!-- <<<<<<<<<<<<<<<<<<< Pages SaaS >>>>>>>>>>>>>>>>>>>>> -->
 
 	<!-- Template SaaS -->
@@ -34,13 +44,6 @@
 			value="/WEB-INF/views/saas/layouts/saasDefaultFooter.jsp" />
 		<put-attribute name="secondaryNav"
 			value="/WEB-INF/views/saas/layouts/saasAccountNav.jsp" />
-	</definition>
-
-
-	<!-- Home -->
-
-	<definition name="home"
-		template="/WEB-INF/views/saas/pages/home.jsp">
 	</definition>
 
 
@@ -180,6 +183,14 @@
 			value="/WEB-INF/views/amap/pages/amapDefaultMain.jsp" />
 		<put-attribute name="footer"
 			value="/WEB-INF/views/amap/layouts/amapDefaultFooter.jsp" />
+	</definition>
+	
+	
+	<!-- Pages /Home -->
+	
+		<definition name="amap-home" extends="template-amap">
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/home.jsp" />
 	</definition>
 
 	<!-- Pages /box -->

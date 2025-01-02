@@ -9,8 +9,9 @@
             <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-4 mb-5">
                 <div class="card">
                     <img src="${pageContext.request.contextPath}/resources/images/amap/panier.jpeg" class="card-img-top" alt="Image du panier">
+                    <p class="card-title text-center">${box.name}</p>
+               
                     <div class="card-body">
-                        <h4 class="card-title text-center mb-4">${box.name}</h4>
                         <p class="card-text mb-4">${box.description}</p>
                         <div class="row">
                             <div class="col-12 col-md-6">

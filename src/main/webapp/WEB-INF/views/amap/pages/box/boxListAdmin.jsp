@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
     <div class="container-fluid">
-        <h1 class="text-center">Liste des paniers</h1>
+        <h1 class="text-center">Gestion des paniers</h1>
         <div class="text-end mb-2">
             <a href="${pageContext.request.contextPath}/box/add" class="btn btn-success">Ajouter un panier</a>
         </div>
