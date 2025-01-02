@@ -1,49 +1,43 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-    <div class="container-fluid">
-        <h1 class="text-center">Liste des paniers</h1>
-        <div class="text-end mb-2">
-            <a href="${pageContext.request.contextPath}/box/add" class="btn btn-success">Ajouter un panier</a>
-        </div>
-        <table class="table table-bordered table-striped table-hover mb-5">
-            <thead>
-                <tr>
-                    <th class="d-none">ID</th>
-                    <th class="col-1">Nom</th>
-                    <th class="col-1">Prix</th>
-                    <th class="col-1">Stock</th>
-                    <th class="col-1">Fréquence</th>
-                    <th class="col-1">Catégorie</th>
-                    <th class="col-1">Date de disponibilité</th>
-                    <th class="col-1">Date limite d'achat</th>
-                    <th class="col-1">Date de création</th>
-                    <th class="col-1">Dernière modification</th>
-                    <th class="col-2">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="box" items="${boxes}">
-                    <tr>
-                        <td class="d-none">${box.id}</td>
-                        <td>${box.name}</td>
-                        <td>${box.price} €</td>
-                        <td>${box.stock}</td>
-                        <td>${box.frequency.displayName}</td>
-                        <td>${box.category.displayName}</td>
-                        <td>${box.formattedAvailableDate}</td>
-                        <td>${box.formattedPurchaseDeadlineDate}</td>
-                        <td>${box.formattedCreationDate}</td>
-                        <td>${box.formattedLastModifiedDate}</td>
-                        <td>
-                            <div class="btn-container">
-                                <a href="${pageContext.request.contextPath}/box/${box.id}" class="btn btn-info btn-sm btn-link">Détails</a>
-                                <a href="${pageContext.request.contextPath}/box/edit/${box.id}" class="btn btn-warning btn-sm btn-link">Modifier</a>
-                                <a href="${pageContext.request.contextPath}/box/delete/${box.id}" class="btn btn-danger btn-sm btn-link" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce panier ?')">Supprimer</a>
+<div class="container-fluid mt-5">
+    <h1 class="text-center mb-4">Découvrez nos paniers maraîchers</h1>
+
+    <div class="row">
+        <c:forEach var="box" items="${boxes}">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-4 mb-5">
+                <div class="card">
+                    <img src="${pageContext.request.contextPath}/resources/images/amap/panier.jpeg" class="card-img-top" alt="Image du panier">
+                    <div class="card-body">
+                        <h4 class="card-title text-center mb-4">${box.name}</h4>
+                        <p class="card-text mb-4">${box.description}</p>
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <p class="card-text delivery-text">Livraison ${box.frequency.displayName}</p>
                             </div>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
+                            <div class="col-12 col-md-6 d-flex justify-content-end align-items-center">
+								<span class="badge p-2 text-white
+						            <c:choose>
+						                <c:when test="${box.category.displayName == 'Fruits'}">bg-success</c:when>
+						                <c:when test="${box.category.displayName == 'Légumes'}">bg-info</c:when>
+						                <c:when test="${box.category.displayName == 'Mixtes'}">bg-warning</c:when>
+						                <c:otherwise>bg-secondary</c:otherwise>
+						            </c:choose>
+						        ">
+						            ${box.category.displayName}
+						        </span>                            
+							</div>
+                        </div>
+                        <div class="row d-flex justify-content-center align-items-center mt-4">
+    						<p class="card-text text-center font-weight-bold">${box.price} € / mois</p>
+						</div>
+                        <div class="btn-container text-center mt-3">
+                            <a href="${pageContext.request.contextPath}/box/edit/${box.id}" class="btn btn-warning btn-sm">Commander</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
     </div>
+</div>

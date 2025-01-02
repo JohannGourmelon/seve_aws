@@ -188,7 +188,7 @@ public class Box {
 
 	// Enum pour la fréquence
 	public enum Frequency {
-		WEEKLY("Hebdomadaire"), BIMONTHLY("Bimensuel"), MONTHLY("Mensuel");
+		WEEKLY("Hebdomadaire"), BIMONTHLY("Bimensuelle"), MONTHLY("Mensuelle");
 
 		private final String displayName;
 

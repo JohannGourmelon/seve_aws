@@ -31,6 +31,15 @@ public class BoxController {
 		List<Box> boxes = boxService.findAll();
 		model.addAttribute("boxes", boxes);
 		ModelAndView mv = new ModelAndView("box-list");
+		mv.addObject("css", "/resources/css/amap/boxList.css");
+	    return mv;
+	}
+	
+	@GetMapping("/admin")
+	public ModelAndView adminListBoxes(Model model) {
+		List<Box> boxes = boxService.findAll();
+		model.addAttribute("boxes", boxes);
+		ModelAndView mv = new ModelAndView("admin-box-list");
 		mv.addObject("css", "/resources/css/amap/boForms.css");
 	    return mv;
 	}	
@@ -57,13 +66,13 @@ public class BoxController {
 	public String saveBox(@ModelAttribute Box box) {
 		box.setCreationDate(LocalDate.now());
 		boxService.save(box);
-		return "redirect:/box";
+		return "redirect:/box/admin";
 	}
 	
 	@GetMapping("/delete/{id}")
 	public String deleteBox(@PathVariable Long id) {
 		boxService.deleteById(id);
-		return "redirect:/box";
+		return "redirect:/box/admin";
 		
 	}
 	
@@ -82,7 +91,7 @@ public class BoxController {
     	box.setCreationDate(oldBox.getCreationDate());
 		box.setLastModifiedDate(LocalDate.now());
     	boxService.save(box);
-        return "redirect:/box";
+        return "redirect:/box/admin";
     }
     
 
