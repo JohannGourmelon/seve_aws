@@ -200,5 +200,47 @@
 			<put-attribute name="main"
 				value="/WEB-INF/views/amap/pages/box/boxForm.jsp" />
 		</definition>
+		
+		<!-- Pages /product -->
+
+		<definition name="product-list" extends="template-amap">
+			<put-attribute name="title"
+				value="Liste des produits" />
+			<put-attribute name="main"
+				value="/WEB-INF/views/amap/pages/product/productList.jsp" />
+		</definition>
+		<definition name="product-details" extends="template-amap">
+			<put-attribute name="title" value="Détails du produit" />
+			<put-attribute name="main"
+				value="/WEB-INF/views/amap/pages/product/productDetails.jsp" />
+		</definition>
+		<definition name="product-form" extends="template-amap">
+			<put-attribute name="title"
+				value="Formulaire de création d'un produit" />
+			<put-attribute name="main"
+				value="/WEB-INF/views/amap/pages/product/productForm.jsp" />
+		</definition>
+		
+		
+		<!-- Pages /activity -->
+
+		<definition name="activity-list" extends="template-amap">
+			<put-attribute name="title"
+				value="Liste des ateliers" />
+			<put-attribute name="main"
+				value="/WEB-INF/views/amap/pages/activity/activityList.jsp" />
+		</definition>
+		<definition name="activity-details" extends="template-amap">
+			<put-attribute name="title" value="Détails de l'atelier" />
+			<put-attribute name="main"
+				value="/WEB-INF/views/amap/pages/activity/activityDetails.jsp" />
+		</definition>
+		<definition name="activity-form" extends="template-amap">
+			<put-attribute name="title"
+				value="Formulaire de création d'atelier" />
+			<put-attribute name="main"
+				value="/WEB-INF/views/amap/pages/activity/activityForm.jsp" />
+		</definition>
+		
 
 </tiles-definitions>

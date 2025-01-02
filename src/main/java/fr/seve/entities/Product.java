@@ -1,15 +1,26 @@
 package fr.seve.entities;
 
-import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
-import java.time.format.DateTimeFormatter;
-import java.time.LocalDate;
+
+
+
 
 @Entity
-@Table(name = "boxes")
-public class Box {
-
+@Table(name="products")
+public class Product {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -46,10 +57,7 @@ public class Box {
 	@Column
 	private Category category;
 
-	@Enumerated(EnumType.STRING)
-	@Column
-	private Frequency frequency;
-
+	
 //    @Column(nullable = true)
 //    private String imageUrl;
 
@@ -130,14 +138,6 @@ public class Box {
 		this.lastModifiedDate = lastModifiedDate;
 	}
 
-	public Frequency getFrequency() {
-		return frequency;
-	}
-
-	public void setFrequency(Frequency frequency) {
-		this.frequency = frequency;
-	}
-
 	public Category getCategory() {
 		return category;
 	}
@@ -184,26 +184,10 @@ public class Box {
 	    return lastModifiedDate != null ? lastModifiedDate.format(FORMATTER) : "";
 	}
 	
-	
-
-	// Enum pour la fréquence
-	public enum Frequency {
-		WEEKLY("Hebdomadaire"), BIMONTHLY("Bimensuel"), MONTHLY("Mensuel");
-
-		private final String displayName;
-
-		Frequency(String displayName) {
-			this.displayName = displayName;
-		}
-
-		public String getDisplayName() {
-			return displayName;
-		}
-	}
-
+		
 	// Enum pour la catégorie
 	public enum Category {
-		FRUITS("Fruits"), VEGETABLES("Légumes"), MIXED("Mixte");
+		FRUITS("Fruits"), VEGETABLES("Légumes"), EGGS("Oeufs"), MEAT("Viandes"), BREAD("Pains"), DRINK("Boissons"), DELI("Charcuterie"), SWEET_GROCERY("Epicerie sucrée"), SALT_GROCERY("Epicerie salée");
 
 		private final String displayName;
 
@@ -215,5 +199,6 @@ public class Box {
 			return displayName;
 		}
 	}
+
 
 }
