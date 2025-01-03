@@ -1,5 +1,6 @@
 package fr.seve.entities;
 
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +12,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
 import javax.validation.constraints.*;
 
 @Entity
@@ -47,6 +47,7 @@ public class SaasUser {
 	@NotBlank(message = "Le numéro de téléphone est obligatoire")
 	@Pattern(regexp = "^\\d{10}$", message = "Le numéro de téléphone doit contenir exactement 10 chiffres")
 	private String phone;
+
 
 	@Column
 	private String createDate;

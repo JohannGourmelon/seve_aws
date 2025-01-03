@@ -18,6 +18,7 @@ public class HomeController {
 		return "redirect:/home";
 	}
 
+
 	@GetMapping("/home")
 	public String home(Model model) {
 		return "home";

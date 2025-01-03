@@ -107,6 +107,24 @@
 			value="/WEB-INF/views/saas/pages/saas/account/configDesign.jsp" />
 	</definition>
 
+	<!-- Pages /login -->
+
+	<definition name="saasuser-login"
+		extends="template-saas">
+		<put-attribute name="title"
+			value="Formulaire de connexion" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/login/login.jsp" />
+	</definition>
+	
+	<definition name="profile"
+		extends="template-saas">
+		<put-attribute name="title"
+			value="Formulaire de connexion" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/login/profile.jsp" />
+	</definition>
+	
 
 	<!-- Pages /amap -->
 

@@ -36,7 +36,8 @@ import fr.seve.service.SubscriptionService;
 public class SaasUserController {
 
 	@Autowired
-	private SaasUserService service;
+
+	private SaasUserService saasUserService;
 
 	@Autowired
 	private AmapSpaceService amapSpaceService;
@@ -55,6 +56,17 @@ public class SaasUserController {
 		mv.addObject("css", "/resources/css/saas/signup-form.css");
 		return mv;
 
+	}
+	@GetMapping("/register")
+	public String showRegistrationForm(Model model) {
+		model.addAttribute("user", new SaasUser());
+		return "register";
+	}
+	
+	@PostMapping("/register")
+	public String registerUser(@ModelAttribute("user") SaasUser saasUser) {
+		saasUserService.save(saasUser); // Appel du service pour sauvegarder l'utilisateur
+		return "redirect:/login"; // Redirection vers la page de connexion
 	}
 
 	@GetMapping("/souscription-essentiel")
@@ -94,7 +106,7 @@ public class SaasUserController {
 		System.out.println("Phone : " + saasUser.getPhone());
 		System.out.println("Email : " + saasUser.getEmail());
 		System.out.println("Password : " + saasUser.getPassword());
-		saasUser.setSaasUserLevel(SaasUserLevel.CUSTOM);
+		saasUser.setSaasUserLevel(SaasUserLevel.SAAS_CUSTOM);
 		System.out.println("UserLevel : " + saasUser.getSaasUserLevel());
 		saasUser.setCreateDate(LocalDateTime.now().toString());
 		System.out.println("DateCreated : " + saasUser.getCreateDate());
@@ -128,14 +140,13 @@ public class SaasUserController {
 			amapSpace.setSubscription(essential);
 
 			amapSpaceService.save(amapSpace);
-			service.save(saasUser);
+			saasUserService.save(saasUser);
 
 			ModelAndView mv = new ModelAndView("saasuser-signup-payment");
 			mv.addObject("css", "/resources/css/saas/payment.css");
 			return mv;
 
 		}
-
 	}
 
 	@PostMapping("/saveSignUpStandard")
@@ -145,7 +156,7 @@ public class SaasUserController {
 		System.out.println("Phone : " + saasUser.getPhone());
 		System.out.println("Email : " + saasUser.getEmail());
 		System.out.println("Password : " + saasUser.getPassword());
-		saasUser.setSaasUserLevel(SaasUserLevel.CUSTOM);
+		saasUser.setSaasUserLevel(SaasUserLevel.SAAS_CUSTOM);
 		System.out.println("UserLevel : " + saasUser.getSaasUserLevel());
 		saasUser.setCreateDate(LocalDateTime.now().toString());
 		System.out.println("DateCreated : " + saasUser.getCreateDate());
@@ -179,7 +190,7 @@ public class SaasUserController {
 			amapSpace.setSubscription(standard);
 
 			amapSpaceService.save(amapSpace);
-			service.save(saasUser);
+			saasUserService.save(saasUser);
 
 			ModelAndView mv = new ModelAndView("saasuser-signup-payment");
 			mv.addObject("css", "/resources/css/saas/payment.css");
@@ -196,7 +207,7 @@ public class SaasUserController {
 		System.out.println("Phone : " + saasUser.getPhone());
 		System.out.println("Email : " + saasUser.getEmail());
 		System.out.println("Password : " + saasUser.getPassword());
-		saasUser.setSaasUserLevel(SaasUserLevel.CUSTOM);
+		saasUser.setSaasUserLevel(SaasUserLevel.SAAS_CUSTOM);
 		System.out.println("UserLevel : " + saasUser.getSaasUserLevel());
 		saasUser.setCreateDate(LocalDateTime.now().toString());
 		System.out.println("DateCreated : " + saasUser.getCreateDate());
@@ -230,7 +241,7 @@ public class SaasUserController {
 			amapSpace.setSubscription(premium);
 
 			amapSpaceService.save(amapSpace);
-			service.save(saasUser);
+			saasUserService.save(saasUser);
 
 			ModelAndView mv = new ModelAndView("saasuser-signup-payment");
 			mv.addObject("css", "/resources/css/saas/payment.css");
