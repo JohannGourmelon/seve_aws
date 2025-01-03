@@ -118,7 +118,7 @@
 	</definition>
 	
 	<definition name="profile"
-		extends="template-saas">
+		extends="template-saas-account">
 		<put-attribute name="title"
 			value="Formulaire de connexion" />
 		<put-attribute name="main"

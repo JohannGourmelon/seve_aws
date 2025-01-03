@@ -5,7 +5,7 @@
     <div style="color: red;">${error}</div>
 </c:if>
 
- <form method="POST" action="${pageContext.request.contextPath}/login">
+ <form method="POST" action="${pageContext.request.contextPath}/login" class="my-5">
         <label for="username">Nom d'utilisateur :</label>
         <input type="text" id="username" name="username" required>
 

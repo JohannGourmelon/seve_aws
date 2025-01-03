@@ -5,6 +5,7 @@
     <title>Profil</title>
 </head>
 <body>
-    <h1>Bienvenue, <span>${username}</span>!</h1>
+    <h1>Bienvenue, <span>${username} </span>!</h1>
+    <a href="${pageContext.request.contextPath}/logout">Me déconnecter</a>
 </body>
 </html>

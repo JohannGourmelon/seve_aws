@@ -1,5 +1,6 @@
 <div class="secondary-nav">
 	<ul>
+	<li class="mb-4"><a href="${pageContext.request.contextPath}/profile">Mon compte</a></li>
 		<li><a href="${pageContext.request.contextPath}/amap/info">Votre
 				AMAP</a></li>
 
