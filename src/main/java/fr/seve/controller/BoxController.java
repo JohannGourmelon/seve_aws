@@ -13,11 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import fr.seve.entities.AMAP;
 import fr.seve.entities.Box;
-import fr.seve.entities.Configuration;
 import fr.seve.service.BoxService;
-
 
 @Controller
 @RequestMapping("/box")
@@ -25,7 +22,7 @@ public class BoxController {
 
 	@Autowired
 	private BoxService boxService;
-	
+
 	@GetMapping
 	public ModelAndView listBoxes(Model model) {
 		List<Box> boxes = boxService.findAll();
@@ -43,32 +40,31 @@ public class BoxController {
 		mv.addObject("css", "/resources/css/amap/boForms.css");
 	    return mv;
 	}	
-	
+
 	@GetMapping("{id}")
 	public String getBox(@PathVariable Long id, Model model) {
-		
+
 		Box box = boxService.findById(id);
 		model.addAttribute("box", box);
 		return "box-details";
-		
+
 	}
-	
+
 	@GetMapping("/add")
 	public String showAddForm(Model model) {
 		model.addAttribute("categories", Box.Category.values());
-        model.addAttribute("frequencies", Box.Frequency.values());
+		model.addAttribute("frequencies", Box.Frequency.values());
 		model.addAttribute("box", new Box());
 		return "box-form";
 	}
-	
-	
+
 	@PostMapping("add")
 	public String saveBox(@ModelAttribute Box box) {
 		box.setCreationDate(LocalDate.now());
 		boxService.save(box);
 		return "redirect:/box/admin";
 	}
-	
+
 	@GetMapping("/delete/{id}")
 	public String deleteBox(@PathVariable Long id) {
 		boxService.deleteById(id);
@@ -85,14 +81,15 @@ public class BoxController {
         return "box-form";
     }
 
-    @PostMapping("/edit/{id}")
-    public String updateBox(@PathVariable Long id, @ModelAttribute Box box) {
-    	Box oldBox = boxService.findById(id);
-    	box.setCreationDate(oldBox.getCreationDate());
+
+	@PostMapping("/edit/{id}")
+	public String updateBox(@PathVariable Long id, @ModelAttribute Box box) {
+		Box oldBox = boxService.findById(id);
+		box.setCreationDate(oldBox.getCreationDate());
 		box.setLastModifiedDate(LocalDate.now());
     	boxService.save(box);
         return "redirect:/box/admin";
     }
-    
+
 
 }

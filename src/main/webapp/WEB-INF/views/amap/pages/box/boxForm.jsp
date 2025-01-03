@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <div class="container mt-3">
     <h1 class="mb-4 text-center">${box.id != null ? 'Modifier' : 'Ajouter'} un panier</h1>
@@ -72,6 +73,7 @@
                     <div class="invalid-feedback">Veuillez saisir un prix valide.</div>
                 </div>
 
+
                 <div class="mb-3">
                     <label for="stock" class="form-label">Stock :</label>
                     <input type="number" id="stock" name="stock" class="form-control" value="${box.stock}" min="1" required>
@@ -88,5 +90,6 @@
         </div>
     </form>
 </div>
+
 
 <script src="${pageContext.request.contextPath}/resources/js/formValidation.js"></script>

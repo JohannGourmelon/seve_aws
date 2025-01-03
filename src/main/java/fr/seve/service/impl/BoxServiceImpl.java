@@ -23,7 +23,6 @@ public class BoxServiceImpl implements BoxService{
 
 	@Override
 	public Box save(Box box) {
-		
 		return boxRepository.save(box);
 	}
 

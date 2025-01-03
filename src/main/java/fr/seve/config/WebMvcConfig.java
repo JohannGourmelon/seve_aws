@@ -1,9 +1,12 @@
 package fr.seve.config;
 
+import javax.servlet.Filter;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -46,9 +49,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		// Configuration pour servir les fichiers statiques depuis webapp/resources
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
+
+	@Bean
+	public LocalValidatorFactoryBean validator() {
+		return new LocalValidatorFactoryBean();
+	}
+
 	
-	 @Bean
-	    public LocalValidatorFactoryBean validator() {
-	        return new LocalValidatorFactoryBean();
-	    }
+
 }
