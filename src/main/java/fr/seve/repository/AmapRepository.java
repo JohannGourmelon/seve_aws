@@ -8,4 +8,5 @@ import fr.seve.entities.AMAP;
 @Repository
 public interface AmapRepository extends JpaRepository<AMAP, Long>{
 
+	AMAP findBySlug(String slug);
 }
