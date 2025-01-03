@@ -2,14 +2,19 @@ package fr.seve.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import fr.seve.service.impl.CustomUserDetailsService;
 
+@Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -26,19 +31,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .csrf().disable() // Désactive CSRF pour simplifier
+        	.csrf().disable()
             .authorizeRequests()
-                .antMatchers("/login", "/resources/**").permitAll() // Autorise l'accès à /login
-                .anyRequest().authenticated()
-                .and()
+                .antMatchers("/login", "/css/**", "/js/**", "/logout").permitAll() // Autorise l'accès à la page de login et aux ressources statiques
+                .anyRequest().authenticated() // Toute autre requête nécessite une authentification
+            .and()
             .formLogin()
-                .loginPage("/login") // Spécifie la page personnalisée pour la connexion
-                .defaultSuccessUrl("/profile", true) // Redirection après succès
-                .failureUrl("/login?error=true") // Redirection en cas d'échec
+                .loginPage("/login") // URL de la page de connexion
+                .defaultSuccessUrl("/profile", true) // URL après connexion réussie
+                .failureUrl("/login?error=true") // URL en cas d'échec de connexion
+                .permitAll()
+            .and()
+            .logout()
+                .logoutUrl("/logout") // URL pour déconnexion
+                .logoutSuccessUrl("/login?logout=true")
                 .permitAll();
+    	
     }
 
 

@@ -9,6 +9,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<spring.version>5.1.5.RELEASE</spring.version>
+		<spring-security.version>5.1.5.RELEASE</spring-security.version>
 		<hibernate.version>5.4.1.Final</hibernate.version>
 		<slf4j.version>2.0.16</slf4j.version>
 		<mysql.version>8.4.0</mysql.version>
@@ -100,28 +101,28 @@
 		<dependency>
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-core</artifactId>
-		    <version>${spring.version}</version>
+		    <version>${spring-security.version}</version>
 		</dependency>
 		
 		<!-- Spring Security Web -->
 		<dependency>
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-web</artifactId>
-		    <version>${spring.version}</version>
+		    <version>${spring-security.version}</version>
 		</dependency>
 		
 		<!-- Spring Security Config -->
 		<dependency>
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-config</artifactId>
-		    <version>${spring.version}</version>
+		    <version>${spring-security.version}</version>
 		</dependency>
 		
 		<!-- BCrypt Password Encoder -->
 		<dependency>
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-crypto</artifactId>
-		    <version>${spring.version}</version>
+		    <version>${spring-security.version}</version>
 		</dependency>
 	</dependencies>
 
