@@ -40,7 +40,7 @@ public class SaasLoginController {
 	 @GetMapping("/login")
 	 public ModelAndView login(Model model, @RequestParam(value = "error", required = false) String error) {
 	     if (error != null) {
-	         model.addAttribute("error", "Nom d'utilisateur ou mot de passe incorrect.");
+	         model.addAttribute("error", "Nom d'utilisateur ou mot de passe incorrect");
 	     }
 	     ModelAndView mv = new ModelAndView("saasuser-login");
 	        
