@@ -40,7 +40,7 @@
 								€ / mois</p>
 						</div>
 						<form action="${pageContext.request.contextPath}/cart/add"
-							method="post" class="text-center">
+							method="post" class="text-center mt-3">
 							<input type="hidden" name="boxId" value="${box.id}" />
 							<button type="submit" class="btn btn-warning btn-sm">Commander</button>
 						</form>

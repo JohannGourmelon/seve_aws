@@ -52,5 +52,25 @@ public class CartController {
 	    session.removeAttribute("cart");
 	    return "redirect:/cart";
 	}
+	
+	@PostMapping("update")
+	public String updateQuantity(@RequestParam("boxId") Long boxId, 
+	                             @RequestParam("quantity") int quantity, 
+	                             HttpSession session) {
+	    Cart cart = (Cart) session.getAttribute("cart");
+	    if (cart != null) {
+	        cart.updateQuantity(boxId, quantity);
+	    }
+	    return "redirect:/cart";
+	}
+
+	@PostMapping("remove")
+	public String removeItem(@RequestParam("boxId") Long boxId, HttpSession session) {
+	    Cart cart = (Cart) session.getAttribute("cart");
+	    if (cart != null) {
+	        cart.removeItem(boxId);
+	    }
+	    return "redirect:/cart";
+	}
 
 }
