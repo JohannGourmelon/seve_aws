@@ -32,7 +32,12 @@ public class AmapServiceImpl implements AmapService{
 		
 		return amapRepository.findById(id).orElse(null);
 	}
-
+	
+	@Override
+    public AMAP findBySlug(String slug) {
+        return amapRepository.findBySlug(slug);
+    }
+    
 	@Override
 	public void deleteById(Long Id) {
 
