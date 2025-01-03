@@ -1,66 +1,84 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
-<h1>${product.id != null ? 'Modifier' : 'Ajouter'} un produit</h1>
+<div class="container mt-3">
+    <h1 class="mb-4 text-center">${product.id != null ? 'Modifier' : 'Ajouter'} un produit</h1>
 
-<c:choose>
-	<c:when test="${product.id != null}">
-		<form action="${pageContext.request.contextPath}/product/edit/${product.id}"
-			method="post">
-	</c:when>
-	<c:otherwise>
-		<form action="${pageContext.request.contextPath}/product/add"
-			method="post">
-	</c:otherwise>
-</c:choose>
+    <c:choose>
+        <c:when test="${product.id != null}">
+            <form action="${pageContext.request.contextPath}/product/edit/${product.id}" method="post" class="needs-validation" novalidate>
+        </c:when>
+        <c:otherwise>
+            <form action="${pageContext.request.contextPath}/product/add" method="post" class="needs-validation" novalidate>
+        </c:otherwise>
+    </c:choose>
 
-<p>
-	<label for="name">Nom :</label> <input type="text" id="name"
-		name="name" value="${product.name}" required>
-</p>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nom :</label>
+                    <input type="text" id="name" name="name" class="form-control" value="${product.name}" required>
+                    <div class="invalid-feedback">Veuillez saisir un nom.</div>
+                </div>
 
-<p>
-	<label for="description">Description :</label> <input type="text"
-		id="description" name="description" value="${product.description}"
-		required>
-</p>
+                <div class="mb-4">
+                    <label for="description" class="form-label">Description :</label>
+                    <textarea id="description" name="description" class="form-control" rows="4" required>${product.description}</textarea>
+                    <div class="invalid-feedback">Veuillez saisir une description.</div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="category" class="form-label">Catégorie :</label>
+                    <select id="category" name="category" class="form-select" required>
+                        <option value="" selected disabled>Choisissez une catégorie</option>
+                        <c:forEach var="category" items="${categories}">
+                            <option value="${category}" ${category == product.category ? 'selected' : ''}>${category.displayName}</option>
+                        </c:forEach>
+                    </select>
+                    <div class="invalid-feedback">Veuillez choisir une catégorie.</div>
+                </div>
+            </div>
+            
+            <div class="col-md-1"></div>
 
-<p>
-	<label for="price">Prix :</label> <input type="number" id="price"
-		name="price" value="${product.price}" step="0.01" min="0.01" required>
-</p>
+            <div class="col-md-3">
+                <div class="mb-3">
+                    <label for="availableDate" class="form-label">Date de disponibilité :</label>
+                    <input type="date" id="availableDate" name="availableDate" class="form-control" value="${product.availableDate}" required>
+                    <div class="invalid-feedback">Veuillez choisir une date de disponibilité.</div>
+                </div>
 
-<p>
-	<label for="stock">Stock :</label> <input type="number" id="stock"
-		name="stock" value="${product.stock}" min="1" required>
-</p>
+                <div class="mb-3">
+                    <label for="purchaseDeadlineDate" class="form-label">Date limite d'achat :</label>
+                    <input type="date" id="purchaseDeadlineDate" name="purchaseDeadlineDate" class="form-control" value="${product.purchaseDeadlineDate}" required>
+                    <div class="invalid-feedback">Veuillez choisir une date limite d'achat.</div>
+                </div>
 
-<label for="availableDate">Date de disponibilité :</label>
-<input type="date" id="availableDate" name="availableDate"
-	value="${product.availableDate}" required />
+                <div class="mb-3">
+                    <label for="price" class="form-label">Prix :</label>
+                    <input type="number" id="price" name="price" class="form-control" value="${product.price}" step="0.01" min="0.01" required>
+                    <div class="invalid-feedback">Veuillez saisir un prix valide.</div>
+                </div>
 
-<label for="purchaseDeadlineDate">Date limite d'achat :</label>
-<input type="date" id="purchaseDeadlineDate" name="purchaseDeadlineDate"
-	value="${product.purchaseDeadlineDate}" required />
 
-<p>
-	<label for="category">Catégorie :</label> <select id="category"
-		name="category" required>
-		<option value="" selected disabled>Choisissez une catégorie</option>
+                <div class="mb-3">
+                    <label for="stock" class="form-label">Stock :</label>
+                    <input type="number" id="stock" name="stock" class="form-control" value="${product.stock}" min="1" required>
+                    <div class="invalid-feedback">Veuillez saisir une quantité en stock valide.</div>
+                </div>
+                
+            </div>
+        </div>
 
-		<c:forEach var="category" items="${categories}">
-			<option value="${category}"
-				${category == product.category ? 'selected' : ''}>${category.displayName}</option>
-		</c:forEach>
-	</select>
-</p>
+        <div class="d-flex justify-content-center mt-4 mb-5">
+                    <a href="${pageContext.request.contextPath}/product" class="btn btn-secondary mx-3">Annuler</a>
+        
+            <button type="submit" class="btn btn-primary mx-3">Enregistrer</button>
+        </div>
+    </form>
+</div>
 
-<p>
-	<button type="submit">Enregistrer</button>
-	<a href="${pageContext.request.contextPath}/product">Annuler</a>
-</p>
-
-</form>
 
 <script src="${pageContext.request.contextPath}/resources/js/formValidation.js"></script>
 

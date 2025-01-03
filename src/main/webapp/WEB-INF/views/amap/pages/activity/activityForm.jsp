@@ -1,74 +1,97 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
-<h1>${activity.id != null ? 'Modifier' : 'Ajouter'} un atelier</h1>
+<div class="container mt-3">
+    <h1 class="mb-4 text-center">${activity.id != null ? 'Modifier' : 'Ajouter'} un atelier</h1>
 
-<c:choose>
-	<c:when test="${activity.id != null}">
-		<form action="${pageContext.request.contextPath}/activity/edit/${activity.id}"
-			method="post">
-	</c:when>
-	<c:otherwise>
-		<form action="${pageContext.request.contextPath}/activity/add"
-			method="post">
-	</c:otherwise>
-</c:choose>
+    <c:choose>
+        <c:when test="${activity.id != null}">
+            <form action="${pageContext.request.contextPath}/activity/edit/${activity.id}" method="post" class="needs-validation" novalidate>
+        </c:when>
+        <c:otherwise>
+            <form action="${pageContext.request.contextPath}/activity/add" method="post" class="needs-validation" novalidate>
+        </c:otherwise>
+    </c:choose>
 
-<p>
-	<label for="name">Nom :</label> <input type="text" id="name"
-		name="name" value="${activity.name}" required>
-</p>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nom :</label>
+                    <input type="text" id="name" name="name" class="form-control" value="${activity.name}" required>
+                    <div class="invalid-feedback">Veuillez saisir un nom.</div>
+                </div>
 
-<p>
-	<label for="description">Description :</label> <input type="text"
-		id="description" name="description" value="${activity.description}"
-		required>
-</p>
+                <div class="mb-4">
+                    <label for="description" class="form-label">Description :</label>
+                    <textarea id="description" name="description" class="form-control" rows="4" required>${activity.description}</textarea>
+                    <div class="invalid-feedback">Veuillez saisir une description.</div>
+                </div>
+                
+                 <div class="mb-4">
+                    <label for="place" class="form-label">Lieu de l'atelier :</label>
+                    <textarea id="place" name="place" class="form-control" rows="3" required>${activity.place}</textarea>
+                    <div class="invalid-feedback">Veuillez saisir l'adresse de l'atelier.</div>
+                </div>
+                
+                 <div class="mb-3">
+                    <label for="price" class="form-label">Prix :</label>
+                    <input type="number" id="price" name="price" class="form-control" value="${activity.price}" min="1" required>
+                    <div class="invalid-feedback">Veuillez saisir un prix valide.</div>
+                </div>
+            </div>
+            
+            <div class="col-md-1"></div>
 
-<p>
-	<label for="price">Prix :</label> <input type="number" id="price"
-		name="price" value="${activity.price}" step="0.01" min="0.01" required>
-</p>
+            <div class="col-md-3">
+                <div class="mb-3">
+                    <label for="date" class="form-label">Date de l'atelier :</label>
+                    <input type="date" id="date" name="date" class="form-control" value="${activity.date}" required>
+                    <div class="invalid-feedback">Veuillez choisir la date de l'atelier.</div>
+                </div>
+                
+                              
+                <div class="mb-3">
+                    <label for="startTime" class="form-label">Heure de début :</label>
+                    <input type="time" id="startTime" name="startTime" class="form-control" value="${activity.startTime}" required>
+                    <div class="invalid-feedback">Veuillez choisir l'heure de début de l'atelier.</div>
+                </div>
 
-<p>
-	<label for="maxParticipant">Nombre de participants maximum :</label> <input type="number" id="maxParticipant"
-		name="maxParticipant" value="${activity.maxParticipant}" min="1" required>
-</p>
+ 				<div class="mb-3">
+                    <label for="endTime" class="form-label">Heure de fin :</label>
+                    <input type="time" id="endTime" name="endTime" class="form-control" value="${activity.endTime}" required>
+                    <div class="invalid-feedback">Veuillez choisir l'heure de fin de l'atelier.</div>
+                </div>
 
-<p>
-	<label for="availableSpace">Nombre de places disponibles :</label> <input type="number" id="availableSpace"
-		name="availableSpace" value="${activity.availableSpace}" min="1" required>
-</p>
+                <div class="mb-3">
+                    <label for="purchaseDeadlineDate" class="form-label">Date limite d'achat :</label>
+                    <input type="date" id="purchaseDeadlineDate" name="purchaseDeadlineDate" class="form-control" value="${activity.purchaseDeadlineDate}" required>
+                    <div class="invalid-feedback">Veuillez choisir une date limite d'achat.</div>
+                </div>
 
-<label for="date">Date de l'atelier :</label>
-<input type="date" id="dateAndTime" name="date"
-	value="${activity.date}" required />
-	
-	<label for="startTime">Heure de début :</label>
-<input type="time" id="startTime" name="startTime"
-	value="${activity.startTime}" required />
-	
-	<label for="endTime">Heure de fin :</label>
-<input type="time" id="endTime" name="endTime"
-	value="${activity.endTime}" required />
-	
-<p>
-	<label for="place">Lieu de l'atelier :</label> <input type="text" id="place"
-		name="place" value="${activity.place}" required>
-</p>
-	
-
-<!-- <label for="purchaseDeadlineDate">Date limite d'achat :</label> -->
-<!-- <input type="date" id="purchaseDeadlineDate" name="purchaseDeadlineDate" -->
-<%-- 	value="${activity.purchaseDeadlineDate}" required /> --%>
+               
 
 
-<p>
-	<button type="submit">Enregistrer</button>
-	<a href="${pageContext.request.contextPath}/activity">Annuler</a>
-</p>
+                <div class="mb-3">
+                    <label for="availableSpace" class="form-label">Nombre de places disponibles :</label>
+                    <input type="number" id="availableSpace" name="availableSpace" class="form-control" value="${activity.availableSpace}" min="1" required>
+                    <div class="invalid-feedback">Veuillez saisir un nombre de place valide.</div>
+                </div>
+                
+            </div>
+        </div>
 
-</form>
+        <div class="d-flex justify-content-center mt-4 mb-5">
+                    <a href="${pageContext.request.contextPath}/activity" class="btn btn-secondary mx-3">Annuler</a>
+        
+            <button type="submit" class="btn btn-primary mx-3">Enregistrer</button>
+        </div>
+    </form>
+</div>
+
 
 <script src="${pageContext.request.contextPath}/resources/js/formValidation.js"></script>
+
+
+
 

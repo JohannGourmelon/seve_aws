@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import fr.seve.entities.Box;
 import fr.seve.entities.Product;
@@ -24,12 +25,26 @@ public class ProductController {
 	private ProductService productService; 
 	
 	@GetMapping
-	public String listProducts(Model model) {
+	public ModelAndView listProducts(Model model) {
 		List<Product> products = productService.findAll();
 		model.addAttribute("products", products);
-
-		return "product-list";
+		ModelAndView mv = new ModelAndView("product-list");
+		mv.addObject("css", "/resources/css/amap/boxList.css");
+	    return mv;
 	}
+
+	
+	
+	@GetMapping("/admin")
+	public ModelAndView adminListProducts(Model model) {
+		List<Product> products = productService.findAll();
+		model.addAttribute("products", products);
+		ModelAndView mv = new ModelAndView("admin-product-list");
+		mv.addObject("css", "/resources/css/amap/boForms.css");
+	    return mv;
+	}	
+
+	
 	
 	@GetMapping("{id}")
 	public String getProduct(@PathVariable Long id, Model model) {
@@ -51,13 +66,13 @@ public class ProductController {
 	public String saveProduct(@ModelAttribute Product product) {
 		product.setCreationDate(LocalDate.now());
 		productService.save(product);
-		return "redirect:/product";
+		return "redirect:/product/admin";
 	}
 
 	@GetMapping("/delete/{id}")
-	public String deleteproduct(@PathVariable Long id) {
+	public String deleteProduct(@PathVariable Long id) {
 		productService.deleteById(id);
-		return "redirect:/product";
+		return "redirect:/product/admin";
 
 	}
 
@@ -75,7 +90,7 @@ public class ProductController {
 		product.setCreationDate(oldProduct.getCreationDate());
 		product.setLastModifiedDate(LocalDate.now());
 		productService.save(product);
-		return "redirect:/product";
+		return "redirect:/product/admin";
 	}
 
 	

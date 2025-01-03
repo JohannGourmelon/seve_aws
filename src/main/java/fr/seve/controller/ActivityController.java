@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import fr.seve.entities.Activity;
+import fr.seve.entities.Box;
 import fr.seve.service.ActivityService;
 
 @Controller
@@ -24,13 +26,24 @@ public class ActivityController {
 	private ActivityService activityService;
 
 	@GetMapping
-	public String listActivities(Model model) {
+	public ModelAndView listActivities(Model model) {
 		List<Activity> activities = activityService.findAll();
 		model.addAttribute("activities", activities);
-		return "activity-list";
-
+		ModelAndView mv = new ModelAndView("activity-list");
+		mv.addObject("css", "/resources/css/amap/boxList.css");
+	    return mv;
 	}
 
+	@GetMapping("/admin")
+	public ModelAndView adminListActivities(Model model) {
+		List<Activity> activities = activityService.findAll();
+		model.addAttribute("activities", activities);
+		ModelAndView mv = new ModelAndView("admin-activity-list");
+		mv.addObject("css", "/resources/css/amap/boForms.css");
+	    return mv;
+	}	
+	
+	
 	@GetMapping("{id}")
 	public String getActivity(@PathVariable Long id, Model model) {
 
@@ -49,14 +62,14 @@ public class ActivityController {
 	public String saveActivity(@ModelAttribute Activity activity) {
 		activity.setCreationDate(LocalDate.now());
 		activityService.save(activity);
-		return "redirect:/activity";
+		return "redirect:/activity/admin";
 
 	}
 
 	@GetMapping("/delete/{id}")
 	public String deleteActivity(@PathVariable Long id, Model model) {
 		activityService.deletebyId(id);
-		return "redirect:/activity";
+		return "redirect:/activity/admin";
 	}
 
 	@GetMapping("/edit/{id}")
@@ -73,7 +86,7 @@ public class ActivityController {
 		activity.setCreationDate(oldActivity.getCreationDate());
 		activity.setLastModifiedDate(LocalDate.now());
 		activityService.save(activity);
-		return "redirect:/activity";
+		return "redirect:/activity/admin";
 
 	}
 

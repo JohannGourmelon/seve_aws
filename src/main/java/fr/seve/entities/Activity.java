@@ -32,8 +32,8 @@ public class Activity {
 	@Column
 	private double price;
 
-	@Column
-	private int maxParticipant;
+//	@Column
+//	private int maxParticipant;
 
 	@Column
 	private int availableSpace;
@@ -50,6 +50,10 @@ public class Activity {
 
 	@Column
 	private String place;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column
+	private LocalDate purchaseDeadlineDate;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column
@@ -97,14 +101,14 @@ public class Activity {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
-	public int getMaxParticipant() {
-		return maxParticipant;
-	}
-
-	public void setMaxParticipant(int maxParticipant) {
-		this.maxParticipant = maxParticipant;
-	}
+//
+//	public int getMaxParticipant() {
+//		return maxParticipant;
+//	}
+//
+//	public void setMaxParticipant(int maxParticipant) {
+//		this.maxParticipant = maxParticipant;
+//	}
 
 	public int getAvailableSpace() {
 		return availableSpace;
@@ -148,10 +152,18 @@ public class Activity {
 		this.place = place;
 	}
 
+	public LocalDate getPurchaseDeadlineDate() {
+		return purchaseDeadlineDate;
+	}
+	
+	public void setPurchaseDeadlineDate(LocalDate purchaseDeadlineDate) {
+		this.purchaseDeadlineDate = purchaseDeadlineDate;
+	}
+
 	public LocalDate getCreationDate() {
 		return creationDate;
 	}
-
+	
 	public void setCreationDate(LocalDate creationDate) {
 		this.creationDate = creationDate;
 	}
@@ -186,6 +198,10 @@ public class Activity {
 
 		public String getFormattedDate() {
 		    return date != null ? date.format(FORMATTER) : "";
+		}
+		
+		public String getFormattedPurchaseDeadlineDate() {
+		    return purchaseDeadlineDate != null ? purchaseDeadlineDate.format(FORMATTER) : "";
 		}
 		
 		public String getFormattedCreationDate() {

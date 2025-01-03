@@ -1,48 +1,37 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<h1>Liste des ateliers disponibles</h1>
-<a href="${pageContext.request.contextPath}/activity/add">Ajouter un
-	atelier</a>
-<table border="1">
-	<thead>
-		<tr>
-			<th>ID</th>
-			<th>Nom</th>
-			<th>Description</th>
-			<th>Prix</th>
-			<th>Nombre de participants maximum</th>
-			<th>Nombre de places disponibles</th>
-			<th>Date de l'atelier</th>
-			<th>Heure de début</th>
-			<th>Heure de fin</th>
- 			<th>Lieu de l'atelier</th>
-			<th>Date de création</th>
-			<th>Date de dernière modification</th>
-		</tr>
-	</thead>
-	<tbody>
-		<c:forEach var="activity" items="${activities}">
-			<tr>
-				<td>${activity.id}</td>
-				<td>${activity.name}</td>
-				<td>${activity.description}</td>
-				<td>${activity.price} €</td>
-				<td>${activity.maxParticipant}</td>
-				<td>${activity.availableSpace}</td>
- 				<td>${activity.formattedDate}</td>
- 				<td>${activity.formattedStartTime}</td>
- 				<td>${activity.formattedStartTime}</td>
-				<td>${activity.place}</td>
-				<td>${activity.formattedCreationDate}</td>
-				<td>${activity.formattedLastModifiedDate}</td>
-				<td><a
-					href="${pageContext.request.contextPath}/activity/${activity.id}">Details</a>
-					| <a href="${pageContext.request.contextPath}/activity/edit/${activity.id}">Modifier</a>
-					| <a
-					href="${pageContext.request.contextPath}/activity/delete/${activity.id}"
-					onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet atelier ?')">Supprimer</a></td>
-			</tr>
-		</c:forEach>
-	</tbody>
-</table>
+<div class="container-fluid mt-5">
+    <h1 class="text-center mb-4">Découvrez nos ateliers</h1>
+
+    <div class="row">
+        <c:forEach var="activity" items="${activities}">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-4 mb-5">
+                <div class="card">
+                    <img src="${pageContext.request.contextPath}/resources/images/amap/atelierCosmetiqueCireAbeille.jpg" class="card-img-top" alt="Image de l'atelier">
+                    <p class="card-title text-center">${activity.name}</p>
+               
+                    <div class="card-body">
+                        <p class="card-text mb-4">${activity.description}</p>
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <p class="card-text delivery-text"> Le ${activity.formattedDate} de ${activity.formattedStartTime} - ${activity.formattedEndTime}</p>
+                            </div>
+                            <div class="col-12 col-md-6 d-flex justify-content-end align-items-center">
+								<span class="badge p-2 text-white">
+						            ${activity.place}
+						        </span>                            
+							</div>
+                        </div>
+                        <div class="row d-flex justify-content-center align-items-center mt-4">
+    						<p class="card-text text-center font-weight-bold">${activity.price} € </p>
+						</div>
+                        <div class="btn-container text-center mt-3">
+                            <a href="${pageContext.request.contextPath}/activity/edit/${activity.id}" class="btn btn-warning btn-sm">Commander</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
+    </div>
+</div>
