@@ -16,7 +16,7 @@
 					</div>
 				</div>
 
-				<div class="form-group login-field mt-4">
+				<div class="form-group login-field mt-4 mb-2">
 					<label for="password" class="control-label">Mot de passe</label>
 					<div>
 						<input type="password" id="password" name="password"
@@ -24,13 +24,13 @@
 					</div>
 				</div>
 
+				<div style="height: 20px; text-align: center; color: red; font-size: 14px">
+					<c:if test="${not empty error}">${error}</c:if>
+				</div>
+
 				<!-- Jeton CSRF -->
 				<input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}" />
-
-				<c:if test="${not empty error}">
-					<div style="color: red; text-align: center; font-size: 14px;">${error}</div>
-				</c:if>
 
 				<div class="form-group">
 					<div id="btns" class="form-buttons text-center">
