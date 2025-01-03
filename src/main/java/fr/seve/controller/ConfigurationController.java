@@ -14,11 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import fr.seve.entities.AMAP;
-import fr.seve.entities.Box;
 import fr.seve.entities.Configuration;
 import fr.seve.entities.SaasUser;
-import fr.seve.service.AmapService;
 import fr.seve.service.ConfigurationService;
 import fr.seve.service.SaasUserService;
 

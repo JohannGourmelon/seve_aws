@@ -38,7 +38,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         	.csrf().disable()
             .authorizeRequests()
             .antMatchers("/amap").hasRole("USER")
-            .antMatchers("/saas").hasAuthority("ROLE_USER")
             .anyRequest().permitAll() 
             .and()
             .formLogin()

@@ -6,6 +6,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,7 +18,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.seve.entities.AMAP;
 import fr.seve.entities.AmapSpace;
@@ -25,9 +26,7 @@ import fr.seve.entities.SaasUser;
 import fr.seve.entities.SaasUserLevel;
 import fr.seve.entities.Subscription;
 
-import fr.seve.service.AmapService;
 import fr.seve.service.AmapSpaceService;
-import fr.seve.service.ConfigurationService;
 import fr.seve.service.SaasUserService;
 import fr.seve.service.SubscriptionService;
 
@@ -57,12 +56,13 @@ public class SaasUserController {
 		return mv;
 
 	}
+
 	@GetMapping("/register")
 	public String showRegistrationForm(Model model) {
 		model.addAttribute("user", new SaasUser());
 		return "register";
 	}
-	
+
 	@PostMapping("/register")
 	public String registerUser(@ModelAttribute("user") SaasUser saasUser) {
 		saasUserService.save(saasUser); // Appel du service pour sauvegarder l'utilisateur
@@ -101,153 +101,157 @@ public class SaasUserController {
 	public ModelAndView saveUserSaas(@Valid @ModelAttribute("saasUser") SaasUser saasUser, BindingResult bindingResult,
 			Model model) {
 
-		System.out.println("Firstname : " + saasUser.getFirstname());
-		System.out.println("Name : " + saasUser.getName());
-		System.out.println("Phone : " + saasUser.getPhone());
-		System.out.println("Email : " + saasUser.getEmail());
-		System.out.println("Password : " + saasUser.getPassword());
-		saasUser.setSaasUserLevel(SaasUserLevel.SAAS_CUSTOM);
-		System.out.println("UserLevel : " + saasUser.getSaasUserLevel());
-		saasUser.setCreateDate(LocalDateTime.now().toString());
-		System.out.println("DateCreated : " + saasUser.getCreateDate());
-		saasUser.setLastModifyDate(LocalDateTime.now().toString());
-		System.out.println("DateLastModifyDate : " + saasUser.getLastModifyDate());
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-		Subscription essential = subscriptionService.findById(1l);
-		saasUser.setSubscription(essential);
+		// Vérifie si l'utilisateur n'est pas déjà authentifié
+		if (authentication == null || !authentication.isAuthenticated()
+				|| "anonymousUser".equals(authentication.getPrincipal())) {
 
-		if (bindingResult.hasErrors()) {
-			// Si des erreurs de validation sont présentes, retour à la page du formulaire
+			saasUser.setSaasUserLevel(SaasUserLevel.SAAS_CUSTOM);
+			saasUser.setCreateDate(LocalDateTime.now().toString());
+			saasUser.setLastModifyDate(LocalDateTime.now().toString());
+			Subscription essential = subscriptionService.findById(1l);
+			saasUser.setSubscription(essential);
 
-			ModelAndView mv = new ModelAndView("saas-signup-es");
-			mv.addObject("css", "/resources/css/saas/signup-form.css");
-			mv.addObject("saasUser", saasUser); // renvoie le user pour garder les informations saisies
-			mv.addObject("errors", bindingResult.getAllErrors()); // renvoie les erreurs
-			return mv;
+			if (bindingResult.hasErrors()) {
+				// Si des erreurs de validation sont présentes, retour à la page du formulaire
 
+				ModelAndView mv = new ModelAndView("saas-signup-es");
+				mv.addObject("css", "/resources/css/saas/signup-form.css");
+				mv.addObject("saasUser", saasUser); // renvoie le user pour garder les informations saisies
+				mv.addObject("errors", bindingResult.getAllErrors()); // renvoie les erreurs
+				return mv;
+
+			} else {
+
+				// Création du user avec une amap, une configuration et un espace AMAP
+				AMAP amap = new AMAP();
+				amap.setSaasUser(saasUser);
+				saasUser.setAmap(amap);
+
+				Configuration configuration = new Configuration();
+
+				AmapSpace amapSpace = new AmapSpace();
+				amapSpace.setAmap(amap);
+				amapSpace.setConfiguration(configuration);
+				amapSpace.setSubscription(essential);
+
+				amapSpaceService.save(amapSpace);
+				saasUserService.save(saasUser);
+
+				ModelAndView mv = new ModelAndView("saasuser-signup-payment");
+				mv.addObject("css", "/resources/css/saas/payment.css");
+				return mv;
+
+			}
 		} else {
-
-			// Création du user avec une amap, une configuration et un espace AMAP
-			AMAP amap = new AMAP();
-			amap.setSaasUser(saasUser);
-			saasUser.setAmap(amap);
-
-			Configuration configuration = new Configuration();
-
-			AmapSpace amapSpace = new AmapSpace();
-			amapSpace.setAmap(amap);
-			amapSpace.setConfiguration(configuration);
-			amapSpace.setSubscription(essential);
-
-			amapSpaceService.save(amapSpace);
-			saasUserService.save(saasUser);
-
-			ModelAndView mv = new ModelAndView("saasuser-signup-payment");
-			mv.addObject("css", "/resources/css/saas/payment.css");
-			return mv;
-
+			return new ModelAndView("redirect:/profile");
 		}
 	}
 
 	@PostMapping("/saveSignUpStandard")
-	public ModelAndView saveUserSaasStandard(@Valid @ModelAttribute("saasUser") SaasUser saasUser, BindingResult bindingResult, Model model) {
-		System.out.println("Firstname : " + saasUser.getFirstname());
-		System.out.println("Name : " + saasUser.getName());
-		System.out.println("Phone : " + saasUser.getPhone());
-		System.out.println("Email : " + saasUser.getEmail());
-		System.out.println("Password : " + saasUser.getPassword());
-		saasUser.setSaasUserLevel(SaasUserLevel.SAAS_CUSTOM);
-		System.out.println("UserLevel : " + saasUser.getSaasUserLevel());
-		saasUser.setCreateDate(LocalDateTime.now().toString());
-		System.out.println("DateCreated : " + saasUser.getCreateDate());
-		saasUser.setLastModifyDate(LocalDateTime.now().toString());
-		System.out.println("DateLastModifyDate : " + saasUser.getLastModifyDate());
+	public ModelAndView saveUserSaasStandard(@Valid @ModelAttribute("saasUser") SaasUser saasUser,
+			BindingResult bindingResult, Model model) {
 
-		Subscription standard = subscriptionService.findById(2l);
-		saasUser.setSubscription(standard);
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-		if (bindingResult.hasErrors()) {
-			// Si des erreurs de validation sont présentes, retour à la page du formulaire
+		// Vérifie si l'utilisateur n'est pas déjà authentifié
+		if (authentication == null || !authentication.isAuthenticated()
+				|| "anonymousUser".equals(authentication.getPrincipal())) {
 
-			ModelAndView mv = new ModelAndView("saas-signup-st");
-			mv.addObject("css", "/resources/css/saas/signup-form.css");
-			mv.addObject("saasUser", saasUser); // renvoie le user pour garder les informations saisies
-			mv.addObject("errors", bindingResult.getAllErrors()); // renvoie les erreurs
-			return mv;
-			
+			saasUser.setSaasUserLevel(SaasUserLevel.SAAS_CUSTOM);
+			saasUser.setCreateDate(LocalDateTime.now().toString());
+			saasUser.setLastModifyDate(LocalDateTime.now().toString());
+
+			Subscription standard = subscriptionService.findById(2l);
+			saasUser.setSubscription(standard);
+
+			if (bindingResult.hasErrors()) {
+				// Si des erreurs de validation sont présentes, retour à la page du formulaire
+
+				ModelAndView mv = new ModelAndView("saas-signup-st");
+				mv.addObject("css", "/resources/css/saas/signup-form.css");
+				mv.addObject("saasUser", saasUser); // renvoie le user pour garder les informations saisies
+				mv.addObject("errors", bindingResult.getAllErrors()); // renvoie les erreurs
+				return mv;
+
+			} else {
+
+				// Création du user avec une amap, une configuration et un espace AMAP
+				AMAP amap = new AMAP();
+				amap.setSaasUser(saasUser);
+				saasUser.setAmap(amap);
+
+				Configuration configuration = new Configuration();
+
+				AmapSpace amapSpace = new AmapSpace();
+				amapSpace.setAmap(amap);
+				amapSpace.setConfiguration(configuration);
+				amapSpace.setSubscription(standard);
+
+				amapSpaceService.save(amapSpace);
+				saasUserService.save(saasUser);
+
+				ModelAndView mv = new ModelAndView("saasuser-signup-payment");
+				mv.addObject("css", "/resources/css/saas/payment.css");
+				return mv;
+			}
 		} else {
-
-			// Création du user avec une amap, une configuration et un espace AMAP
-			AMAP amap = new AMAP();
-			amap.setSaasUser(saasUser);
-			saasUser.setAmap(amap);
-
-			Configuration configuration = new Configuration();
-
-			AmapSpace amapSpace = new AmapSpace();
-			amapSpace.setAmap(amap);
-			amapSpace.setConfiguration(configuration);
-			amapSpace.setSubscription(standard);
-
-			amapSpaceService.save(amapSpace);
-			saasUserService.save(saasUser);
-
-			ModelAndView mv = new ModelAndView("saasuser-signup-payment");
-			mv.addObject("css", "/resources/css/saas/payment.css");
-			return mv;
+			return new ModelAndView("redirect:/profile");
 		}
 
 	}
 
 	@PostMapping("/saveSignUpPremium")
-	public ModelAndView saveUserSaasPremium(@Valid @ModelAttribute("saasUser") SaasUser saasUser, BindingResult bindingResult, Model model) {
-		
-		System.out.println("Firstname : " + saasUser.getFirstname());
-		System.out.println("Name : " + saasUser.getName());
-		System.out.println("Phone : " + saasUser.getPhone());
-		System.out.println("Email : " + saasUser.getEmail());
-		System.out.println("Password : " + saasUser.getPassword());
-		saasUser.setSaasUserLevel(SaasUserLevel.SAAS_CUSTOM);
-		System.out.println("UserLevel : " + saasUser.getSaasUserLevel());
-		saasUser.setCreateDate(LocalDateTime.now().toString());
-		System.out.println("DateCreated : " + saasUser.getCreateDate());
-		saasUser.setLastModifyDate(LocalDateTime.now().toString());
-		System.out.println("DateLastModifyDate : " + saasUser.getLastModifyDate());
+	public ModelAndView saveUserSaasPremium(@Valid @ModelAttribute("saasUser") SaasUser saasUser,
+			BindingResult bindingResult, Model model) {
 
-		Subscription premium = subscriptionService.findById(3l);
-		saasUser.setSubscription(premium);
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-		if (bindingResult.hasErrors()) {
-			// Si des erreurs de validation sont présentes, retour à la page du formulaire
-
-			ModelAndView mv = new ModelAndView("saas-signup-pr");
-			mv.addObject("css", "/resources/css/saas/signup-form.css");
-			mv.addObject("saasUser", saasUser); // renvoie le user pour garder les informations saisies
-			mv.addObject("errors", bindingResult.getAllErrors()); // renvoie les erreurs
-			return mv;
+		// Vérifie si l'utilisateur n'est pas déjà authentifié
+		if (authentication == null || !authentication.isAuthenticated()
+				|| "anonymousUser".equals(authentication.getPrincipal())) {
 			
+			saasUser.setSaasUserLevel(SaasUserLevel.SAAS_CUSTOM);
+			saasUser.setCreateDate(LocalDateTime.now().toString());
+			saasUser.setLastModifyDate(LocalDateTime.now().toString());
+			Subscription premium = subscriptionService.findById(3l);
+			saasUser.setSubscription(premium);
+
+			if (bindingResult.hasErrors()) {
+				// Si des erreurs de validation sont présentes, retour à la page du formulaire
+
+				ModelAndView mv = new ModelAndView("saas-signup-pr");
+				mv.addObject("css", "/resources/css/saas/signup-form.css");
+				mv.addObject("saasUser", saasUser); // renvoie le user pour garder les informations saisies
+				mv.addObject("errors", bindingResult.getAllErrors()); // renvoie les erreurs
+				return mv;
+
+			} else {
+
+				// Création du user avec une amap, une configuration et un espace AMAP
+				AMAP amap = new AMAP();
+				amap.setSaasUser(saasUser);
+				saasUser.setAmap(amap);
+
+				Configuration configuration = new Configuration();
+
+				AmapSpace amapSpace = new AmapSpace();
+				amapSpace.setAmap(amap);
+				amapSpace.setConfiguration(configuration);
+				amapSpace.setSubscription(premium);
+
+				amapSpaceService.save(amapSpace);
+				saasUserService.save(saasUser);
+
+				ModelAndView mv = new ModelAndView("saasuser-signup-payment");
+				mv.addObject("css", "/resources/css/saas/payment.css");
+				return mv;
+			}
+
 		} else {
+			return new ModelAndView("redirect:/profile");
 
-			// Création du user avec une amap, une configuration et un espace AMAP
-			AMAP amap = new AMAP();
-			amap.setSaasUser(saasUser);
-			saasUser.setAmap(amap);
-
-			Configuration configuration = new Configuration();
-
-			AmapSpace amapSpace = new AmapSpace();
-			amapSpace.setAmap(amap);
-			amapSpace.setConfiguration(configuration);
-			amapSpace.setSubscription(premium);
-
-			amapSpaceService.save(amapSpace);
-			saasUserService.save(saasUser);
-
-			ModelAndView mv = new ModelAndView("saasuser-signup-payment");
-			mv.addObject("css", "/resources/css/saas/payment.css");
-			return mv;
 		}
-
 	}
-
 }
