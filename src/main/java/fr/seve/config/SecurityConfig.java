@@ -37,8 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
         	.csrf().disable()
             .authorizeRequests()
+            .antMatchers("/amap").hasRole("USER")
             .anyRequest().permitAll() 
-            .antMatchers("/amap").authenticated()
             .and()
             .formLogin()
                 .loginPage("/login") // URL de la page de connexion
@@ -50,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout") // URL pour déconnexion
                 .logoutSuccessUrl("/login?logout=true")
                 .permitAll();
+       
     	
     }
 
