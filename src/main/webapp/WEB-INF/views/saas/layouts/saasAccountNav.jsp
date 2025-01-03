@@ -1,7 +1,20 @@
 <div class="secondary-nav">
 	<ul>
-		<li><a onclick="window.location.href='${pageContext.request.contextPath}/saas/configuration-amap'">Informations de votre AMAP</a></li>
-		<li><a onclick="window.location.href='${pageContext.request.contextPath}/saas/configuration-design'">Design</a></li>
-		<li><a onclick="window.location.href='${pageContext.request.contextPath}/saas/configuration-texte'">Textes et images</a></li>
+		<li><a href="${pageContext.request.contextPath}/amap/info">Votre
+				AMAP</a></li>
+
+		<li class="dropdown"><a href="javascript:void(0)" class="dropbtn"
+			onclick="toggleSubMenu(event)">Configuration</a>
+			<ul class="submenus">
+				<li class="mt-2"><a
+					href="${pageContext.request.contextPath}/configuration/design">>
+						design</a></li>
+				<li><a
+					href="${pageContext.request.contextPath}/configuration/contenu">>
+						contenu</a></li>
+			</ul></li>
+
+		<li class="mt-5"><a
+			href="${pageContext.request.contextPath}/amap">Gestion des amaps</a></li>
 	</ul>
 </div>

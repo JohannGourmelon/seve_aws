@@ -37,8 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
         	.csrf().disable()
             .authorizeRequests()
-                .antMatchers("/login", "/css/**", "/js/**", "/logout").permitAll() // Autorise l'accès à la page de login et aux ressources statiques
-                .anyRequest().authenticated() // Toute autre requête nécessite une authentification
+            .anyRequest().permitAll() 
+            .antMatchers("/amap").authenticated()
             .and()
             .formLogin()
                 .loginPage("/login") // URL de la page de connexion

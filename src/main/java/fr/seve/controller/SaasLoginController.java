@@ -34,10 +34,4 @@ public class SaasLoginController {
 	     return "saasuser-login"; 
 	 }
 
-	 
-
-    @GetMapping("/home")
-    public String home() {
-        return "home"; // Page d'accueil après connexion
-    }
 }

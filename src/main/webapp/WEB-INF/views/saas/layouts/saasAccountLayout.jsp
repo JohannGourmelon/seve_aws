@@ -49,6 +49,8 @@
 	<script
 		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap.bundle.min.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/saasAccountNav.js"></script>
+    
 
 </body>
 </html>

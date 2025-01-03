@@ -18,6 +18,10 @@
 	gap: 20px;
 }
 
+.error{
+	color:red
+}
+
 .dot-container {
 	width: 15px;
 }

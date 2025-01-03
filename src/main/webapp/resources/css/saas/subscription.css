@@ -80,4 +80,7 @@
 	.package-card {
 		width: 100%;
 	}
+	.package-name {
+	font-size: 16px;
+}
 }

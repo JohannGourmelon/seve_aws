@@ -45,10 +45,22 @@ input {
 	padding: 0 15px;
 }
 
+textarea {
+	border: 1px solid #cfd8dc;
+	border-radius: 15px;
+	padding: 10px 20px;
+}
+
 input:focus {
 	border: 1px solid #b3d9e2;
 	outline: none;
 }
+
+textarea:focus {
+	border: 1px solid #b3d9e2;
+	outline: none;
+}
+
 
 .form-control {
 	border-radius: 30px;
@@ -148,6 +160,7 @@ input:focus {
 	background-color: #a8b5a2;
 }
 
+
 /**************************** Footer ******************************/
 .footer-content {
 	padding: 15px 0;
@@ -213,5 +226,8 @@ header {
 	}
 	h3 {
 		font-size: 18px;
+	}
+	p, li, label, .btn {
+	font-size: 14px;
 	}
 }
