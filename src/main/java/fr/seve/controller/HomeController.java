@@ -23,11 +23,4 @@ public class HomeController {
 		return "home";
 	}
 
-	@GetMapping("/home2")
-	public ModelAndView home2() {
-		ModelAndView mv = new ModelAndView("home2");
-        mv.addObject("css", "/resources/css/saas/test.css");
-        return mv;
-		}
-
 }
