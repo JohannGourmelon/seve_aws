@@ -23,7 +23,7 @@
 				onclick="window.location.href='${pageContext.request.contextPath}/box/admin'">Gestion des paniers</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="index.html" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" onclick="window.location.href='${pageContext.request.contextPath}/order'">Panier</a>
+				<a class="nav-link" href="index.html" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" onclick="window.location.href='${pageContext.request.contextPath}/cart'">Panier</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="index.html" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Contactez-nous</a>
