@@ -2,7 +2,7 @@ package fr.seve.entities;
 
 public enum SaasUserLevel {
 	
-	ADMIN,
-	CUSTOM,
+	SAAS_ADMIN,
+	SAAS_CUSTOM,
 
 }

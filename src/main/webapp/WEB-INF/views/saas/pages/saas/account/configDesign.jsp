@@ -2,7 +2,6 @@
 
 <h1>Configuration du design de votre Amap</h1>
 
-<c:if test="${not empty amap}">
 	<form
 		action="${pageContext.request.contextPath}/configuration/editDesign/${configuration.id}"
 		method="post">
@@ -49,14 +48,6 @@
 			<button class="btn btn-secondary" type="submit">Enregistrer</button>
 		</div>
 	</form>
-</c:if>
-
-<c:if test="${empty amap}">
-	<div class="alert alert-warning">
-		Veuillez renseigner <a href="${pageContext.request.contextPath}/amap/info">les
-			informations de votre AMAP</a> avant de configurer le contenu.
-	</div>
-</c:if>
 
 <c:if test="${not empty message}">
 	<div class="alert alert-success mt-4">${message}</div>

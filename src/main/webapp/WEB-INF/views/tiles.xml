@@ -8,12 +8,9 @@
 
 	<!-- Dev Home -->
 
-	<definition name="home"
-		template="/WEB-INF/views/home.jsp">
+	<definition name="home" template="/WEB-INF/views/home.jsp">
 	</definition>
-	
-	
-	
+
 
 	<!-- <<<<<<<<<<<<<<<<<<< Pages SaaS >>>>>>>>>>>>>>>>>>>>> -->
 
@@ -110,6 +107,24 @@
 			value="/WEB-INF/views/saas/pages/saas/account/configDesign.jsp" />
 	</definition>
 
+	<!-- Pages /login -->
+
+	<definition name="saasuser-login"
+		extends="template-saas">
+		<put-attribute name="title"
+			value="Formulaire de connexion" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/login/login.jsp" />
+	</definition>
+	
+	<definition name="profile"
+		extends="template-saas-account">
+		<put-attribute name="title"
+			value="Formulaire de connexion" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/login/profile.jsp" />
+	</definition>
+	
 
 	<!-- Pages /amap -->
 
@@ -184,11 +199,11 @@
 		<put-attribute name="footer"
 			value="/WEB-INF/views/amap/layouts/amapDefaultFooter.jsp" />
 	</definition>
-	
-	
+
+
 	<!-- Pages /Home -->
-	
-		<definition name="amap-home" extends="template-amap">
+
+	<definition name="amap-home" extends="template-amap">
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/home.jsp" />
 	</definition>
@@ -197,14 +212,12 @@
 
 
 	<definition name="box-list" extends="template-amap">
-		<put-attribute name="title"
-			value="Liste des paniers" />
+		<put-attribute name="title" value="Liste des paniers" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/box/boxList.jsp" />
 	</definition>
 	<definition name="admin-box-list" extends="template-amap">
-		<put-attribute name="title"
-			value="Gérer les paniers" />
+		<put-attribute name="title" value="Gérer les paniers" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/box/boxListAdmin.jsp" />
 	</definition>
@@ -219,6 +232,7 @@
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/box/boxForm.jsp" />
 	</definition>
+
 
 		
 		<!-- Pages /product -->

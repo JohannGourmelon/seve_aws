@@ -8,7 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+
+import fr.seve.utils.SlugUtils;
 
 @Entity
 @Table(name = "amaps")
@@ -27,6 +31,9 @@ public class AMAP {
 	@Column(nullable = true)
 	private String siret;
 
+	 @Column(unique = true)
+	 private String slug;
+	 
 	// Relation avec SaasUser
 	@OneToOne(mappedBy = "amap", cascade = CascadeType.ALL, orphanRemoval = true)
 	private SaasUser saasUser;
@@ -85,5 +92,12 @@ public class AMAP {
 	    this.amapSpace = amapSpace;
 	}
 	
+    @PrePersist
+    @PreUpdate
+    public void generateSlug() {
+        if (this.name != null && (this.slug == null || !this.slug.equals(SlugUtils.toSlug(this.name)))) {
+            this.slug = SlugUtils.toSlug(this.name);
+        }
+    }
 
 }

@@ -13,6 +13,8 @@ public interface AmapService {
 
 	AMAP findById(Long id);
 
+	AMAP findBySlug(String slug);
+	
 	void deleteById(Long Id);
 
 }
