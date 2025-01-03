@@ -55,7 +55,7 @@ public class Box {
 
 	// Relation avec Producteur
 //    @ManyToOne
-//    @JoinColumn(name = "producteur_id", nullable = true)
+//    @JoinColumn(name = "producer_id", nullable = true)
 //    private Producer producer;
 
 	public Long getId() {

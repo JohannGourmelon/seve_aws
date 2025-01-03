@@ -29,9 +29,9 @@ public class Address {
 	@Column
 	private String town;
 	
-	@ManyToOne
-	@JoinColumn(name="producteur_id", nullable = true)
-	private Producer producer; 
+//	@ManyToOne
+//	@JoinColumn(name="producer_id", nullable = true)
+//	private Producer producer; 
 
 	public Long getId() {
 		return id;
@@ -53,13 +53,13 @@ public class Address {
 		return town;
 	}
 
-	public Producer getProducer() {
-		return producer;
-	}
-
-	public void setProducer(Producer producer) {
-		this.producer = producer;
-	}
+//	public Producer getProducer() {
+//		return producer;
+//	}
+//
+//	public void setProducer(Producer producer) {
+//		this.producer = producer;
+//	}
 
 	public void setId(Long id) {
 		this.id = id;
@@ -80,7 +80,5 @@ public class Address {
 	public void setTown(String town) {
 		this.town = town;
 	} 
-	
-	
 
 }
