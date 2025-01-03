@@ -38,7 +38,7 @@
 				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Contactez-nous</a>
 			</li>
 			<li class="nav-item"><a class="nav-link" href="index.html"
-				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" onclick="window.location.href='${pageContext.request.contextPath}/login'">Mon espace</a></li>
+				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" onclick="window.location.href='${pageContext.request.contextPath}/profile'">Mon espace</a></li>
 		</ul>
 	</div>
 </nav>

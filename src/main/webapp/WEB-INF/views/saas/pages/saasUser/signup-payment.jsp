@@ -87,7 +87,7 @@
 
 				<div id="btns" class="form-buttons text-center mt-4">
 					<button class="btn btn-b btn-package-card px-5"
-						onclick="window.location.href='${pageContext.request.contextPath}/amap/info/${saasUser.id}'">Confirmer
+						onclick="window.location.href='${pageContext.request.contextPath}/profile'">Confirmer
 						le paiement</button>
 				</div>
 

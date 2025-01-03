@@ -5,7 +5,7 @@
 				AMAP</a></li>
 
 		<li class="dropdown"><a href="javascript:void(0)" class="dropbtn"
-			onclick="toggleSubMenu(event)">Configuration</a>
+			onclick="">Configuration</a>
 			<ul class="submenus">
 				<li class="mt-2"><a
 					href="${pageContext.request.contextPath}/configuration/design">>
