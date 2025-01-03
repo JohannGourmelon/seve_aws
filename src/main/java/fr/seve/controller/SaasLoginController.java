@@ -44,7 +44,7 @@ public class SaasLoginController {
 	     }
 	     ModelAndView mv = new ModelAndView("saasuser-login");
 	        
-	        mv.addObject("css", "/resources/css/style.css");
+	        mv.addObject("css", "/resources/css/saas/login.css");
 	        return mv;
 	 }
 
