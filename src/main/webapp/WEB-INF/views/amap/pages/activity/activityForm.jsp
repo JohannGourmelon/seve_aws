@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <h1>${activity.id != null ? 'Modifier' : 'Ajouter'} un atelier</h1>
@@ -43,7 +44,7 @@
 <input type="date" id="dateAndTime" name="date"
 	value="${activity.date}" required />
 	
-	<label for="startTime">Heure de début :</label>
+	<label for="startTime">Heure de dÃ©but :</label>
 <input type="time" id="startTime" name="startTime"
 	value="${activity.startTime}" required />
 	

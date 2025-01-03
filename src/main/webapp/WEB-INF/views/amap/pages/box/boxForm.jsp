@@ -1,15 +1,18 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <h1>${box.id != null ? 'Modifier' : 'Ajouter'} un panier</h1>
 
 <c:choose>
 	<c:when test="${box.id != null}">
 		<form action="${pageContext.request.contextPath}/box/edit/${box.id}"
-			method="post">
+			method="post" accept-charset="UTF-8">
+			
 	</c:when>
 	<c:otherwise>
 		<form action="${pageContext.request.contextPath}/box/add"
-			method="post">
+			method="post" accept-charset="UTF-8">
 	</c:otherwise>
 </c:choose>
 
@@ -34,7 +37,7 @@
 		name="stock" value="${box.stock}" min="1" required>
 </p>
 
-<label for="availableDate">Date de disponibilité :</label>
+<label for="availableDate">Date de disponibilitÃ© :</label>
 <input type="date" id="availableDate" name="availableDate"
 	value="${box.availableDate}" required />
 
@@ -43,9 +46,9 @@
 	value="${box.purchaseDeadlineDate}" required />
 
 <p>
-	<label for="category">Catégorie :</label> <select id="category"
+	<label for="category">CatÃ©gorie :</label> <select id="category"
 		name="category" required>
-		<option value="" selected disabled>Choisissez une catégorie</option>
+		<option value="" selected disabled>Choisissez une catÃ©gorie</option>
 
 		<c:forEach var="category" items="${categories}">
 			<option value="${category}"
@@ -55,9 +58,9 @@
 </p>
 
 <p>
-	<label for="frequency">Fréquence :</label> <select id="frequency"
+	<label for="frequency">FrÃ©quence :</label> <select id="frequency"
 		name="frequency" required>
-		<option value="" selected disabled>Choisissez une fréquence</option>
+		<option value="" selected disabled>Choisissez une frÃ©quence</option>
 		<c:forEach var="frequency" items="${frequencies}">
 			<option value="${frequency}"
 				${frequency == box.frequency ? 'selected' : ''}>${frequency.displayName}</option>

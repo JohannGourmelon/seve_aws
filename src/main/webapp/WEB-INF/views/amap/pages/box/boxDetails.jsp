@@ -1,15 +1,16 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<h1>Détails du panier</h1>
+<h1>DÃ©tails du panier</h1>
 <p><strong>ID :</strong> ${box.id}</p>
 <p><strong>Nom :</strong> ${box.name}</p>
 <p><strong>Description :</strong> ${box.description}</p>
 <p><strong>Prix :</strong> ${box.price}</p>
 <p><strong>Stock :</strong> ${box.stock}</p>
-<p><strong>Fréquence :</strong> ${box.frequency.displayName}</p>
-<p><strong>Catégorie :</strong> ${box.category.displayName}</p>
+<p><strong>FrÃ©quence :</strong> ${box.frequency.displayName}</p>
+<p><strong>CatÃ©gorie :</strong> ${box.category.displayName}</p>
 
- <p><strong>Date de disponibilité :</strong>
+ <p><strong>Date de disponibilitÃ© :</strong>
     ${box.formattedAvailableDate}
 </p>
 
@@ -17,12 +18,12 @@
    ${box.formattedPurchaseDeadlineDate}
 </p>
 
-<p><strong>Date de création :</strong>
+<p><strong>Date de crÃ©ation :</strong>
     ${box.formattedCreationDate}
 </p>
 
-<p><strong>Date dernière modification :</strong>
+<p><strong>Date derniÃ¨re modification :</strong>
    ${box.formattedLastModifiedDate}
 </p> 
 
-<a href="${pageContext.request.contextPath}/box">Retour à la liste</a>
+<a href="${pageContext.request.contextPath}/box">Retour Ã  la liste</a>

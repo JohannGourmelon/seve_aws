@@ -1,14 +1,15 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<h1>Détails du produit</h1>
+<h1>DÃ©tails du produit</h1>
 <p><strong>ID :</strong> ${product.id}</p>
 <p><strong>Nom :</strong> ${product.name}</p>
 <p><strong>Description :</strong> ${product.description}</p>
 <p><strong>Prix :</strong> ${product.price}</p>
 <p><strong>Stock :</strong> ${product.stock}</p>
-<p><strong>Catégorie :</strong> ${product.category.displayName}</p>
+<p><strong>CatÃ©gorie :</strong> ${product.category.displayName}</p>
 
- <p><strong>Date de disponibilité :</strong>
+ <p><strong>Date de disponibilitÃ© :</strong>
     ${product.formattedAvailableDate}
 </p>
 
@@ -16,12 +17,12 @@
    ${product.formattedPurchaseDeadlineDate}
 </p>
 
-<p><strong>Date de création :</strong>
+<p><strong>Date de crÃ©ation :</strong>
     ${product.formattedCreationDate}
 </p>
 
-<p><strong>Date dernière modification :</strong>
+<p><strong>Date derniÃ¨re modification :</strong>
    ${product.formattedLastModifiedDate}
 </p> 
 
-<a href="${pageContext.request.contextPath}/product">Retour à la liste</a>
+<a href="${pageContext.request.contextPath}/product">Retour Ã  la liste</a>

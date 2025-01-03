@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <h1>${product.id != null ? 'Modifier' : 'Ajouter'} un produit</h1>
@@ -34,7 +35,7 @@
 		name="stock" value="${product.stock}" min="1" required>
 </p>
 
-<label for="availableDate">Date de disponibilité :</label>
+<label for="availableDate">Date de disponibilitÃ© :</label>
 <input type="date" id="availableDate" name="availableDate"
 	value="${product.availableDate}" required />
 
@@ -43,9 +44,9 @@
 	value="${product.purchaseDeadlineDate}" required />
 
 <p>
-	<label for="category">Catégorie :</label> <select id="category"
+	<label for="category">CatÃ©gorie :</label> <select id="category"
 		name="category" required>
-		<option value="" selected disabled>Choisissez une catégorie</option>
+		<option value="" selected disabled>Choisissez une catÃ©gorie</option>
 
 		<c:forEach var="category" items="${categories}">
 			<option value="${category}"

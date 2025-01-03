@@ -1,6 +1,7 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<h1>Détails de l'atelier</h1>
+<h1>DÃ©tails de l'atelier</h1>
 <p><strong>ID :</strong> ${activity.id}</p>
 <p><strong>Nom :</strong> ${activity.name}</p>
 <p><strong>Description :</strong> ${activity.description}</p>
@@ -13,7 +14,7 @@
     ${activity.formattedDate}
 </p>
 
-<p><strong>Heure de début de l'atelier :</strong>
+<p><strong>Heure de dÃ©but de l'atelier :</strong>
     ${activity.formattedStartTime}
 </p>
 
@@ -23,12 +24,12 @@
 
 <p><strong>Lieu de l'atelier:</strong> ${activity.place}</p>
 
-<p><strong>Date de création :</strong>
+<p><strong>Date de crÃ©ation :</strong>
     ${activity.formattedCreationDate}
 </p>
 
-<p><strong>Date dernière modification :</strong>
+<p><strong>Date derniÃ¨re modification :</strong>
    ${activity.formattedLastModifiedDate}
 </p> 
 
-<a href="${pageContext.request.contextPath}/activity">Retour à la liste</a>
+<a href="${pageContext.request.contextPath}/activity">Retour Ã  la liste</a>
