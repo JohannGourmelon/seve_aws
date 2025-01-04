@@ -19,28 +19,14 @@
 			</li>
 			<li class="nav-item"><a class="nav-link"
 				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-				onclick="window.location.href='${pageContext.request.contextPath}/${slug}/box'">Liste
-					des paniers</a></li>
+				onclick="window.location.href='${pageContext.request.contextPath}/${slug}/box'">Nos paniers maraîchers</a></li>
 			<li class="nav-item"><a class="nav-link"
 				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-				onclick="window.location.href='${pageContext.request.contextPath}/${slug}/box/admin'">Gestion
-					des paniers</a></li>
+				onclick="window.location.href='${pageContext.request.contextPath}/${slug}/product'">Nos produits</a></li>
+
 			<li class="nav-item"><a class="nav-link"
 				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-				onclick="window.location.href='${pageContext.request.contextPath}/${slug}/product'">Liste
-					des produits</a></li>
-			<li class="nav-item"><a class="nav-link"
-				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-				onclick="window.location.href='${pageContext.request.contextPath}/${slug}/product/admin'">Gestion
-					des produits</a></li>
-			<li class="nav-item"><a class="nav-link"
-				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-				onclick="window.location.href='${pageContext.request.contextPath}/${slug}/activity'">Liste
-					des ateliers</a></li>
-			<li class="nav-item"><a class="nav-link"
-				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-				onclick="window.location.href='${pageContext.request.contextPath}/${slug}/activity/admin'">Gestion
-					des ateliers</a></li>
+				onclick="window.location.href='${pageContext.request.contextPath}/${slug}/activity'">Nos ateliers</a></li>
 
 			<li class="nav-item"><a class="nav-link" href="index.html"
 				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
@@ -49,11 +35,26 @@
 			<li class="nav-item"><a class="nav-link" href="index.html"
 				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Contactez-nous</a>
 			</li>
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+				id="Preview" href="#" role="button" aria-haspopup="true"
+				aria-expanded="false"> BO </a>
+				<div class="dropdown-menu mt-0" aria-labelledby="Preview">
+					<a class="dropdown-item" data-bs-toggle="collapse"
+						data-bs-target=".navbar-collapse.show"
+						onclick="window.location.href='${pageContext.request.contextPath}/${slug}/box/admin'">Gestion paniers</a> <a class="dropdown-item" href="#"
+						data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
+						onclick="window.location.href='${pageContext.request.contextPath}/${slug}/product/admin'">Gestion produits</a> <a
+						class="dropdown-item" href="#" data-bs-toggle="collapse"
+						data-bs-target=".navbar-collapse.show" onclick="window.location.href='${pageContext.request.contextPath}/${slug}/activity/admin'">Gestion activités</a>
+					<!-- <li role="separator" class="divider"></li> -->
+				</div></li>
 		</ul>
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item"><a class="nav-link" href="index.html"
 				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Se
-					connecter</a></li>
+					connecter</a></li>		
 		</ul>
+		
 	</div>
 </nav>
