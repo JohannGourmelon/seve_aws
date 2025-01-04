@@ -108,19 +108,19 @@ public class ConfigurationController {
 	}
 
 	@PostMapping("editContent/{id}")
-	public String editContent(@PathVariable Long id, Configuration configuration, @RequestParam("logo") MultipartFile logo,
-			RedirectAttributes redirectAttributes) {
+	public String editContent(@PathVariable Long id, Configuration configuration,
+			@RequestParam("logo") MultipartFile logo, RedirectAttributes redirectAttributes) {
 		Configuration newConf = configurationService.findById(id);
 		newConf.setPresentationText(configuration.getPresentationText());
 		if (logo != null && !logo.isEmpty()) {
-	        try {
-	            newConf.setLogoData(logo.getBytes());
-	        } catch (IOException e) {
-	            redirectAttributes.addFlashAttribute("message", "Erreur lors de l'importation du logo.");
-	            e.printStackTrace();
-	            return "redirect:/configuration/contenu";
-	        }
-	    }
+			try {
+				newConf.setLogoData(logo.getBytes());
+			} catch (IOException e) {
+				redirectAttributes.addFlashAttribute("message", "Erreur lors de l'importation du logo.");
+				e.printStackTrace();
+				return "redirect:/configuration/contenu";
+			}
+		}
 		configurationService.save(newConf);
 		;
 
@@ -129,69 +129,55 @@ public class ConfigurationController {
 	}
 
 	@GetMapping("/logo/{id}")
-    public ResponseEntity<byte[]> getLogo(@PathVariable Long id) {
-        Configuration configuration = configurationService.findById(id);
-        byte[] logoData = configuration.getLogoData();
-        
-        if (logoData != null) {
-            return ResponseEntity.ok()
-                    .contentType(MediaType.IMAGE_PNG)
-                    .body(logoData);
-        }
-        
-        return ResponseEntity.notFound().build();
-    }
-    
-    
-   
-        /**
-         * Endpoint pour générer du CSS dynamique à partir d'une configuration.
-         * @param id L'ID de la configuration.
-         * @return Le CSS généré.
-         */
-        @GetMapping(value = "/css/{id}", produces = "text/css")
-        @ResponseBody
-        public String getCss(@PathVariable Long id) {
-            Configuration configuration = configurationService.findById(id);
+	public ResponseEntity<byte[]> getLogo(@PathVariable Long id) {
+		Configuration configuration = configurationService.findById(id);
+		byte[] logoData = configuration.getLogoData();
 
-            if (configuration == null) {
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Configuration not found");
-            }
+		if (logoData != null) {
+			return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(logoData);
+		}
 
-            return generateCss(configuration);
-        }
+		return ResponseEntity.notFound().build();
+	}
 
-        /**
-         * Génère du CSS dynamique en fonction des données de la configuration.
-         * @param configuration L'objet Configuration.
-         * @return Une chaîne représentant le CSS.
-         */
-        private String generateCss(Configuration configuration) {
-            StringBuilder css = new StringBuilder();
+	// Récupère le css selon l'id de la configuration
+	@GetMapping(value = "/css/{id}", produces = "text/css")
+	@ResponseBody
+	public String getCss(@PathVariable Long id) {
+		Configuration configuration = configurationService.findById(id);
+		if (configuration == null) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Configuration not found");
+		}
+		return generateCss(configuration);
+	}
 
-            // Couleurs principales
-            css.append(":root {\n");
-            css.append("--primary-color: ").append(configuration.getPrimaryColor()).append(";\n");
-            css.append("--secondary-color: ").append(configuration.getSecondaryColor()).append(";\n");
-            css.append("--tertiary-color: ").append(configuration.getTertiaryColor()).append(";\n");
-            css.append("}\n");
+	// Génère dynamiquement le css en fonction de la configuration
+	private String generateCss(Configuration configuration) {
+		StringBuilder css = new StringBuilder();
 
-            // Police
-            css.append("body {\n");
-            css.append("    font-family: '").append(configuration.getPolice().getDisplayName()).append("', sans-serif;\n");
-            css.append("}\n");
+		// Couleurs
+		css.append(":root {\n");
+		css.append("--primary-color: ").append(configuration.getPrimaryColor()).append(";\n");
+		css.append("--secondary-color: ").append(configuration.getSecondaryColor()).append(";\n");
+		css.append("--tertiary-color: ").append(configuration.getTertiaryColor()).append(";\n");
+		css.append("}\n");
 
-            // Bordures arrondies
-            if (Boolean.TRUE.equals(configuration.getIsRoundedBorders())) {
-                css.append(".rounded {\n");
-                css.append("    border-radius: 10px;\n");
-                css.append("}\n");
-            } else {
-                css.append(".rounded {\n");
-                css.append("    border-radius: 0;\n");
-                css.append("}\n");
-            }
+		// Police
+		css.append("body {\n");
+		css.append("    font-family: '").append(configuration.getPolice().getDisplayName()).append("', sans-serif;\n");
+		css.append("}\n");
 
-            return css.toString();
-        }
-    }
+		// Bordures
+		if (Boolean.TRUE.equals(configuration.getIsRoundedBorders())) {
+			css.append(".rounded {\n");
+			css.append("    border-radius: 10px;\n");
+			css.append("}\n");
+		} else {
+			css.append(".rounded {\n");
+			css.append("    border-radius: 0;\n");
+			css.append("}\n");
+		}
+
+		return css.toString();
+	}
+}
