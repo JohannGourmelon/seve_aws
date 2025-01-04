@@ -54,6 +54,13 @@
 	border-bottom: 1px solid #A8B5A2;
 }
 
+.input-img input {
+	border: none;
+	height: unset;
+	border-radius: 0px;
+	padding: 0 7px;
+}
+
 #amapForm label {
 	width: 150px;
 }
