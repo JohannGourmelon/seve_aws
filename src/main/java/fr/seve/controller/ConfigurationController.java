@@ -160,23 +160,19 @@ public class ConfigurationController {
 		css.append("--primary-color: ").append(configuration.getPrimaryColor()).append(";\n");
 		css.append("--secondary-color: ").append(configuration.getSecondaryColor()).append(";\n");
 		css.append("--tertiary-color: ").append(configuration.getTertiaryColor()).append(";\n");
+		// Bordures
+		if (Boolean.TRUE.equals(configuration.getIsRoundedBorders())) {
+			css.append("--border-radius: 10px;\n");
+		} else {
+			css.append("--border-radius: 0px;\n");
+		}
+
 		css.append("}\n");
 
 		// Police
 		css.append("body {\n");
 		css.append("    font-family: '").append(configuration.getPolice().getDisplayName()).append("', sans-serif;\n");
 		css.append("}\n");
-
-		// Bordures
-		if (Boolean.TRUE.equals(configuration.getIsRoundedBorders())) {
-			css.append(".rounded {\n");
-			css.append("    border-radius: 10px;\n");
-			css.append("}\n");
-		} else {
-			css.append(".rounded {\n");
-			css.append("    border-radius: 0;\n");
-			css.append("}\n");
-		}
 
 		return css.toString();
 	}

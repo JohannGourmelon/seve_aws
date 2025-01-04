@@ -3,9 +3,29 @@
 body {
 	margin: 0;
 	box-sizing: border-box;
-    font-family: var(--font-family), sans-serif;
+	font-family: var(--font-family), sans-serif;
+	background-color: var(--tertiary-color);
 }
 
+.body-container {
+	width: 80%;
+	height: auto;
+	padding: 10px;
+	margin: 0 10% 0 10%;
+}
+
+.body-container pre {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	font-family: var(--font-family), sans-serif;
+	font-size: 18px;
+	text-align: justify;
+}
+
+.body-container h1 {
+	text-align: center;
+}
 
 main {
 	margin: 0 50px;
@@ -25,7 +45,7 @@ h3 {
 }
 
 ul {
-	padding-left: 15px;
+	padding-left: 5%;
 }
 
 a {
@@ -36,31 +56,87 @@ a:hover {
 	cursor: pointer;
 }
 
+img {
+	max-width: 100px;
+	height: auto;
+}
 
 /****************************** Navbar *******************************/
-
-
 #navbar {
-		background-color: var(--primary-color);
+	background-color: var(--primary-color);
+	border-radius: var(--border-radius);
+	padding: 1%;
+	margin: 1%;
+	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+	justify-content: flex-start;
+	
 }
 
+.nav-logo {
+	width: 100px;
+	max-width: 100px;
+	height: auto;
+	padding: 1%;
+	margin-left: 75%;
+}
+
+.navbar-nav {
+	padding: 1%;
+	margin: 1%;
+}
+
+.nav-collapse {
+	display : flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.navbar-toggler {
+	margin-left: 100%;
+}
 
 /**************************** Footer ******************************/
-.footer-content {
-	padding: 15px 0;
+footer {
+	height: auto;
+	width: auto;
+	margin-bottom: 1%;
+	background-color: var(--secondary-color);
 }
 
-footer {
-	width: 100%;
-	margin-top: auto;
-	background-color: var(--secondary-color);
+.footer-container {
+	height: 25%; display : flex;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.footer-content {
+	margin: 0 10%;
+	text-align: center;
+	line-height: 0.8;
+}
+
+footer a {
+	margin-bottom: 1px;
+	font-size: 16px;
 }
 
 footer p {
 	margin-bottom: 1px;
-	font-size: 14px;
+	font-size: 16px;
 }
 
 .cr {
 	font-size: 12px;
+	text-align: center;
+}
+
+@media ( max-width : 768px) {
+	footer {
+		flex-direction: column;
+		text-align: center;
+	}
+	.footer-content {
+		margin-bottom: 20px;
+	}
 }
