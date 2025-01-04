@@ -6,7 +6,7 @@
         <div class="text-end mb-2">
             <a href="${pageContext.request.contextPath}/${slug}/box/add" class="btn btn-success">Ajouter un panier</a>
         </div>
-        <table class="table table-bordered bg-light table-striped table-hover mb-5">
+        <table class="table table-bordered table-striped table-hover mb-5">
             <thead>
                 <tr>
                     <th class="d-none">ID</th>

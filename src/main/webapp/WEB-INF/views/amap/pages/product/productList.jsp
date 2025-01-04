@@ -41,7 +41,7 @@
 							</div>
 						</div>
 						<div class="btn-container text-center mt-3">
-							<a href="${pageContext.request.contextPath}/product/edit/${product.id}"
+							<a href="${pageContext.request.contextPath}/${slug}/product/edit/${product.id}"
 <%-- 								href="${pageContext.request.contextPath}/product/edit/${product.id}?quantity=${product.quantity}" --%>
 								class="btn btn-warning btn-sm">Commander</a>
 						</div>
