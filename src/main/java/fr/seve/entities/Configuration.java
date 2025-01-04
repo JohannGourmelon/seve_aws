@@ -22,6 +22,7 @@ public class Configuration {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 	
+	@Lob
 	@Column
 	private String presentationText;
 	
