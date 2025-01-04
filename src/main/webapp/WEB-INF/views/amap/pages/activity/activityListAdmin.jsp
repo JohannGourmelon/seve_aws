@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <h1 class="text-center">Gestion des ateliers</h1>
         <div class="text-end mb-2">
-            <a href="${pageContext.request.contextPath}/activity/add" class="btn btn-success">Ajouter un atelier</a>
+            <a href="${pageContext.request.contextPath}/${slug}/activity/add" class="btn btn-success">Ajouter un atelier</a>
         </div>
         <table class="table table-bordered table-striped table-hover mb-5">
             <thead>
@@ -37,9 +37,9 @@
                         <td>${activity.formattedLastModifiedDate}</td>
                         <td>
                             <div class="btn-container">
-                                <a href="${pageContext.request.contextPath}/activity/${activity.id}" class="btn btn-info btn-sm btn-link">Détails</a>
-                                <a href="${pageContext.request.contextPath}/activity/edit/${activity.id}" class="btn btn-warning btn-sm btn-link">Modifier</a>
-                                <a href="${pageContext.request.contextPath}/activity/delete/${activity.id}" class="btn btn-danger btn-sm btn-link" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet atelier ?')">Supprimer</a>
+                                <a href="${pageContext.request.contextPath}/${slug}/activity/${activity.id}" class="btn btn-info btn-sm btn-link">Détails</a>
+                                <a href="${pageContext.request.contextPath}/${slug}/activity/edit/${activity.id}" class="btn btn-warning btn-sm btn-link">Modifier</a>
+                                <a href="${pageContext.request.contextPath}/${slug}/activity/delete/${activity.id}" class="btn btn-danger btn-sm btn-link" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet atelier ?')">Supprimer</a>
                             </div>
                         </td>
                     </tr>
