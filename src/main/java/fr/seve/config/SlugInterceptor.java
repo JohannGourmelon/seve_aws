@@ -21,38 +21,32 @@ public class SlugInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        // Récupérer l'URL demandée (par exemple "/seve/delphine/box")
-        String path = request.getRequestURI().substring(1); // Enlève le premier slash
-        System.out.println("URL complète demandée : " + request.getRequestURI()); // Afficher l'URL complète
+        // Récupère l'URL demandée
+        String path = request.getRequestURI().substring(1);
 
-        // Si l'URL commence par "seve", on l'enlève
+        // Supprime "seve/"
         if (path.startsWith("seve/")) {
-            path = path.substring(5); // Supprimer "seve/"
-            System.out.println("URL après suppression de 'seve/': " + path); // Afficher l'URL après modification
+            path = path.substring(5);
         }
 
-        // Vérifier si l'URL reste avec un slug et un chemin, par exemple "/delphine/box"
+        // Divise l'URL restante en segments
         String[] pathParts = path.split("/");
 
-        if (pathParts.length > 1) {
+        // Vérifie s'il y a au moins un segment (slug)
+        if (pathParts.length > 0) {
             String slug = pathParts[0]; // Le premier segment est le slug
-            System.out.println("Slug extrait : " + slug); // Afficher le slug extrait
+            System.out.println("Slug extrait : " + slug);
 
-            // Récupérer l'AMAP correspondant au slug
+            // Récupère l'AMAP correspondant au slug
             AMAP amap = amapService.findBySlug(slug);
             if (amap == null) {
-                System.out.println("AMAP non trouvée pour le slug : " + slug); // Afficher si l'AMAP n'est pas trouvée
+                System.out.println("AMAP non trouvée pour le slug : " + slug);
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "AMAP not found");
                 return false;
             }
 
-            // Ajouter l'AMAP au contexte de la requête
             request.setAttribute("amap", amap);
-        } else {
-            System.out.println("Aucun slug trouvé dans l'URL"); // Afficher si aucun slug n'est trouvé
         }
-
-        // Si l'URL ne correspond pas à {slug}/**, on ne fait rien
         return true;
     }
 

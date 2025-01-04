@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -30,54 +29,57 @@ public class BoxController {
 	
 	@Autowired
 	private AmapService amapService;
-
-//	@GetMapping
-//	public ModelAndView listBoxes(Model model) {
-//		List<Box> boxes = boxService.findAll();
-//		model.addAttribute("boxes", boxes);
-//		ModelAndView mv = new ModelAndView("box-list");
-//		mv.addObject("css", "/resources/css/amap/boxList.css");
-//	    return mv;
-//	}
 	
-    // Liste des boxes associées à un AMAP donné (basé sur le slug)
     @GetMapping
     public ModelAndView listBoxes(@PathVariable String slug, Model model) {
-        AMAP amap = amapService.findBySlug(slug);  // Recherche l'AMAP par son slug
+        AMAP amap = amapService.findBySlug(slug);
         if (amap == null) {
-            // Gestion de l'erreur si l'AMAP n'est pas trouvée
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
         }
 
-        //List<Box> boxes = boxService.findById(amap);  // Trouver les boîtes associées à cet AMAP
         List<Box> boxes = boxService.findAll();
         model.addAttribute("boxes", boxes);
-        model.addAttribute("amap", amap);  // Ajouter l'AMAP au modèle pour l'affichage
+        model.addAttribute("amap", amap);
+        model.addAttribute("slug", slug);
         ModelAndView mv = new ModelAndView("box-list");
         mv.addObject("css", "/resources/css/amap/boxList.css");
         return mv;
     }
 	
 	@GetMapping("/admin")
-	public ModelAndView adminListBoxes(Model model) {
+	public ModelAndView adminListBoxes(@PathVariable String slug, Model model) {
+		AMAP amap = amapService.findBySlug(slug);
+        if (amap == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
+        }
+
 		List<Box> boxes = boxService.findAll();
 		model.addAttribute("boxes", boxes);
+		model.addAttribute("slug", slug);
 		ModelAndView mv = new ModelAndView("admin-box-list");
 		mv.addObject("css", "/resources/css/amap/boForms.css");
 	    return mv;
 	}	
 
 	@GetMapping("{id}")
-	public String getBox(@PathVariable Long id, Model model) {
+	public String getBox(@PathVariable String slug, @PathVariable Long id, Model model) {
+		AMAP amap = amapService.findBySlug(slug);
+        if (amap == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
+        }
 
 		Box box = boxService.findById(id);
 		model.addAttribute("box", box);
 		return "box-details";
-
 	}
 
 	@GetMapping("/add")
-	public String showAddForm(Model model) {
+	public String showAddForm(@PathVariable String slug, Model model) {
+		AMAP amap = amapService.findBySlug(slug);
+        if (amap == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
+        }
+        
 		model.addAttribute("categories", Box.Category.values());
 		model.addAttribute("frequencies", Box.Frequency.values());
 		model.addAttribute("box", new Box());
@@ -85,21 +87,35 @@ public class BoxController {
 	}
 
 	@PostMapping("add")
-	public String saveBox(@ModelAttribute Box box) {
+	public String saveBox(@PathVariable String slug, @ModelAttribute Box box) {
+		AMAP amap = amapService.findBySlug(slug);
+        if (amap == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
+        }
+        
 		box.setCreationDate(LocalDate.now());
 		boxService.save(box);
-		return "redirect:/box/admin";
+		return "redirect:/{slug}/box/admin";
 	}
 
 	@GetMapping("/delete/{id}")
-	public String deleteBox(@PathVariable Long id) {
+	public String deleteBox(@PathVariable String slug, @PathVariable Long id) {
+		AMAP amap = amapService.findBySlug(slug);
+        if (amap == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
+        }
+        
 		boxService.deleteById(id);
-		return "redirect:/box/admin";
-		
+		return "redirect:/{slug}/box/admin";
 	}
 	
     @GetMapping("/edit/{id}")
-    public String showEditForm(@PathVariable Long id, Model model) {
+    public String showEditForm(@PathVariable String slug, @PathVariable Long id, Model model) {
+    	AMAP amap = amapService.findBySlug(slug);
+        if (amap == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
+        }
+        
         Box box = boxService.findById(id);
         model.addAttribute("categories", Box.Category.values());
         model.addAttribute("frequencies", Box.Frequency.values());
@@ -107,15 +123,18 @@ public class BoxController {
         return "box-form";
     }
 
-
 	@PostMapping("/edit/{id}")
-	public String updateBox(@PathVariable Long id, @ModelAttribute Box box) {
+	public String updateBox(@PathVariable String slug, @PathVariable Long id, @ModelAttribute Box box) {
+		AMAP amap = amapService.findBySlug(slug);
+        if (amap == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
+        }
+        
 		Box oldBox = boxService.findById(id);
 		box.setCreationDate(oldBox.getCreationDate());
 		box.setLastModifiedDate(LocalDate.now());
     	boxService.save(box);
-        return "redirect:/box/admin";
+        return "redirect:/{slug}/box/admin";
     }
-
 
 }
