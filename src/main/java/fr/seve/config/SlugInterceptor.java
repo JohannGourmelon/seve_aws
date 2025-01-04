@@ -21,7 +21,7 @@ public class SlugInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        // Récupère l'URL demandée
+        // Récupère l'URL
         String path = request.getRequestURI().substring(1);
 
         // Supprime "seve/"
@@ -29,7 +29,7 @@ public class SlugInterceptor implements HandlerInterceptor {
             path = path.substring(5);
         }
 
-        // Divise l'URL restante en segments
+        // Divise l'URL en segments
         String[] pathParts = path.split("/");
 
         // Vérifie s'il y a au moins un segment (slug)
@@ -52,7 +52,7 @@ public class SlugInterceptor implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        // Ajouter l'AMAP au modèle de la vue, si elle est présente
+        // Ajoute l'AMAP au modèle de la vue, si elle est présente
         if (modelAndView != null && request.getAttribute("amap") != null) {
             modelAndView.addObject("amap", request.getAttribute("amap"));
         }
