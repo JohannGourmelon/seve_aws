@@ -3,7 +3,7 @@
 body {
 	margin: 0;
 	box-sizing: border-box;
-	background-color: var(--primary-color);
+    font-family: var(--font-family), sans-serif;
 }
 
 
@@ -37,6 +37,12 @@ a:hover {
 }
 
 
+/****************************** Navbar *******************************/
+
+
+#navbar {
+		background-color: var(--primary-color);
+}
 
 
 /**************************** Footer ******************************/
@@ -47,7 +53,7 @@ a:hover {
 footer {
 	width: 100%;
 	margin-top: auto;
-	background-color: #DCDCDC;
+	background-color: var(--secondary-color);
 }
 
 footer p {

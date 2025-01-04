@@ -1,6 +1,6 @@
 table {
 	margin-top: 20px;
-	border-radius: 30px;
+	border-radius: 30px;	
 }
 
 table {
@@ -23,7 +23,7 @@ table {
 .table thead th {
 	vertical-align: middle;
 	font-size: 14px;
-    background-color: lightgray;
+	background-color: var(--primary-color);
 }
 
 .table td {

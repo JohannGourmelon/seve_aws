@@ -1,5 +1,5 @@
 
-<nav id="navbar" class="navbar navbar-expand-sm bg-light navbar-light">
+<nav id="navbar" class="navbar navbar-expand-sm navbar-light">
 	<div>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#nav-content" aria-controls="nav-content"
