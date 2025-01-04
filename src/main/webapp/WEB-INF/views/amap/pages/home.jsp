@@ -1,4 +1,3 @@
-
 <h1>Accueil</h1>
 
     <h2>Détails de l'AMAP</h2>

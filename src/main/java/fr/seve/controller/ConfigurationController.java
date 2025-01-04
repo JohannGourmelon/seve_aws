@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -138,5 +141,57 @@ public class ConfigurationController {
         
         return ResponseEntity.notFound().build();
     }
+    
+    
+   
+        /**
+         * Endpoint pour générer du CSS dynamique à partir d'une configuration.
+         * @param id L'ID de la configuration.
+         * @return Le CSS généré.
+         */
+        @GetMapping(value = "/css/{id}", produces = "text/css")
+        @ResponseBody
+        public String getCss(@PathVariable Long id) {
+            Configuration configuration = configurationService.findById(id);
 
-}
+            if (configuration == null) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Configuration not found");
+            }
+
+            return generateCss(configuration);
+        }
+
+        /**
+         * Génère du CSS dynamique en fonction des données de la configuration.
+         * @param configuration L'objet Configuration.
+         * @return Une chaîne représentant le CSS.
+         */
+        private String generateCss(Configuration configuration) {
+            StringBuilder css = new StringBuilder();
+
+            // Couleurs principales
+            css.append(":root {\n");
+            css.append("--primary-color: ").append(configuration.getPrimaryColor()).append(";\n");
+            css.append("--secondary-color: ").append(configuration.getSecondaryColor()).append(";\n");
+            css.append("--tertiary-color: ").append(configuration.getTertiaryColor()).append(";\n");
+            css.append("}\n");
+
+            // Police
+            css.append("body {\n");
+            css.append("    font-family: '").append(configuration.getPolice().getDisplayName()).append("', sans-serif;\n");
+            css.append("}\n");
+
+            // Bordures arrondies
+            if (Boolean.TRUE.equals(configuration.getIsRoundedBorders())) {
+                css.append(".rounded {\n");
+                css.append("    border-radius: 10px;\n");
+                css.append("}\n");
+            } else {
+                css.append(".rounded {\n");
+                css.append("    border-radius: 0;\n");
+                css.append("}\n");
+            }
+
+            return css.toString();
+        }
+    }
