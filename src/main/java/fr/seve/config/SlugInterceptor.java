@@ -32,7 +32,7 @@ public class SlugInterceptor implements HandlerInterceptor {
         // Divise l'URL en segments
         String[] pathParts = path.split("/");
 
-        // Vérifie s'il y a au moins un segment (slug)
+        // Vérifie s'il y a au moins un segment
         if (pathParts.length > 0) {
             String slug = pathParts[0]; // Le premier segment est le slug
             System.out.println("Slug extrait : " + slug);
@@ -52,7 +52,7 @@ public class SlugInterceptor implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        // Ajoute l'AMAP au modèle de la vue, si elle est présente
+        // Ajoute l'AMAP au modèle de la vue
         if (modelAndView != null && request.getAttribute("amap") != null) {
             modelAndView.addObject("amap", request.getAttribute("amap"));
         }

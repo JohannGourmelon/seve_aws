@@ -1,13 +1,10 @@
 package fr.seve.config;
 
-import javax.servlet.Filter;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
-import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -27,7 +24,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	@Bean
 	public TilesConfigurer tilesConfigurer() {
 		TilesConfigurer tilesConfigurer = new TilesConfigurer();
-		// Indique le chemin du fichier tiles.xml
 		tilesConfigurer.setDefinitions("/WEB-INF/views/tiles.xml");
 		tilesConfigurer.setCheckRefresh(true);
 		return tilesConfigurer;
@@ -36,7 +32,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	@Bean
 	public TilesViewResolver tilesViewResolver() {
 		TilesViewResolver resolver = new TilesViewResolver();
-		resolver.setOrder(1); // Priorité plus haute
+		resolver.setOrder(1);
 		return resolver;
 	}
 
@@ -45,13 +41,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setPrefix("/WEB-INF/views/");
 		viewResolver.setSuffix(".jsp");
-		viewResolver.setOrder(2); // Priorité plus basse que Tiles
+		viewResolver.setOrder(2);
 		return viewResolver;
 	}
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		// Configuration pour servir les fichiers statiques depuis webapp/resources
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
 
@@ -63,8 +58,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(slugInterceptor)
-                .addPathPatterns("/**") // Appliquer à toutes les URL
-                .excludePathPatterns("/", "/configuration/**", "/login", "/home", "/about", "/profile", "/amap/**", "/saasuser/**", "/saas/**", "/resources/**", "/static/**"); // Exclure les ressources statiques
+                .addPathPatterns("/**")
+                .excludePathPatterns("/", "/configuration/**", "/login", "/home", "/about", "/profile", "/amap/**", "/saasuser/**", "/saas/**", "/resources/**", "/static/**"); 
     }
 	
 }
