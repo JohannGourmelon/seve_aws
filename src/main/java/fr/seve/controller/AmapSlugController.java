@@ -15,30 +15,9 @@ import org.springframework.web.server.ResponseStatusException;
 
 import fr.seve.entities.AMAP;
 
-import fr.seve.service.AmapService;
-
-
 @Controller
 public class AmapSlugController {
 
-    @Autowired
-    private AmapService amapService;
-
-
-//    @GetMapping("/{slug}")
-//    public String handleAmapSlug(@PathVariable String slug, Model model) {
-//        if (RESERVED_PATHS.contains(slug)) {
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Page not found");
-//        }
-//
-//        AMAP amap = amapService.findBySlug(slug);
-//        if (amap == null) {
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
-//        }
-//
-//        model.addAttribute("amap", amap);
-//        return "amap-home";
-//    }
     
     @GetMapping("/{slug}")
     public String handleAmapSlug(@PathVariable String slug, Model model, HttpServletRequest request) {
