@@ -8,6 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -39,6 +40,11 @@ public class Configuration {
 	
 	@Column
 	private Boolean isRoundedBorders;
+	
+	@Lob
+	@Column(name = "logo")
+	private byte[] logoData;
+	
 	
 	@OneToOne(mappedBy = "configuration", cascade = CascadeType.ALL, orphanRemoval = true)
 	private AmapSpace amapSpace;
@@ -107,6 +113,14 @@ public class Configuration {
 	    this.isRoundedBorders = isRoundedBorders;
 	}
 	
+	public byte[] getLogoData() {
+		return logoData;
+	}
+
+	public void setLogoData(byte[] logoData) {
+		this.logoData = logoData;
+	}
+
 	public enum Police {
 	    ARIAL("Arial"),
 	    BASKERVILLE("Baskerville"),

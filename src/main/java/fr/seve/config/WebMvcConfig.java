@@ -54,7 +54,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	public LocalValidatorFactoryBean validator() {
 		return new LocalValidatorFactoryBean();
 	}
-
 	
-
+	
 }

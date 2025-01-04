@@ -1,8 +1,11 @@
 package fr.seve.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -11,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -100,15 +105,38 @@ public class ConfigurationController {
 	}
 
 	@PostMapping("editContent/{id}")
-	public String editContent(@PathVariable Long id, Configuration configuration,
+	public String editContent(@PathVariable Long id, Configuration configuration, @RequestParam("logo") MultipartFile logo,
 			RedirectAttributes redirectAttributes) {
 		Configuration newConf = configurationService.findById(id);
 		newConf.setPresentationText(configuration.getPresentationText());
+		if (logo != null && !logo.isEmpty()) {
+	        try {
+	            newConf.setLogoData(logo.getBytes());
+	        } catch (IOException e) {
+	            redirectAttributes.addFlashAttribute("message", "Erreur lors de l'importation du logo.");
+	            e.printStackTrace();
+	            return "redirect:/configuration/contenu";
+	        }
+	    }
 		configurationService.save(newConf);
 		;
 
 		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
 		return "redirect:/configuration/contenu";
 	}
+
+	@GetMapping("/logo/{id}")
+    public ResponseEntity<byte[]> getLogo(@PathVariable Long id) {
+        Configuration configuration = configurationService.findById(id);
+        byte[] logoData = configuration.getLogoData();
+        
+        if (logoData != null) {
+            return ResponseEntity.ok()
+                    .contentType(MediaType.IMAGE_PNG)
+                    .body(logoData);
+        }
+        
+        return ResponseEntity.notFound().build();
+    }
 
 }
