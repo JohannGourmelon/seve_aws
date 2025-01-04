@@ -6,43 +6,43 @@
 			aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<a class="navbar-brand" href="${pageContext.request.contextPath}/amap-space">Amap name</a>
+		<a class="navbar-brand" href="${pageContext.request.contextPath}/${slug}">${amap.name}</a>
 	</div>
 
 	<div class="collapse navbar-collapse" id="nav-content">
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item">
-				<a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" onclick="window.location.href='${pageContext.request.contextPath}/amap-space'">Accueil</a>
+				<a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" onclick="window.location.href='${pageContext.request.contextPath}/${slug}'">Accueil</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-				onclick="window.location.href='${pageContext.request.contextPath}/box'">Liste des paniers</a>
+				onclick="window.location.href='${pageContext.request.contextPath}/${slug}/box'">Liste des paniers</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-				onclick="window.location.href='${pageContext.request.contextPath}/box/admin'">Gestion des paniers</a>
+				onclick="window.location.href='${pageContext.request.contextPath}/${slug}/box/admin'">Gestion des paniers</a>
 			</li>
 			<li class="nav-item">
 
 				<a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-				onclick="window.location.href='${pageContext.request.contextPath}/product'">Liste des produits</a>
+				onclick="window.location.href='${pageContext.request.contextPath}/${slug}/product'">Liste des produits</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-				onclick="window.location.href='${pageContext.request.contextPath}/product/admin'">Gestion des produits</a>
+				onclick="window.location.href='${pageContext.request.contextPath}/${slug}/product/admin'">Gestion des produits</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-				onclick="window.location.href='${pageContext.request.contextPath}/activity'">Liste des ateliers</a>
+				onclick="window.location.href='${pageContext.request.contextPath}/${slug}/activity'">Liste des ateliers</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-				onclick="window.location.href='${pageContext.request.contextPath}/activity/admin'">Gestion des ateliers</a>
+				onclick="window.location.href='${pageContext.request.contextPath}/${slug}/activity/admin'">Gestion des ateliers</a>
 			</li>
 			
 			<li class="nav-item">
 
-				<a class="nav-link" href="index.html" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" onclick="window.location.href='${pageContext.request.contextPath}/cart'">Panier</a>
+				<a class="nav-link" href="index.html" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" onclick="window.location.href='${pageContext.request.contextPath}/${slug}/cart'">Panier</a>
 			</li>
 			<li class="nav-item">
 
