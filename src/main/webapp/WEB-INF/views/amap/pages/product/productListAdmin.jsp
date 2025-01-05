@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <h1 class="text-center">Gestion des produits</h1>
         <div class="text-end mb-2">
-            <a href="${pageContext.request.contextPath}/product/add" class="btn btn-success">Ajouter un produit</a>
+            <a href="${pageContext.request.contextPath}/${slug}/product/add" class="btn btn-success">Ajouter un produit</a>
         </div>
         <table class="table table-bordered table-striped table-hover mb-5">
             <thead>
@@ -35,9 +35,9 @@
                         <td>${product.formattedLastModifiedDate}</td>
                         <td>
                             <div class="btn-container">
-                                <a href="${pageContext.request.contextPath}/product/${product.id}" class="btn btn-info btn-sm btn-link">Détails</a>
-                                <a href="${pageContext.request.contextPath}/product/edit/${product.id}" class="btn btn-warning btn-sm btn-link">Modifier</a>
-                                <a href="${pageContext.request.contextPath}/product/delete/${product.id}" class="btn btn-danger btn-sm btn-link" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')">Supprimer</a>
+                                <a href="${pageContext.request.contextPath}/${slug}/product/${product.id}" class="btn btn-info btn-sm btn-link">Détails</a>
+                                <a href="${pageContext.request.contextPath}/${slug}/product/edit/${product.id}" class="btn btn-warning btn-sm btn-link">Modifier</a>
+                                <a href="${pageContext.request.contextPath}/${slug}/product/delete/${product.id}" class="btn btn-danger btn-sm btn-link" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')">Supprimer</a>
                             </div>
                         </td>
                     </tr>

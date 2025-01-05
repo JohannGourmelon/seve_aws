@@ -24,4 +24,4 @@
     </div>
 </div>
 
-<a href="${pageContext.request.contextPath}/box/admin" class="btn btn-secondary mt-3 mb-5">Retour à la liste</a>
+<a href="${pageContext.request.contextPath}/${slug}/box/admin" class="btn btn-secondary mt-3 mb-5">Retour à la liste</a>

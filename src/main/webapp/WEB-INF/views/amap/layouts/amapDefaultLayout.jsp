@@ -18,6 +18,8 @@
 	href="${pageContext.request.contextPath}/resources/css/style.css" />
 	<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/amap/main.css" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/configuration/css/${amap.amapSpace.configuration.id}">
+	
 
 <!-- CSS dynamiques -->
 <c:if test="${not empty css}">
