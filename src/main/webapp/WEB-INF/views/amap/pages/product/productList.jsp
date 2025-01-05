@@ -23,9 +23,14 @@
 								<span
 									class="badge p-2 text-white
 						            <c:choose>
-						                <c:when test="${product.category.displayName == 'Boulangerie'}">bg-success</c:when>
-						                <c:when test="${product.category.displayName == 'Boissons'}">bg-info</c:when>
-						                <c:when test="${product.category.displayName == 'Epicerie sucrée'}">bg-warning</c:when>
+						                <c:when test="${product.category.displayName == 'Fruits'}">bg-success</c:when>
+						                <c:when test="${product.category.displayName == 'Légumes'}">bg-info</c:when>
+						                <c:when test="${product.category.displayName == 'Boulangerie'}">bg-primary</c:when>
+						                <c:when test="${product.category.displayName == 'Boissons'}">bg-teal</c:when>
+						                <c:when test="${product.category.displayName == 'Epicerie sucrée'}">bg-purple</c:when>
+						                <c:when test="${product.category.displayName == 'Epicerie salée'}">bg-orange</c:when>
+						                <c:when test="${product.category.displayName == 'Boucherie'}">bg-pink</c:when>
+						                  <c:when test="${product.category.displayName == 'Produits laitiers et oeufs'}">bg-indigo</c:when>
 						                <c:otherwise>bg-secondary</c:otherwise>
 						            </c:choose>
 						        ">

@@ -187,7 +187,7 @@ public class Product {
 		
 	// Enum pour la catégorie
 	public enum Category {
-		FRUITS("Fruits"), VEGETABLES("Légumes"), EGGS("Oeufs"), BUTCHERY("Boucherie"), BAKERY("Boulangerie"), DAIRY("Produits laitiers"), DRINK("Boissons"), SWEET_GROCERY("Epicerie sucrée"), SALT_GROCERY("Epicerie salée");
+		FRUITS("Fruits"), VEGETABLES("Légumes"), BUTCHERY("Boucherie"), BAKERY("Boulangerie"), DAIRY("Produits laitiers et oeufs"), DRINK("Boissons"), SWEET_GROCERY("Epicerie sucrée"), SALT_GROCERY("Epicerie salée");
 
 		private final String displayName;
 
