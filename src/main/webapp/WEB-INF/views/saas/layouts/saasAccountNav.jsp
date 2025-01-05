@@ -1,7 +1,7 @@
 <div class="secondary-nav">
 	<ul>
 	<li class="mb-4"><a href="${pageContext.request.contextPath}/profile">Mon compte</a></li>
-		<li><a href="${pageContext.request.contextPath}/amap/info">Votre
+		<li class="mb-4"><a href="${pageContext.request.contextPath}/amap/info">Mon
 				AMAP</a></li>
 
 		<li class="dropdown"><a href="javascript:void(0)" class="dropbtn"

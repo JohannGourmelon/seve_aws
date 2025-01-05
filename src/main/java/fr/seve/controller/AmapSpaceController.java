@@ -1,8 +1,7 @@
 package fr.seve.controller;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,23 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.server.ResponseStatusException;
 
 import fr.seve.entities.AMAP;
-import fr.seve.service.AmapService;
+
 
 @Controller
-public class AmapSlugController {
-
-    private static final List<String> RESERVED_PATHS = List.of("login", "home", "saas", "about", "profile");
-
-    @Autowired
-    private AmapService amapService;
-
+public class AmapSpaceController {
+	
     @GetMapping("/{slug}")
-    public String handleAmapSlug(@PathVariable String slug, Model model) {
-        if (RESERVED_PATHS.contains(slug)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Page not found");
-        }
-
-        AMAP amap = amapService.findBySlug(slug);
+    public String handleAmapSlug(@PathVariable String slug, Model model, HttpServletRequest request) {
+        AMAP amap = (AMAP) request.getAttribute("amap");
         if (amap == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
         }
@@ -35,4 +25,5 @@ public class AmapSlugController {
         model.addAttribute("amap", amap);
         return "amap-home";
     }
+	
 }

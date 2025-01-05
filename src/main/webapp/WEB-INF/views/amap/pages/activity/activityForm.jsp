@@ -7,10 +7,10 @@
 
     <c:choose>
         <c:when test="${activity.id != null}">
-            <form action="${pageContext.request.contextPath}/activity/edit/${activity.id}" method="post" class="needs-validation" novalidate>
+            <form action="${pageContext.request.contextPath}/${slug}/activity/edit/${activity.id}" method="post" class="needs-validation" novalidate>
         </c:when>
         <c:otherwise>
-            <form action="${pageContext.request.contextPath}/activity/add" method="post" class="needs-validation" novalidate>
+            <form action="${pageContext.request.contextPath}/${slug}/activity/add" method="post" class="needs-validation" novalidate>
         </c:otherwise>
     </c:choose>
 
@@ -82,7 +82,7 @@
         </div>
 
         <div class="d-flex justify-content-center mt-4 mb-5">
-                    <a href="${pageContext.request.contextPath}/activity" class="btn btn-secondary mx-3">Annuler</a>
+                    <a href="${pageContext.request.contextPath}/${slug}/activity" class="btn btn-secondary mx-3">Annuler</a>
         
             <button type="submit" class="btn btn-primary mx-3">Enregistrer</button>
         </div>

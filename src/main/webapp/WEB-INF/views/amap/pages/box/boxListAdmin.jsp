@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <h1 class="text-center">Gestion des paniers</h1>
         <div class="text-end mb-2">
-            <a href="${pageContext.request.contextPath}/box/add" class="btn btn-success">Ajouter un panier</a>
+            <a href="${pageContext.request.contextPath}/${slug}/box/add" class="btn btn-success">Ajouter un panier</a>
         </div>
         <table class="table table-bordered table-striped table-hover mb-5">
             <thead>
@@ -37,9 +37,9 @@
                         <td>${box.formattedLastModifiedDate}</td>
                         <td>
                             <div class="btn-container">
-                                <a href="${pageContext.request.contextPath}/box/${box.id}" class="btn btn-info btn-sm btn-link">Détails</a>
-                                <a href="${pageContext.request.contextPath}/box/edit/${box.id}" class="btn btn-warning btn-sm btn-link">Modifier</a>
-                                <a href="${pageContext.request.contextPath}/box/delete/${box.id}" class="btn btn-danger btn-sm btn-link" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce panier ?')">Supprimer</a>
+                                <a href="${pageContext.request.contextPath}/${slug}/box/${box.id}" class="btn btn-info btn-sm btn-link">Détails</a>
+                                <a href="${pageContext.request.contextPath}/${slug}/box/edit/${box.id}" class="btn btn-warning btn-sm btn-link">Modifier</a>
+                                <a href="${pageContext.request.contextPath}/${slug}/box/delete/${box.id}" class="btn btn-danger btn-sm btn-link" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce panier ?')">Supprimer</a>
                             </div>
                         </td>
                     </tr>

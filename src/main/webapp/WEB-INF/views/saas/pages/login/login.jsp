@@ -1,19 +1,44 @@
-<!-- saasuser-login.jsp -->
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<c:if test="${not empty error}">
-    <div style="color: red;">${error}</div>
-</c:if>
+<div class="login-main">
+	<div class="login-form-container shadow mb-3">
+		<p class="font-weight-bold pb-4">Connectez-vous pour accéder à
+			votre compte</p>
+		<div class="panel-body">
+			<form method="POST" action="${pageContext.request.contextPath}/login"
+				class="form-horizontal">
+				<div class="form-group login-field">
+					<label for="username" class="control-label">Adresse email</label>
+					<div>
+						<input type="text" id="username" name="username"
+							class="form-control" required>
+					</div>
+				</div>
 
- <form method="POST" action="${pageContext.request.contextPath}/login" class="my-5">
-        <label for="username">Nom d'utilisateur :</label>
-        <input type="text" id="username" name="username" required>
+				<div class="form-group login-field mt-4 mb-2">
+					<label for="password" class="control-label">Mot de passe</label>
+					<div>
+						<input type="password" id="password" name="password"
+							class="form-control" required>
+					</div>
+				</div>
 
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="password" required>
+				<div style="height: 20px; text-align: center; color: red; font-size: 14px">
+					<c:if test="${not empty error}">${error}</c:if>
+				</div>
 
-        <!-- Jeton CSRF -->
-        <input type="hidden" name="${_csrf.parameterName}"   value="${_csrf.token}" />
+				<!-- Jeton CSRF -->
+				<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" />
 
-        <button type="submit">Se connecter</button>
-    </form>
+				<div class="form-group">
+					<div id="btns" class="form-buttons text-center">
+						<button type="submit" class="btn btn-b">Se connecter</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+	</div>
+</div>

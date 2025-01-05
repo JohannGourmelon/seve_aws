@@ -39,7 +39,7 @@
 							<p class="card-text text-center font-weight-bold">${box.price}
 								€ / mois</p>
 						</div>
-						<form action="${pageContext.request.contextPath}/cart/add"
+						<form action="${pageContext.request.contextPath}/${slug}/cart/add"
 							method="post" class="text-center mt-3">
 							<input type="hidden" name="boxId" value="${box.id}" />
 							<button type="submit" class="btn btn-warning btn-sm">Commander</button>
