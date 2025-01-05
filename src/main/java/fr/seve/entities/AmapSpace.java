@@ -1,5 +1,7 @@
 package fr.seve.entities;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,8 +23,12 @@ public class AmapSpace {
 	@ManyToOne
 	@JoinColumn(name = "subscription_id")
 	private Subscription subscription;
+	
+    @OneToMany(mappedBy = "amapSpace", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<AmapUser> amapUsers;
 
-    public Long getId() {
+
+	public Long getId() {
         return id;
     }
 
@@ -54,4 +60,11 @@ public class AmapSpace {
 		this.subscription = subscription;
 	}
 
+	public List<AmapUser> getAmapUsers() {
+		return amapUsers;
+	}
+	
+	public void setAmapUsers(List<AmapUser> amapUsers) {
+		this.amapUsers = amapUsers;
+	}
 }
