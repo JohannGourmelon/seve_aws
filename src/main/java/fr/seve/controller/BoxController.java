@@ -94,7 +94,8 @@ public class BoxController {
 	}
 
 	@PostMapping("add")
-	public String saveBox(@PathVariable String slug, @ModelAttribute Box box, @RequestParam("image") MultipartFile image, RedirectAttributes redirectAttributes) {
+	public String saveBox(@PathVariable String slug, @ModelAttribute Box box, 
+			@RequestParam("image") MultipartFile image, RedirectAttributes redirectAttributes) {
 		AMAP amap = amapService.findBySlug(slug);
         if (amap == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");

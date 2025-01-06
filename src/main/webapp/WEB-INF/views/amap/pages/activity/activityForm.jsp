@@ -54,7 +54,7 @@
 				<label for="image">Image de votre panier</label>
 				<c:if test="${activity.imageData != null}">
 					<img
-						src="${pageContext.request.contextPath}/{slug}/activity/image/${activity.id}"
+						src="${pageContext.request.contextPath}/${slug}/activity/image/${activity.id}"
 						alt="Aperçu de l'image" class="img-thumbnail mb-3">
 				</c:if>
 				<input type="file" id="image" name="image" accept="image/*" />

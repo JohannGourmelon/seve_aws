@@ -104,7 +104,7 @@
 		 <div class="mb-3">
          <label for="image">Image de votre panier</label>
          <c:if test="${box.imageData != null}">
-            <img src="${pageContext.request.contextPath}/{slug}/box/image/${box.id}" alt="Aperçu de l'image" class="img-thumbnail mb-3">
+            <img src="${pageContext.request.contextPath}/${slug}/box/image/${box.id}" alt="Aperçu de l'image" class="img-thumbnail mb-3">
          </c:if>
          <input type="file" id="image" name="image" accept="image/*" />
       </div>
