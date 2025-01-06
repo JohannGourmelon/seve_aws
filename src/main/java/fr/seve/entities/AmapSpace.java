@@ -27,7 +27,10 @@ public class AmapSpace {
     @OneToMany(mappedBy = "amapSpace", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AmapUser> amapUsers;
 
-
+    @OneToMany(mappedBy = "amapSpace", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Activity> activities;
+    
+    
 	public Long getId() {
         return id;
     }
@@ -66,5 +69,13 @@ public class AmapSpace {
 	
 	public void setAmapUsers(List<AmapUser> amapUsers) {
 		this.amapUsers = amapUsers;
+	}
+
+	public List<Activity> getActivities() {
+		return activities;
+	}
+
+	public void setActivities(List<Activity> activities) {
+		this.activities = activities;
 	}
 }

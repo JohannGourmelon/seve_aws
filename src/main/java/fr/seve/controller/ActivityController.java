@@ -23,9 +23,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.seve.entities.AMAP;
 import fr.seve.entities.Activity;
+import fr.seve.entities.AmapSpace;
 import fr.seve.entities.Box;
 import fr.seve.service.ActivityService;
 import fr.seve.service.AmapService;
+import fr.seve.service.AmapSpaceService;
 
 @Controller
 @RequestMapping("/{slug}/activity")
@@ -36,6 +38,9 @@ public class ActivityController {
 	
 	@Autowired
 	private AmapService amapService;
+	
+	@Autowired
+	private AmapSpaceService amapSpaceService;
 
 	@GetMapping
 	public ModelAndView listActivities(@PathVariable String slug, Model model) {
@@ -43,7 +48,6 @@ public class ActivityController {
         if (amap == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
         }
-        
 		List<Activity> activities = activityService.findAll();
 		model.addAttribute("activities", activities);
 		ModelAndView mv = new ModelAndView("activity-list");
@@ -94,10 +98,12 @@ public class ActivityController {
 	@PostMapping("add")
 	public String saveActivity(@PathVariable String slug, @ModelAttribute Activity activity,
 			@RequestParam("image") MultipartFile image, RedirectAttributes redirectAttributes) {
-		AMAP amap = amapService.findBySlug(slug);
+		AMAP amap = amapService.findBySlug(slug);		
         if (amap == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
         }
+        
+        AmapSpace amapSpace = amapSpaceService.findById(amap.getId());
         
         if (image != null && !image.isEmpty()) {
 			try {
@@ -110,6 +116,8 @@ public class ActivityController {
 		}
         
 		activity.setCreationDate(LocalDate.now());
+		activity.setAmapSpace(amapSpace);
+		
 		activityService.save(activity);
 		return "redirect:/{slug}/activity/admin";
 	}

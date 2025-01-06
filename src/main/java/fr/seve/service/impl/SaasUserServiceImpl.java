@@ -18,7 +18,7 @@ import fr.seve.service.SaasUserService;
 public class SaasUserServiceImpl implements SaasUserService{
 
 	//Injection de dépendance
-	@Autowired // la plus simple
+	@Autowired 
 	private SaasUserRepository saasUserRepository;
 	
 
