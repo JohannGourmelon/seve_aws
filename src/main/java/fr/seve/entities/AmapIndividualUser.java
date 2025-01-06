@@ -13,10 +13,19 @@ public class AmapIndividualUser {
     @JoinColumn(name = "user_id", nullable = false, unique = true)
     private AmapUser amapUser;
 
-    @Column(nullable = false)
-    private boolean isVolunteer;
 
-    public Long getId() {
+	@Column(nullable = false)
+    private boolean volunteer;
+
+    public boolean isVolunteer() {
+		return volunteer;
+	}
+
+	public void setVolunteer(boolean volunteer) {
+		this.volunteer = volunteer;
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -32,11 +41,10 @@ public class AmapIndividualUser {
         this.amapUser = amapUser;
     }
 
-    public boolean isVolunteer() {
-        return isVolunteer;
-    }
+	@Override
+	public String toString() {
+		return "AmapIndividualUser [id=" + id + ", amapUser=" + amapUser.toString() + ", volunteer=" + volunteer + "]";
+	}
 
-    public void setVolunteer(boolean isVolunteer) {
-        this.isVolunteer = isVolunteer;
-    }
+
 }

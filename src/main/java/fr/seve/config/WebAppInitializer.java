@@ -16,7 +16,6 @@ public class WebAppInitializer implements WebApplicationInitializer  {
         // Crée le contexte Spring
         AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
         appContext.register(WebMvcConfig.class); // Enregistre la configuration Web MVC avec Tiles
-        appContext.register(SecurityConfig.class); // Ajoute la configuration Spring Security
         
         // Configure le DispatcherServlet
         ServletRegistration.Dynamic dispatcher = servletContext.addServlet(

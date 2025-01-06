@@ -12,6 +12,7 @@ import fr.seve.repository.SaasUserRepository;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
@@ -26,12 +27,12 @@ public class CustomUserDetailsService implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(
             saasUser.getEmail(),
             saasUser.getPassword(),
-            getAuthorities(saasUser) // Récupère les autorités
-        );
-    }
+    		formatRoleForSecurity(saasUser.getSaasUserLevel().name())); // Appel de la méthode pour formater le rôle
+}
 
-    private Collection<? extends GrantedAuthority> getAuthorities(SaasUser saasUser) {
-        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")); // Ajustez selon vos besoins en matière de rôles
-    }
+// Nouvelle fonction pour formater le rôle de l'utilisateur (avec un seul rôle)
+private Collection<? extends GrantedAuthority> formatRoleForSecurity(String role) {
+    return List.of(new SimpleGrantedAuthority("ROLE_" + role.toUpperCase()));
+}
 }
 

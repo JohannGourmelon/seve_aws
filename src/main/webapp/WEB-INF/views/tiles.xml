@@ -208,6 +208,18 @@
 			value="/WEB-INF/views/amap/pages/home.jsp" />
 	</definition>
 
+	<!-- Pages /signup -->
+
+	<definition name="amap-individual-signup" extends="template-amap">
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/user/individualUserSignUpForm.jsp" />
+	</definition>
+	
+	<definition name="amap-login" extends="template-amap">
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/user/loginAmap.jsp" />
+	</definition>
+
 	<!-- Pages /box -->
 
 

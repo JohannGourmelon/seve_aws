@@ -8,7 +8,15 @@ import fr.seve.entities.enums.AmapUserType;
 @Entity
 public class AmapUser {
 
-    @Id
+    @Override
+	public String toString() {
+		return "AmapUser [id=" + id + ", firstname=" + firstname + ", name=" + name + ", email=" + email + ", password="
+				+ password + ", phone=" + phone + ", createDate=" + createDate + ", lastModifyDate=" + lastModifyDate
+				+ ", role=" + role + ", type=" + type + ", amapSpace=" + amapSpace + ", individualUser="
+				+ individualUser + ", worksComitteeUser=" + worksComitteeUser + ", producerUser=" + producerUser + "]";
+	}
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -23,7 +31,11 @@ public class AmapUser {
 
     @Column(nullable = false)
     private String password;
-
+    
+    
+    @Column(nullable = true)
+    private String phone;
+    
     @Column(nullable = false)
     private String createDate;
 
@@ -84,6 +96,14 @@ public class AmapUser {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public String getPhone() {
+    	return phone;
+    }
+    
+    public void setPhone(String phone) {
+    	this.phone = phone;
     }
 
     public String getPassword() {
@@ -146,8 +166,8 @@ public class AmapUser {
         return worksComitteeUser;
     }
 
-    public void setWorksComittee(AmapWorksComitteeUser worksComitteeUser) {
-        this.worksComitteeUser = worksComitteeUser;
+    public void setWorksComitteeUser(AmapWorksComitteeUser worksComitteeUser) {
+    	this.worksComitteeUser = worksComitteeUser;
     }
 
     public AmapProducerUser getProducerUser() {
@@ -157,4 +177,5 @@ public class AmapUser {
     public void setProducerUser(AmapProducerUser producerUser) {
         this.producerUser = producerUser;
     }
+    
 }
