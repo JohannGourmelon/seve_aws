@@ -27,10 +27,15 @@ public class AmapSpaceController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
         }
         
-        Long id = amapService.findSubcriptionIdBySlug(slug);
-        System.out.println("-------------------------------- ID FORFAIT : " + id);
+        Long subscriptionId = amapService.findSubcriptionIdBySlug(slug);
+        
+        boolean showProducts = subscriptionId == 2 || subscriptionId == 3;
+        boolean showActivities = subscriptionId == 3;
 
+        model.addAttribute("showProducts", showProducts);
+        model.addAttribute("showActivities", showActivities);
         model.addAttribute("amap", amap);
+        
         return "amap-home";
     }
 	
