@@ -120,7 +120,7 @@ public class AmapController {
 		newAmap.setSiret(amap.getSiret());
 		amapService.save(newAmap);
 
-		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
+		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées.");
 		return  "redirect:/amap/info/{id}";
 	}
 

@@ -103,7 +103,7 @@ public class ConfigurationController {
 		newConf.setIsRoundedBorders(configuration.getIsRoundedBorders());
 		configurationService.save(newConf);
 
-		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
+		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées.");
 		return "redirect:/configuration/design";
 	}
 
@@ -124,7 +124,7 @@ public class ConfigurationController {
 		configurationService.save(newConf);
 		;
 
-		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
+		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées.");
 		return "redirect:/configuration/contenu";
 	}
 

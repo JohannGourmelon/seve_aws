@@ -1,31 +1,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-	<h1>Liste des AMAPs</h1>
-	<a href="${pageContext.request.contextPath}/amap/add">Ajouter AMAP</a>
+	<h1>Nos AMAPs</h1>
 	<table border="1">
 		<thead>
 			<tr>
-				<th>ID</th>
 				<th>Nom</th>
-				<th>Adresse</th>
-				<th>Siret</th>
-				<th>Actions</th>
+				<th>Site web</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="amap" items="${amaps}">
-				<tr>
-					<td>${amap.id}</td>
+				<tr>				
 					<td>${amap.name}</td>
-					<td>${amap.address}</td>
-					<td>${amap.siret}</td>
-					<td>
-						<a href="${pageContext.request.contextPath}/amap/${amap.id}">Details</a> |
-						<a href="${pageContext.request.contextPath}/amap/edit/${amap.id}">Modifier</a> |
-						<a href="${pageContext.request.contextPath}/amap/delete/${amap.id}" onclick="return confirm('Etes-vous sur ?')">Supprimer</a>
-					</td>
+					<td>${amap.slug}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	<a href="${pageContext.request.contextPath}/amap/info">Retour</a>

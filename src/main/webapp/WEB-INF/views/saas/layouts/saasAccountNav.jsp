@@ -18,4 +18,8 @@
 		<li class="mt-5"><a
 			href="${pageContext.request.contextPath}/amap">Gestion des amaps</a></li>
 	</ul>
+	
+	<a href="${pageContext.request.contextPath}/logout" style="text-decoration: underline;" class="logout-link">
+		<img src="${pageContext.request.contextPath}/resources/images/saas/logout.png" alt="" style="width: 25px; height: 25px; margin-right: 5px;">Déconnexion</a>
+		
 </div>

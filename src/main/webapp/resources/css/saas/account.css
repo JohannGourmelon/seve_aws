@@ -48,5 +48,28 @@ h1 {
 	cursor: pointer;
 }
 
+.logout-link {
+	font-size: 14px;
+	padding-top: 15px;
+}
+
+.logout-link p {
+	font-size: 14px;
+	padding-top: 15px;
+}
+
+.secondary-nav {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: space-between;
+}
+
+.amap-link {
+	padding: 15px 40px 18px 40px;
+	font-weight: bold;
+	margin-top: 50px;
+}
 
 
