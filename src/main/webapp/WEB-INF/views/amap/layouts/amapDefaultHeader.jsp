@@ -15,7 +15,7 @@
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item"><a class="nav-link"
 				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-				onclick="window.location.href='${pageContext.request.contextPath}/${amap.name}'">Accueil</a>
+				onclick="window.location.href='${pageContext.request.contextPath}/${slug}'">Accueil</a>
 			</li>
 			<li class="nav-item"><a class="nav-link"
 				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
@@ -51,9 +51,11 @@
 				</div></li>
 		</ul>
 		<ul class="navbar-nav ml-auto">
-			<li class="nav-item"><a class="nav-link" href="index.html"
-				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Se
+			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/${slug}/login"
+				data-bs-toggle="" data-bs-target=".navbar-collapse.show">Se
 					connecter</a></li>		
+			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/${slug}/signup"
+				data-bs-toggle="" data-bs-target=".navbar-collapse.show">Créer un compte</a></li>		
 		</ul>
 		
 	</div>

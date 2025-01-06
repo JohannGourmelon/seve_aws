@@ -34,6 +34,7 @@ public class AMAP {
 	 @Column(unique = true)
 	 private String slug;
 	 
+
 	// Relation avec SaasUser
 	@OneToOne(mappedBy = "amap", cascade = CascadeType.ALL, orphanRemoval = true)
 	private SaasUser saasUser;
@@ -90,6 +91,14 @@ public class AMAP {
 
 	public void setAmapSpace(AmapSpace amapSpace) {
 	    this.amapSpace = amapSpace;
+	}
+	
+	public String getSlug() {
+		return slug;
+	}
+	
+	public void setSlug(String slug) {
+		this.slug = slug;
 	}
 	
     @PrePersist
