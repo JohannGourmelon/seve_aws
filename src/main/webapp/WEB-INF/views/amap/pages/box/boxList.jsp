@@ -9,7 +9,7 @@
 			<div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-4 mb-5">
 				<div class="card">
 					<img
-						src="${pageContext.request.contextPath}/resources/images/amap/panier.jpeg"
+						src="${pageContext.request.contextPath}/${slug}/box/image/${box.id}"
 						class="card-img-top" alt="Image du panier">
 					<p class="card-title text-center">${box.name}</p>
 

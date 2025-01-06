@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -63,9 +64,10 @@ public class Activity {
 	@Column(nullable = true)
 	private LocalDate lastModifiedDate;
 
-//	@Column(nullable = true)
-//	private String imageUrl;
-//
+	@Lob
+	@Column(name = "image")
+	private byte[] imageData;
+
 //	@ManyToOne
 //	@JoinColumn(name = "producteur_id", nullable = true)
 //	private Producer producer;

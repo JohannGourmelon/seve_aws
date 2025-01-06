@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -58,8 +59,9 @@ public class Product {
 	private Category category;
 
 	
-//    @Column(nullable = true)
-//    private String imageUrl;
+	@Lob
+	@Column(name = "image")
+	private byte[] imageData;
 
 	// Relation avec Producteur
 //    @ManyToOne
