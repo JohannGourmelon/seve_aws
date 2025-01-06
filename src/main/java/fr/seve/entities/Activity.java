@@ -226,6 +226,14 @@ public class Activity {
 		public String getFormattedEndTime() {
 		    return endTime != null ? endTime.format(TIME_FORMATTER) : "";
 		}
+
+		public byte[] getImageData() {
+			return imageData;
+		}
+
+		public void setImageData(byte[] imageData) {
+			this.imageData = imageData;
+		}
 	
 
 }

@@ -187,6 +187,15 @@ public class Product {
 	}
 	
 		
+	public byte[] getImageData() {
+		return imageData;
+	}
+
+	public void setImageData(byte[] imageData) {
+		this.imageData = imageData;
+	}
+
+
 	// Enum pour la catégorie
 	public enum Category {
 		FRUITS("Fruits"), VEGETABLES("Légumes"), EGGS("Oeufs"), BUTCHERY("Boucherie"), BAKERY("Boulangerie"), DAIRY("Produits laitiers"), DRINK("Boissons"), SWEET_GROCERY("Epicerie sucrée"), SALT_GROCERY("Epicerie salée");
