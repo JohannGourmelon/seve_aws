@@ -45,4 +45,10 @@ public class AmapServiceImpl implements AmapService{
 		
 	}
 
+	@Override
+	public Long findSubcriptionIdBySlug(String slug) {
+		AMAP amap = amapRepository.findBySlug(slug);
+		return amap.getAmapSpace().getSubscription().getId();
+	}
+
 }
