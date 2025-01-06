@@ -12,6 +12,8 @@
 			alt="Logo de l'AMAP" />
 	</div>
 	
+	<p>Test : ${test}</p>
+	
 	<div class="collapse navbar-collapse" id="nav-content">
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item">

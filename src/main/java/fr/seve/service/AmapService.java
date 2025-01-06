@@ -17,6 +17,6 @@ public interface AmapService {
 	
 	void deleteById(Long Id);
 	
-	Long findSubcriptionIdBySlug(String slug);
+	Long findSubscriptionIdBySlug(String slug);
 
 }
