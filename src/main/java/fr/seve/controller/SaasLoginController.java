@@ -29,6 +29,19 @@ public class SaasLoginController {
 
 	        String email = authentication.getName(); // Récupère le nom d'utilisateur (email)
 	        SaasUser saasUser = saasUserService.findByEmail(email); // Récupère le prénom à partir de l'email
+	        Long subscriptionId = saasUser.getSubscription().getId();
+	        
+	        String subscriptionName = null;
+
+	        if (subscriptionId == 1) {
+	        	subscriptionName = "Essentiel";
+	        } else if (subscriptionId == 2) {
+	        	subscriptionName = "Standard";
+	        } else if (subscriptionId == 3) {
+	        	subscriptionName = "Premium";
+	        }
+	        
+	        model.addAttribute("subscription", subscriptionName);
 	        model.addAttribute("username", saasUser.getFirstname());
 	        ModelAndView mv = new ModelAndView("profile");
 	        

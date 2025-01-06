@@ -1,6 +1,10 @@
 package fr.seve.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import fr.seve.entities.enums.AmapUserRole;
 import fr.seve.entities.enums.AmapUserType;
@@ -8,32 +12,36 @@ import fr.seve.entities.enums.AmapUserType;
 @Entity
 public class AmapUser {
 
-    @Override
-	public String toString() {
-		return "AmapUser [id=" + id + ", firstname=" + firstname + ", name=" + name + ", email=" + email + ", password="
-				+ password + ", phone=" + phone + ", createDate=" + createDate + ", lastModifyDate=" + lastModifyDate
-				+ ", role=" + role + ", type=" + type + ", amapSpace=" + amapSpace + ", individualUser="
-				+ individualUser + ", worksComitteeUser=" + worksComitteeUser + ", producerUser=" + producerUser + "]";
-	}
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+	
     @Column(nullable = false)
+	@NotBlank
+	@Size(min = 2, max = 50, message = "Le prénom doit contenir entre 2 et 50 caractères")
     private String firstname;
 
+	@NotBlank(message = "Le nom est obligatoire")
+	@Size(min = 2, max = 50, message = "Le nom doit contenir entre 2 et 50 caractères")
     @Column(nullable = false)
     private String name;
 
     @Column(nullable = false, unique = true)
+    @NotBlank
+	@Email(message = "L''adresse email n''est pas valide")
     private String email;
 
     @Column(nullable = false)
+    @NotBlank(message = "Le mot de passe est obligatoire")
+	@Size(min = 8, message = "Le mot de passe doit contenir au moins 8 caractères")
+	@Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d).{8,}$", message = "Le mot de passe doit contenir au moins une majuscule, une minuscule et un chiffre")
     private String password;
     
     
-    @Column(nullable = true)
+    @Column(nullable = false)
+	@NotBlank(message = "Le numéro de téléphone est obligatoire")
+	@Pattern(regexp = "^\\d{10}$", message = "Le numéro de téléphone doit contenir exactement 10 chiffres")
     private String phone;
     
     @Column(nullable = false)
@@ -178,4 +186,11 @@ public class AmapUser {
         this.producerUser = producerUser;
     }
     
+    @Override
+    public String toString() {
+    	return "AmapUser [id=" + id + ", firstname=" + firstname + ", name=" + name + ", email=" + email + ", password="
+    			+ password + ", phone=" + phone + ", createDate=" + createDate + ", lastModifyDate=" + lastModifyDate
+    			+ ", role=" + role + ", type=" + type + ", amapSpace=" + amapSpace + ", individualUser="
+    			+ individualUser + ", worksComitteeUser=" + worksComitteeUser + ", producerUser=" + producerUser + "]";
+    }
 }

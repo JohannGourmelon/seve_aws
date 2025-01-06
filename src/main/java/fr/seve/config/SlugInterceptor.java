@@ -39,6 +39,14 @@ public class SlugInterceptor implements HandlerInterceptor {
             
             request.setAttribute("slug", amap.getSlug());
             request.setAttribute("amap", amap);
+            
+            Long subscriptionId = amapService.findSubscriptionIdBySlug(slug);
+            
+            boolean showProducts = subscriptionId == 2 || subscriptionId == 3;
+            boolean showActivities = subscriptionId == 3;
+            
+            request.setAttribute("showProducts", showProducts);
+            request.setAttribute("showActivities", showActivities);
         }
         return true;
     }

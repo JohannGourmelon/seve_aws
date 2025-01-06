@@ -2,11 +2,15 @@ package fr.seve.controller;
 
 import fr.seve.entities.AMAP;
 import fr.seve.entities.AmapIndividualUser;
+import fr.seve.entities.AmapProducerUser;
 import fr.seve.entities.AmapSpace;
 import fr.seve.entities.AmapUser;
+import fr.seve.entities.AmapWorksComitteeUser;
 import fr.seve.entities.enums.AmapUserRole;
 import fr.seve.entities.enums.AmapUserType;
 import fr.seve.service.AmapIndividualUserService;
+import fr.seve.service.AmapProducerUserService;
+import fr.seve.service.AmapWorksComitteeUserService;
 import fr.seve.utils.AmapUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +30,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/{slug}/individual")
-public class AmapIndividualUserController {
+@RequestMapping("/{slug}/works-comittee")
+public class AmapWorksComitteeUserController {
 
     @Autowired
-    private AmapIndividualUserService amapIndividualUserService;
-
+    private AmapWorksComitteeUserService amapWorksComitteeUserService;
+    
     /**
      * Afficher le formulaire de création de compte.
      */
@@ -39,8 +43,8 @@ public class AmapIndividualUserController {
     public String showSignupForm(HttpServletRequest request, Model model) {
 
     	model.addAttribute("slug", AmapUtils.getAmapFromRequest(request).getSlug());
-        model.addAttribute("amapIndividualUser", new AmapIndividualUser());
-        return "amap-individual-signup";
+        model.addAttribute("amapWorksComitteeUser", new AmapWorksComitteeUser());
+        return "amap-wc-signup";
     }
 
     /**
@@ -48,29 +52,29 @@ public class AmapIndividualUserController {
      */
     @PostMapping("/signup")
     public String processSignupForm(
-            @Valid @ModelAttribute("amapIndividualUser") AmapIndividualUser amapIndividualUser,
+            @Valid @ModelAttribute("amapWorksComitteeUser") AmapWorksComitteeUser amapWorksComitteeUser,
             BindingResult result,
             HttpServletRequest request,
             Model model) {
     	AMAP amap = AmapUtils.getAmapFromRequest(request);
     	String slug = amap.getSlug();
     	model.addAttribute("slug",slug);
-    	amapIndividualUser.getAmapUser().setRole(AmapUserRole.AMAP_USER);
-    	amapIndividualUser.getAmapUser().setType(AmapUserType.INDIVIDUAL);
-        amapIndividualUser.getAmapUser().setAmapSpace(amap.getAmapSpace());
+    	amapWorksComitteeUser.getAmapUser().setRole(AmapUserRole.AMAP_USER);
+    	amapWorksComitteeUser.getAmapUser().setType(AmapUserType.WORKS_COMITTEE);
+        amapWorksComitteeUser.getAmapUser().setAmapSpace(amap.getAmapSpace());
 
         if (result.hasErrors()) {
         	System.out.println( "Au moins une erreur est présente dans le formulaire.");
         	model.addAttribute("signupError", "Au moins une erreur est présente dans le formulaire.");
-            return "amap-individual-signup";
+            return "amap-wc-signup";
         }
 
         try {
-            amapIndividualUserService.createIndividualUser(amapIndividualUser);
+            amapWorksComitteeUserService.createWorksComitteeUser(amapWorksComitteeUser);
             return "redirect:/{slug}/login";
         } catch (Exception e) {
             model.addAttribute("signupError", "Une erreur s'est produite lors de la création du compte.");
-            return "amap-individual-signup";
+            return "amap-wc-signup";
         }
     }
     
