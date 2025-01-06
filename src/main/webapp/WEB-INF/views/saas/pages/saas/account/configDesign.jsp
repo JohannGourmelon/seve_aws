@@ -13,9 +13,9 @@
 					<label for="tertiaryColor" class="formItem">Couleur tertiaire</label>
 				</div>
 				<div class="designForm-inputs">
-					<input type="color" id="primaryColor" name="primaryColor" value="${configuration.primaryColor}">
-					<input type="color" id="secondaryColor" name="secondaryColor" value="${configuration.secondaryColor}"> 
-					<input type="color" id="tertiaryColor" name="tertiaryColor" value="${configuration.tertiaryColor}">
+					<input type="color" id="primaryColor" name="primaryColor" value="${empty configuration.primaryColor ? '#ffffff' : configuration.primaryColor}">
+					<input type="color" id="secondaryColor" name="secondaryColor" value="${empty configuration.secondaryColor ? '#ffffff' : configuration.secondaryColor}"> 
+					<input type="color" id="tertiaryColor" name="tertiaryColor" value="${empty configuration.tertiaryColor ? '#ffffff' : configuration.tertiaryColor}">
 				</div>
 			</div>
 			<div class="designForm-side">

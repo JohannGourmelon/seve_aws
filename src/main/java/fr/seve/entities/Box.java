@@ -50,8 +50,11 @@ public class Box {
 	@Column
 	private Frequency frequency;
 
-//    @Column(nullable = true)
-//    private String imageUrl;
+	
+
+	@Lob
+	@Column(name = "image")
+	private byte[] imageData;
 
 	// Relation avec Producteur
 //    @ManyToOne
@@ -146,6 +149,13 @@ public class Box {
 		this.category = category;
 	}
 
+	public byte[] getImageData() {
+		return imageData;
+	}
+
+	public void setImageData(byte[] imageData) {
+		this.imageData = imageData;
+	}
 //    public String getImageUrl() {
 //        return imageUrl;
 //    }
