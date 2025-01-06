@@ -128,7 +128,7 @@
 
 	<!-- Pages /amap -->
 
-	<definition name="amap-list" extends="template-saas-account">
+	<definition name="amap-list" extends="template-saas">
 		<put-attribute name="title" value="Liste des AMAPs" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/amap/amapList.jsp" />

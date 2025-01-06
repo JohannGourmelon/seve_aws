@@ -14,9 +14,6 @@
 					href="${pageContext.request.contextPath}/configuration/contenu">>
 						contenu</a></li>
 			</ul></li>
-
-		<li class="mt-5"><a
-			href="${pageContext.request.contextPath}/amap">Gestion des amaps</a></li>
 	</ul>
 	
 	<a href="${pageContext.request.contextPath}/logout" style="text-decoration: underline;" class="logout-link">
