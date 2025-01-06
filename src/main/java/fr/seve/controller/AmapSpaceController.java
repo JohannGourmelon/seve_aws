@@ -17,9 +17,6 @@ import fr.seve.service.AmapService;
 @Controller
 public class AmapSpaceController {
 
-	@Autowired
-	private AmapService amapService;
-
 	@GetMapping("/{slug}")
 	public String handleAmapSlug(@PathVariable String slug, Model model, HttpServletRequest request) {
 		AMAP amap = (AMAP) request.getAttribute("amap");
@@ -27,13 +24,6 @@ public class AmapSpaceController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
 		}
 
-		Long subscriptionId = amapService.findSubscriptionIdBySlug(slug);
-
-		boolean showProducts = subscriptionId == 2 || subscriptionId == 3;
-		boolean showActivities = subscriptionId == 3;
-
-		model.addAttribute("showProducts", showProducts);
-		model.addAttribute("showActivities", showActivities);
 		model.addAttribute("amap", amap);
 
 		return "amap-home";

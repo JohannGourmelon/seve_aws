@@ -11,9 +11,7 @@
 			src="${pageContext.request.contextPath}/configuration/logo/${amap.amapSpace.configuration.id}"
 			alt="Logo de l'AMAP" />
 	</div>
-	
-	<p>Test : ${test}</p>
-	
+		
 	<div class="collapse navbar-collapse" id="nav-content">
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item">
@@ -39,14 +37,16 @@
                        onclick="window.location.href='${pageContext.request.contextPath}/${slug}/activity'">Nos ateliers</a>
             	</li>
         	</c:if>
-
-			<li class="nav-item">
-				<a class="nav-link" href="index.html" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-					onclick="window.location.href='${pageContext.request.contextPath}/${slug}/cart'">Panier</a>
-			</li>
 			
 			<li class="nav-item"><a class="nav-link" href="index.html"
 				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Contactez-nous</a>
+			</li>
+			
+			<li class="nav-item">
+				<a class="nav-link" href="index.html" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
+					onclick="window.location.href='${pageContext.request.contextPath}/${slug}/cart'">
+					<img src="${pageContext.request.contextPath}/resources/images/amap/cart.png" alt="Panier" style="width: 20px; height: 20px;">
+				</a>
 			</li>
 			
 			<li class="nav-item dropdown">
@@ -68,12 +68,14 @@
 					</div>
 			</li>
 		</ul>
+		
 		<ul class="navbar-nav ml-auto">
-			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/${slug}/login"
-				data-bs-toggle="" data-bs-target=".navbar-collapse.show">Se
-					connecter</a></li>		
-			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/${slug}/signup"
-				data-bs-toggle="" data-bs-target=".navbar-collapse.show">Créer un compte</a></li>		
+			<li class="nav-item">
+				<a class="nav-link" href="${pageContext.request.contextPath}/${slug}/login" data-bs-toggle="" data-bs-target=".navbar-collapse.show">Se connecter</a>
+			</li>		
+			<li class="nav-item">
+				<a class="nav-link" href="${pageContext.request.contextPath}/${slug}/signup" data-bs-toggle="" data-bs-target=".navbar-collapse.show">Créer un compte</a>
+			</li>		
 		</ul>
 		
 	</div>
