@@ -66,10 +66,12 @@ h1 {
 	align-items: space-between;
 }
 
+.vertical-nav a:hover {
+	color: #d9a89c;
+}
+
 .amap-link {
 	padding: 15px 40px 18px 40px;
 	font-weight: bold;
 	margin-top: 50px;
 }
-
-

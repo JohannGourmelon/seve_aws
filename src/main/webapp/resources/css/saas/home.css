@@ -74,6 +74,27 @@
 	margin-top: 20%;
 }
 
+
+/************************** Nos amaps *********************************/
+
+.amaps {
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.amaps img {
+	height: 150px;
+	object-fit: contain;
+}
+
+.amap-card-content {
+	padding: 20px 30px;
+}
+
+.amap {
+	width: 20%;
+}
+
 /* ------------------------ Format tablette ---------------------------*/
 @media screen and (max-width: 992px) {
 	.presentation-container img {
@@ -100,6 +121,9 @@
 	.step {
 		margin-bottom: 50px;
 	}
+	.amap {
+	width: 30%;
+	}
 }
 
 /* ------------------------ Format mobile ---------------------------*/
@@ -107,5 +131,8 @@
 	.steps {
 		flex-wrap: wrap;
 		justify-content: space-around;
+	}
+	.amap {
+	width: 100%;
 	}
 }
