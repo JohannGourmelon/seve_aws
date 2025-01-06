@@ -59,7 +59,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(slugInterceptor)
                 .addPathPatterns("/**")
-                .excludePathPatterns("/", "/configuration/**", "/login", "/home", "/about", "/profile", "/amap/**", "/saasuser/**", "/saas/**", "/resources/**", "/static/**"); 
+                .excludePathPatterns("/", "/configuration/**", "/login", "/home", "/nos-amaps", "/about", "/profile", "/amap/**", "/saasuser/**", "/saas/**", "/resources/**", "/static/**"); 
     }
 	
 }

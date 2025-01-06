@@ -95,6 +95,15 @@
 	width: 20%;
 }
 
+.amap a:hover {
+	text-decoration: none;
+	color: black;
+}
+
+.amap:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
 /* ------------------------ Format tablette ---------------------------*/
 @media screen and (max-width: 992px) {
 	.presentation-container img {

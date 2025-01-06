@@ -7,7 +7,7 @@
 
 <c:if test="${!empty amap}">
 		<a href="http://localhost:8080/seve/${slug}" target="_blank">
-			<button class="btn btn-b amap-link">Accéder au site web de mon AMAP</button>
+			<button class="btn btn-secondary mt-5">Accéder au site web de mon AMAP</button>
 		</a>
 	
 </c:if>
