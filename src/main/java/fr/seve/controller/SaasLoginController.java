@@ -57,6 +57,9 @@ public class SaasLoginController {
 	        ModelAndView mv = new ModelAndView("profile");
 	        
 	        mv.addObject("css", "/resources/css/saas/config.css");
+	        mv.addObject("css2", "/resources/css/saas/profile.css");
+	        mv.addObject("js", "/resources/js/userCreationForm.js");
+
 	        return mv;
 	    }
 

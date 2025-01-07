@@ -41,6 +41,10 @@
 			value="/WEB-INF/views/saas/layouts/saasDefaultFooter.jsp" />
 		<put-attribute name="secondaryNav"
 			value="/WEB-INF/views/saas/layouts/saasAccountNav.jsp" />
+		<put-attribute name="css2"
+			value="" />
+		<put-attribute name="js"
+			value="" />
 	</definition>
 
 
@@ -109,22 +113,23 @@
 
 	<!-- Pages /login -->
 
-	<definition name="saasuser-login"
-		extends="template-saas">
+	<definition name="saasuser-login" extends="template-saas">
 		<put-attribute name="title"
 			value="Formulaire de connexion" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/login/login.jsp" />
 	</definition>
-	
-	<definition name="profile"
-		extends="template-saas-account">
-		<put-attribute name="title"
-			value="Formulaire de connexion" />
+
+	<definition name="profile" extends="template-saas-account">
+		<put-attribute name="title" value="Profile" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/login/profile.jsp" />
+		<put-attribute name="css2"
+			value="/resources/css/saas/profile.css" />
+		<put-attribute name="js"
+			value="/resources/js/userCreationForm.js" />
 	</definition>
-	
+
 
 	<!-- Pages /amap -->
 
@@ -150,7 +155,7 @@
 
 
 	<!-- Pages /saasUser -->
-	
+
 	<definition name="saasuser-signup-form"
 		extends="template-saas">
 		<put-attribute name="title"
@@ -214,34 +219,37 @@
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/home.jsp" />
 	</definition>
-	
+
 	<!-- Pages /Producer -->
 
-	<definition name="amap-producer-view" extends="template-amap">
+	<definition name="amap-producer-view"
+		extends="template-amap">
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/producer-view.jsp" />
 	</definition>
-	
+
 	<!-- Pages /Admin -->
 
 	<definition name="amap-admin-home" extends="template-amap">
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/admin/homeAdmin.jsp" />
 	</definition>
-	
+
 	<definition name="amap-signup" extends="template-amap">
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/user/userTypeChoiceForm.jsp" />
 	</definition>
-	
+
 
 	<!-- Pages /signup -->
 
-	<definition name="amap-individual-signup" extends="template-amap">
+	<definition name="amap-individual-signup"
+		extends="template-amap">
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/user/individualUserSignUpForm.jsp" />
 	</definition>
-	<definition name="amap-producer-signup" extends="template-amap">
+	<definition name="amap-producer-signup"
+		extends="template-amap">
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/user/producerUserSignUpForm.jsp" />
 	</definition>
@@ -249,7 +257,7 @@
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/user/wcUserSignUpForm.jsp" />
 	</definition>
-	
+
 	<definition name="amap-login" extends="template-amap">
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/user/loginAmap.jsp" />
@@ -281,83 +289,79 @@
 	</definition>
 
 
-		
-		<!-- Pages /product -->
 
-		<definition name="product-list" extends="template-amap">
-			<put-attribute name="title"
-				value="Liste des produits" />
-			<put-attribute name="main"
-				value="/WEB-INF/views/amap/pages/product/productList.jsp" />
-		</definition>
-		<definition name="admin-product-list" extends="template-amap">
-		<put-attribute name="title"
-			value="Gérer les produit" />
+	<!-- Pages /product -->
+
+	<definition name="product-list" extends="template-amap">
+		<put-attribute name="title" value="Liste des produits" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/product/productList.jsp" />
+	</definition>
+	<definition name="admin-product-list"
+		extends="template-amap">
+		<put-attribute name="title" value="Gérer les produit" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/product/productListAdmin.jsp" />
 	</definition>
-		<definition name="product-details" extends="template-amap">
-			<put-attribute name="title" value="Détails du produit" />
-			<put-attribute name="main"
-				value="/WEB-INF/views/amap/pages/product/productDetails.jsp" />
-		</definition>
-		<definition name="product-form" extends="template-amap">
-			<put-attribute name="title"
-				value="Formulaire de création d'un produit" />
-			<put-attribute name="main"
-				value="/WEB-INF/views/amap/pages/product/productForm.jsp" />
-		</definition>
-		
-		
-		<!-- Pages /activity -->
-
-		<definition name="activity-list" extends="template-amap">
-			<put-attribute name="title"
-				value="Liste des ateliers" />
-			<put-attribute name="main"
-				value="/WEB-INF/views/amap/pages/activity/activityList.jsp" />
-		</definition>
-		<definition name="admin-activity-list" extends="template-amap">
+	<definition name="product-details" extends="template-amap">
+		<put-attribute name="title" value="Détails du produit" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/product/productDetails.jsp" />
+	</definition>
+	<definition name="product-form" extends="template-amap">
 		<put-attribute name="title"
-			value="Gérer les ateliers" />
+			value="Formulaire de création d'un produit" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/product/productForm.jsp" />
+	</definition>
+
+
+	<!-- Pages /activity -->
+
+	<definition name="activity-list" extends="template-amap">
+		<put-attribute name="title" value="Liste des ateliers" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/activity/activityList.jsp" />
+	</definition>
+	<definition name="admin-activity-list"
+		extends="template-amap">
+		<put-attribute name="title" value="Gérer les ateliers" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/activity/activityListAdmin.jsp" />
 	</definition>
-		<definition name="activity-details" extends="template-amap">
-			<put-attribute name="title" value="Détails de l'atelier" />
-			<put-attribute name="main"
-				value="/WEB-INF/views/amap/pages/activity/activityDetails.jsp" />
-		</definition>
-		<definition name="activity-form" extends="template-amap">
-			<put-attribute name="title"
-				value="Formulaire de création d'atelier" />
-			<put-attribute name="main"
-				value="/WEB-INF/views/amap/pages/activity/activityForm.jsp" />
-		</definition>
-		
-			<!-- Pages /cart -->
-		
-		<definition name="cart" extends="template-amap">
-			<put-attribute name="title"
-				value="Panier" />
-			<put-attribute name="main"
-				value="/WEB-INF/views/amap/pages/order/cart.jsp" />
-		</definition>
-		
-		<!-- Pages /payment -->
-		
-		<definition name="amap-payment" extends="template-amap">
-			<put-attribute name="title"
-				value="Panier" />
-			<put-attribute name="main"
-				value="/WEB-INF/views/amap/pages/order/payment.jsp" />
-		</definition>
-		
-				<definition name="amap-payment-success" extends="template-amap">
-			<put-attribute name="title"
-				value="Panier" />
-			<put-attribute name="main"
-				value="/WEB-INF/views/amap/pages/order/payment-success.jsp" />
-		</definition>
+	<definition name="activity-details" extends="template-amap">
+		<put-attribute name="title" value="Détails de l'atelier" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/activity/activityDetails.jsp" />
+	</definition>
+	<definition name="activity-form" extends="template-amap">
+		<put-attribute name="title"
+			value="Formulaire de création d'atelier" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/activity/activityForm.jsp" />
+	</definition>
+
+	<!-- Pages /cart -->
+
+	<definition name="cart" extends="template-amap">
+		<put-attribute name="title" value="Panier" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/order/cart.jsp" />
+	</definition>
+
+	<!-- Pages /payment -->
+
+	<definition name="amap-payment" extends="template-amap">
+		<put-attribute name="title" value="Panier" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/order/payment.jsp" />
+	</definition>
+
+	<definition name="amap-payment-success"
+		extends="template-amap">
+		<put-attribute name="title" value="Panier" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/order/payment-success.jsp" />
+	</definition>
 
 </tiles-definitions>

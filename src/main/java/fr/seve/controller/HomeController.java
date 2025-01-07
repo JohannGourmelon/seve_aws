@@ -26,20 +26,13 @@ public class HomeController {
 		return "redirect:/home";
 	}
 
-//	@GetMapping("/home")
-//	public String home(Model model) {
+	@GetMapping("/home")
+	public String home() {
+		return "redirect:/saas";
 //		List<AMAP> amaps = amapService.findAll();
 //		model.addAttribute("amaps", amaps);
 //		return "home";
-//	}
-	
-	
-	@GetMapping("/home")
-	public ModelAndView home(Model model) {
-		List<AMAP> amaps = amapService.findAll();
-		model.addAttribute("amaps", amaps);
-		ModelAndView mv = new ModelAndView("home");
-        return mv;
 	}
+	
 
 }

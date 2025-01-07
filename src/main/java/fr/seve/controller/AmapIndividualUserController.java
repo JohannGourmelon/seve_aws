@@ -4,6 +4,7 @@ import fr.seve.entities.AMAP;
 import fr.seve.entities.AmapIndividualUser;
 import fr.seve.entities.AmapSpace;
 import fr.seve.entities.AmapUser;
+import fr.seve.entities.SaasUser;
 import fr.seve.entities.enums.AmapUserRole;
 import fr.seve.entities.enums.AmapUserType;
 import fr.seve.service.AmapIndividualUserService;
@@ -11,9 +12,11 @@ import fr.seve.utils.AmapUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +24,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -73,5 +79,42 @@ public class AmapIndividualUserController {
             return "amap-individual-signup";
         }
     }
+    
+    @Secured("ROLE_SAAS_CUSTOM")
+    @PostMapping("/createAdmin")
+    public String createAdmin(
+            @Valid @ModelAttribute("amapIndividualUser") AmapIndividualUser amapIndividualUser,
+            BindingResult result,
+            @ModelAttribute("globalSaasUser") SaasUser saasUser,
+            HttpServletRequest request,
+            RedirectAttributes redirectAttributes) {
+    	AMAP amap = AmapUtils.getAmapFromRequest(request);
+    	String slug = amap.getSlug();
+    	if (!slug.equals(saasUser.getAmap().getSlug())) {
+    		ObjectError error = new ObjectError("globalError", "Erreur de lien : les slug ne correspondent pas.");
+    		result.addError(error);
+    		request.getSession().setAttribute("formErrors", result.getAllErrors());
+    		return "redirect:/profile";
+    	};
+        if (result.hasErrors()) {
+            request.getSession().setAttribute("formErrors", result.getAllErrors());
+            return "redirect:/profile";
+        }
+        amapIndividualUser.getAmapUser().setRole(AmapUserRole.AMAP_ADMIN);
+    	amapIndividualUser.getAmapUser().setType(AmapUserType.INDIVIDUAL);
+        amapIndividualUser.getAmapUser().setAmapSpace(amap.getAmapSpace());
+        
+        try {
+            amapIndividualUserService.createIndividualUser(amapIndividualUser);
+            redirectAttributes.addFlashAttribute("successMessage", "L'administrateur a été créé avec succès.");
+            return "redirect:/profile";
+        } catch (Exception e) {
+            request.getSession().setAttribute("formErrors", List.of(
+                    new ObjectError("globalError", "Une erreur inattendue s'est produite.")
+            ));
+            return "redirect:/profile";
+        }
+    }
+
     
 }
