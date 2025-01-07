@@ -17,7 +17,7 @@
 						<p class="card-text mb-4">${product.description}</p>
 						<div class="row">
 						<div class="col-12 col-md-6">
-                                <p class="card-text delivery-text">Livraison </p>
+                         
                             </div>
 							<div class="col-12 col-md-6 d-flex justify-content-end align-items-center">
 								<span
