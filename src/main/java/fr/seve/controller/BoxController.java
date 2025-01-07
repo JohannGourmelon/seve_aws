@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.seve.entities.AMAP;
+import fr.seve.entities.AmapProducerUser;
 import fr.seve.entities.AmapSpace;
 import fr.seve.entities.AmapUser;
 import fr.seve.entities.Box;
@@ -109,7 +110,7 @@ public class BoxController {
 
 	@PostMapping("add")
 	public String saveBox(@PathVariable String slug, @ModelAttribute Box box,
-			
+			@ModelAttribute("amapUser") AmapUser amapUser,
 			@RequestParam("image") MultipartFile image, RedirectAttributes redirectAttributes) {
 		
 		AMAP amap = amapService.findBySlug(slug);
@@ -117,7 +118,7 @@ public class BoxController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
         }
         
-        //AmapSpace amapSpace = amapSpaceService.findById(amap.getId());
+        AmapProducerUser aPU = amapUser.getProducerUser();
         
         
         if (image != null && !image.isEmpty()) {
@@ -132,6 +133,7 @@ public class BoxController {
         
 		box.setCreationDate(LocalDate.now());
 		box.setAmapSpace(amap.getAmapSpace());
+		box.setAmapProducerUser(aPU);
 		boxService.save(box);
 		return "redirect:/{slug}/box/admin";
 	}
@@ -163,6 +165,7 @@ public class BoxController {
 
 	@PostMapping("/edit/{id}")
 	public String updateBox(@PathVariable String slug, @PathVariable Long id, @ModelAttribute Box box,
+			@ModelAttribute("amapUser") AmapUser amapUser,
 			@RequestParam("image") MultipartFile image, RedirectAttributes redirectAttributes) {
 		AMAP amap = amapService.findBySlug(slug);
         if (amap == null) {
@@ -171,10 +174,12 @@ public class BoxController {
         
 		Box oldBox = boxService.findById(id);
 		AmapSpace amapSpace = amapSpaceService.findById(amap.getId());
+		AmapProducerUser aPU = amapUser.getProducerUser();
 		
 		box.setCreationDate(oldBox.getCreationDate());
 		box.setLastModifiedDate(LocalDate.now());
 		box.setAmapSpace(amapSpace);
+		box.setAmapProducerUser(aPU);
 		if (oldBox.getImageData() != null) {
 			box.setImageData(oldBox.getImageData());
 		} 

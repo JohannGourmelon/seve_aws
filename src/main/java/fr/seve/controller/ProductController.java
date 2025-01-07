@@ -22,7 +22,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.seve.entities.AMAP;
+import fr.seve.entities.AmapProducerUser;
 import fr.seve.entities.AmapSpace;
+import fr.seve.entities.AmapUser;
 import fr.seve.entities.Box;
 import fr.seve.entities.Product;
 import fr.seve.service.AmapService;
@@ -104,6 +106,7 @@ public class ProductController {
 	
 	@PostMapping("add")
 	public String saveProduct(@PathVariable String slug, @ModelAttribute Product product, 
+			@ModelAttribute("amapUser") AmapUser amapUser,
 			@RequestParam("image") MultipartFile image, RedirectAttributes redirectAttributes) {
 		AMAP amap = amapService.findBySlug(slug);
         if (amap == null) {
@@ -111,6 +114,8 @@ public class ProductController {
         }
         
         AmapSpace amapSpace = amapSpaceService.findById(amap.getId());
+        
+        AmapProducerUser aPU = amapUser.getProducerUser();
         
         if (image != null && !image.isEmpty()) {
 			try {
@@ -124,6 +129,7 @@ public class ProductController {
         
 		product.setCreationDate(LocalDate.now());
 		product.setAmapSpace(amapSpace);
+		product.setAmapProducerUser(aPU);
 		productService.save(product);
 		return "redirect:/{slug}/product/admin";
 	}
@@ -154,6 +160,7 @@ public class ProductController {
 	
 	@PostMapping("/edit/{id}")
 	public String updateProduct(@PathVariable String slug, @PathVariable Long id, @ModelAttribute Product product,
+			@ModelAttribute("amapUser") AmapUser amapUser,
 			@RequestParam("image") MultipartFile image, RedirectAttributes redirectAttributes) {
 		AMAP amap = amapService.findBySlug(slug);
         if (amap == null) {
@@ -162,10 +169,12 @@ public class ProductController {
         
 		Product oldProduct = productService.findById(id);
 		AmapSpace amapSpace = amapSpaceService.findById(amap.getId());
+		AmapProducerUser aPU = amapUser.getProducerUser();
 		
 		product.setCreationDate(oldProduct.getCreationDate());
 		product.setLastModifiedDate(LocalDate.now());
 		product.setAmapSpace(amapSpace);
+		product.setAmapProducerUser(aPU);
 		if (oldProduct.getImageData() != null) {
 			product.setImageData(oldProduct.getImageData());
 		}

@@ -176,6 +176,14 @@ public class Activity {
 		this.creationDate = creationDate;
 	}
 
+	public AmapProducerUser getAmapProducerUser() {
+		return amapProducerUser;
+	}
+
+	public void setAmapProducerUser(AmapProducerUser amapProducerUser) {
+		this.amapProducerUser = amapProducerUser;
+	}
+
 	public LocalDate getLastModifiedDate() {
 		return lastModifiedDate;
 	}
