@@ -17,6 +17,7 @@ public class Box {
 	@Column
 	private String name;
 
+	@Lob
 	@Column
 	private String description;
 

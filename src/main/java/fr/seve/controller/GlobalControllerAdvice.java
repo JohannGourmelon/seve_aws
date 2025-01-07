@@ -43,7 +43,7 @@ public class GlobalControllerAdvice {
     }
     
     
-    @ModelAttribute("saasUser")
+    @ModelAttribute("globalSaasUser")
     public SaasUser getCurrentSaasUser() {
     	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     	if (authentication != null && authentication.isAuthenticated() 
@@ -51,9 +51,9 @@ public class GlobalControllerAdvice {
     		boolean isSaasUser = authentication.getAuthorities().stream()
     				.anyMatch(authority -> authority.getAuthority().startsWith("ROLE_SAAS"));
     		if (isSaasUser) {
-    			SaasUser saasUser = saasUserRepository.findByEmail(authentication.getName())
+    			SaasUser globalSaasUser = saasUserRepository.findByEmail(authentication.getName())
     					.orElseThrow(() -> new UsernameNotFoundException("Utilisateur SAAS non trouvé"));
-    			return saasUser;
+    			return globalSaasUser;
     		}
     	}
     	return null;
