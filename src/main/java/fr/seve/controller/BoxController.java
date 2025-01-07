@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.seve.entities.AMAP;
 import fr.seve.entities.AmapSpace;
+import fr.seve.entities.AmapUser;
 import fr.seve.entities.Box;
 import fr.seve.entities.Configuration;
 import fr.seve.service.AmapProducerUserService;
@@ -107,14 +108,16 @@ public class BoxController {
 	}
 
 	@PostMapping("add")
-	public String saveBox(@PathVariable String slug, @ModelAttribute Box box, 
+	public String saveBox(@PathVariable String slug, @ModelAttribute Box box,
+			
 			@RequestParam("image") MultipartFile image, RedirectAttributes redirectAttributes) {
+		
 		AMAP amap = amapService.findBySlug(slug);
         if (amap == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
         }
         
-        AmapSpace amapSpace = amapSpaceService.findById(amap.getId());
+        //AmapSpace amapSpace = amapSpaceService.findById(amap.getId());
         
         
         if (image != null && !image.isEmpty()) {
@@ -128,7 +131,7 @@ public class BoxController {
 		}
         
 		box.setCreationDate(LocalDate.now());
-		box.setAmapSpace(amapSpace);
+		box.setAmapSpace(amap.getAmapSpace());
 		boxService.save(box);
 		return "redirect:/{slug}/box/admin";
 	}
