@@ -46,4 +46,10 @@ public class SaasController {
         return mv;
 		}
 	
+	@GetMapping("/contact")
+	public ModelAndView contactSaas() {
+		ModelAndView mv = new ModelAndView("saas-contact");
+        mv.addObject("css", "/resources/css/saas/contact.css");
+        return mv;
+		}
 }
