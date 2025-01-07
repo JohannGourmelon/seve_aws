@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="container mt-5">
-	<h1 class="text-center">Votre Panier</h1>
+	<h1 class="text-center">Votre panier</h1>
 	<c:if test="${not empty cart.items}">
 		<table class="table">
 			<thead>
@@ -11,7 +11,7 @@
 					<th>Prix Unitaire</th>
 					<th>Quantité</th>
 					<th>Total</th>
-					<th>Actions</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -48,7 +48,8 @@
 							</c:choose> <input type="number" name="quantity" value="${item.quantity}"
 							min="0" class="form-control d-inline" style="width: 70px;" />
 							<button type="submit" class="btn btn-primary btn-sm">Modifier</button>
-							</form></td>
+							</form>
+							</td>
 						<td>${item.totalPrice}€</td>
 						<td>
 							<form
@@ -59,19 +60,24 @@
 								<button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
 							</form>
 						</td>
-						<td>${genre}</td>
+						<td class="">${genre}</td>
 
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<div class="d-flex justify-content-between align-items-center">
+		<div class="d-flex justify-content-between align-items-center mb-4">
 			<h3>Total : ${cart.totalPrice} €</h3>
 			<form action="${pageContext.request.contextPath}/${slug}/cart/clear"
+				method="post">
+				<button type="submit" class="btn btn-success btn-sm">Valider la commande</button>
+			</form>
+			<form action="${pageContext.request.contextPath}/${slug}/order/add"
 				method="post">
 				<button type="submit" class="btn btn-danger btn-sm">Vider
 					le panier</button>
 			</form>
+			
 		</div>
 	</c:if>
 	<c:if test="${empty cart.items}">
