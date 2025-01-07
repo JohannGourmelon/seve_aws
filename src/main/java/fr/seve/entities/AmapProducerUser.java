@@ -1,5 +1,7 @@
 package fr.seve.entities;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,6 +20,15 @@ public class AmapProducerUser {
 
     @Column(nullable = false)
     private String address;
+    
+    @OneToMany(mappedBy = "amapSpace", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Activity> activities;
+    
+    @OneToMany(mappedBy = "amapSpace", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Product> products;
+    
+    @OneToMany(mappedBy = "amapSpace", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Box> boxes;
 
     public Long getId() {
         return id;

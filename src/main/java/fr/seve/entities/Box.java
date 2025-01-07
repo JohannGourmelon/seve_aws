@@ -58,10 +58,10 @@ public class Box {
 	@JoinColumn(name = "amapSpace_id")
 	private AmapSpace amapSpace;
 
-	// Relation avec Producteur
-//    @ManyToOne
-//    @JoinColumn(name = "producer_id", nullable = true)
-//    private Producer producer;
+	
+   @ManyToOne
+   @JoinColumn(name = "producer_id", nullable = true)
+   private AmapProducerUser amapProducerUser;
 
 	
 	public Box() {
