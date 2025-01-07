@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.seve.entities.Activity;
+import fr.seve.entities.Product;
 import fr.seve.repository.ActivityRepository;
 import fr.seve.service.ActivityService;
 
@@ -38,7 +39,10 @@ public class ActivityServiceImpl implements ActivityService {
 	@Override
 	public void deletebyId(Long Id) {
 		activityRepository.deleteById(Id);
-
 	}
 
+	@Override
+	public List<Activity> findByProducerId(Long id) {
+		return activityRepository.findByProducerId(id);
+	}
 }

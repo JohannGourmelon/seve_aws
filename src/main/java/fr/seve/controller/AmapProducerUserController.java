@@ -39,9 +39,6 @@ public class AmapProducerUserController {
     @Autowired
     private AmapProducerUserService amapProducerUserService;
     
-    @Autowired
-    private ProductService productService;
-
     
     /**
      * Afficher le formulaire de création de compte.
@@ -83,16 +80,5 @@ public class AmapProducerUserController {
             model.addAttribute("signupError", "Une erreur s'est produite lors de la création du compte.");
             return "amap-producer-signup";
         }
-    }
-    
-    @GetMapping("/myproducts")
-    public String showProducts(HttpServletRequest request, Model model, @ModelAttribute("amapUser") AmapUser amapUser) {
-    	model.addAttribute("slug", AmapUtils.getAmapFromRequest(request).getSlug());
-        if (amapUser == null || (amapUser.getType() != AmapUserType.PRODUCER)) {
-        	return "redirect:/{slug}/login";
-        }
-        List<Product> products = productService.findByProducerId(amapUser.getProducerUser().getId());
-        model.addAttribute("products", products);
-    	return "amap-producer-view";
     }
 }
