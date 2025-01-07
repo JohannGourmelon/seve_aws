@@ -85,6 +85,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(slugInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns(excludedPaths.toArray(new String[0]));  // Exclure les chemins dynamiquement
+
     }
 	
 }
