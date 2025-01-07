@@ -67,6 +67,11 @@ public class Activity {
 	@Lob
 	@Column(name = "image")
 	private byte[] imageData;
+	
+	@ManyToOne
+	@JoinColumn(name = "amapSpace_id")
+	private AmapSpace amapSpace;
+
 
 //	@ManyToOne
 //	@JoinColumn(name = "producteur_id", nullable = true)
@@ -76,6 +81,7 @@ public class Activity {
 	public Activity() {
 	
 }
+
 
 	public Long getId() {
 		return id;
@@ -240,6 +246,14 @@ public class Activity {
 
 		public void setImageData(byte[] imageData) {
 			this.imageData = imageData;
+		}
+
+		public AmapSpace getAmapSpace() {
+			return amapSpace;
+		}
+
+		public void setAmapSpace(AmapSpace amapSpace) {
+			this.amapSpace = amapSpace;
 		}
 	
 

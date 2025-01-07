@@ -8,6 +8,8 @@ public interface ActivityService {
 	
 	List<Activity> findAll(); 
 	
+	List<Activity> findByAmapSpaceId(Long amapSpaceId);
+	
 	Activity save(Activity activity); 
 	
 	Activity findById(Long id); 

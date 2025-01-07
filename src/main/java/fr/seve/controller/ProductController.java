@@ -22,9 +22,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.seve.entities.AMAP;
+import fr.seve.entities.AmapSpace;
 import fr.seve.entities.Box;
 import fr.seve.entities.Product;
 import fr.seve.service.AmapService;
+import fr.seve.service.AmapSpaceService;
 import fr.seve.service.ProductService;
 
 @Controller
@@ -37,6 +39,9 @@ public class ProductController {
 	@Autowired
 	private AmapService amapService;
 	
+	@Autowired
+	private AmapSpaceService amapSpaceService;
+	
 	@GetMapping
 	public ModelAndView listProducts(@PathVariable String slug, Model model) {
 		AMAP amap = amapService.findBySlug(slug);
@@ -44,7 +49,9 @@ public class ProductController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
         }
         
-		List<Product> products = productService.findAll();
+        Long amapSpaceId = amap.getId();
+        
+		List<Product> products = productService.findByAmapSpaceId(amapSpaceId);
 		model.addAttribute("products", products);
 		ModelAndView mv = new ModelAndView("product-list");
 		mv.addObject("css", "/resources/css/amap/boxList.css");
@@ -60,7 +67,9 @@ public class ProductController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
         }
         
-		List<Product> products = productService.findAll();
+        Long amapSpaceId = amap.getId();
+        
+		List<Product> products = productService.findByAmapSpaceId(amapSpaceId);
 		model.addAttribute("products", products);
 		ModelAndView mv = new ModelAndView("admin-product-list");
 		mv.addObject("css", "/resources/css/amap/boForms.css");
@@ -101,6 +110,8 @@ public class ProductController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
         }
         
+        AmapSpace amapSpace = amapSpaceService.findById(amap.getId());
+        
         if (image != null && !image.isEmpty()) {
 			try {
 				product.setImageData(image.getBytes());
@@ -112,6 +123,7 @@ public class ProductController {
 		}
         
 		product.setCreationDate(LocalDate.now());
+		product.setAmapSpace(amapSpace);
 		productService.save(product);
 		return "redirect:/{slug}/product/admin";
 	}

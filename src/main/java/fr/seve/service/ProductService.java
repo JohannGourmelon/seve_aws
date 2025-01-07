@@ -2,7 +2,7 @@ package fr.seve.service;
 
 import java.util.List;
 
-import fr.seve.entities.Box;
+
 import fr.seve.entities.Product;
 
 public interface ProductService {
@@ -14,5 +14,7 @@ public interface ProductService {
 	Product findById(Long id);
 
 	void deleteById(Long Id);
+	
+	List<Product> findByAmapSpaceId(Long amapSpaceId);
 
 }
