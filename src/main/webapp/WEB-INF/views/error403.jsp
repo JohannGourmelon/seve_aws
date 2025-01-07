@@ -35,9 +35,10 @@
     <div class="container">
         <h1>Accès Interdit - 403</h1>
         <p><strong>You shall not pass!</strong></p>
-        <div class="tenor-gif-embed" data-postid="25971376" data-share-method="host" data-aspect-ratio="1.08844" data-width="100%"><a href="https://tenor.com/view/tlak-donottlak-tlaking-gif-25971376">Tlak Donottlak GIF</a>from <a href="https://tenor.com/search/tlak-gifs">Tlak GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+        <img src="https://http.cat/images/403.jpg"
+			alt="403" />
         <p>Vous n'avez pas l'autorisation d'accéder à cette page.</p>
-        <a href="${pageContext.request.contextPath}">Retour à l'accueil</a>
+        <a href="${pageContext.request.contextPath}/${slug}">Retour à l'accueil</a>
     </div>
 </body>
 </html>
