@@ -366,5 +366,12 @@
 			<put-attribute name="main"
 				value="/WEB-INF/views/amap/pages/order/orderList.jsp" />
 		</definition>
+		
+		<definition name="amap-order-details" extends="template-amap">
+			<put-attribute name="title"
+				value="Details de la Commande" />
+			<put-attribute name="main"
+				value="/WEB-INF/views/amap/pages/order/orderDetails.jsp" />
+		</definition>
 
 </tiles-definitions>

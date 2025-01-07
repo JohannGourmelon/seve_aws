@@ -14,5 +14,5 @@ import fr.seve.entities.Order;
 public interface OrderRepository extends JpaRepository<Order, Long>{
 	
 	@Query("SELECT o FROM Order o WHERE o.amapUser.id = :amapUserId")
-	 List<Order> findByUserId(@Param("amapUserId")Long producerId);
+	 List<Order> findByUserId(@Param("amapUserId")Long amapUserId);
 }

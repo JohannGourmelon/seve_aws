@@ -9,6 +9,7 @@
                 <tr>
                     <th class="col-1">Numéro de commande</th>
                     <th class="col-1">Date de Paiement</th>
+                    <th class="col-1"> </th>
                     <th class="col-1">Prix Totale</th>
                     
                 </tr>
@@ -18,7 +19,9 @@
                     <tr>
                         <td>0000000000${order.id}</td>
                         <td>${order.orderDate}</td>
+                        <td><a href="${pageContext.request.contextPath}/${slug}/order/${order.id}" class="btn btn-info btn-sm btn-link">Détails</a></td>
                         <td>${order.totalAmount} €</td>
+                        
                     </tr>
                 </c:forEach>
             </tbody>

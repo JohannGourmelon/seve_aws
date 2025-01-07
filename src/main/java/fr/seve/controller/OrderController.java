@@ -50,6 +50,9 @@ public class OrderController {
 	@Autowired
 	private OrderService orderService;
 	
+	@Autowired
+	private OrderItemService orderItemService;
+	
 	
 	@GetMapping("/success")
 	public ModelAndView SuccessPage(Model model) {
@@ -137,6 +140,23 @@ public class OrderController {
         model.addAttribute("orders", orders);
 
     	return "amap-order-list";
+    }
+	
+	@Secured({"ROLE_AMAP_USER","ROLE_AMAP_MEMBER","ROLE_AMAP_ADMIN","ROLE_AMAP_SUPERVISOR"})
+    @GetMapping("/{id}")
+    public String showDetailsOrder(HttpServletRequest request, Model model,@PathVariable Long id, @ModelAttribute("amapUser") AmapUser amapUser) {
+		
+    	model.addAttribute("slug", AmapUtils.getAmapFromRequest(request).getSlug());
+        if (amapUser == null) {
+        	return "redirect:/{slug}/login";
+        }
+        
+        Order order = orderService.findById(id);
+        List<OrderItem> orderItems = orderItemService.findByOrderId(order.getId());
+        model.addAttribute("order", order);
+        model.addAttribute("orderItems", orderItems);
+
+    	return "amap-order-details";
     }
 
 }
