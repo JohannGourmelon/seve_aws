@@ -6,14 +6,10 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.server.ResponseStatusException;
-import fr.seve.entities.AMAP;
 import fr.seve.utils.AmapUtils;
 
 
@@ -22,20 +18,21 @@ public class AmapHomeController {
 	
     
     @GetMapping("/{slug}")
-    public String handleAmapSlug(@PathVariable String slug, Model model, HttpServletRequest request) {
-    	AMAP amap = (AMAP) request.getAttribute("amap");
-    	if (amap == null) {
-    		throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
-    	}
-    	
-    	model.addAttribute("amap", amap);
+    public String handleAmapSlug(Model model, HttpServletRequest request) {
+    	model.addAttribute("amap", AmapUtils.getAmapFromRequest(request));
     	return "amap-home";
+    }
+    
+    @Secured({"ROLE_AMAP_USER","ROLE_AMAP_MEMBER","ROLE_AMAP_ADMIN","ROLE_AMAP_SUPERVISOR"})
+    @GetMapping("/{slug}/dashboard")
+    public String myAccount(Model model, HttpServletRequest request) {
+    	model.addAttribute("amap", AmapUtils.getAmapFromRequest(request));
+    	return "amap-account";
     }
     
     /**
      * Afficher le type de compte à créer
      */
-    
     @GetMapping("/{slug}/signup")
     public String showSignupForm(HttpServletRequest request, Model model) {
 
