@@ -25,6 +25,7 @@ import fr.seve.entities.AMAP;
 import fr.seve.entities.AmapSpace;
 import fr.seve.entities.Box;
 import fr.seve.entities.Configuration;
+import fr.seve.service.AmapProducerUserService;
 import fr.seve.service.AmapService;
 import fr.seve.service.AmapSpaceService;
 import fr.seve.service.BoxService;
@@ -41,6 +42,9 @@ public class BoxController {
 	
 	@Autowired
 	private AmapSpaceService amapSpaceService;
+	
+	@Autowired
+	private AmapProducerUserService amapProducerUserService;
 	
     @GetMapping
     public ModelAndView listBoxes(@PathVariable String slug, Model model) {
@@ -111,6 +115,7 @@ public class BoxController {
         }
         
         AmapSpace amapSpace = amapSpaceService.findById(amap.getId());
+        
         
         if (image != null && !image.isEmpty()) {
 			try {
