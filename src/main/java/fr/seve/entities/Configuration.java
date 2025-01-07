@@ -99,7 +99,8 @@ public class Configuration {
 	}
 
 	public Police getPolice() {
-		return police != null ? police : Police.DEFAULT;
+		return police;
+//		return police != null ? police : Police.DEFAULT;
 	}
 
 	public void setPolice(Police police) {
@@ -142,8 +143,8 @@ public class Configuration {
 	    SOURCE_SANS_PRO("Source Sans Pro"),
 	    TAHOMA("Tahoma"),
 	    TIMES_NEW_ROMAN("Times New Roman"),
-	    VERDANA("Verdana"),
-	    DEFAULT("Arial");
+	    VERDANA("Verdana");
+//	    DEFAULT("Arial");
 
 	    private final String displayName;
 

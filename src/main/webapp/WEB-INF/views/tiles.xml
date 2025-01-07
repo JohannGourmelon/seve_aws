@@ -203,6 +203,13 @@
 
 	<!-- Pages /Home -->
 
+	<definition name="amap-account" extends="template-amap">
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/user/myaccount.jsp" />
+	</definition>
+
+	<!-- Pages /Home -->
+
 	<definition name="amap-home" extends="template-amap">
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/home.jsp" />
