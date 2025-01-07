@@ -1,5 +1,7 @@
 package fr.seve.entities;
 
+import java.util.List;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -57,6 +59,9 @@ public class AmapUser {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private AmapUserType type;
+    
+    @OneToMany(mappedBy = "amapUser", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Order> orders;
 
     // Relation avec AmapSpace
     @ManyToOne
@@ -186,7 +191,15 @@ public class AmapUser {
         this.producerUser = producerUser;
     }
     
-    @Override
+    public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
+	@Override
     public String toString() {
     	return "AmapUser [id=" + id + ", firstname=" + firstname + ", name=" + name + ", email=" + email + ", password="
     			+ password + ", phone=" + phone + ", createDate=" + createDate + ", lastModifyDate=" + lastModifyDate
