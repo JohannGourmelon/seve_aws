@@ -66,8 +66,8 @@
 
 		<div class="d-flex justify-content-center mt-4 mb-5">
 			<a href="${pageContext.request.contextPath}/${slug}"
-				class="btn btn-secondary mx-3">Annuler</a>
-			<button type="submit" class="btn btn-primary mx-3">Enregistrer</button>
+				class="btn btn-info mx-3">Annuler</a>
+			<button type="submit" class="btn btn-info mx-3">Enregistrer</button>
 		</div>
 	</form>
 </div>
