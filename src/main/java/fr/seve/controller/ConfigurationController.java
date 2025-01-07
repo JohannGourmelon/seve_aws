@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,7 @@ import fr.seve.entities.SaasUser;
 import fr.seve.service.ConfigurationService;
 import fr.seve.service.SaasUserService;
 
+
 @Controller
 @RequestMapping("/configuration")
 public class ConfigurationController {
@@ -37,20 +39,22 @@ public class ConfigurationController {
 	@Autowired
 	private SaasUserService saasUserService;
 
+	@Secured("ROLE_SAAS_CUSTOM")
 	@GetMapping
 	public String listConfig(Model model) {
 		List<Configuration> configurations = configurationService.findAll();
 		model.addAttribute("configurations", configurations);
 		return "";
 	}
-
+	@Secured("ROLE_SAAS_CUSTOM")
 	@GetMapping("{id}")
 	public String getConfig(@PathVariable Long id, Model model) {
 		Configuration configuration = configurationService.findById(id);
 		model.addAttribute("configuration", configuration);
 		return "";
 	}
-
+	
+	@Secured("ROLE_SAAS_CUSTOM")
 	@GetMapping("/contenu")
 	public ModelAndView configContent(Model model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -70,7 +74,8 @@ public class ConfigurationController {
 		mv.addObject("css", "/resources/css/saas/config.css");
 		return mv;
 	}
-
+	
+	@Secured("ROLE_SAAS_CUSTOM")
 	@GetMapping("/design")
 	public ModelAndView configDesign(Model model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -92,6 +97,7 @@ public class ConfigurationController {
 		return mv;
 	}
 
+	@Secured("ROLE_SAAS_CUSTOM")
 	@PostMapping("editDesign/{id}")
 	public String editDesign(@PathVariable Long id, Configuration configuration,
 			RedirectAttributes redirectAttributes) {
@@ -106,7 +112,8 @@ public class ConfigurationController {
 		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées.");
 		return "redirect:/configuration/design";
 	}
-
+	
+	@Secured("ROLE_SAAS_CUSTOM")
 	@PostMapping("editContent/{id}")
 	public String editContent(@PathVariable Long id, Configuration configuration,
 			@RequestParam("logo") MultipartFile logo, RedirectAttributes redirectAttributes) {
