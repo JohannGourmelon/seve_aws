@@ -35,7 +35,7 @@ public class AmapHomeController {
     /**
      * Afficher le type de compte à créer
      */
-    @Secured("ROLE_AMAP_USER")
+    
     @GetMapping("/{slug}/signup")
     public String showSignupForm(HttpServletRequest request, Model model) {
 
