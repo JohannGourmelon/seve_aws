@@ -1,6 +1,7 @@
 package fr.seve.controller;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +41,13 @@ public class OrderController {
 
 	@Autowired
 	private OrderService orderService;
+	
+	
+	@GetMapping("/success")
+	public ModelAndView Success(Model model) {
+		ModelAndView mv = new ModelAndView("amap-payment-success");
+		return mv;
+	}
 
 	@PostMapping("add")
 	public ModelAndView validateOrder(@PathVariable String slug, HttpSession session, Model model) {
@@ -93,7 +102,7 @@ public class OrderController {
 		mv.addObject("order", order);
 		mv.addObject("orderItems", order.getOrderItems());
 		System.out.println(order.getOrderItems());
-		mv.addObject("css", "/resources/css/saas/payment.css");
+		mv.addObject("css", "/resources/css/amap/payment.css");
 		return mv;
 
 	}
