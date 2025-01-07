@@ -2,7 +2,7 @@ document.getElementById("theme1").addEventListener("click", function () {
         // Valeurs prédéfinies pour le Thème 1
         const themeValues = {
             primaryColor: "#87CEEB",
-            secondaryColor: "#ABD6D6",
+            secondaryColor: "#B0E57C",
             tertiaryColor: "#F8F9FA",
             police: "LATO",
             isRoundedBorders: false

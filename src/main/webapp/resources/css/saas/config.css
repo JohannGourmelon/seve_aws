@@ -77,6 +77,13 @@
 	margin: 40px 0 10px 0;
 }
 
+.configDesignForm-submit {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 30px 0;
+}
+
 input[type="color"] {
     width: 35px;
     height: 35px;
@@ -112,10 +119,19 @@ input[type="color"]:focus {
 
 /*********************** Thèmes *********************/
 
+
+.design-theme {
+	display: flex;
+	gap: 5%;
+}
+
+.design-theme p {
+	margin-bottom: 0;
+}
+
    .themes-container {
     display: flex;
     gap: 20px;
-    margin-top:20px;
    }
 
 .theme-card {
