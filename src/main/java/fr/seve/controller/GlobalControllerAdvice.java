@@ -22,7 +22,6 @@ public class GlobalControllerAdvice {
     private SaasUserRepository saasUserRepository;
 	
 	
-	
     @ModelAttribute("amapUser")
     public AmapUser getCurrentAmapUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

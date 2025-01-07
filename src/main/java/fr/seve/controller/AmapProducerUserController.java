@@ -5,10 +5,13 @@ import fr.seve.entities.AmapIndividualUser;
 import fr.seve.entities.AmapProducerUser;
 import fr.seve.entities.AmapSpace;
 import fr.seve.entities.AmapUser;
+import fr.seve.entities.Product;
 import fr.seve.entities.enums.AmapUserRole;
 import fr.seve.entities.enums.AmapUserType;
 import fr.seve.service.AmapIndividualUserService;
 import fr.seve.service.AmapProducerUserService;
+import fr.seve.service.ProductService;
+import fr.seve.service.impl.ProductServiceImpl;
 import fr.seve.utils.AmapUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -33,6 +38,9 @@ public class AmapProducerUserController {
 
     @Autowired
     private AmapProducerUserService amapProducerUserService;
+    
+    @Autowired
+    private ProductService productService;
 
     
     /**
@@ -77,4 +85,14 @@ public class AmapProducerUserController {
         }
     }
     
+    @GetMapping("/myproducts")
+    public String showProducts(HttpServletRequest request, Model model, @ModelAttribute("amapUser") AmapUser amapUser) {
+    	model.addAttribute("slug", AmapUtils.getAmapFromRequest(request).getSlug());
+        if (amapUser == null || (amapUser.getType() != AmapUserType.PRODUCER)) {
+        	return "redirect:/{slug}/login";
+        }
+        List<Product> products = productService.findByProducerId(amapUser.getProducerUser().getId());
+        model.addAttribute("products", products);
+    	return "amap-producer-signup";
+    }
 }
