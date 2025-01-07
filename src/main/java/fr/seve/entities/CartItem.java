@@ -34,8 +34,11 @@ public class CartItem {
 	
 	private int quantity;
 	
-	@Transient //
+	private double price;
+	
 	private String genre; 
+	
+	private String name;
 
 	public CartItem() {
 	}
@@ -97,9 +100,24 @@ public class CartItem {
 
 	}
 
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public double getTotalPrice() {
 		double price = 0;
-
 		if (box != null) {
 			price = box.getPrice();
 		} else if (product != null) {
@@ -107,7 +125,6 @@ public class CartItem {
 		} else if (activity != null) {
 			price = activity.getPrice();
 		}
-
 		return price * quantity;
 	}
 }

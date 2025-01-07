@@ -203,6 +203,13 @@
 
 	<!-- Pages /Home -->
 
+	<definition name="amap-account" extends="template-amap">
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/user/myaccount.jsp" />
+	</definition>
+
+	<!-- Pages /Home -->
+
 	<definition name="amap-home" extends="template-amap">
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/home.jsp" />
@@ -328,6 +335,22 @@
 				value="Panier" />
 			<put-attribute name="main"
 				value="/WEB-INF/views/amap/pages/order/cart.jsp" />
+		</definition>
+		
+		<!-- Pages /payment -->
+		
+		<definition name="amap-payment" extends="template-amap">
+			<put-attribute name="title"
+				value="Panier" />
+			<put-attribute name="main"
+				value="/WEB-INF/views/amap/pages/order/payment.jsp" />
+		</definition>
+		
+				<definition name="amap-payment-success" extends="template-amap">
+			<put-attribute name="title"
+				value="Panier" />
+			<put-attribute name="main"
+				value="/WEB-INF/views/amap/pages/order/payment-success.jsp" />
 		</definition>
 
 </tiles-definitions>
