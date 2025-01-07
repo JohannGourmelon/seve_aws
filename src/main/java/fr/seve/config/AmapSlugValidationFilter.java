@@ -43,12 +43,14 @@ public class AmapSlugValidationFilter extends OncePerRequestFilter {
         List<String> excludedCPaths = Arrays.asList(
         		"/", 
         		"/login", 
+        		"/amap", 
         		"/home", 
         		"/about",
         		"/error",
         		"/profile", 
         		"/amap/**", 
         		"/saasuser/**", 
+        		"/saas", 
         		"/saas/**"
         		);
 
@@ -95,8 +97,8 @@ public class AmapSlugValidationFilter extends OncePerRequestFilter {
             if (isSaasUser) {System.out.println("je suis un utilisateur du saas");}
             
             if (isSaasUser && !(currentSlug == null) ) {
-          System.out.println("je me fais deconnecté de mon SAAS");  	
-            	logout(request, response);
+          System.out.println("je me fais PAS deconnecté de mon SAAS");  	
+            	//logout(request, response);
             }
         } else {System.out.println("je ne suis pas connecté");}
         System.out.println("fin de la vérification");

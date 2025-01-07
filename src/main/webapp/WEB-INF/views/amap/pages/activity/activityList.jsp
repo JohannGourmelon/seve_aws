@@ -17,6 +17,7 @@
                         <p class="card-text mb-4">${activity.description}</p>
                         <div class="row">
                             <div class="col-12 col-md-6">
+                           
                                 <p class="card-text delivery-text"> Le ${activity.formattedDate} de ${activity.formattedStartTime} - ${activity.formattedEndTime}</p>
                             </div>
                             <div class="col-12 col-md-6 d-flex justify-content-end align-items-center">
@@ -28,9 +29,15 @@
                         <div class="row d-flex justify-content-center align-items-center mt-4">
     						<p class="card-text text-center font-weight-bold">${activity.price} € </p>
 						</div>
-                        <div class="btn-container text-center mt-3">
-                            <a href="${pageContext.request.contextPath}/activity/edit/${activity.id}" class="btn btn-warning btn-sm">Commander</a>
-                        </div>
+						<form action="${pageContext.request.contextPath}/${slug}/cart/add/activity"
+							method="post" class="text-center mt-3">
+							<input type="hidden" name="activityId" value="${activity.id}" />
+								<input type="hidden" name="genre" value="ACTIVITY" />
+							<button type="submit" class="btn btn-warning btn-sm">Commander</button>
+						</form>
+						
+						
+
                     </div>
                 </div>
             </div>

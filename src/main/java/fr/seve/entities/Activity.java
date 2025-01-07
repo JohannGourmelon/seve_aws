@@ -72,13 +72,22 @@ public class Activity {
 	@JoinColumn(name = "amapSpace_id")
 	private AmapSpace amapSpace;
 
-	//@ManyToOne
-	//@JoinColumn(name = "producteur_id", nullable = true)
-	//private Producer producer;
+
+//	@ManyToOne
+//	@JoinColumn(name = "producteur_id", nullable = true)
+//	private Producer producer;
+	
+	
+	public Activity() {
+	
+}
+
 
 	public Long getId() {
 		return id;
 	}
+
+
 
 	public void setId(Long id) {
 		this.id = id;

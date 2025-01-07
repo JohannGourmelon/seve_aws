@@ -42,6 +42,7 @@
 						<form action="${pageContext.request.contextPath}/${slug}/cart/add"
 							method="post" class="text-center mt-3">
 							<input type="hidden" name="boxId" value="${box.id}" />
+							<input type="hidden" name="genre" value="BOX" />
 							<button type="submit" class="btn btn-warning btn-sm">Commander</button>
 						</form>
 					</div>

@@ -1,31 +1,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-	<h1>Liste des AMAPs</h1>
-	<a href="${pageContext.request.contextPath}/amap/add">Ajouter AMAP</a>
-	<table border="1">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Nom</th>
-				<th>Adresse</th>
-				<th>Siret</th>
-				<th>Actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="amap" items="${amaps}">
-				<tr>
-					<td>${amap.id}</td>
-					<td>${amap.name}</td>
-					<td>${amap.address}</td>
-					<td>${amap.siret}</td>
-					<td>
-						<a href="${pageContext.request.contextPath}/amap/${amap.id}">Details</a> |
-						<a href="${pageContext.request.contextPath}/amap/edit/${amap.id}">Modifier</a> |
-						<a href="${pageContext.request.contextPath}/amap/delete/${amap.id}" onclick="return confirm('Etes-vous sur ?')">Supprimer</a>
-					</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	<a href="${pageContext.request.contextPath}/amap/info">Retour</a>
+<h1 class="text-center">Ils nous font confiance</h1>
+
+<div class="features amaps">
+	<c:forEach var="amap" items="${amaps}">
+		<div class="feature-card amap shadow mt-1 mb-5">
+			<a href="http://localhost:8080/seve/${amap.slug}" target="_blank">
+				<img src="${pageContext.request.contextPath}/configuration/logo/${amap.id}" alt="" />
+					<p class="text-center feature-name pt-4 pb-2 px-2">${amap.name}</p>
+			</a>
+		</div>
+	</c:forEach>
+</div>
+
