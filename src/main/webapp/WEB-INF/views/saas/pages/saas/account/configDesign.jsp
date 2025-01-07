@@ -2,6 +2,13 @@
 
 <h1>Configuration du design de votre Amap</h1>
 
+		<div class="design-theme">
+    <p>Thèmes prédéfinis</p>
+    <div>
+        <p id="theme1" style="cursor: pointer; color: blue;">Thème 1</p>
+    </div>
+</div>
+
 	<form
 		action="${pageContext.request.contextPath}/configuration/editDesign/${configuration.id}"
 		method="post">
@@ -52,3 +59,5 @@
 <c:if test="${not empty message}">
 	<div class="alert alert-success mt-4">${message}</div>
 </c:if>
+
+<script src="${pageContext.request.contextPath}/resources/js/themes.js"></script>
