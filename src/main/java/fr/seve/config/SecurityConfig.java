@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import fr.seve.service.impl.CustomUserDetailsService;
 
@@ -18,9 +19,9 @@ import fr.seve.service.impl.CustomUserDetailsService;
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	private final CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+	private final AmapSlugValidationFilter amapSlugValidationFilter;
     
-    @Autowired
+	@Autowired
     private CustomUserDetailsService userDetailsService;
 
     @Bean
@@ -28,14 +29,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    
     @Bean
     public CustomAuthenticationEntryPoint customAuthenticationEntryPoint() {
     	return new CustomAuthenticationEntryPoint();
     }
 
-    public SecurityConfig(CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler) {
-        this.customAuthenticationSuccessHandler = customAuthenticationSuccessHandler;
+    public SecurityConfig(AmapSlugValidationFilter amapSlugValidationFilter) {
+        this.amapSlugValidationFilter = amapSlugValidationFilter;
     }
     
     @Override
@@ -46,25 +46,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .csrf().disable()
+            .csrf().disable() // Désactiver CSRF (à activer si nécessaire)
             .authorizeRequests()
-                .antMatchers("/amap").hasRole("SAAS_CUSTOM")
-                .anyRequest().permitAll()
+                .antMatchers("/amap").hasRole("SAAS_CUSTOM") // Autorisation pour les utilisateurs SaaS
+                .anyRequest().permitAll() // Permettre tout le reste
             .and()
+            .addFilterBefore(amapSlugValidationFilter, UsernamePasswordAuthenticationFilter.class) // Ajout du filtre personnalisé
             .exceptionHandling()
-                .authenticationEntryPoint(customAuthenticationEntryPoint()) // Redirection dynamique
+                .authenticationEntryPoint(customAuthenticationEntryPoint()) // Gestion des exceptions avec point d'entrée personnalisé
             .and()
             .formLogin()
-                .loginPage("/login") // Login par défaut
-                .successHandler(customAuthenticationSuccessHandler)
-                .defaultSuccessUrl("/profile", true)
-                .failureUrl("/login?error=true")
+                .loginPage("/login") // Page de connexion personnalisée
+                .defaultSuccessUrl("/profile", true) // Redirection après succès
+                .failureUrl("/login?error=true") // Redirection en cas d'échec
                 .permitAll()
             .and()
             .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login?logout=true")
-                .permitAll();
+                .logoutUrl("/logout") // URL de déconnexion
+                .logoutSuccessUrl("/login?logout=true") // Redirection après déconnexion
+                .permitAll()
+        	.and()
+        	.exceptionHandling()
+        	.accessDeniedPage("/error/403");
     }
-
 }

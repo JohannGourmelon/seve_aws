@@ -14,6 +14,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.*;
 
+import fr.seve.entities.enums.SaasUserLevel;
+
 @Entity
 @Table(name = "saasUsers")
 public class SaasUser {
