@@ -6,8 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "order_items")
 public class OrderItem {
 
     @Id
@@ -26,53 +28,53 @@ public class OrderItem {
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
 
-    // Getters et Setters
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Long getItemId() {
-        return itemId;
-    }
+	public Long getItemId() {
+		return itemId;
+	}
 
-    public void setProductId(Long productId) {
-        this.itemId = productId;
-    }
+	public void setItemId(Long itemId) {
+		this.itemId = itemId;
+	}
 
-    public String getGenre() {
-        return genre;
-    }
+	public String getGenre() {
+		return genre;
+	}
 
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
 
-    public int getQuantity() {
-        return quantity;
-    }
+	public int getQuantity() {
+		return quantity;
+	}
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 
-    public double getPrice() {
-        return price;
-    }
+	public double getPrice() {
+		return price;
+	}
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
+	public void setPrice(double price) {
+		this.price = price;
+	}
 
-    public Order getOrder() {
-        return order;
-    }
+	public Order getOrder() {
+		return order;
+	}
 
-    public void setOrder(Order order) {
-        this.order = order;
-    }
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+    
 }
 

@@ -85,6 +85,7 @@ public class CartController {
                 CartItem cartItem = new CartItem();
                 cartItem.setBox(box);
                 cartItem.setCart(cart);
+                cartItem.setPrice(box.getPrice());
                 cartItem.setGenre(genre);
                 cartItem.setQuantity(1);  // Quantité par défaut
                 cart.addItem(cartItem);
@@ -118,6 +119,7 @@ public class CartController {
 	                CartItem cartItem = new CartItem();
 	                cartItem.setProduct(product);
 	                cartItem.setCart(cart);
+	                cartItem.setPrice(product.getPrice());
 	                cartItem.setGenre(genre);
 	                cartItem.setQuantity(1);  // Quantité par défaut
 	                cart.addItem(cartItem);
@@ -151,6 +153,7 @@ public class CartController {
 	                CartItem cartItem = new CartItem();
 	                cartItem.setActivity(activity);
 	                cartItem.setCart(cart);
+	                cartItem.setPrice(activity.getPrice());
 	                cartItem.setGenre(genre);
 	                cartItem.setQuantity(1);  // Quantité par défaut
 	                cart.addItem(cartItem);

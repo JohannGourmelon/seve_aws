@@ -34,7 +34,7 @@ public class CartItem {
 	
 	private int quantity;
 	
-	private int price;
+	private double price;
 	
 	private String genre; 
 
@@ -98,11 +98,11 @@ public class CartItem {
 
 	}
 
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 

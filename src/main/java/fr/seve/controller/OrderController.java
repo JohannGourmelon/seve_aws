@@ -65,17 +65,18 @@ public class OrderController {
 			orderItem.setGenre(cartItem.getGenre());
 			orderItem.setQuantity(cartItem.getQuantity());
 			orderItem.setPrice(cartItem.getPrice());
+			System.out.println("_________________________________" + orderItem + " priceeee : " + cartItem.getPrice());
 			orderItem.setOrder(order);
 
 			switch (cartItem.getGenre()) {
 			case "PRODUCT":
-				orderItem.setProductId(cartItem.getId());
+				orderItem.setItemId(cartItem.getProduct().getId());
 				break;
 			case "BOX":
-				orderItem.setProductId(cartItem.getId());
+				orderItem.setItemId(cartItem.getBox().getId());
 				break;
 			case "ACTIVITY":
-				orderItem.setProductId(cartItem.getId());
+				orderItem.setItemId(cartItem.getActivity().getId());
 				break;
 			}
 
