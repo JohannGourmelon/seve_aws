@@ -69,10 +69,17 @@ public class Activity {
 //	@ManyToOne
 //	@JoinColumn(name = "producteur_id", nullable = true)
 //	private Producer producer;
+	
+	
+	public Activity() {
+	
+}
 
 	public Long getId() {
 		return id;
 	}
+
+
 
 	public void setId(Long id) {
 		this.id = id;

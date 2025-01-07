@@ -45,14 +45,18 @@
 								<input type="number" name="quantity" min="1" value="1" class="form-control">
 							</div>
 						</div>
-						<div class="btn-container text-center mt-3">
-							<a href="${pageContext.request.contextPath}/${slug}/product/edit/${product.id}"
-<%-- 								href="${pageContext.request.contextPath}/product/edit/${product.id}?quantity=${product.quantity}" --%>
-								class="btn btn-warning btn-sm">Commander</a>
-						</div>
-					</div>
+						<form action="${pageContext.request.contextPath}/${slug}/cart/add/product"
+							method="post" class="text-center mt-3">
+							<input type="hidden" name="productId" value="${product.id}" />
+							<input type="hidden" name="genre" value="PRODUCT" />
+							<button type="submit" class="btn btn-warning btn-sm">Commander</button>
+						</form>
+				</div>
 				</div>
 			</div>
 		</c:forEach>
 	</div>
 </div>
+
+
+

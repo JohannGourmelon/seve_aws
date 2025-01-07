@@ -66,6 +66,11 @@ public class Product {
 //    @JoinColumn(name = "producer_id", nullable = true)
 //    private Producer producer;
 
+	
+	
+	public Product() {
+	}
+
 	public Long getId() {
 		return id;
 	}
