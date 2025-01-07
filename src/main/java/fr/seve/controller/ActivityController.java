@@ -160,8 +160,14 @@ public class ActivityController {
         }
         
 		Activity oldActivity = activityService.findById(id);
+		AmapSpace amapSpace = amapSpaceService.findById(amap.getId());
+		
 		activity.setCreationDate(oldActivity.getCreationDate());
 		activity.setLastModifiedDate(LocalDate.now());
+		activity.setAmapSpace(amapSpace);
+		if (oldActivity.getImageData() != null) {
+			activity.setImageData(oldActivity.getImageData());
+		}
 		if (image != null && !image.isEmpty()) {
 			try {
 				activity.setImageData(image.getBytes());

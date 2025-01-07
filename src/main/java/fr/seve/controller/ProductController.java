@@ -161,8 +161,15 @@ public class ProductController {
         }
         
 		Product oldProduct = productService.findById(id);
+		AmapSpace amapSpace = amapSpaceService.findById(amap.getId());
+		
 		product.setCreationDate(oldProduct.getCreationDate());
 		product.setLastModifiedDate(LocalDate.now());
+		product.setAmapSpace(amapSpace);
+		if (oldProduct.getImageData() != null) {
+			product.setImageData(oldProduct.getImageData());
+		}
+		
 		if (image != null && !image.isEmpty()) {
 			try {
 				product.setImageData(image.getBytes());

@@ -162,9 +162,14 @@ public class BoxController {
         }
         
 		Box oldBox = boxService.findById(id);
+		AmapSpace amapSpace = amapSpaceService.findById(amap.getId());
 		
 		box.setCreationDate(oldBox.getCreationDate());
 		box.setLastModifiedDate(LocalDate.now());
+		box.setAmapSpace(amapSpace);
+		if (oldBox.getImageData() != null) {
+			box.setImageData(oldBox.getImageData());
+		} 
 		if (image != null && !image.isEmpty()) {
 			try {
 				box.setImageData(image.getBytes());
@@ -172,8 +177,9 @@ public class BoxController {
 				redirectAttributes.addFlashAttribute("message", "Erreur lors de l'importation de l'image.");
 				e.printStackTrace();
 				return "redirect:/{slug}/box/admin";
-			}
-		}
+				}
+			} 
+		
     	boxService.save(box);
         return "redirect:/{slug}/box/admin";
     }
