@@ -19,6 +19,8 @@ public class OrderItem {
     private Long itemId;
 
     private String genre;
+    
+    private String name;
 
     private int quantity;
 
@@ -74,6 +76,14 @@ public class OrderItem {
 
 	public void setOrder(Order order) {
 		this.order = order;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
     
 }

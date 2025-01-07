@@ -81,12 +81,16 @@ public class OrderController {
 			switch (cartItem.getGenre()) {
 			case "PRODUCT":
 				orderItem.setItemId(cartItem.getProduct().getId());
+				orderItem.setName(cartItem.getProduct().getName());
 				break;
 			case "BOX":
 				orderItem.setItemId(cartItem.getBox().getId());
+				orderItem.setName(cartItem.getBox().getName());
+
 				break;
 			case "ACTIVITY":
 				orderItem.setItemId(cartItem.getActivity().getId());
+				orderItem.setName(cartItem.getActivity().getName());
 				break;
 			}
 
@@ -103,7 +107,6 @@ public class OrderController {
 		ModelAndView mv = new ModelAndView("amap-payment");
 		mv.addObject("order", order);
 		mv.addObject("orderItems", order.getOrderItems());
-		System.out.println(order.getOrderItems());
 		mv.addObject("css", "/resources/css/amap/payment.css");
 		return mv;
 

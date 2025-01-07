@@ -37,6 +37,8 @@ public class CartItem {
 	private double price;
 	
 	private String genre; 
+	
+	private String name;
 
 	public CartItem() {
 	}
@@ -104,6 +106,14 @@ public class CartItem {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public double getTotalPrice() {

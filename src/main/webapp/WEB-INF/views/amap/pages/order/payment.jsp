@@ -4,7 +4,7 @@
 
 
     <div class="container mt-5">
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-md-6">
                 <div class="order-summary">
                     <h3>Récapitulatif de votre commande</h3>
@@ -20,7 +20,7 @@
                         <tbody>
                             <c:forEach var="item" items="${orderItems}">
                                 <tr>
-                                    <td>${item.genre}</td>
+                                    <td>${item.name}</td>
                                     <td>${item.quantity}</td>
                                     <td>${item.price} €</td>
                                     <td>${item.price * item.quantity} €</td>
