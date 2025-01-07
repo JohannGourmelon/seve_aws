@@ -22,7 +22,6 @@ public class GlobalControllerAdvice {
     private SaasUserRepository saasUserRepository;
 	
 	
-	
     @ModelAttribute("amapUser")
     public AmapUser getCurrentAmapUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -50,7 +49,9 @@ public class GlobalControllerAdvice {
     			&& !authentication.getPrincipal().equals("anonymousUser")) {
     		boolean isglobalSaasUser = authentication.getAuthorities().stream()
     				.anyMatch(authority -> authority.getAuthority().startsWith("ROLE_SAAS"));
+
     		if (isglobalSaasUser) {
+
     			SaasUser globalSaasUser = saasUserRepository.findByEmail(authentication.getName())
     					.orElseThrow(() -> new UsernameNotFoundException("Utilisateur SAAS non trouvé"));
     			return globalSaasUser;

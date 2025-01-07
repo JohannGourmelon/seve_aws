@@ -6,15 +6,33 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import fr.seve.entities.Activity;
+import fr.seve.entities.AmapUser;
+import fr.seve.entities.Box;
+import fr.seve.entities.Product;
+import fr.seve.entities.enums.AmapUserType;
+import fr.seve.service.ActivityService;
+import fr.seve.service.BoxService;
+import fr.seve.service.ProductService;
 import fr.seve.utils.AmapUtils;
 
 
 @Controller
 public class AmapHomeController {
+	
+    @Autowired
+    private ProductService productService;
+    @Autowired
+    private BoxService boxService;
+    @Autowired
+    private ActivityService activityService;
 	
     
     @GetMapping("/{slug}")
@@ -45,5 +63,20 @@ public class AmapHomeController {
     		    model.addAttribute("types", types);
     	model.addAttribute("slug", AmapUtils.getAmapFromRequest(request).getSlug());
         return "amap-signup";
-    }   
+    }
+    @Secured({"ROLE_AMAP_USER","ROLE_AMAP_MEMBER","ROLE_AMAP_ADMIN","ROLE_AMAP_SUPERVISOR"})
+    @GetMapping("/{slug}/myproducts")
+    public String showProducts(HttpServletRequest request, Model model, @ModelAttribute("amapUser") AmapUser amapUser) {
+    	model.addAttribute("slug", AmapUtils.getAmapFromRequest(request).getSlug());
+        if (amapUser == null || (amapUser.getType() != AmapUserType.PRODUCER)) {
+        	return "redirect:/{slug}/login";
+        }
+        List<Product> products = productService.findByProducerId(amapUser.getProducerUser().getId());
+        List<Box> boxes = boxService.findByProducerId(amapUser.getProducerUser().getId());
+        List<Activity> activities = activityService.findByProducerId(amapUser.getProducerUser().getId());
+        model.addAttribute("products", products);
+        model.addAttribute("boxes", boxes);
+        model.addAttribute("activities", activities);
+    	return "amap-producer-view";
+    }
 }

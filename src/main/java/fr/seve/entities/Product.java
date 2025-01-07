@@ -69,10 +69,9 @@ public class Product {
 	@JoinColumn(name = "amapSpace_id")
 	private AmapSpace amapSpace;
 
-	// Relation avec Producteur
-//    @ManyToOne
-//    @JoinColumn(name = "producer_id", nullable = true)
-//    private Producer producer;
+	@ManyToOne
+	   @JoinColumn(name = "producer_id", nullable = true)
+	   private AmapProducerUser amapProducerUser;
 
 	
 	
@@ -187,6 +186,14 @@ public class Product {
 	
 	// Formattage des dates
 	
+	public AmapProducerUser getAmapProducerUser() {
+		return amapProducerUser;
+	}
+
+	public void setAmapProducerUser(AmapProducerUser amapProducerUser) {
+		this.amapProducerUser = amapProducerUser;
+	}
+
 	private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 	public String getFormattedAvailableDate() {

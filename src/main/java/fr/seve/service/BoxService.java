@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import fr.seve.entities.Box;
+import fr.seve.entities.Product;
 
 
 public interface BoxService {
@@ -18,4 +19,5 @@ public interface BoxService {
 	
 	List<Box> findByAmapSpaceId(Long amapSpaceId);
 
+	List<Box> findByProducerId(Long id);
 }

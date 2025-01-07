@@ -66,6 +66,13 @@
 			</div>
             
         </c:when>
+        <c:when test="${amapUser.type == 'WORKS_COMITTEE'}">
+            <p>Vous êtes un ${amapUser.type} </p>
+            <ul>
+                <li>${amapUser.name}</li>
+                <li>${amapUser.firstname}</li>
+            </ul>
+        </c:when>
 
         <c:otherwise>
             <p>Erreur : rôle inconnu. Veuillez contacter l'administrateur.</p>

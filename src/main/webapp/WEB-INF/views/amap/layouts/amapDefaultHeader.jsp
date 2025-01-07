@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 
 <nav id="navbar" class="navbar navbar-expand-sm navbar-light">
 	<div class="nav-collapse">
@@ -23,7 +25,12 @@
 				<a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
 					onclick="window.location.href='${pageContext.request.contextPath}/${slug}/box'">Nos paniers maraîchers</a>
 			</li>		
-				
+				 <c:if test="${amapUser.type == 'PRODUCER'}">
+			<li class="nav-item">
+				<a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
+					onclick="window.location.href='${pageContext.request.contextPath}/${slug}/myproducts'">Mes Produits</a>
+			</li>
+               </c:if>
 			<c:if test="${showProducts}">
             	<li class="nav-item">
                 	<a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
@@ -41,14 +48,18 @@
 			<li class="nav-item"><a class="nav-link" href="index.html"
 				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Contactez-nous</a>
 			</li>
+			          		
 			
+			<sec:authorize access="hasRole('AMAP_ADMIN') or hasRole('AMAP_USER') or hasRole('AMAP_MEMBER') or hasRole('AMAP_SUPERVISOR')">
 			<li class="nav-item">
 				<a class="nav-link" href="index.html" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
 					onclick="window.location.href='${pageContext.request.contextPath}/${slug}/cart'">
 					<img src="${pageContext.request.contextPath}/resources/images/amap/cart.png" alt="Panier" style="width: 20px; height: 20px;">
 				</a>
 			</li>
-			
+			</sec:authorize>
+			<sec:authorize access="hasRole('AMAP_ADMIN') or hasRole('AMAP_SUPERVISOR')">
+        
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" id="Preview" href="#" role="button" aria-haspopup="true"
 					aria-expanded="false"> BO </a>
@@ -67,16 +78,25 @@
 						</c:if>
 					</div>
 			</li>
+        	</sec:authorize>
 		</ul>
 		
 		<ul class="navbar-nav ml-auto">
-			<li class="nav-item">
-				<a class="nav-link" href="${pageContext.request.contextPath}/${slug}/login" data-bs-toggle="" data-bs-target=".navbar-collapse.show">Se connecter</a>
-			</li>		
-			<li class="nav-item">
-				<a class="nav-link" href="${pageContext.request.contextPath}/${slug}/signup" data-bs-toggle="" data-bs-target=".navbar-collapse.show">Créer un compte</a>
-			</li>		
+		        <sec:authorize access="isAnonymous() or hasRole('SAAS_CUSTOM')">
+					<li class="nav-item">
+						<a class="nav-link" href="${pageContext.request.contextPath}/${slug}/login" data-bs-toggle="" data-bs-target=".navbar-collapse.show">Se connecter</a>
+					</li>		
+					<li class="nav-item">
+						<a class="nav-link" href="${pageContext.request.contextPath}/${slug}/signup" data-bs-toggle="" data-bs-target=".navbar-collapse.show">Créer un compte</a>
+					</li>		
+        		</sec:authorize>
+          		<sec:authorize access="hasRole('AMAP_ADMIN') or hasRole('AMAP_USER') or hasRole('AMAP_MEMBER') or hasRole('AMAP_SUPERVISOR')">
+            		<li>
+            		<a class="nav-link" href="${pageContext.request.contextPath}/${slug}/logout" data-bs-toggle="" data-bs-target=".navbar-collapse.show">Se deconnecter</a>
+            		</li>
+        		</sec:authorize>
 		</ul>
 		
 	</div>
 </nav>
+
