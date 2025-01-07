@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -63,9 +64,10 @@ public class Activity {
 	@Column(nullable = true)
 	private LocalDate lastModifiedDate;
 
-//	@Column(nullable = true)
-//	private String imageUrl;
-//
+	@Lob
+	@Column(name = "image")
+	private byte[] imageData;
+
 //	@ManyToOne
 //	@JoinColumn(name = "producteur_id", nullable = true)
 //	private Producer producer;
@@ -230,6 +232,14 @@ public class Activity {
 
 		public String getFormattedEndTime() {
 		    return endTime != null ? endTime.format(TIME_FORMATTER) : "";
+		}
+
+		public byte[] getImageData() {
+			return imageData;
+		}
+
+		public void setImageData(byte[] imageData) {
+			this.imageData = imageData;
 		}
 	
 

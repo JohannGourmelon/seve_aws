@@ -23,9 +23,8 @@ import fr.seve.entities.AMAP;
 import fr.seve.entities.AmapSpace;
 import fr.seve.entities.Configuration;
 import fr.seve.entities.SaasUser;
-import fr.seve.entities.SaasUserLevel;
 import fr.seve.entities.Subscription;
-
+import fr.seve.entities.enums.SaasUserLevel;
 import fr.seve.service.AmapSpaceService;
 import fr.seve.service.SaasUserService;
 import fr.seve.service.SubscriptionService;

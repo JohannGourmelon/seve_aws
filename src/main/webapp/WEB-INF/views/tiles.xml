@@ -128,7 +128,7 @@
 
 	<!-- Pages /amap -->
 
-	<definition name="amap-list" extends="template-saas-account">
+	<definition name="amap-list" extends="template-saas">
 		<put-attribute name="title" value="Liste des AMAPs" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/amap/amapList.jsp" />
@@ -207,12 +207,33 @@
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/home.jsp" />
 	</definition>
+	
+	<!-- Pages /Admin -->
+
+	<definition name="amap-admin-home" extends="template-amap">
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages//admin/homeAdmin.jsp" />
+	</definition>
+	
+	<definition name="amap-signup" extends="template-amap">
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/user/userTypeChoiceForm.jsp" />
+	</definition>
+	
 
 	<!-- Pages /signup -->
 
 	<definition name="amap-individual-signup" extends="template-amap">
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/user/individualUserSignUpForm.jsp" />
+	</definition>
+	<definition name="amap-producer-signup" extends="template-amap">
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/user/producerUserSignUpForm.jsp" />
+	</definition>
+	<definition name="amap-wc-signup" extends="template-amap">
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/user/wcUserSignUpForm.jsp" />
 	</definition>
 	
 	<definition name="amap-login" extends="template-amap">

@@ -31,15 +31,16 @@ public class AmapIndividualUserServiceImpl implements AmapIndividualUserService 
     @Override
     public AmapIndividualUser createIndividualUser(AmapIndividualUser amapIndividualUser) {
 
-    	System.out.println(amapIndividualUser.toString());
+
     	// Créer l'AmapUser
         AmapUser amapUser = new AmapUser();
         amapUser.setFirstname(amapIndividualUser.getAmapUser().getFirstname());
         amapUser.setName(amapIndividualUser.getAmapUser().getName());
         amapUser.setEmail(amapIndividualUser.getAmapUser().getEmail());
+        amapUser.setPhone(amapIndividualUser.getAmapUser().getPhone());
         amapUser.setPassword(passwordEncoder.encode(amapIndividualUser.getAmapUser().getPassword()));
-        amapUser.setRole(AmapUserRole.AMAP_USER);
-        amapUser.setType(AmapUserType.INDIVIDUAL);
+        amapUser.setRole(amapIndividualUser.getAmapUser().getRole());
+        amapUser.setType(amapIndividualUser.getAmapUser().getType());
         amapUser.setCreateDate(LocalDateTime.now().toString());
         amapUser.setLastModifyDate(LocalDateTime.now().toString());
         amapUser.setAmapSpace(amapIndividualUser.getAmapUser().getAmapSpace());

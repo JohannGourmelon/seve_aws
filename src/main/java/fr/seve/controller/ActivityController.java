@@ -1,10 +1,13 @@
 package fr.seve.controller;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,11 +15,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.seve.entities.AMAP;
 import fr.seve.entities.Activity;
+import fr.seve.entities.Box;
 import fr.seve.service.ActivityService;
 import fr.seve.service.AmapService;
 
@@ -85,11 +92,22 @@ public class ActivityController {
 	
 
 	@PostMapping("add")
-	public String saveActivity(@PathVariable String slug, @ModelAttribute Activity activity) {
+	public String saveActivity(@PathVariable String slug, @ModelAttribute Activity activity,
+			@RequestParam("image") MultipartFile image, RedirectAttributes redirectAttributes) {
 		AMAP amap = amapService.findBySlug(slug);
         if (amap == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
         }
+        
+        if (image != null && !image.isEmpty()) {
+			try {
+				activity.setImageData(image.getBytes());
+			} catch (IOException e) {
+				redirectAttributes.addFlashAttribute("message", "Erreur lors de l'importation de l'image.");
+				e.printStackTrace();
+				return "redirect:/{slug}/activity/admin";
+			}
+		}
         
 		activity.setCreationDate(LocalDate.now());
 		activityService.save(activity);
@@ -122,7 +140,8 @@ public class ActivityController {
 	
 
 	@PostMapping("/edit/{id}")
-	public String updateActivity(@PathVariable String slug, @PathVariable Long id, @ModelAttribute Activity activity) {
+	public String updateActivity(@PathVariable String slug, @PathVariable Long id, @ModelAttribute Activity activity,
+			@RequestParam("image") MultipartFile image, RedirectAttributes redirectAttributes) {
 		AMAP amap = amapService.findBySlug(slug);
         if (amap == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
@@ -131,8 +150,35 @@ public class ActivityController {
 		Activity oldActivity = activityService.findById(id);
 		activity.setCreationDate(oldActivity.getCreationDate());
 		activity.setLastModifiedDate(LocalDate.now());
+		if (image != null && !image.isEmpty()) {
+			try {
+				activity.setImageData(image.getBytes());
+			} catch (IOException e) {
+				redirectAttributes.addFlashAttribute("message", "Erreur lors de l'importation de l'image.");
+				e.printStackTrace();
+				return "redirect:/{slug}/activity/admin";
+			}
+		}
 		activityService.save(activity);
 		return "redirect:/{slug}/activity/admin";
+	}
+	
+	@GetMapping("/image/{id}")
+	public ResponseEntity<byte[]> getImage(@PathVariable Long id) {
+	    Activity activity = activityService.findById(id);
+	    if (activity == null) {
+	        System.out.println("Aucun panier trouvé avec l'ID : " + id);
+	        return ResponseEntity.notFound().build();
+	    }
+
+	    byte[] imageData = activity.getImageData();
+	    if (imageData != null) {
+	        System.out.println("Image trouvée pour l'ID : " + id);
+	        return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(imageData);
+	    }
+
+	    System.out.println("Pas d'image pour l'ID : " + id);
+	    return ResponseEntity.notFound().build();
 	}
 
 }
