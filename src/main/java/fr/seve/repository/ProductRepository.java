@@ -16,7 +16,7 @@ public interface ProductRepository extends JpaRepository<Product, Long>{
 	
 	@Query("SELECT p FROM Product p WHERE p.amapSpace.id = :amapSpaceId")
 	List<Product> findByAmapSpaceId(@Param("amapSpaceId")Long amapSpaceId);
-	@Query("SELECT p FROM Product p WHERE p.producer_id = :producerId")
+	@Query("SELECT p FROM Product p WHERE p.amapProducerUser.id = :producerId")
 	List<Product> findByProducerId(@Param("producerId")Long producerId);
 	
 }

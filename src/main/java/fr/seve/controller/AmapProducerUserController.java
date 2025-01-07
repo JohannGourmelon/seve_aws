@@ -93,6 +93,6 @@ public class AmapProducerUserController {
         }
         List<Product> products = productService.findByProducerId(amapUser.getProducerUser().getId());
         model.addAttribute("products", products);
-    	return "amap-producer-signup";
+    	return "amap-producer-view";
     }
 }

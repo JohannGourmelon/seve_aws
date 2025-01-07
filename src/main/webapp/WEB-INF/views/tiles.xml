@@ -219,14 +219,14 @@
 
 	<definition name="amap-producer-view" extends="template-amap">
 		<put-attribute name="main"
-			value="/WEB-INF/views/amap/pages//admin/producer-view.jsp" />
+			value="/WEB-INF/views/amap/pages/producer-view.jsp" />
 	</definition>
 	
 	<!-- Pages /Admin -->
 
 	<definition name="amap-admin-home" extends="template-amap">
 		<put-attribute name="main"
-			value="/WEB-INF/views/amap/pages//admin/homeAdmin.jsp" />
+			value="/WEB-INF/views/amap/pages/admin/homeAdmin.jsp" />
 	</definition>
 	
 	<definition name="amap-signup" extends="template-amap">
