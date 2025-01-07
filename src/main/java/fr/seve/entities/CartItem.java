@@ -106,5 +106,15 @@ public class CartItem {
 		this.price = price;
 	}
 
-	
+	public double getTotalPrice() {
+		double price = 0;
+		if (box != null) {
+			price = box.getPrice();
+		} else if (product != null) {
+			price = product.getPrice();
+		} else if (activity != null) {
+			price = activity.getPrice();
+		}
+		return price * quantity;
+	}
 }

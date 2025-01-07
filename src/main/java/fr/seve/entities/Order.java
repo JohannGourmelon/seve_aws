@@ -12,8 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "customer_order")
 public class Order {
 
     @Id
@@ -23,62 +25,55 @@ public class Order {
     private LocalDateTime orderDate;
     private double totalAmount;
 
-    @ManyToOne
-    @JoinColumn(name = "amapuser_id", nullable = false)
-    private AmapUser amapUser;
+//    @ManyToOne
+//    @JoinColumn(name = "amapuser_id", nullable = false)
+//    private AmapUser amapUser;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItems = new ArrayList<>();
+    
+	@ManyToOne
+	@JoinColumn(name = "amapSpace_id")
+	private AmapSpace amapSpace;
 
-    // Getters et Setters
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public LocalDateTime getOrderDate() {
-        return orderDate;
-    }
+	public LocalDateTime getOrderDate() {
+		return orderDate;
+	}
 
-    public void setOrderDate(LocalDateTime orderDate) {
-        this.orderDate = orderDate;
-    }
+	public void setOrderDate(LocalDateTime orderDate) {
+		this.orderDate = orderDate;
+	}
 
-    public double getTotalAmount() {
-        return totalAmount;
-    }
+	public double getTotalAmount() {
+		return totalAmount;
+	}
 
-    public void setTotalAmount(double totalAmount) {
-        this.totalAmount = totalAmount;
-    }
+	public void setTotalAmount(double totalAmount) {
+		this.totalAmount = totalAmount;
+	}
 
-    public AmapUser getAmapUser() {
-        return amapUser;
-    }
+	public List<OrderItem> getOrderItems() {
+		return orderItems;
+	}
 
-    public void setAmapUser(AmapUser amapUser) {
-        this.amapUser = amapUser;
-    }
+	public void setOrderItems(List<OrderItem> orderItems) {
+		this.orderItems = orderItems;
+	}
 
-    public List<OrderItem> getOrderItems() {
-        return orderItems;
-    }
+	public AmapSpace getAmapSpace() {
+		return amapSpace;
+	}
 
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
-    }
-
-    public void addOrderItem(OrderItem orderItem) {
-        orderItems.add(orderItem);
-        orderItem.setOrder(this);
-    }
-
-    public void removeOrderItem(OrderItem orderItem) {
-        orderItems.remove(orderItem);
-        orderItem.setOrder(null);
-    }
+	public void setAmapSpace(AmapSpace amapSpace) {
+		this.amapSpace = amapSpace;
+	}
 }
 

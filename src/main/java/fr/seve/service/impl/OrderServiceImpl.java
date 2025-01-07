@@ -44,7 +44,8 @@ public class OrderServiceImpl implements OrderService{
 
 	@Override
 	public List<Order> findByAmapSpaceId(Long amapSpaceId) {
-		return orderRepository.findByAmapSpaceId(amapSpaceId);
+		return null;
+		//return orderRepository.findByAmapSpaceId(amapSpaceId);
 		
 	}
 

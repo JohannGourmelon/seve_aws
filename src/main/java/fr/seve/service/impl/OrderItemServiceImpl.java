@@ -47,7 +47,8 @@ public class OrderItemServiceImpl implements OrderItemService{
 
 	@Override
 	public List<OrderItem> findByAmapSpaceId(Long amapSpaceId) {
-		return orderItemRepository.findByAmapSpaceId(amapSpaceId);
+		return null;
+		//return orderItemRepository.findByAmapSpaceId(amapSpaceId);
 		
 	}
 

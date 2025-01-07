@@ -68,11 +68,11 @@
 		</table>
 		<div class="d-flex justify-content-between align-items-center mb-4">
 			<h3>Total : ${cart.totalPrice} €</h3>
-			<form action="${pageContext.request.contextPath}/${slug}/cart/clear"
+			<form action="${pageContext.request.contextPath}/${slug}/order/add"
 				method="post">
 				<button type="submit" class="btn btn-success btn-sm">Valider la commande</button>
 			</form>
-			<form action="${pageContext.request.contextPath}/${slug}/order/add"
+			<form action="${pageContext.request.contextPath}/${slug}/cart/clear"
 				method="post">
 				<button type="submit" class="btn btn-danger btn-sm">Vider
 					le panier</button>

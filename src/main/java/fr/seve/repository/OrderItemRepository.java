@@ -12,6 +12,6 @@ import fr.seve.entities.OrderItem;
 @Repository
 public interface OrderItemRepository extends JpaRepository<OrderItem, Long>{
 	
-	@Query("SELECT i FROM OrderItem i WHERE i.amapSpace.id = :amapSpaceId")
-	List<OrderItem> findByAmapSpaceId(@Param("amapSpaceId")Long amapSpaceId);
+//	@Query("SELECT i FROM OrderItem i WHERE i.amapSpace.id = :amapSpaceId")
+//	List<OrderItem> findByAmapSpaceId(@Param("amapSpaceId")Long amapSpaceId);
 }
