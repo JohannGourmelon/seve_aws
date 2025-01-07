@@ -13,14 +13,12 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException {
-        // Extraire le slug de l'URL
-        String requestUri = request.getRequestURI();
-        String[] pathParts = requestUri.split("/");
+        // Récupérer le slug de l'URL via l'intercepteur pour éviter la 404 si pas d'amap
+    	String slug = (String) request.getAttribute("slug");
 
-        String targetLoginPage = "/login"; // Page de login par défaut (SaaS)
-        if (pathParts.length > 1) {
-            String slug = pathParts[1]; // Supposons que le slug soit le premier segment de l'URL
-            targetLoginPage = "/" + slug + "/login"; // Page de login spécifique à l'AMAP
+        String targetLoginPage =  request.getContextPath()+"/login"; // Page de login par défaut (SaaS)
+        if (slug != null) {
+            targetLoginPage = request.getContextPath()+"/"+ slug + "/login"; // Page de login spécifique à l'AMAP
         }
 
         // Rediriger vers la page de login appropriée

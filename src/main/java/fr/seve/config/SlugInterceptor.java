@@ -25,18 +25,21 @@ public class SlugInterceptor implements HandlerInterceptor {
 
         if (path.startsWith("seve/")) {
             path = path.substring(5);
+            System.out.println("le path commençait par seve/");
         }
 
         String[] pathParts = path.split("/");
-
+        System.out.println("le chemin découpé : "+pathParts.toString());
         if (pathParts.length > 0) {
             String slug = pathParts[0];
+            System.out.println("le slug extrait : "+slug);
             AMAP amap = amapService.findBySlug(slug);
             if (amap == null) {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "AMAP not found");
                 return false;
             }
             
+            System.out.println("le slug de l'amap recuperé : "+amap.getSlug());
             request.setAttribute("slug", amap.getSlug());
             request.setAttribute("amap", amap);
             
