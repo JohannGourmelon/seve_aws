@@ -44,7 +44,7 @@ public class OrderController {
 	
 	
 	@GetMapping("/success")
-	public ModelAndView Success(Model model) {
+	public ModelAndView SuccessPage(Model model) {
 		ModelAndView mv = new ModelAndView("amap-payment-success");
 		return mv;
 	}
@@ -97,6 +97,8 @@ public class OrderController {
 		order.setTotalAmount(totalAmount);
 		order.setAmapSpace(amapSpace);
 		orderService.save(order);
+		
+		session.removeAttribute("cart");
 
 		ModelAndView mv = new ModelAndView("amap-payment");
 		mv.addObject("order", order);

@@ -25,10 +25,6 @@ public class Order {
     private LocalDateTime orderDate;
     private double totalAmount;
 
-//    @ManyToOne
-//    @JoinColumn(name = "amapuser_id", nullable = false)
-//    private AmapUser amapUser;
-
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItems = new ArrayList<>();
     

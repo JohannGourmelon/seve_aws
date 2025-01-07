@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
     <div class="container mt-5">
@@ -38,12 +37,12 @@
 
             <div class="col-md-6">
                 <div class="payment-container">
-                    <form class="payment-form">
-                    <div class="payment-icons">
-					<img src="${pageContext.request.contextPath}/resources/images/saas/visa.png" alt="" />
-					<img src="${pageContext.request.contextPath}/resources/images/saas/mastercard.png" alt="" />
-					<img src="${pageContext.request.contextPath}/resources/images/saas/amex.png" alt="" />
-					</div>
+                    <div class="payment-form">
+	                    <div class="payment-icons">
+							<img src="${pageContext.request.contextPath}/resources/images/saas/visa.png" alt="visa" />
+							<img src="${pageContext.request.contextPath}/resources/images/saas/mastercard.png" alt="mastercard" />
+							<img src="${pageContext.request.contextPath}/resources/images/saas/amex.png" alt="americain express" />
+						</div>
                         <div class="form-group">
                             <label for="card-name">Nom du propriétaire de la carte</label>
                             <input type="text" class="form-control" id="card-name">
@@ -60,8 +59,8 @@
                             <label for="cvv">CVV</label>
                             <input type="text" class="form-control" id="cvv">
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block" onclick="window.location.href='${pageContext.request.contextPath}/${slug}/order/success'">Payer maintenant</button>
-                    </form>
+                        <button class="btn btn-primary btn-block" onclick="window.location.href='${pageContext.request.contextPath}/${slug}/order/success'">Payer maintenant</button>
+                    </div>
                 </div>
             </div>
         </div>
