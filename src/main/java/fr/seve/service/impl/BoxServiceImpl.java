@@ -39,4 +39,10 @@ public class BoxServiceImpl implements BoxService{
 		
 	}
 
+	@Override
+	public List<Box> findByAmapSpaceId(Long amapSpaceId) {
+		return boxRepository.findByAmapSpaceId(amapSpaceId);
+		
+	}
+
 }

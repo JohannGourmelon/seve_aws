@@ -10,7 +10,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -62,6 +64,10 @@ public class Product {
 	@Lob
 	@Column(name = "image")
 	private byte[] imageData;
+	
+	@ManyToOne
+	@JoinColumn(name = "amapSpace_id")
+	private AmapSpace amapSpace;
 
 	// Relation avec Producteur
 //    @ManyToOne
@@ -152,6 +158,14 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+	
+	public AmapSpace getAmapSpace() {
+		return amapSpace;
+	}
+
+	public void setAmapSpace(AmapSpace amapSpace) {
+		this.amapSpace = amapSpace;
+	}
 
 //    public String getImageUrl() {
 //        return imageUrl;
@@ -199,6 +213,9 @@ public class Product {
 	public void setImageData(byte[] imageData) {
 		this.imageData = imageData;
 	}
+
+
+	
 
 
 	// Enum pour la catégorie

@@ -36,4 +36,10 @@ public class ProductServiceImpl implements ProductService {
 		
 	}
 
+	@Override
+	public List<Product> findByAmapSpaceId(Long amapSpaceId) {
+		return productRepository.findByAmapSpaceId(amapSpaceId);
+		
+	}
+
 }

@@ -2,6 +2,7 @@ package fr.seve.service;
 
 import java.util.List;
 
+
 import fr.seve.entities.Box;
 
 
@@ -14,5 +15,7 @@ public interface BoxService {
 	Box findById(Long id);
 
 	void deleteById(Long Id);
+	
+	List<Box> findByAmapSpaceId(Long amapSpaceId);
 
 }

@@ -22,9 +22,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.seve.entities.AMAP;
+import fr.seve.entities.AmapSpace;
 import fr.seve.entities.Box;
 import fr.seve.entities.Configuration;
 import fr.seve.service.AmapService;
+import fr.seve.service.AmapSpaceService;
 import fr.seve.service.BoxService;
 
 @Controller
@@ -37,14 +39,19 @@ public class BoxController {
 	@Autowired
 	private AmapService amapService;
 	
+	@Autowired
+	private AmapSpaceService amapSpaceService;
+	
     @GetMapping
     public ModelAndView listBoxes(@PathVariable String slug, Model model) {
         AMAP amap = amapService.findBySlug(slug);
         if (amap == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
         }
+        
+        Long amapSpaceId = amap.getId();
 
-        List<Box> boxes = boxService.findAll();
+        List<Box> boxes = boxService.findByAmapSpaceId(amapSpaceId);
         model.addAttribute("boxes", boxes);
         model.addAttribute("amap", amap);
         model.addAttribute("slug", slug);
@@ -60,7 +67,9 @@ public class BoxController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
         }
 
-		List<Box> boxes = boxService.findAll();
+        Long amapSpaceId = amap.getId();
+        
+		List<Box> boxes = boxService.findByAmapSpaceId(amapSpaceId);
 		model.addAttribute("boxes", boxes);
 		model.addAttribute("slug", slug);
 		ModelAndView mv = new ModelAndView("admin-box-list");
@@ -100,6 +109,9 @@ public class BoxController {
         if (amap == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
         }
+        
+        AmapSpace amapSpace = amapSpaceService.findById(amap.getId());
+        
         if (image != null && !image.isEmpty()) {
 			try {
 				box.setImageData(image.getBytes());
@@ -111,6 +123,7 @@ public class BoxController {
 		}
         
 		box.setCreationDate(LocalDate.now());
+		box.setAmapSpace(amapSpace);
 		boxService.save(box);
 		return "redirect:/{slug}/box/admin";
 	}
