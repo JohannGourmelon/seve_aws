@@ -5,7 +5,7 @@
     <h1 class="text-center mb-4">Découvrez nos ateliers</h1>
 
     <div class="row">
-        <c:forEach var="activity" items="${activities.amapSpace.id}">
+        <c:forEach var="activity" items="${activities}">
             <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-4 mb-5">
                 <div class="card">
                     <img

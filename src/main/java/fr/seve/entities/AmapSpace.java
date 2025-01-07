@@ -30,6 +30,11 @@ public class AmapSpace {
     @OneToMany(mappedBy = "amapSpace", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Activity> activities;
     
+    @OneToMany(mappedBy = "amapSpace", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Product> products;
+    
+    @OneToMany(mappedBy = "amapSpace", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Box> boxes;
     
 	public Long getId() {
         return id;
@@ -77,5 +82,21 @@ public class AmapSpace {
 
 	public void setActivities(List<Activity> activities) {
 		this.activities = activities;
+	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+
+	public List<Box> getBoxes() {
+		return boxes;
+	}
+
+	public void setBoxes(List<Box> boxes) {
+		this.boxes = boxes;
 	}
 }

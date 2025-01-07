@@ -50,11 +50,13 @@ public class Box {
 	@Column
 	private Frequency frequency;
 
-	
-
 	@Lob
 	@Column(name = "image")
 	private byte[] imageData;
+	
+	@ManyToOne
+	@JoinColumn(name = "amapSpace_id")
+	private AmapSpace amapSpace;
 
 	// Relation avec Producteur
 //    @ManyToOne
@@ -195,6 +197,16 @@ public class Box {
 	}
 	
 	
+
+	public AmapSpace getAmapSpace() {
+		return amapSpace;
+	}
+
+	public void setAmapSpace(AmapSpace amapSpace) {
+		this.amapSpace = amapSpace;
+	}
+
+
 
 	// Enum pour la fréquence
 	public enum Frequency {

@@ -29,6 +29,11 @@ public class ActivityServiceImpl implements ActivityService {
 	public Activity findById(Long id) {
 		return activityRepository.findById(id).orElse(null);
 	}
+	
+	@Override
+	public List<Activity> findByAmapSpaceId(Long amapSpaceId) {
+        return activityRepository.findByAmapSpaceId(amapSpaceId);
+    }
 
 	@Override
 	public void deletebyId(Long Id) {

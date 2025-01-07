@@ -24,7 +24,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import fr.seve.entities.AMAP;
 import fr.seve.entities.Activity;
 import fr.seve.entities.AmapSpace;
-import fr.seve.entities.Box;
 import fr.seve.service.ActivityService;
 import fr.seve.service.AmapService;
 import fr.seve.service.AmapSpaceService;
@@ -48,7 +47,10 @@ public class ActivityController {
         if (amap == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
         }
-		List<Activity> activities = activityService.findAll();
+        
+        Long amapSpaceId = amap.getId();
+        
+		List<Activity> activities = activityService.findByAmapSpaceId(amapSpaceId);
 		model.addAttribute("activities", activities);
 		ModelAndView mv = new ModelAndView("activity-list");
 		mv.addObject("css", "/resources/css/amap/boxList.css");
@@ -62,7 +64,9 @@ public class ActivityController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
         }
         
-		List<Activity> activities = activityService.findAll();
+        Long amapSpaceId = amap.getId();
+        
+		List<Activity> activities = activityService.findByAmapSpaceId(amapSpaceId);
 		model.addAttribute("activities", activities);
 		ModelAndView mv = new ModelAndView("admin-activity-list");
 		mv.addObject("css", "/resources/css/amap/boForms.css");
