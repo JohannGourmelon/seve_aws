@@ -329,5 +329,11 @@
 			<put-attribute name="main"
 				value="/WEB-INF/views/amap/pages/order/cart.jsp" />
 		</definition>
+		<definition name="amap-payment" extends="template-amap">
+			<put-attribute name="title"
+				value="Panier" />
+			<put-attribute name="main"
+				value="/WEB-INF/views/amap/pages/order/payment.jsp" />
+		</definition>
 
 </tiles-definitions>

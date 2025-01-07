@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.ModelAndView;
 
 import fr.seve.entities.AMAP;
 import fr.seve.entities.AmapSpace;
@@ -40,7 +41,7 @@ public class OrderController {
 	private OrderService orderService;
 
 	@PostMapping("add")
-	public String validateOrder(@PathVariable String slug, HttpSession session, Model model) {
+	public ModelAndView validateOrder(@PathVariable String slug, HttpSession session, Model model) {
 		AMAP amap = amapService.findBySlug(slug);
         if (amap == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
@@ -52,7 +53,8 @@ public class OrderController {
 
 		if (cart == null || cart.getItems().isEmpty()) {
 			model.addAttribute("error", "Votre panier est vide !");
-			return "redirect:/" + slug + "/cart";
+			ModelAndView mv = new ModelAndView("redirect:/" + slug + "/cart");
+			return mv;
 		}
 
 		Order order = new Order();
@@ -65,7 +67,6 @@ public class OrderController {
 			orderItem.setGenre(cartItem.getGenre());
 			orderItem.setQuantity(cartItem.getQuantity());
 			orderItem.setPrice(cartItem.getPrice());
-			System.out.println("_________________________________" + orderItem + " priceeee : " + cartItem.getPrice());
 			orderItem.setOrder(order);
 
 			switch (cartItem.getGenre()) {
@@ -88,7 +89,12 @@ public class OrderController {
 		order.setAmapSpace(amapSpace);
 		orderService.save(order);
 
-		return "redirect:/" + slug + "/cart";
+		ModelAndView mv = new ModelAndView("amap-payment");
+		mv.addObject("order", order);
+		mv.addObject("orderItems", order.getOrderItems());
+		System.out.println(order.getOrderItems());
+		mv.addObject("css", "/resources/css/saas/payment.css");
+		return mv;
 
 	}
 

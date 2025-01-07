@@ -8,7 +8,7 @@
 			<thead>
 				<tr>
 					<th>Nom</th>
-					<th>Prix Unitaire</th>
+					<th>Prix unitaire</th>
 					<th>Quantité</th>
 					<th>Total</th>
 					<th></th>
