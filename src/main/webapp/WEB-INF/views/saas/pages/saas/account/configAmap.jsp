@@ -16,6 +16,10 @@
             <label for="siret">Numéro Siret</label>
             <input id="siret" name="siret" value="${amap.siret}" required>
         </p>
+        <p class="mt-4">
+            <label for="membershipFee">Montant de la cotisation</label>
+            <input id="membershipFee" name="membershipFee" value="${amap.membershipFee}" required>
+        </p>
         <div class="configForm-submit">
 			<button class="btn btn-secondary" type="submit">Enregistrer</button>
 		</div>
