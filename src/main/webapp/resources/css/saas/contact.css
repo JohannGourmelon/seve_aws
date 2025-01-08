@@ -1,49 +1,43 @@
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+.contact-page {
+	display: flex;
+	justify-content: space-around;
 }
 
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+.contact-form {
+	border-radius: 30px;
+	background-color: #f0f3f5;
+	padding: 35px 50px 10px 50px;
+	width: 50%;
+	margin-bottom: 50px;
 }
 
-#map {
-    height: 400px;
-    margin-bottom: 20px;
+.contact-form-input {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
 }
 
-.form-group {
-    margin-bottom: 15px;
+.contact-btn {
+	padding: 10px 30px;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
+/* ------------------------ Format tablette ---------------------------*/
+@media screen and (max-width: 992px) {
+	.contact-page {
+		flex-direction: column;
+	}
+	h3 {
+		margin-top: 0;
+	}
+	.contact-form {
+		width: 100%;
+		margin-top: 20px;
+	}
 }
 
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 8px;
-}
-
-.success {
-    color: green;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-.error {
-    color: red;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-@media (max-width: 768px) {
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
+/* ------------------------ Format mobile ---------------------------*/
+@media screen and (max-width:768px) {
+	.contact-form {
+		padding: 35px 30px 10px 30px;
+	}
 }
