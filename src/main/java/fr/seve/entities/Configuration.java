@@ -46,6 +46,10 @@ public class Configuration {
 	@Column(name = "logo")
 	private byte[] logoData;
 	
+	@Lob
+	@Column(name = "presentationImage")
+	private byte[] presentationImageData;
+	
 	
 	@OneToOne(mappedBy = "configuration", cascade = CascadeType.ALL, orphanRemoval = true)
 	private AmapSpace amapSpace;
@@ -157,6 +161,13 @@ public class Configuration {
 	    }
 	}
 
+	public byte[] getPresentationImageData() {
+		return presentationImageData;
+	}
+
+	public void setPresentationImageData(byte[] presentationImageData) {
+		this.presentationImageData = presentationImageData;
+	}
 
 	
 }
