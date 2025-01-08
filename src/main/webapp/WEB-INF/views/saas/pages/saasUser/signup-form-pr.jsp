@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <h1 class="text-center">Commencez aujourd'hui avec Premium</h1>
 <section class="signup-section">
@@ -45,6 +46,15 @@
 		<div class="signup-form-container shadow">
 			<p class="font-weight-bold pb-2">Remplissez le formulaire pour
 				démarrer votre abonnement</p>
+			<c:if test="${not empty errors}">
+				<div class="alert alert-danger">
+					<ul>
+						<c:forEach var="error" items="${errors}">
+							<li>${error}</li>
+						</c:forEach>
+					</ul>
+				</div>
+			</c:if>
 			<div class="panel-body">
 				<form:form action="saveSignUpPremium" cssClass="form-horizontal"
 					method="post" modelAttribute="saasUser">
@@ -52,39 +62,44 @@
 					<div class="form-group signup-field">
 						<label for="firstname" class="control-label">Prénom</label>
 						<div>
-							<form:input path="firstname" cssClass="form-control" value= "${saasUser.firstname}" required="true"/>
-							 <form:errors path="firstname" cssClass="error" />
+							<form:input path="firstname" cssClass="form-control"
+								value="${saasUser.firstname}" required="true" />
+							<form:errors path="firstname" cssClass="error" />
 						</div>
 					</div>
 					<div class="form-group signup-field">
 						<label for="name" class="control-label">Nom</label>
 						<div>
-							<form:input path="name" cssClass="form-control" value= "${saasUser.name}" required="true"/>
-							 <form:errors path="name" cssClass="error" />
+							<form:input path="name" cssClass="form-control"
+								value="${saasUser.name}" required="true" />
+							<form:errors path="name" cssClass="error" />
 						</div>
 					</div>
 
 					<div class="form-group signup-field">
 						<label for="phone" class="control-label">Téléphone</label>
 						<div>
-							<form:input path="phone" cssClass="form-control" value= "${saasUser.phone}" required="true"/>
-							 <form:errors path="phone" cssClass="error" />
+							<form:input path="phone" cssClass="form-control"
+								value="${saasUser.phone}" required="true" />
+							<form:errors path="phone" cssClass="error" />
 						</div>
 					</div>
 
 					<div class="form-group signup-field">
 						<label for="email" class="control-label">Email</label>
 						<div>
-							<form:input path="email" cssClass="form-control" value= "${saasUser.email}" required="true"/>
-							 <form:errors path="email" cssClass="error" />
+							<form:input path="email" cssClass="form-control"
+								value="${saasUser.email}" required="true" />
+							<form:errors path="email" cssClass="error" />
 						</div>
 					</div>
 
 					<div class="form-group signup-field">
 						<label for="password" class="control-label">Mot de passe</label>
 						<div>
-							<form:password path="password" cssClass="form-control" value= "${saasUser.password}" required="true"/>
-							 <form:errors path="password" cssClass="error" />
+							<form:password path="password" cssClass="form-control"
+								value="${saasUser.password}" required="true" />
+							<form:errors path="password" cssClass="error" />
 						</div>
 					</div>
 

@@ -46,7 +46,15 @@
 		<div class="signup-form-container shadow">
 			<p class="font-weight-bold pb-2">Remplissez le formulaire pour
 				démarrer votre abonnement</p>
-
+			<c:if test="${not empty errors}">
+				<div class="alert alert-danger">
+					<ul>
+						<c:forEach var="error" items="${errors}">
+							<li>${error}</li>
+						</c:forEach>
+					</ul>
+				</div>
+			</c:if>
 			<div class="panel-body">
 				<form:form action="saveSignUpStandard" cssClass="form-horizontal"
 					method="post" modelAttribute="saasUser">

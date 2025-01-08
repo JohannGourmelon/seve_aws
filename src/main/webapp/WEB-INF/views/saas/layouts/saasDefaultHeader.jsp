@@ -16,11 +16,11 @@
 				onclick="window.location.href='${pageContext.request.contextPath}/saas'">Accueil</a></li>
 			<li class="nav-item"><a class="nav-link"
 				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-				onclick="window.location.href='${pageContext.request.contextPath}/saas/forfaits'">Nos offres</a></li>
+				onclick="window.location.href='${pageContext.request.contextPath}/saas/packages'">Nos offres</a></li>
 				
 				<li class="nav-item"><a class="nav-link"
 				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-				onclick="window.location.href='${pageContext.request.contextPath}/saas/nos-amaps'">Notre réseau</a></li>
+				onclick="window.location.href='${pageContext.request.contextPath}/saas/our-amaps'">Notre réseau</a></li>
 
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
@@ -29,12 +29,12 @@
 				<div class="dropdown-menu mt-0" aria-labelledby="Preview">
 					<a class="dropdown-item" data-bs-toggle="collapse"
 						data-bs-target=".navbar-collapse.show"
-						onclick="window.location.href='${pageContext.request.contextPath}/saasuser/souscription-essentiel'">Forfait
+						onclick="window.location.href='${pageContext.request.contextPath}/saasuser/subscription-essential'">Forfait
 						Essentiel</a> <a class="dropdown-item" href="#"
 						data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-						onclick="window.location.href='${pageContext.request.contextPath}/saasuser/souscription-standard'">Forfait Standard</a> <a
+						onclick="window.location.href='${pageContext.request.contextPath}/saasuser/subscription-standard'">Forfait Standard</a> <a
 						class="dropdown-item" href="#" data-bs-toggle="collapse"
-						data-bs-target=".navbar-collapse.show" onclick="window.location.href='${pageContext.request.contextPath}/saasuser/souscription-premium'">Forfait
+						data-bs-target=".navbar-collapse.show" onclick="window.location.href='${pageContext.request.contextPath}/saasuser/subscription-premium'">Forfait
 						Premium</a>
 					<!-- <li role="separator" class="divider"></li> -->
 				</div></li>
