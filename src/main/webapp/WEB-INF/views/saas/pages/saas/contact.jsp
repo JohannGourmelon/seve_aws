@@ -1,17 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/style.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/saas/contact.css">
-</head>
-<body>
+
     <div class="container">
-        <h1>Contactez-nous</h1>
         
         <c:if test="${not empty success}">
             <div class="success">${success}</div>
@@ -57,6 +47,3 @@
             </div>
         </div>
     </div>
-
-</body>
-</html>
