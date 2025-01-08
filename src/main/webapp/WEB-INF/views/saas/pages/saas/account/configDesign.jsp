@@ -5,7 +5,6 @@
 <div class="design-theme mb-5">
 	<p>Thèmes prédéfinis</p>
 	<div class="themes-container">
-		<!-- Thème 1 -->
 		<div class="theme-card" id="theme1">
 			<div class="theme-preview">
 				<div class="triangle"
@@ -17,7 +16,6 @@
 			</div>
 			<p>Dynamique</p>
 		</div>
-		<!-- Thème 2 -->
 		<div class="theme-card" id="theme2">
 			<div class="theme-preview">
 				<div class="triangle"
@@ -29,7 +27,6 @@
 			</div>
 			<p>Élégant</p>
 		</div>
-		<!-- Thème 3 -->
 		<div class="theme-card" id="theme3">
 			<div class="theme-preview">
 				<div class="triangle"
