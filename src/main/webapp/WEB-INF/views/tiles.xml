@@ -198,15 +198,31 @@
 		<put-attribute name="header"
 			value="/WEB-INF/views/amap/layouts/amapDefaultHeader.jsp" />
 		<put-attribute name="main"
-			value="/WEB-INF/views/amap/pages/amapDefaultMain.jsp" />
+			value="/WEB-INF/views/amap/layouts/amapDefaultMain.jsp" />
 		<put-attribute name="footer"
 			value="/WEB-INF/views/amap/layouts/amapDefaultFooter.jsp" />
+	</definition>
+	
+	<!-- Template Amap Account -->
+
+	<definition name="template-amap-account"
+		template="/WEB-INF/views/amap/layouts/amapAccountLayout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header"
+			value="/WEB-INF/views/amap/layouts/amapDefaultHeader.jsp" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/layouts/amapDefaultMain.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/amap/layouts/amapDefaultFooter.jsp" />
+		<put-attribute name="secondaryNav"
+			value="/WEB-INF/views/amap/layouts/amapAccountNav.jsp" />
+		
 	</definition>
 
 
 	<!-- Pages /Home -->
 
-	<definition name="amap-account" extends="template-amap">
+	<definition name="amap-account" extends="template-amap-account">
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/user/myaccount.jsp" />
 	</definition>
@@ -221,7 +237,7 @@
 	<!-- Pages /Producer -->
 
 	<definition name="amap-producer-view"
-		extends="template-amap">
+		extends="template-amap-account">
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/producer-view.jsp" />
 	</definition>
@@ -269,7 +285,7 @@
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/box/boxList.jsp" />
 	</definition>
-	<definition name="admin-box-list" extends="template-amap">
+	<definition name="admin-box-list" extends="template-amap-account">
 		<put-attribute name="title" value="Gérer les paniers" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/box/boxListAdmin.jsp" />
@@ -296,7 +312,7 @@
 			value="/WEB-INF/views/amap/pages/product/productList.jsp" />
 	</definition>
 	<definition name="admin-product-list"
-		extends="template-amap">
+		extends="template-amap-account">
 		<put-attribute name="title" value="Gérer les produit" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/product/productListAdmin.jsp" />
@@ -322,7 +338,7 @@
 			value="/WEB-INF/views/amap/pages/activity/activityList.jsp" />
 	</definition>
 	<definition name="admin-activity-list"
-		extends="template-amap">
+		extends="template-amap-account">
 		<put-attribute name="title" value="Gérer les ateliers" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/activity/activityListAdmin.jsp" />
@@ -363,7 +379,7 @@
 			value="/WEB-INF/views/amap/pages/order/payment-success.jsp" />
 	</definition>
 
-	<definition name="amap-order-list" extends="template-amap">
+	<definition name="amap-order-list" extends="template-amap-account">
 		<put-attribute name="title"
 			value="Historique de Commandes" />
 		<put-attribute name="main"
@@ -371,7 +387,7 @@
 	</definition>
 
 	<definition name="amap-order-details"
-		extends="template-amap">
+		extends="template-amap-account">
 		<put-attribute name="title"
 			value="Details de la Commande" />
 		<put-attribute name="main"
