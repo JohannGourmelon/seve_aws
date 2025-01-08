@@ -117,6 +117,36 @@ input[type="color"]:focus {
     box-shadow: 0 0 5px #888;
 }
 
+.btn-profile {
+	padding-top: 12px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.btn-profile a:hover {
+	color: black;
+}
+
+/********************* Profile ************************/
+
+.modal-title {
+	margin-top: 0;
+}
+
+.modal {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    width: 50%;
+    height: 100%;
+    padding: 20px 40px;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
 /*********************** Thèmes *********************/
 
 
