@@ -4,14 +4,13 @@
 		<li class="mb-4"><a href="${pageContext.request.contextPath}/amap/info">Mon
 				AMAP</a></li>
 
-		<li class="dropdown"><a href="javascript:void(0)" class="dropbtn"
-			onclick="">Configuration</a>
+		<li class="dropdown"><a href="${pageContext.request.contextPath}/configuration/design" class="dropbtn">Configuration</a>
 			<ul class="submenus">
 				<li class="mt-2"><a
 					href="${pageContext.request.contextPath}/configuration/design">>
 						design</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/configuration/contenu">>
+					href="${pageContext.request.contextPath}/configuration/content">>
 						contenu</a></li>
 			</ul></li>
 	</ul>

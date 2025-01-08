@@ -74,9 +74,7 @@
 	margin-top: 20%;
 }
 
-
 /************************** Nos amaps *********************************/
-
 .amaps {
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -101,7 +99,7 @@
 }
 
 .amap:hover {
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15);
+	box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
 /* ------------------------ Format tablette ---------------------------*/
@@ -131,7 +129,7 @@
 		margin-bottom: 50px;
 	}
 	.amap {
-	width: 30%;
+		width: 30%;
 	}
 }
 
@@ -141,7 +139,13 @@
 		flex-wrap: wrap;
 		justify-content: space-around;
 	}
+	.step {
+		margin-bottom: 30px;
+	}
 	.amap {
-	width: 100%;
+		width: 100%;
+	}
+	h3 {
+		margin-top: 20px;
 	}
 }

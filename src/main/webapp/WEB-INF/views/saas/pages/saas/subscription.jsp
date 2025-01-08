@@ -112,7 +112,7 @@
 	</div>
 </section>
 
-<section>
+<section id="features-table-section">
 	<h2>Tableau comparatif</h2>
 
 	<div>

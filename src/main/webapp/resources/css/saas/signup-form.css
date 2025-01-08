@@ -18,8 +18,8 @@
 	gap: 20px;
 }
 
-.error{
-	color:red
+.error {
+	color: red
 }
 
 .dot-container {
@@ -165,11 +165,22 @@
 	.contact-info {
 		width: 100%;
 	}
-	
 	.feature-card {
 		width: 100%;
 	}
 	.features img {
 		display: none;
+	}
+	#btns button {
+		width: 60%;
+	}
+	.feature-container {
+		margin-bottom: 0;
+	}
+	.signup-form-container {
+	padding: 35px 30px 10px 30px;
+	}
+	.feature-card-content {
+	padding: 20px 30px;
 	}
 }

@@ -34,7 +34,9 @@ public class AMAP {
 	 @Column(unique = true)
 	 private String slug;
 	 
-
+	@Column(nullable = true)
+	private double membershipFee;
+	 
 	// Relation avec SaasUser
 	@OneToOne(mappedBy = "amap", cascade = CascadeType.ALL, orphanRemoval = true)
 	private SaasUser saasUser;
@@ -101,7 +103,16 @@ public class AMAP {
 		this.slug = slug;
 	}
 	
-    @PrePersist
+	
+    public double getMembershipFee() {
+		return membershipFee;
+	}
+
+	public void setMembershipFee(double membershipFee) {
+		this.membershipFee = membershipFee;
+	}
+
+	@PrePersist
     @PreUpdate
     public void generateSlug() {
         if (this.name != null && (this.slug == null || !this.slug.equals(SlugUtils.toSlug(this.name)))) {

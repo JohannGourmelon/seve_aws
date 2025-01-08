@@ -5,30 +5,30 @@
 <form
 	action="${pageContext.request.contextPath}/configuration/editContent/${configuration.id}"
 	method="post" enctype="multipart/form-data">
-	
-	<div class="contentForm-inputs input-img">
-		<label for="logo">Logo de votre AMAP</label> <input
-			type="file" id="logo" name="logo" accept="image/*" />
-	</div>
-	
-	<div class="contentForm-inputs input-img">
-		<label for="presentationImage">Image de présentation de votre AMAP</label> <input
-			type="file" id="presentationImage" name="presentationImage" accept="image/*" />
-	</div>
 
-	<div class="contentForm-inputs mt-4">
-		<label for="presentationText">Texte de présentation</label>
-		<textarea id="presentationText" name="presentationText" rows="6"
-			cols="70">${configuration.presentationText}</textarea>
+	<div class="contentForm-content">
+		<div class="contentForm-side side1">
+			<div class="input-group">
+				<label for="logo" class="input-group-label">Logo de votre AMAP</label> 
+				<input type="file" class="input-img" id="logo" name="logo" accept="image/*" />
+			</div>
+			<div class="input-group">
+				<label for="presentationImage" class="input-group-label">Image de présentation</label> 
+				<input type="file" class="input-img" id="presentationImage" name="presentationImage" accept="image/*" />
+			</div>
+			<div class="input-group">
+				<label for="presentationText" class="input-group-label">Texte de présentation</label>
+				<textarea id="presentationText" name="presentationText" rows="8" cols="80">${configuration.presentationText}</textarea>
+			</div>
+		</div>
 	</div>
-
 
 
 	<div class="configForm-submit">
-		<button class="btn btn-secondary" type="submit">Enregistrer</button>
+		<button class="btn btn-secondary mb-4" type="submit">Enregistrer</button>
 	</div>
 </form>
 
 <c:if test="${not empty message}">
-	<div class="alert alert-success  mt-4">${message}</div>
+	<div class="alert alert-success">${message}</div>
 </c:if>
