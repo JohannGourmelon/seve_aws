@@ -27,7 +27,7 @@
                 <p>3 boulevard Michelet</p>
                 <p>13008 Marseille, France</p>
                 <p>Tél: +33 4 00 00 00 0</p>
-                <p>Email: contact@seve.com/p>
+                <p>Email: contact@seve.com </p>
             </div>
 
             <div class="contact-form">
