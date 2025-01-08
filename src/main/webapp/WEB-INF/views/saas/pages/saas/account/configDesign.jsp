@@ -64,7 +64,7 @@
 						value="${empty configuration.tertiaryColor ? '#ffffff' : configuration.tertiaryColor}">
 				</div>
 			</div>
-			<div class="designForm-side">
+			<div class="designForm-side side2">
 				<div class="designForm-labels">
 					<label for="police" class="formItem">Police</label> <label
 						class="formItem">Style des bordures</label>

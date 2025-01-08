@@ -230,6 +230,9 @@ header {
 	h3 {
 		font-size: 22px;
 	}
+	.vertical-nav {
+	display: none;
+	}
 }
 
 /* ------------------------ Format mobile ---------------------------*/

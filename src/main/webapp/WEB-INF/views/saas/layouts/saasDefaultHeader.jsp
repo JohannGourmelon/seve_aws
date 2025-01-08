@@ -44,18 +44,18 @@
 				
 			<li class="nav-item"><a  class="nav-link" href="index.html"
 				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" onclick="window.location.href='${pageContext.request.contextPath}/profile'">Mon espace</a></li>
-				<li class="nav-item d-md-none">
+				
+				<li class="nav-item d-lg-none">
                     <hr class="dropdown-divider">
                 </li>
-				
 				                
-                <li class="nav-item d-md-none">
+                <li class="nav-item d-lg-none">
                     <a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" onclick="window.location.href='${pageContext.request.contextPath}/amap/info'">Mon AMAP</a>
                 </li>
-                <li class="nav-item d-md-none">
+                <li class="nav-item d-lg-none">
                     <a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" onclick="window.location.href='${pageContext.request.contextPath}/configuration/design'">Configuration design</a>
                 </li>
-                <li class="nav-item d-md-none">
+                <li class="nav-item d-lg-none">
                     <a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" onclick="window.location.href='${pageContext.request.contextPath}/configuration/contenu'">Configuration contenu</a>
                 </li>
 		</ul>
