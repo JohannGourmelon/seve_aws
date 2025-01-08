@@ -57,14 +57,14 @@
 	</definition>
 
 <definition name ="saas-contact" extends="template-saas">
-		<put-attribute name="title" value="Sève" />
+		<put-attribute name="title" value="Contact" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/saas/contact.jsp" />	
 	</definition>
 	
 	<!-- Pages /souscription -->
 	<definition name="saas-subscription" extends="template-saas">
-		<put-attribute name="title" value="Nos forfaits" />
+		<put-attribute name="title" value="Nos offres" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/saas/subscription.jsp" />
 	</definition>
@@ -76,19 +76,19 @@
 	</definition>
 
 	<definition name="saas-signup-es" extends="template-saas">
-		<put-attribute name="title" value="Souscription" />
+		<put-attribute name="title" value="Souscription Essentiel" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/saasUser/signup-form-es.jsp" />
 	</definition>
 
 	<definition name="saas-signup-st" extends="template-saas">
-		<put-attribute name="title" value="Souscription" />
+		<put-attribute name="title" value="Souscription Standard" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/saasUser/signup-form-st.jsp" />
 	</definition>
 
 	<definition name="saas-signup-pr" extends="template-saas">
-		<put-attribute name="title" value="Souscription" />
+		<put-attribute name="title" value="Souscription Premium" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/saasUser/signup-form-pr.jsp" />
 	</definition>
@@ -97,21 +97,21 @@
 
 	<definition name="saas-account-config-amap"
 		extends="template-saas-account">
-		<put-attribute name="title" value="Configuration" />
+		<put-attribute name="title" value="Mon AMAP" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/saas/account/configAmap.jsp" />
 	</definition>
 
 	<definition name="saas-account-config-content"
 		extends="template-saas-account">
-		<put-attribute name="title" value="Configuration" />
+		<put-attribute name="title" value="Configuration contenu" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/saas/account/configContent.jsp" />
 	</definition>
 
 	<definition name="saas-account-config-design"
 		extends="template-saas-account">
-		<put-attribute name="title" value="Configuration" />
+		<put-attribute name="title" value="Configuration design" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/saas/account/configDesign.jsp" />
 	</definition>
@@ -126,7 +126,7 @@
 	</definition>
 
 	<definition name="profile" extends="template-saas-account">
-		<put-attribute name="title" value="Profile" />
+		<put-attribute name="title" value="Mon compte" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/login/profile.jsp" />
 		<put-attribute name="css2"
@@ -139,7 +139,7 @@
 	<!-- Pages /amap -->
 
 	<definition name="amap-list" extends="template-saas">
-		<put-attribute name="title" value="Liste des AMAPs" />
+		<put-attribute name="title" value="Notre réseau" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/amap/amapList.jsp" />
 	</definition>
