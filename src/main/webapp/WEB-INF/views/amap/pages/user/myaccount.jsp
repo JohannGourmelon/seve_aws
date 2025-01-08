@@ -3,8 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 
-<div class="container mt-5 d-flex justify-content-right">
-    <div class="card shadow p-3 mb-8 bg-body rounded-3" style="min-width: 200%; background-color: var(--tertiary-color); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);">
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow p-3 mb-5 bg-body rounded-3" style="min-width: 100%; background-color: var(--tertiary-color); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);">
         <h2 class="text-center fw-bold mb-4">Vos informations personnelles</h2>
 
         <div class="mb-4 d-flex ">

@@ -1,10 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-    <div class="container-fluid">
-        <h1 class="text-center">Gestion des produits</h1>
+    <div class="container-flex-overflow">
+        <h3 class="text-center">Mes produits</h3>
         <div class="text-end mb-2">
-            <a href="${pageContext.request.contextPath}/${slug}/product/add" class="btn btn-success">Ajouter un produit</a>
+            <a href="${pageContext.request.contextPath}/${slug}/product/add" class="btn btn-secondary px-5 py-2 rounded-pill shadow" style=" color: black; background-color: var(--secondary-color)" >Ajouter un produit</a>
         </div>
         <table class="table table-bordered table-striped table-hover mb-5">
             <thead>
@@ -35,7 +35,7 @@
                         <td>${product.formattedLastModifiedDate}</td>
                         <td>
                             <div class="btn-container">
-                                <a href="${pageContext.request.contextPath}/${slug}/product/${product.id}" class="btn btn-info btn-sm btn-link">Détails</a>
+                                <a href="${pageContext.request.contextPath}/${slug}/product/${product.id}" class="btn btn btn-secondary" style=" color: black; background-color: var(--primary-color)">Détails</a>
                                 <a href="${pageContext.request.contextPath}/${slug}/product/edit/${product.id}" class="btn btn-warning btn-sm btn-link">Modifier</a>
                                 <a href="${pageContext.request.contextPath}/${slug}/product/delete/${product.id}" class="btn btn-danger btn-sm btn-link" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')">Supprimer</a>
                             </div>
@@ -44,9 +44,9 @@
                 </c:forEach>
             </tbody>
         </table>
-        <h1 class="text-center">Gestion des paniers</h1>
+        <h3 class="text-center">Mes paniers</h3>
         <div class="text-end mb-2">
-            <a href="${pageContext.request.contextPath}/${slug}/box/add" class="btn btn-success">Ajouter un panier</a>
+            <a href="${pageContext.request.contextPath}/${slug}/box/add" class="btn btn-secondary px-5 py-2 rounded-pill shadow" style=" color: black; background-color: var(--secondary-color)">Ajouter un panier</a>
         </div>
         <table class="table table-bordered table-striped table-hover mb-5">
             <thead>
@@ -88,9 +88,9 @@
                 </c:forEach>
             </tbody>
         </table>
-        <h1 class="text-center">Gestion des ateliers</h1>
+        <h3 class="text-center">Mes ateliers</h3>
         <div class="text-end mb-2">
-            <a href="${pageContext.request.contextPath}/${slug}/activity/add" class="btn btn-success">Ajouter un atelier</a>
+            <a href="${pageContext.request.contextPath}/${slug}/activity/add" class="btn btn-secondary px-5 py-2 rounded-pill shadow" style=" color: black; background-color: var(--secondary-color)">Ajouter un atelier</a>
         </div>
         <table class="table table-bordered table-striped table-hover mb-5">
             <thead>
