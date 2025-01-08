@@ -5,7 +5,6 @@
 <div class="design-theme mb-5">
 	<p>Thèmes prédéfinis</p>
 	<div class="themes-container">
-		<!-- Thème 1 -->
 		<div class="theme-card" id="theme1">
 			<div class="theme-preview">
 				<div class="triangle"
@@ -17,7 +16,6 @@
 			</div>
 			<p>Dynamique</p>
 		</div>
-		<!-- Thème 2 -->
 		<div class="theme-card" id="theme2">
 			<div class="theme-preview">
 				<div class="triangle"
@@ -29,7 +27,6 @@
 			</div>
 			<p>Élégant</p>
 		</div>
-		<!-- Thème 3 -->
 		<div class="theme-card" id="theme3">
 			<div class="theme-preview">
 				<div class="triangle"
@@ -64,7 +61,7 @@
 						value="${empty configuration.tertiaryColor ? '#ffffff' : configuration.tertiaryColor}">
 				</div>
 			</div>
-			<div class="designForm-side">
+			<div class="designForm-side side2">
 				<div class="designForm-labels">
 					<label for="police" class="formItem">Police</label> <label
 						class="formItem">Style des bordures</label>

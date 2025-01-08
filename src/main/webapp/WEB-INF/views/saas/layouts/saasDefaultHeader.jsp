@@ -1,5 +1,6 @@
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 
-<nav id="navbar" class="navbar navbar-expand-sm bg-light navbar-light">
+<nav id="navbar" class="navbar navbar-expand-lg bg-light navbar-light">
 	<div>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#nav-content" aria-controls="nav-content"
@@ -36,13 +37,37 @@
 						class="dropdown-item" href="#" data-bs-toggle="collapse"
 						data-bs-target=".navbar-collapse.show" onclick="window.location.href='${pageContext.request.contextPath}/saasuser/subscription-premium'">Forfait
 						Premium</a>
-					<!-- <li role="separator" class="divider"></li> -->
 				</div></li>
 			<li class="nav-item"><a class="nav-link"
 				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-				onclick="window.location.href='${pageContext.request.contextPath}/saas/contact'">Contactez nous</a></li>
-			<li class="nav-item"><a  class="nav-link" href="index.html"
-				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" onclick="window.location.href='${pageContext.request.contextPath}/profile'">Mon espace</a></li>
+				onclick="window.location.href='${pageContext.request.contextPath}/saas/contact'">Contactez-nous</a></li>
+				
+								<li class="nav-item"><a class="nav-link" href="index.html"
+					data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
+					onclick="window.location.href='${pageContext.request.contextPath}/profile'">Mon
+						espace</a></li>
+
+			<sec:authorize access="hasRole('SAAS_CUSTOM')">
+
+
+				<li class="nav-item d-lg-none">
+					<hr class="dropdown-divider">
+				</li>
+
+				<li class="nav-item d-lg-none"><a class="nav-link"
+					data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
+					onclick="window.location.href='${pageContext.request.contextPath}/amap/info'">Mon
+						AMAP</a></li>
+				<li class="nav-item d-lg-none"><a class="nav-link"
+					data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
+					onclick="window.location.href='${pageContext.request.contextPath}/configuration/design'">Configuration
+						design</a></li>
+				<li class="nav-item d-lg-none"><a class="nav-link"
+					data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
+					onclick="window.location.href='${pageContext.request.contextPath}/configuration/content'">Configuration
+						contenu</a></li>
+			</sec:authorize>
+			
 		</ul>
 	</div>
 </nav>

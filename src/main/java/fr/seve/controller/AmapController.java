@@ -122,6 +122,7 @@ public class AmapController {
 		newAmap.setName(amap.getName());
 		newAmap.setAddress(amap.getAddress());
 		newAmap.setSiret(amap.getSiret());
+		newAmap.setMembershipFee(amap.getMembershipFee());
 		amapService.save(newAmap);
 
 		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées.");

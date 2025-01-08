@@ -2,6 +2,7 @@
 .container {
 	padding: 0;
 }
+
 .presentation-container {
 	display: flex;
 	align-items: center;
@@ -81,6 +82,19 @@
 		width: 100%;
 	}
 	.package-name {
-	font-size: 16px;
+		font-size: 16px;
+	}
 }
+
+/* ------------------------ Format mobile ---------------------------*/
+@media screen and (max-width: 992px) {
+	.btn-package-card {
+		width: 100%;
+	}
+	.package-card-content {
+		padding: 10px 30px;
+	}
+	#features-table-section {
+		display: none;
+	}
 }

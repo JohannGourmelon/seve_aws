@@ -25,12 +25,7 @@
 				<a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
 					onclick="window.location.href='${pageContext.request.contextPath}/${slug}/box'">Nos paniers maraîchers</a>
 			</li>		
-				 <c:if test="${amapUser.type == 'PRODUCER'}">
-			<li class="nav-item">
-				<a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-					onclick="window.location.href='${pageContext.request.contextPath}/${slug}/myproducts'">Mes Produits</a>
-			</li>
-               </c:if>
+				 
 			<c:if test="${showProducts}">
             	<li class="nav-item">
                 	<a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
@@ -48,9 +43,11 @@
 			<li class="nav-item"><a class="nav-link" href="index.html"
 				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Contactez-nous</a>
 			</li>
-			          		
 			
-			<sec:authorize access="hasRole('AMAP_ADMIN') or hasRole('AMAP_USER') or hasRole('AMAP_MEMBER') or hasRole('AMAP_SUPERVISOR')">
+		</ul>
+		
+		<ul class="navbar-nav ml-auto">
+		<sec:authorize access="hasRole('AMAP_ADMIN') or hasRole('AMAP_USER') or hasRole('AMAP_MEMBER') or hasRole('AMAP_SUPERVISOR')">
 			<li class="nav-item">
 				<a class="nav-link" href="index.html" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
 					onclick="window.location.href='${pageContext.request.contextPath}/${slug}/cart'">
@@ -58,30 +55,7 @@
 				</a>
 			</li>
 			</sec:authorize>
-			<sec:authorize access="hasRole('AMAP_ADMIN') or hasRole('AMAP_SUPERVISOR')">
-        
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" id="Preview" href="#" role="button" aria-haspopup="true"
-					aria-expanded="false"> BO </a>
-					<div class="dropdown-menu mt-0" aria-labelledby="Preview">
-						<a class="dropdown-item" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-							onclick="window.location.href='${pageContext.request.contextPath}/${slug}/box/admin'">Gestion paniers</a> 
-							
-						<c:if test="${showProducts}">	
-							<a class="dropdown-item" href="#" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
-								onclick="window.location.href='${pageContext.request.contextPath}/${slug}/product/admin'">Gestion produits</a>
-						</c:if>
-        				
-        				<c:if test="${showActivities}">
-							<a class="dropdown-item" href="#" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" 
-								onclick="window.location.href='${pageContext.request.contextPath}/${slug}/activity/admin'">Gestion ateliers</a>
-						</c:if>
-					</div>
-			</li>
-        	</sec:authorize>
-		</ul>
-		
-		<ul class="navbar-nav ml-auto">
+			
 		        <sec:authorize access="isAnonymous() or hasRole('SAAS_CUSTOM')">
 					<li class="nav-item">
 						<a class="nav-link" href="${pageContext.request.contextPath}/${slug}/login" data-bs-toggle="" data-bs-target=".navbar-collapse.show">Se connecter</a>
@@ -91,6 +65,9 @@
 					</li>		
         		</sec:authorize>
           		<sec:authorize access="hasRole('AMAP_ADMIN') or hasRole('AMAP_USER') or hasRole('AMAP_MEMBER') or hasRole('AMAP_SUPERVISOR')">
+          		<li>
+            		<a class="nav-link" href="${pageContext.request.contextPath}/${slug}/dashboard" data-bs-toggle="" data-bs-target=".navbar-collapse.show">Mon Compte</a>
+            		</li>
             		<li>
             		<a class="nav-link" href="${pageContext.request.contextPath}/${slug}/logout" data-bs-toggle="" data-bs-target=".navbar-collapse.show">Se deconnecter</a>
             		</li>

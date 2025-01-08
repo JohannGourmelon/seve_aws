@@ -1,88 +1,83 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 
-<div class="body-container">
-	<h1>Bienvenue chez ${amap.name}</h1>
+<div class="container mt-5 d-flex justify-content-right">
+    <div class="card shadow p-3 mb-8 bg-body rounded-3" style="min-width: 200%; background-color: var(--tertiary-color); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);">
+        <h2 class="text-center fw-bold mb-4">Vos informations personnelles</h2>
 
-   <form>
-            <div class="mb-3">
-			<label for="name" class="form-label">Nom :</label> 
-			<input type="text" id="name" name="amapUser.name" class="form-control"value="${amapUser.name}"/>
-				</div>
-			 <div class="mb-3">
-			<label for="firstname" class="form-label">Prénom :</label> 
-			<input type="text" id="firstname" name="amapUser.firstname" class="form-control"value="${amapUser.firstname}"/>
-			</div>
-			
-			 <div class="mb-3">
-			<label for="email" class="form-label">Email :</label> 
-			<input type="text" id="email" name="amapUser.email" class="form-control"value="${amapUser.email}"/>
-			</div>
-			
-			<div class="mb-3">
-			<label for="phone" class="form-label">Téléphone :</label> 
-			<input type="text" id="phone" name="amapUser.phone" class="form-control"value="${amapUser.phone}"/>
-			</div>
+        <div class="mb-4 d-flex ">
+            <label class="fw-800"><strong>Nom :&nbsp;</strong></label>
+            <span> ${amapUser.name}</span>
+        </div>
 
-    <c:choose>
-        <c:when test="${amapUser.type == 'INDIVIDUAL'}">
-         
-			
-			<div class="mb-3">
-				<label for="volunteer" class="form-label">Vous êtes bénévole :</label>
-				<select id="volunteer" name="amapIndividualUser.volunteer" class="form-select">
-					<option value="true" <c:if test="${amapIndividualUser.volunteer == true}">selected</c:if>>Oui</option>
-					<option value="false" <c:if test="${amapIndividualUser.volunteer == false}">selected</c:if>>Non</option>
-				</select>
-			</div>
-			
+        <div class="mb-4 d-flex ">
+            <label class="fw-bold"><strong>Prénom :&nbsp;</strong></label>
+            <span> ${amapUser.firstname}</span>
+        </div>
 
-        </c:when>
+        <div class="mb-4 d-flex ">
+            <label class="fw-bold"><strong>Email :&nbsp;</strong></label>
+            <span> ${amapUser.email}</span>
+        </div>
 
-        <c:when test="${amapUser.type == 'PRODUCER'}">
-           <div class="mb-3">
-			<label for="rib" class="form-label">RIB :</label> 
-			<input type="text" id="rib" name="amapProducerUser.rib" class="form-control"value="${amapProducerUser.rib}"/>
-			</div>
-            
-             <div class="mb-3">
-			<label for="address" class="form-label">Adresse :</label> 
-			<input type="text" id="rib" name="amapProducerUser.address" class="form-control"value="${amapProducerUser.address}"/>
-			</div>
-            
-        </c:when>
+        <div class="mb-4 d-flex ">
+            <label class="fw-bold"><strong>Téléphone :&nbsp;</strong></label>
+            <span> ${amapUser.phone}</span>
+        </div>
+
+<sec:authorize access="hasRole('AMAP_USER')">
+        <c:choose>
         
-           <c:when test="${amapUser.type == 'WORKS_COMITTEE'}">
+            <c:when test="${amapUser.type == 'INDIVIDUAL'}">
+                
+                    
+                    <p class="text-center fw-bold mb-4">
+                        <c:choose>
+                            <c:when test="${amapUser.individualUser.volunteer == true}"><strong>Vous êtes bénévole.</strong></c:when>
+                            <c:otherwise><strong>Vous n'êtes pas bénévole.</strong></c:otherwise>
+                        </c:choose>
+                    </p>
+             
+            </c:when>
+          </c:choose> 
+          </sec:authorize>
             
-               <div class="mb-3">
-			<label for="companyName" class="form-label">Nom de l'entreprise :</label> 
-			<input type="text" id="companyName" name="amaporksComitteeUser.companyName" class="form-control"value="${amapWorksComitteeUser.companyName}"/>
-			</div>
-			
-			  <div class="mb-3">
-			<label for="siret" class="form-label"> Numéro SIRET :</label> 
-			<input type="text" id="siret" name="amapWorksComitteeUser.siret" class="form-control"value="${amapWorksComitteeUser.siret}"/>
-			</div>
-            
-        </c:when>
-        <c:when test="${amapUser.type == 'WORKS_COMITTEE'}">
-            <p>Vous êtes un ${amapUser.type} </p>
-            <ul>
-                <li>${amapUser.name}</li>
-                <li>${amapUser.firstname}</li>
-            </ul>
-        </c:when>
+		<c:choose>
+            <c:when test="${amapUser.type == 'PRODUCER'}">
+                <div class="mb-4 d-flex ">
+                    <label class="fw-bold"><strong>RIB :&nbsp;</strong></label>
+                    <span>${amapUser.producerUser.rib}</span>
+                </div>
+                <div class="mb-4 d-flex ">
+                    <label class="fw-bold"><strong>Adresse :&nbsp;</strong></label>
+                    <span>${amapUser.producerUser.address}</span>
+                </div>
+                 <p class="text-center fw-bold mb-4"><strong>Vous êtes Producteur chez ${slug}.</strong>
+            </c:when>
 
-        <c:otherwise>
-            <p>Erreur : rôle inconnu. Veuillez contacter l'administrateur.</p>
-        </c:otherwise>
-    </c:choose>
+            <c:when test="${amapUser.type == 'WORKS_COMITTEE'}">
+                <div class="mb-4 d-flex ">
+                    <label class="fw-bold"><strong>Nom de l'entreprise :&nbsp;</strong></label>
+                    <span>${amapUser.worksComitteeUser.companyName}</span>
+                </div>
+                <div class="mb-4 d-flex ">
+                    <label class="fw-bold"><strong>Numéro SIRET :&nbsp;</strong></label>
+                    <span>${amapUser.worksComitteeUser.siret}</span>
+                </div>
+            </c:when>
+            </c:choose>
+        <sec:authorize access="hasRole('AMAP_ADMIN')">
+            <p class="text-center fw-bold mb-4"><strong>Vous êtes Administrateur chez ${slug}.</strong></p>
+            </sec:authorize>
+<div class="mt-5 text-center">
+            <a href="modifier-url" class="btn btn-secondary px-5 py-2 rounded-pill shadow" style="background-color: var(--secondary-color)" >Modifier</a>
+        </div>
+      
+    </div>
     
-    <div class="mt-4">
-			<button type="submit" class="btn btn-primary">Modifier</button>
-		</div>
-    
-</form>
-
 </div>
+
+
+  
