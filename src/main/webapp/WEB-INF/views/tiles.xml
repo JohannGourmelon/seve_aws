@@ -41,10 +41,8 @@
 			value="/WEB-INF/views/saas/layouts/saasDefaultFooter.jsp" />
 		<put-attribute name="secondaryNav"
 			value="/WEB-INF/views/saas/layouts/saasAccountNav.jsp" />
-		<put-attribute name="css2"
-			value="" />
-		<put-attribute name="js"
-			value="" />
+		<put-attribute name="css2" value="" />
+		<put-attribute name="js" value="" />
 	</definition>
 
 
@@ -329,6 +327,7 @@
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/activity/activityListAdmin.jsp" />
 	</definition>
+
 	<definition name="activity-details" extends="template-amap">
 		<put-attribute name="title" value="Détails de l'atelier" />
 		<put-attribute name="main"
@@ -362,6 +361,21 @@
 		<put-attribute name="title" value="Panier" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/order/payment-success.jsp" />
+	</definition>
+
+	<definition name="amap-order-list" extends="template-amap">
+		<put-attribute name="title"
+			value="Historique de Commandes" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/order/orderList.jsp" />
+	</definition>
+
+	<definition name="amap-order-details"
+		extends="template-amap">
+		<put-attribute name="title"
+			value="Details de la Commande" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/order/orderDetails.jsp" />
 	</definition>
 
 </tiles-definitions>

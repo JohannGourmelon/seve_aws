@@ -5,6 +5,8 @@
 
 
 	<h1>Merci ! Votre commande a bien été validée.</h1>
+	
+	<p> Vous pouvez consulter vos commandes <a  onclick="window.location.href='${pageContext.request.contextPath}/${slug}/order/list'">ici</a>.<p> 
 
 
 
