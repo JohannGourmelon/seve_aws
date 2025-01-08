@@ -31,6 +31,10 @@ public class Order {
 	@ManyToOne
 	@JoinColumn(name = "amapSpace_id")
 	private AmapSpace amapSpace;
+	
+	@ManyToOne
+	@JoinColumn(name = "amapUser_id")
+	private AmapUser amapUser;
 
 	public Long getId() {
 		return id;
@@ -70,6 +74,14 @@ public class Order {
 
 	public void setAmapSpace(AmapSpace amapSpace) {
 		this.amapSpace = amapSpace;
+	}
+
+	public AmapUser getAmapUser() {
+		return amapUser;
+	}
+
+	public void setAmapUser(AmapUser amapUser) {
+		this.amapUser = amapUser;
 	}
 }
 

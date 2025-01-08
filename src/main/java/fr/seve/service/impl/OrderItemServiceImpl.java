@@ -45,4 +45,10 @@ public class OrderItemServiceImpl implements OrderItemService{
 		
 	}
 
+	@Override
+	public List<OrderItem> findByOrderId(Long Id) {
+	
+		return orderItemRepository.findByOrderId(Id);
+	}
+
 }

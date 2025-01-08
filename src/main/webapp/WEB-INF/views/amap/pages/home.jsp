@@ -7,7 +7,7 @@
 	<pre>${amap.amapSpace.configuration.presentationText}</pre>
 	<c:choose>
         <c:when test="${not empty sessionScope['SPRING_SECURITY_CONTEXT'].authentication and sessionScope['SPRING_SECURITY_CONTEXT'].authentication.authenticated}">
-            <p>Vous êtes connecté en tant que : <strong>${amapUser.password}</strong></p>
+            <p>Vous êtes connecté en tant que : <strong>${amapUser.email}</strong></p>
             <p>Votre rôle est ${amapUser.role}: 
                 <strong>
                     <c:forEach var="role" items="${sessionScope['SPRING_SECURITY_CONTEXT'].authentication.authorities}">

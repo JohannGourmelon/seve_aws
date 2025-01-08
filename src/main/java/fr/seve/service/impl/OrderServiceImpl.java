@@ -42,4 +42,9 @@ public class OrderServiceImpl implements OrderService{
 		
 	}
 
+	@Override
+	public List <Order> findByUserId(Long id) {
+		return orderRepository.findByUserId(id);
+	}
+
 }
