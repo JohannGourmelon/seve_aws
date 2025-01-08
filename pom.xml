@@ -153,7 +153,14 @@
 			<version>3.0.0</version>
 		</dependency>
 	</dependencies>
-
+<servlet>
+    <servlet-name>ContactController</servlet-name>
+    <servlet-class>com.example.controller.ContactController</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>ContactController</servlet-name>
+    <url-pattern>/contact</url-pattern>
+</servlet-mapping>
 	<build>
 		<plugins>
 			<!-- Maven Compiler Plugin -->

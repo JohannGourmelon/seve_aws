@@ -10,6 +10,11 @@
 		<label for="logo">Logo de votre AMAP</label> <input
 			type="file" id="logo" name="logo" accept="image/*" />
 	</div>
+	
+	<div class="contentForm-inputs input-img">
+		<label for="presentationImage">Image de présentation de votre AMAP</label> <input
+			type="file" id="presentationImage" name="presentationImage" accept="image/*" />
+	</div>
 
 	<div class="contentForm-inputs mt-4">
 		<label for="presentationText">Texte de présentation</label>
