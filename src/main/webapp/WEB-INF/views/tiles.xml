@@ -308,6 +308,12 @@
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/box/boxForm.jsp" />
 	</definition>
+	<definition name="box-form-prod" extends="template-amap">
+		<put-attribute name="title"
+			value="Formulaire de création de panier" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/box/boxFormProducer.jsp" />
+	</definition>
 
 
 
@@ -335,6 +341,12 @@
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/product/productForm.jsp" />
 	</definition>
+	<definition name="product-form-prod" extends="template-amap">
+		<put-attribute name="title"
+			value="Formulaire de création d'un produit" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/product/productFormProducer.jsp" />
+	</definition>
 
 
 	<!-- Pages /activity -->
@@ -361,6 +373,12 @@
 			value="Formulaire de création d'atelier" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/activity/activityForm.jsp" />
+	</definition>
+	<definition name="activity-form-prod" extends="template-amap">
+		<put-attribute name="title"
+			value="Formulaire de création d'atelier" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/amap/pages/activity/activityFormProducer.jsp" />
 	</definition>
 
 	<!-- Pages /cart -->

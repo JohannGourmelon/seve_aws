@@ -129,6 +129,47 @@ public class ActivityController {
 		activityService.save(activity);
 		return "redirect:/{slug}/activity/admin";
 	}
+	
+	@GetMapping("/addProd")
+	public String showAddFormProducer(@PathVariable String slug, Model model) {
+		AMAP amap = amapService.findBySlug(slug);
+        if (amap == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
+        }
+        
+		model.addAttribute("activity", new Activity());
+		return "activity-form-prod";
+	}
+	
+
+	@PostMapping("addProd")
+	public String saveActivityProducer(@PathVariable String slug, @ModelAttribute Activity activity,
+			@ModelAttribute("amapUser") AmapUser amapUser,
+			@RequestParam("image") MultipartFile image, RedirectAttributes redirectAttributes) {
+		AMAP amap = amapService.findBySlug(slug);		
+        if (amap == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
+        }
+        
+        AmapSpace amapSpace = amapSpaceService.findById(amap.getId());
+        AmapProducerUser aPU = amapUser.getProducerUser();
+        
+        if (image != null && !image.isEmpty()) {
+			try {
+				activity.setImageData(image.getBytes());
+			} catch (IOException e) {
+				redirectAttributes.addFlashAttribute("message", "Erreur lors de l'importation de l'image.");
+				e.printStackTrace();
+				return "redirect:/{slug}/myproducts";
+			}
+		}
+        
+		activity.setCreationDate(LocalDate.now());
+		activity.setAmapSpace(amapSpace);
+		activity.setAmapProducerUser(aPU);
+		activityService.save(activity);
+		return "redirect:/{slug}/myproducts";
+	}
 
 	@GetMapping("/delete/{id}")
 	public String deleteActivity(@PathVariable String slug, @PathVariable Long id, Model model) {
@@ -139,6 +180,17 @@ public class ActivityController {
         
 		activityService.deletebyId(id);
 		return "redirect:/{slug}/activity/admin";
+	}
+	
+	@GetMapping("/deleteProd/{id}")
+	public String deleteActivityProducer(@PathVariable String slug, @PathVariable Long id, Model model) {
+		AMAP amap = amapService.findBySlug(slug);
+        if (amap == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
+        }
+        
+		activityService.deletebyId(id);
+		return "redirect:/{slug}/myproducts";
 	}
 
 	
@@ -186,6 +238,53 @@ public class ActivityController {
 		}
 		activityService.save(activity);
 		return "redirect:/{slug}/activity/admin";
+	}
+	
+	
+	@GetMapping("/editProd/{id}")
+	public String showEditFormProducer(@PathVariable String slug, @PathVariable Long id, Model model) {
+		AMAP amap = amapService.findBySlug(slug);
+        if (amap == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
+        }
+        
+		Activity activity = activityService.findById(id);
+		model.addAttribute("activity", activity);
+		return "activity-form-prod";
+	}
+	
+
+	@PostMapping("/editProd/{id}")
+	public String updateActivityProducer(@PathVariable String slug, @PathVariable Long id, @ModelAttribute Activity activity,
+			@ModelAttribute("amapUser") AmapUser amapUser,
+			@RequestParam("image") MultipartFile image, RedirectAttributes redirectAttributes) {
+		AMAP amap = amapService.findBySlug(slug);
+        if (amap == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
+        }
+        
+		Activity oldActivity = activityService.findById(id);
+		AmapSpace amapSpace = amapSpaceService.findById(amap.getId());
+		AmapProducerUser aPU = amapUser.getProducerUser();
+		
+		activity.setCreationDate(oldActivity.getCreationDate());
+		activity.setLastModifiedDate(LocalDate.now());
+		activity.setAmapSpace(amapSpace);
+		activity.setAmapProducerUser(aPU);
+		if (oldActivity.getImageData() != null) {
+			activity.setImageData(oldActivity.getImageData());
+		}
+		if (image != null && !image.isEmpty()) {
+			try {
+				activity.setImageData(image.getBytes());
+			} catch (IOException e) {
+				redirectAttributes.addFlashAttribute("message", "Erreur lors de l'importation de l'image.");
+				e.printStackTrace();
+				return "redirect:/{slug}/myproducts";
+			}
+		}
+		activityService.save(activity);
+		return "redirect:/{slug}/myproducts";
 	}
 	
 	@GetMapping("/image/{id}")
