@@ -297,9 +297,10 @@ public class CartController {
 
 	    // Si l'article n'existe pas, le créer et l'ajouter au panier
 	    CartItem membershipFeeItem = new CartItem();
-	    membershipFeeItem.setName(membershipFeeName);
+	    membershipFeeItem.setName("Frais d'adhésion à l'AMAP " + amap.getName());
 	    membershipFeeItem.setPrice(amap.getMembershipFee());
 	    membershipFeeItem.setQuantity(1);
+	    membershipFeeItem.setGenre("Cotisation annuelle");
 	    membershipFeeItem.setCart(cart);
 
 	    cart.addItem(membershipFeeItem); // Ajouter au panier

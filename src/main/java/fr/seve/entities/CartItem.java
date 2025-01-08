@@ -124,6 +124,8 @@ public class CartItem {
 			price = product.getPrice();
 		} else if (activity != null) {
 			price = activity.getPrice();
+		} else {
+			price = this.getPrice();
 		}
 		return price * quantity;
 	}

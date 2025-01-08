@@ -45,6 +45,9 @@ public class OrderController {
 	
 	@Autowired
 	private AmapService amapService;
+
+	@Autowired
+	private AmapUserService amapUserService;
 	
 	@Autowired
 	private AmapSpaceService amapSpaceService;
@@ -128,7 +131,9 @@ public class OrderController {
 		orderService.save(order);
 		
 		session.removeAttribute("cart");
-
+		amapUser.setContributionPaid(true);
+		amapUserService.update(amapUser);
+		
 		ModelAndView mv = new ModelAndView("amap-payment");
 		mv.addObject("order", order);
 		mv.addObject("orderItems", order.getOrderItems());

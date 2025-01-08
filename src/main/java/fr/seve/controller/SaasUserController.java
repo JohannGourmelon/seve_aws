@@ -116,7 +116,7 @@ public class SaasUserController {
 			    errors.add("Un utilisateur avec cet email existe déjà.");
 			    mv.addObject("css", "/resources/css/saas/signup-form.css");
 				mv.addObject("saasUser", saasUser); 
-				mv.addObject("errors", errors);
+				mv.addObject("errorMessages", errors);
 				return mv;
 			}
 			saasUser.setSaasUserLevel(SaasUserLevel.SAAS_CUSTOM);
@@ -161,7 +161,7 @@ public class SaasUserController {
 				    List<String> errors = new ArrayList<>();
 				    errors.add("Une erreur s'est produite lors de l'inscription. Veuillez réessayer.");
 				    ModelAndView mv = new ModelAndView("saas-signup-es");
-				    mv.addObject("errors", errors);
+				    mv.addObject("errorMessages", errors);
 				    mv.addObject("css", "/resources/css/saas/signup-form.css");
 					mv.addObject("saasUser", saasUser);
 				    return mv;
@@ -190,7 +190,7 @@ public class SaasUserController {
 			    errors.add("Un utilisateur avec cet email existe déjà.");
 			    mv.addObject("css", "/resources/css/saas/signup-form.css");
 				mv.addObject("saasUser", saasUser); 
-				mv.addObject("errors", errors);
+				mv.addObject("errorMessages", errors);
 				return mv;
 			}
 			saasUser.setSaasUserLevel(SaasUserLevel.SAAS_CUSTOM);
@@ -234,7 +234,7 @@ public class SaasUserController {
 			    List<String> errors = new ArrayList<>();
 			    errors.add("Une erreur s'est produite lors de l'inscription. Veuillez réessayer.");
 			    ModelAndView mv = new ModelAndView("saas-signup-st");
-			    mv.addObject("errors", errors);
+			    mv.addObject("errorMessages", errors);
 			    mv.addObject("css", "/resources/css/saas/signup-form.css");
 				mv.addObject("saasUser", saasUser);
 			    return mv;
@@ -262,7 +262,7 @@ public class SaasUserController {
 			    errors.add("Un utilisateur avec cet email existe déjà.");
 			    mv.addObject("css", "/resources/css/saas/signup-form.css");
 				mv.addObject("saasUser", saasUser); 
-				mv.addObject("errors", errors);
+				mv.addObject("errorMessages", errors);
 				return mv;
 			}
 					
@@ -303,7 +303,7 @@ public class SaasUserController {
 			    List<String> errors = new ArrayList<>();
 			    errors.add("Une erreur s'est produite lors de l'inscription. Veuillez réessayer.");
 			    ModelAndView mv = new ModelAndView("saas-signup-pr");
-			    mv.addObject("errors", errors);
+			    mv.addObject("errorMessages", errors);
 			    mv.addObject("css", "/resources/css/saas/signup-form.css");
 				mv.addObject("saasUser", saasUser);
 			    return mv;

@@ -18,10 +18,17 @@
 				<c:forEach var="item" items="${cart.items}">
 					<tr>
 
-						<td>${item.box.name != null ? item.box.name : (item.product.name != null ? item.product.name : item.activity.name)}</td>
-						<td>${item.box.price != null ? item.box.price : (item.product.price != null ? item.product.price : item.activity.price)}
+						<td>${item.box.name != null ? item.box.name : (item.product.name != null ? item.product.name : (item.activity.name != null ? item.activity.name : item.name))}</td>
+						<td>${item.box.price != null ? item.box.price : (item.product.price != null ? item.product.price : (item.activity.price != null ? item.activity.price : item.price))}
 							€</td>
 						<td><c:choose>
+								<c:when test="${!empty item.genre && item.genre == 'Cotisation annuelle'}">
+									<form
+										action="${pageContext.request.contextPath}/${slug}/cart/update"
+										method="post">
+										<input type="hidden" name="itemId" value="${item.id}" />
+										<input type="hidden" name="genre" value="BOX" />
+								</c:when>
 								<c:when test="${!empty item.genre && item.genre == 'BOX'}">
 									<form
 										action="${pageContext.request.contextPath}/${slug}/cart/update"
