@@ -116,9 +116,11 @@ public class ConfigurationController {
 	@Secured("ROLE_SAAS_CUSTOM")
 	@PostMapping("editContent/{id}")
 	public String editContent(@PathVariable Long id, Configuration configuration,
-			@RequestParam("logo") MultipartFile logo, RedirectAttributes redirectAttributes) {
+			@RequestParam("logo") MultipartFile logo, @RequestParam("presentationImage") MultipartFile presentationImage, RedirectAttributes redirectAttributes) {
+		
 		Configuration newConf = configurationService.findById(id);
 		newConf.setPresentationText(configuration.getPresentationText());
+		
 		if (logo != null && !logo.isEmpty()) {
 			try {
 				newConf.setLogoData(logo.getBytes());
@@ -128,8 +130,18 @@ public class ConfigurationController {
 				return "redirect:/configuration/contenu";
 			}
 		}
+		
+	    if (presentationImage != null && !presentationImage.isEmpty()) {
+	        try {
+	            newConf.setPresentationImageData(presentationImage.getBytes());
+	        } catch (IOException e) {
+	            redirectAttributes.addFlashAttribute("message", "Erreur lors de l'importation de l'image de présentation.");
+	            e.printStackTrace();
+	            return "redirect:/configuration/contenu";
+	        }
+	    }
+	    
 		configurationService.save(newConf);
-		;
 
 		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées.");
 		return "redirect:/configuration/contenu";
@@ -142,6 +154,18 @@ public class ConfigurationController {
 
 		if (logoData != null) {
 			return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(logoData);
+		}
+
+		return ResponseEntity.notFound().build();
+	}
+	
+	@GetMapping("/presentationImage/{id}")
+	public ResponseEntity<byte[]> getPresentationImage(@PathVariable Long id) {
+		Configuration configuration = configurationService.findById(id);
+		byte[] presentationImageData = configuration.getPresentationImageData();
+
+		if (presentationImageData != null) {
+			return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(presentationImageData);
 		}
 
 		return ResponseEntity.notFound().build();

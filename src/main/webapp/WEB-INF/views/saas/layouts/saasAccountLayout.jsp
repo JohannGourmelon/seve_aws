@@ -54,10 +54,7 @@
 		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap.bundle.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/saasAccountNav.js"></script>
-    <c:if test="${not empty js}">
     <script src="${pageContext.request.contextPath}${js}"></script>
-	</c:if>
-<c:out value="${js}" />
 
 </body>
 </html>

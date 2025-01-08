@@ -53,8 +53,15 @@
 		<put-attribute name="title" value="Sève" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/saas/pages/saas/home.jsp" />
+			
 	</definition>
 
+<definition name ="saas-contact" extends="template-saas">
+		<put-attribute name="title" value="Sève" />
+		<put-attribute name="main"
+			value="/WEB-INF/views/saas/pages/saas/contact.jsp" />	
+	</definition>
+	
 	<!-- Pages /souscription -->
 	<definition name="saas-subscription" extends="template-saas">
 		<put-attribute name="title" value="Nos forfaits" />

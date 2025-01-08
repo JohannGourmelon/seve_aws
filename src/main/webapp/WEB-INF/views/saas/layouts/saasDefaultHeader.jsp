@@ -38,10 +38,10 @@
 						Premium</a>
 					<!-- <li role="separator" class="divider"></li> -->
 				</div></li>
-			<li class="nav-item"><a class="nav-link" href="index.html"
-				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Contactez-nous</a>
-			</li>
-			<li class="nav-item"><a class="nav-link" href="index.html"
+			<li class="nav-item"><a class="nav-link"
+				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
+				onclick="window.location.href='${pageContext.request.contextPath}/saas/contact'">Contactez nous</a></li>
+			<li class="nav-item"><a  class="nav-link" href="index.html"
 				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" onclick="window.location.href='${pageContext.request.contextPath}/profile'">Mon espace</a></li>
 		</ul>
 	</div>
