@@ -12,13 +12,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.seve.entities.Activity;
+import fr.seve.entities.AmapProducerUser;
 import fr.seve.entities.AmapUser;
+import fr.seve.entities.AmapWorksComitteeUser;
 import fr.seve.entities.Box;
 import fr.seve.entities.Product;
 import fr.seve.entities.enums.AmapUserType;
 import fr.seve.service.ActivityService;
+import fr.seve.service.AmapProducerUserService;
+import fr.seve.service.AmapUserService;
+import fr.seve.service.AmapWorksComitteeUserService;
 import fr.seve.service.BoxService;
 import fr.seve.service.ProductService;
 import fr.seve.utils.AmapUtils;
@@ -33,7 +39,12 @@ public class AmapHomeController {
     private BoxService boxService;
     @Autowired
     private ActivityService activityService;
-	
+//    @Autowired
+//    private AmapProducerUserService amapProducerUserService; 
+//    @Autowired
+//    private AmapUserService amapUserService; 
+//    @Autowired
+//    private AmapWorksComitteeUserService amapWorksComitteeUserService; 
     
     @GetMapping("/{slug}")
     public String handleAmapSlug(Model model, HttpServletRequest request) {
@@ -47,6 +58,7 @@ public class AmapHomeController {
     	model.addAttribute("amap", AmapUtils.getAmapFromRequest(request));
     	return "amap-account";
     }
+    
     
     /**
      * Afficher le type de compte à créer

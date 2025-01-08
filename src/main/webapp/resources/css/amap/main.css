@@ -154,3 +154,69 @@ footer img {
 		text-align: center;
 	}
 }
+
+/**************************** Vertival Nav ******************************/
+
+.layout-container {
+    display: flex;
+    flex-direction: row; 
+    height: 100%;
+}
+
+.vertical-nav {
+    width: 250px;
+    min-height : 1250px;
+   	margin-bottom : 20px;
+   	margin-top : 20px;
+    padding: 20px;
+    background-color: var(--primary-color);
+	border-radius: var(--border-radius);
+	
+	
+
+    
+}
+
+.vertical-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.vertical-nav li {
+    margin-bottom: 10px;
+}
+
+.vertical-nav a {
+	font-weight : 600;
+	font-size : 16px;
+    text-decoration: none;
+    color: black;
+}
+
+.submenus:hover {
+	cursor: pointer;
+}
+
+.logout-link {
+	font-size: 14px;
+	padding-top: 15px;
+}
+
+.logout-link p {
+	font-size: 14px;
+	padding-top: 15px;
+}
+
+.secondary-nav {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: space-between;
+	background-color: var(--primary-color);
+	border-radius: var(--border-radius);
+}
+
+.vertical-nav a:hover {
+	color: var(--secondary-color);
+}

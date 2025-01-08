@@ -12,8 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 import fr.seve.entities.AMAP;
 import fr.seve.entities.Subscription;
 import fr.seve.service.AmapService;
-import fr.seve.service.FunctionService;
-import fr.seve.service.SaasUserService;
 import fr.seve.service.SubscriptionService;
 
 
@@ -21,9 +19,6 @@ import fr.seve.service.SubscriptionService;
 @RequestMapping("/saas")
 public class SaasController {
 	
-	@Autowired 
-	private FunctionService functionservice;
-
 	@Autowired
 	private SubscriptionService subscriptionService;
 	
@@ -42,7 +37,7 @@ public class SaasController {
         return mv;
 		}
 	
-	@GetMapping("/forfaits")
+	@GetMapping("/packages")
 	public ModelAndView subscriptionSaas() {
 		ModelAndView mv = new ModelAndView("saas-subscription");
         mv.addObject("css", "/resources/css/saas/subscription.css");
@@ -50,7 +45,7 @@ public class SaasController {
 	}
 	
 	
-	@GetMapping("/nos-amaps")
+	@GetMapping("/our-amaps")
 	public ModelAndView listAmaps(Model model) {
 		List<AMAP> amaps = amapService.findAll();
 		model.addAttribute("amaps", amaps);

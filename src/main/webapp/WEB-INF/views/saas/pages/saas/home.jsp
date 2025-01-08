@@ -14,11 +14,11 @@
 			</div>
 			<div class="d-flex justify-content-center package-btn">
 				<button class="btn btn-b btn-home"
-					onclick="window.location.href='${pageContext.request.contextPath}/saas/forfaits'">Voir
+					onclick="window.location.href='${pageContext.request.contextPath}/saas/packages'">Voir
 					les offres</button>
 			</div>
 			<div class="d-flex justify-content-center package-btn">
-				<button class="btn btn-g btn-home" onclick="window.location.href='${pageContext.request.contextPath}/saas/nos-amaps'">Notre réseau</button>
+				<button class="btn btn-g btn-home" onclick="window.location.href='${pageContext.request.contextPath}/saas/our-amaps'">Notre réseau</button>
 			</div>
 		</div>
 	</div>
@@ -95,7 +95,7 @@
 		?</h3>
 	<div class="d-flex justify-content-center package-btn">
 		<button class="btn btn-secondary m-3"
-			onclick="window.location.href='${pageContext.request.contextPath}/saas/forfaits'">Découvrez
+			onclick="window.location.href='${pageContext.request.contextPath}/saas/packages'">Découvrez
 			nos forfaits</button>
 	</div>
 </section>

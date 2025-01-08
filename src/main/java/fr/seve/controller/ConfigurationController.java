@@ -55,7 +55,7 @@ public class ConfigurationController {
 	}
 	
 	@Secured("ROLE_SAAS_CUSTOM")
-	@GetMapping("/contenu")
+	@GetMapping("/content")
 	public ModelAndView configContent(Model model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -127,7 +127,7 @@ public class ConfigurationController {
 			} catch (IOException e) {
 				redirectAttributes.addFlashAttribute("message", "Erreur lors de l'importation du logo.");
 				e.printStackTrace();
-				return "redirect:/configuration/contenu";
+				return "redirect:/configuration/content";
 			}
 		}
 		
@@ -137,14 +137,14 @@ public class ConfigurationController {
 	        } catch (IOException e) {
 	            redirectAttributes.addFlashAttribute("message", "Erreur lors de l'importation de l'image de présentation.");
 	            e.printStackTrace();
-	            return "redirect:/configuration/contenu";
+	            return "redirect:/configuration/content";
 	        }
 	    }
 	    
 		configurationService.save(newConf);
 
 		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées.");
-		return "redirect:/configuration/contenu";
+		return "redirect:/configuration/content";
 	}
 
 	@GetMapping("/logo/{id}")

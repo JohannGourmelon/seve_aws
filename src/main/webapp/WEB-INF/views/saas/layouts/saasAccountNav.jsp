@@ -10,7 +10,7 @@
 					href="${pageContext.request.contextPath}/configuration/design">>
 						design</a></li>
 				<li><a
-					href="${pageContext.request.contextPath}/configuration/contenu">>
+					href="${pageContext.request.contextPath}/configuration/content">>
 						contenu</a></li>
 			</ul></li>
 	</ul>
