@@ -1,6 +1,11 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<head>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/amap/login.css" />
+</head>
+
 <div class="login-main">
 	<div class="login-form-container shadow mb-3">
 		<p class="font-weight-bold pb-4">Connectez-vous pour accéder à
