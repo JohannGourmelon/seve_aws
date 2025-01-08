@@ -6,11 +6,7 @@
 </h1>
 <section>
 	<div class="presentation-container">
-		<div>
-			<img class="shadow"
-				src="${pageContext.request.contextPath}/resources/images/saas/package-pres.png"
-				alt="" />
-		</div>
+
 		<div>
 			<div>
 				<p>Que vous soyez une petite AMAP ou une organisation établie,
@@ -27,6 +23,11 @@
 					tout en facilitant la transparence et la traçabilité des échanges.
 				</p>
 			</div>
+		</div>
+				<div class="pres-img">
+			<img class="shadow text-center"
+				src="${pageContext.request.contextPath}/resources/images/saas/configdesign.png"
+				alt="" />
 		</div>
 	</div>
 </section>
@@ -53,8 +54,9 @@
 						<p class="font-weight-bold">Prix : 9,99 € / mois</p>
 					</div>
 					<div class="d-flex justify-content-center package-btn">
-						<button class="btn btn-o btn-package-card" onclick="window.location.href='${pageContext.request.contextPath}/saasuser/souscription-essentiel'">Commencez avec
-							Essentiel</button>
+						<button class="btn btn-o btn-package-card"
+							onclick="window.location.href='${pageContext.request.contextPath}/saasuser/souscription-essentiel'">Commencez
+							avec Essentiel</button>
 					</div>
 				</div>
 			</div>
@@ -78,8 +80,9 @@
 					</div>
 
 					<div class="d-flex justify-content-center package-btn">
-						<button class="btn btn-b btn-package-card" onclick="window.location.href='${pageContext.request.contextPath}/saasuser/souscription-standard'">Commencez avec
-							Standard</button>
+						<button class="btn btn-b btn-package-card"
+							onclick="window.location.href='${pageContext.request.contextPath}/saasuser/souscription-standard'">Commencez
+							avec Standard</button>
 					</div>
 				</div>
 			</div>
@@ -103,8 +106,9 @@
 						<p class="font-weight-bold">Prix : 29,99 € / mois</p>
 					</div>
 					<div class="d-flex justify-content-center package-btn">
-						<button class="btn btn-g btn-package-card" onclick="window.location.href='${pageContext.request.contextPath}/saasuser/souscription-premium'">Commencez avec
-							Premium</button>
+						<button class="btn btn-g btn-package-card"
+							onclick="window.location.href='${pageContext.request.contextPath}/saasuser/souscription-premium'">Commencez
+							avec Premium</button>
 					</div>
 				</div>
 			</div>

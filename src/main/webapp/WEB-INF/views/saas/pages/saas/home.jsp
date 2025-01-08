@@ -51,7 +51,7 @@
 		</div>
 		<div class="feature-card shadow-g">
 			<img
-				src="${pageContext.request.contextPath}/resources/images/saas/planning.png"
+				src="${pageContext.request.contextPath}/resources/images/saas/configdesign.png"
 				alt="" />
 			<div class="feature-card-content">
 				<p class="text-center feature-name pt-3 pb-2">Personnalisez votre site</p>
