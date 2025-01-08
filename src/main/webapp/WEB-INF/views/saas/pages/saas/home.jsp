@@ -2,23 +2,21 @@
 <h1 class="text-center">La solution numérique pour votre AMAP</h1>
 <section>
 	<div class="presentation-container">
-		<div>
-			<img
-				src="${pageContext.request.contextPath}/resources/images/saas/home-pres.png"
-				alt="" />
+		<div class="presentation-img">
+			<img src="${pageContext.request.contextPath}/resources/images/saas/home-pres.png" alt="" />
+			<span class="text1 btn-secondary-o">Simplifiez vos opérations</span>
+			<span class="text2 btn-secondary-g">Pilotez votre activité</span>
+			<span class="text3 btn-secondary-b">Organisez votre quotidien</span>
 		</div>
 		<div class="ctas-home">
 			<div class="d-flex justify-content-center package-btn">
-				<button class="btn btn-o btn-home"
-					>Voir la démo</button>
+				<button class="btn btn-o btn-home" onclick="window.location.href='${pageContext.request.contextPath}/saas/our-amaps'">Notre réseau</button>
 			</div>
 			<div class="d-flex justify-content-center package-btn">
-				<button class="btn btn-b btn-home"
-					onclick="window.location.href='${pageContext.request.contextPath}/saas/packages'">Voir
-					les offres</button>
+				<button class="btn btn-b btn-home" onclick="window.location.href='${pageContext.request.contextPath}/saas/packages'">Voir les offres</button>
 			</div>
 			<div class="d-flex justify-content-center package-btn">
-				<button class="btn btn-g btn-home" onclick="window.location.href='${pageContext.request.contextPath}/saas/our-amaps'">Notre réseau</button>
+				<button class="btn btn-g btn-home" onclick="window.location.href='${pageContext.request.contextPath}/saas/contact'">Contactez-nous</button>
 			</div>
 		</div>
 	</div>
@@ -34,9 +32,8 @@
 				<p class="text-center feature-name pt-3 pb-2">Gestion des
 					paniers maraîchers</p>
 				<ul>
-					<li>Gestion des commandes et des paniers</li>
-					<li>Plateforme de paiement et suivi</li>
-					<li>Personnalisation et gestion des stocks</li>
+					<li>Organisez la distribution de vos paniers maraîchers</li>
+					<li>Gerez vos commandes, adhésions et cotisations en toute simplicité</li>
 				</ul>
 			</div>
 		</div>
@@ -45,11 +42,10 @@
 				src="${pageContext.request.contextPath}/resources/images/saas/package-pres.png"
 				alt="" />
 			<div class="feature-card-content">
-				<p class="text-center feature-name pt-3 pb-2">Suivi statistique</p>
+				<p class="text-center feature-name pt-3 pb-2">Boutique e-commerce et ateliers</p>
 				<ul>
-					<li>Suivi des adhésions et participations</li>
-					<li>Analyse des distributions</li>
-					<li>Optimisation et bilan d'activité</li>
+					<li>Offrez une large gamme de produits</li>
+					<li>Proposez des ateliers pour renforcer le lien avec votre communauté</li>
 				</ul>
 			</div>
 		</div>
@@ -58,12 +54,10 @@
 				src="${pageContext.request.contextPath}/resources/images/saas/planning.png"
 				alt="" />
 			<div class="feature-card-content">
-				<p class="text-center feature-name pt-3 pb-2">Gestion des
-					plannings</p>
+				<p class="text-center feature-name pt-3 pb-2">Personnalisez votre site</p>
 				<ul>
-					<li>Création et gestion des plannings</li>
-					<li>Coordination et communication</li>
-					<li>Suivi et mise à jour en direct</li>
+					<li>Un site web à votre image</li>
+					<li>Importez vos images et personnalisez votre design</li>
 				</ul>
 			</div>
 		</div>

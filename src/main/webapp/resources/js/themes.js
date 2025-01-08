@@ -34,10 +34,10 @@ document.getElementById("theme1").addEventListener("click", function () {
 	        // Valeurs prédéfinies pour le Thème 2
 	        const themeValues = {
 	            primaryColor: "#D6B4E7",
-	            secondaryColor: "#D1D1D1",
-	            tertiaryColor: "#FAFAFA",
+	            secondaryColor: "#E1E1E1",
+	            tertiaryColor: "#F2F2F2",
 	            police: "CALIBRI",
-	            isRoundedBorders: true
+	            isRoundedBorders: false
 	        };
 
 	        // Applique les valeurs prédéfinies

@@ -38,7 +38,7 @@
 					vous aider !</p>
 				<p class="mb-1">Échangez avec un expert : (+33) 4 48 26 55 32</p>
 				<p>
-					ou contactez-nous via notre <a href="#">formulaire de contact</a>
+					ou contactez-nous via notre <a href="${pageContext.request.contextPath}/saas/contact">formulaire de contact</a>
 				</p>
 			</div>
 		</div>
@@ -149,4 +149,3 @@
 			alt="" />
 	</div>
 </section>
-

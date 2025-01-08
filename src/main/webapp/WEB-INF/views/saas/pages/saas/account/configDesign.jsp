@@ -21,9 +21,9 @@
 				<div class="triangle"
 					style="background-color: #D6B4E7; clip-path: polygon(0 0, 100% 0, 0 100%);"></div>
 				<div class="triangle"
-					style="background-color: #D1D1D1; clip-path: polygon(0 100%, 100% 0, 100% 100%);"></div>
+					style="background-color: #E1E1E1; clip-path: polygon(0 100%, 100% 0, 100% 100%);"></div>
 				<div class="triangle"
-					style="background-color: #FAFAFA; clip-path: polygon(0 0, 100% 100%, 0 100%);"></div>
+					style="background-color: #F2F2F2; clip-path: polygon(0 0, 100% 100%, 0 100%);"></div>
 			</div>
 			<p>Élégant</p>
 		</div>

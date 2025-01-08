@@ -1,11 +1,5 @@
 @charset "UTF-8";
 
-.presentation-container img {
-	display: block;
-	margin: 0 auto;
-	height: 30vw;
-}
-
 .ctas-home {
 	display: flex;
 	align-items: center;
@@ -16,6 +10,68 @@
 
 .btn-home {
 	width: 250px;
+}
+
+.btn-secondary-g {
+	border-radius: 30px;
+	padding: 15px 50px;
+	background-color: #a8b5a2;
+	color: black;
+	font-weight: 600;
+	border: none;
+}
+
+.presentation-img {
+     position: relative;
+}
+
+.presentation-img img {
+     display: block;
+     margin: 0 auto;
+     height: 30vw;
+}
+
+.text1 {
+     position: absolute;
+     top: 43%;
+     left: 25%;
+     transform: translate(-50%, -50%);
+}
+
+.text2 {
+     position: absolute;
+     top: 13%;
+     left: 75%;
+     transform: translate(-50%, -50%);
+}
+
+.text3 {
+     position: absolute;
+     top: 62%;
+     left: 55%;
+     transform: translate(-50%, -50%);
+}
+
+.btn-secondary-g:hover {
+	cursor: default;
+}
+
+.btn-secondary-o {
+	border-radius: 30px;
+	padding: 15px 50px;
+	background-color: #d9a89c;
+	color: black;
+	font-weight: 600;
+	border: none;
+}
+
+.btn-secondary-b {
+	border-radius: 30px;
+	padding: 15px 50px;
+	background-color: #b3d9e2;
+	color: black;
+	font-weight: 600;
+	border: none;
 }
 
 .features {
@@ -131,6 +187,13 @@
 	.amap {
 		width: 30%;
 	}
+	.presentation-img {
+	font-size: 14px;
+}
+	.text2 {
+     left: 55%;
+}
+	
 }
 
 /* ------------------------ Format mobile ---------------------------*/
@@ -148,4 +211,29 @@
 	h3 {
 		margin-top: 20px;
 	}
+		.presentation-img {
+	font-size: 12px;
+}
+
+.btn-secondary-o {
+	padding: 15px 20px;
+}
+
+.btn-secondary-g {
+	padding: 15px 20px;
+}
+
+.btn-secondary-b {
+	padding: 15px 20px;
+}
+	.text2 {
+     top: 10%;
+     left: 50%;
+}
+
+.text3 {
+     top: 80%;
+     left: 40%;
+}
+	
 }
