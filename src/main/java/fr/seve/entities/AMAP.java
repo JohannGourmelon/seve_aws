@@ -33,7 +33,9 @@ public class AMAP {
 
 	 @Column(unique = true)
 	 private String slug;
-	 
+
+	 @Column(nullable= true)
+	 private double membershipFee;
 
 	// Relation avec SaasUser
 	@OneToOne(mappedBy = "amap", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -108,5 +110,13 @@ public class AMAP {
             this.slug = SlugUtils.toSlug(this.name);
         }
     }
+
+	public double getMembershipFee() {
+		return membershipFee;
+	}
+
+	public void setMembershipFee(double membershipFee) {
+		this.membershipFee = membershipFee;
+	}
 
 }

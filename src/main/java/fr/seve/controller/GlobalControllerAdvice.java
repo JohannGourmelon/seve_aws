@@ -29,9 +29,6 @@ public class GlobalControllerAdvice {
                 && !authentication.getPrincipal().equals("anonymousUser")) {
         	boolean isAmapUser = authentication.getAuthorities().stream()
                     .anyMatch(authority -> authority.getAuthority().startsWith("ROLE_AMAP"));
-            
-            boolean isSaasUser = authentication.getAuthorities().stream()
-                    .anyMatch(authority -> authority.getAuthority().startsWith("ROLE_SAAS"));
             if (isAmapUser) {
 	            AmapUser amapUser = amapUserRepository.findByEmail(authentication.getName())
 	                    .orElseThrow(() -> new UsernameNotFoundException("Utilisateur AMAP non trouvé"));

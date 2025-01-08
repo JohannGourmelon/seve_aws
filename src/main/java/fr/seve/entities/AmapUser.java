@@ -47,6 +47,9 @@ public class AmapUser {
     private String phone;
     
     @Column(nullable = false)
+    private boolean contributionPaid = false;
+    
+    @Column(nullable = false)
     private String createDate;
 
     @Column(nullable = false)
@@ -206,4 +209,12 @@ public class AmapUser {
     			+ ", role=" + role + ", type=" + type + ", amapSpace=" + amapSpace + ", individualUser="
     			+ individualUser + ", worksComitteeUser=" + worksComitteeUser + ", producerUser=" + producerUser + "]";
     }
+
+	public boolean isContributionPaid() {
+		return contributionPaid;
+	}
+
+	public void setContributionPaid(boolean contributionPaid) {
+		this.contributionPaid = contributionPaid;
+	}
 }

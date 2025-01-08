@@ -1,5 +1,7 @@
 package fr.seve.controller;
 
+import java.util.Optional;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import fr.seve.entities.AMAP;
 import fr.seve.entities.Activity;
+import fr.seve.entities.AmapUser;
 import fr.seve.entities.Box;
 import fr.seve.entities.Cart;
 import fr.seve.entities.CartItem;
@@ -45,21 +49,27 @@ public class CartController {
     private CartRepository cartRepository; 
 
 	@GetMapping
-	public String viewCart(@PathVariable String slug, HttpSession session, Model model) {
-		AMAP amap = amapService.findBySlug(slug);
-        if (amap == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
-        }
-        
-		Cart cart = (Cart) session.getAttribute("cart");
-		if (cart == null) {
-			cart = new Cart();
-			session.setAttribute("cart", cart);
-		}
+	public String viewCart(@PathVariable String slug, HttpSession session, Model model, @ModelAttribute("amapUser") AmapUser amapUser) {
+	    AMAP amap = amapService.findBySlug(slug);
+	    if (amap == null) {
+	        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
+	    }
 
-		model.addAttribute("cart", cart);
-		return "cart";
+	    Cart cart = (Cart) session.getAttribute("cart");
+	    if (cart == null) {
+	        cart = new Cart();
+	        session.setAttribute("cart", cart);
+	    }
+
+	    // Vérifier et ajouter les frais d'adhésion si nécessaire
+	    if (addContributionToCart(cart, amap, amapUser)) {
+	        model.addAttribute("error", "Les frais d'adhésion à l'AMAP ont été ajoutés au panier.");
+	    }
+
+	    model.addAttribute("cart", cart);
+	    return "cart";
 	}
+
 
 	@PostMapping("add")
 	public String addToCart(@PathVariable String slug, 
@@ -254,6 +264,48 @@ public class CartController {
 	    cartRepository.save(cart);
 	    session.setAttribute("cart", cart);
 	    return "redirect:/{slug}/cart";
+	}
+
+	private boolean addContributionToCart(Cart cart, AMAP amap, AmapUser amapUser) {
+	    // Si l'utilisateur a déjà payé sa contribution, ne rien faire
+	    if (amapUser.isContributionPaid()) {
+	        return false;
+	    }
+
+	    // Vérifier que le panier n'est pas null ou vide
+	    if (cart == null || cart.getItems().isEmpty()) {
+	        return false;
+	    }
+
+	    // Nom de l'article pour les frais d'adhésion
+	    String membershipFeeName = "Frais d'adhésion à l'AMAP " + amap.getName();
+
+	    // Rechercher l'article existant
+	    Optional<CartItem> optionalMembershipFeeItem = cart.getItems().stream()
+	            .filter(item -> membershipFeeName.equals(item.getName()))
+	            .findFirst();
+
+	    if (optionalMembershipFeeItem.isPresent()) {
+	        // L'article existe, vérifier et ajuster la quantité si nécessaire
+	        CartItem membershipFeeItem = optionalMembershipFeeItem.get();
+	        if (membershipFeeItem.getQuantity() != 1) {
+	            membershipFeeItem.setQuantity(1); // Réinitialiser la quantité
+	            cartRepository.save(cart);       // Sauvegarder uniquement si modifié
+	        }
+	        return false; // Aucun nouvel article ajouté
+	    }
+
+	    // Si l'article n'existe pas, le créer et l'ajouter au panier
+	    CartItem membershipFeeItem = new CartItem();
+	    membershipFeeItem.setName(membershipFeeName);
+	    membershipFeeItem.setPrice(amap.getMembershipFee());
+	    membershipFeeItem.setQuantity(1);
+	    membershipFeeItem.setCart(cart);
+
+	    cart.addItem(membershipFeeItem); // Ajouter au panier
+	    cartRepository.save(cart);       // Sauvegarder le panier
+
+	    return true; // Nouvel article ajouté
 	}
 
 }
