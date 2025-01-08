@@ -8,20 +8,20 @@
 	margin-top: 30px;
 }
 
-.contentForm-content {
-	display: flex;
-	margin-top: 30px;
-	gap: 5%;	
-}
-
 .designForm-side {
 	display: flex;
 }
 
 .contentForm-side {
-	display: flex;
-	flex-direction: column;
-	gap: 30px;
+	width: 100%;
+}
+
+.input-group {
+	margin-bottom: 25px;
+}
+
+.input-group-label {
+	width: 15vw;
 }
 
 .designForm-labels {
@@ -221,7 +221,7 @@ input[type="color"]:focus {
 		margin-bottom: 50px;
 	}
 	#presentationText {
-	width: 62vw;
+		width: 70vw;
 	}
 }
 
@@ -248,5 +248,24 @@ input[type="color"]:focus {
 	}
 	.side2 {
 		margin-bottom: 30px;
+	}
+	.contentForm-content {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.contentForm-side {
+		width: 100%;
+	}
+	.input-group {
+		width: 100%;
+	}
+	.input-group label, .input-group input, .input-group textarea {
+		width: 100%;
+	}
+	#presentationText {
+		width: 100%;
+	}
+	#amapForm input {
+	width: 100%;
 	}
 }
