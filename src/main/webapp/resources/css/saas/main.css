@@ -208,6 +208,11 @@ header {
 	margin: 0 20px;
 }
 
+.dropdown-divider {
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+}
+
 /* ------------------------ Format tablette ---------------------------*/
 @media screen and (max-width: 992px) {
 	main {
