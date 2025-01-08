@@ -18,7 +18,7 @@
 					les offres</button>
 			</div>
 			<div class="d-flex justify-content-center package-btn">
-				<button class="btn btn-g btn-home">En savoir plus</button>
+				<button class="btn btn-g btn-home" onclick="window.location.href='${pageContext.request.contextPath}/saas/nos-amaps'">Notre réseau</button>
 			</div>
 		</div>
 	</div>

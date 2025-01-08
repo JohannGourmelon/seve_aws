@@ -1,6 +1,8 @@
 package fr.seve.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -16,8 +18,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.seve.entities.AMAP;
+import fr.seve.entities.Configuration;
 import fr.seve.entities.SaasUser;
 import fr.seve.service.AmapService;
+import fr.seve.service.ConfigurationService;
 import fr.seve.service.SaasUserService;
 
 @Controller
@@ -29,14 +33,15 @@ public class AmapController {
 	
 	@Autowired
 	private SaasUserService saasUserService;
-    
 	
 	@GetMapping
 	public ModelAndView listAmaps(Model model) {
 		List<AMAP> amaps = amapService.findAll();
+
 		model.addAttribute("amaps", amaps);
+
 		ModelAndView mv = new ModelAndView("amap-list");
-        mv.addObject("css", "/resources/css/saas/config.css");
+        mv.addObject("css", "/resources/css/saas/home.css");
         return mv;
 	}
 	
@@ -120,7 +125,7 @@ public class AmapController {
 		newAmap.setSiret(amap.getSiret());
 		amapService.save(newAmap);
 
-		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées");
+		redirectAttributes.addFlashAttribute("message", "Les informations ont bien été enregistrées.");
 		return  "redirect:/amap/info/{id}";
 	}
 

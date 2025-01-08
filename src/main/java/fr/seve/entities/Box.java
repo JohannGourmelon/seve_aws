@@ -17,6 +17,7 @@ public class Box {
 	@Column
 	private String name;
 
+	@Lob
 	@Column
 	private String description;
 
@@ -50,18 +51,28 @@ public class Box {
 	@Column
 	private Frequency frequency;
 
-//    @Column(nullable = true)
-//    private String imageUrl;
+	@Lob
+	@Column(name = "image")
+	private byte[] imageData;
+	
+	@ManyToOne
+	@JoinColumn(name = "amapSpace_id")
+	private AmapSpace amapSpace;
 
-	// Relation avec Producteur
-//    @ManyToOne
-//    @JoinColumn(name = "producer_id", nullable = true)
-//    private Producer producer;
+	
+   @ManyToOne
+   @JoinColumn(name = "producer_id", nullable = true)
+   private AmapProducerUser amapProducerUser;
 
+	
+	public Box() {
+	}
+	
 	public Long getId() {
 		return id;
 	}
 
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -146,6 +157,13 @@ public class Box {
 		this.category = category;
 	}
 
+	public byte[] getImageData() {
+		return imageData;
+	}
+
+	public void setImageData(byte[] imageData) {
+		this.imageData = imageData;
+	}
 //    public String getImageUrl() {
 //        return imageUrl;
 //    }
@@ -166,6 +184,14 @@ public class Box {
 	
 	// Formattage des dates
 	
+	public AmapProducerUser getAmapProducerUser() {
+		return amapProducerUser;
+	}
+
+	public void setAmapProducerUser(AmapProducerUser amapProducerUser) {
+		this.amapProducerUser = amapProducerUser;
+	}
+
 	private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 	public String getFormattedAvailableDate() {
@@ -185,6 +211,16 @@ public class Box {
 	}
 	
 	
+
+	public AmapSpace getAmapSpace() {
+		return amapSpace;
+	}
+
+	public void setAmapSpace(AmapSpace amapSpace) {
+		this.amapSpace = amapSpace;
+	}
+
+
 
 	// Enum pour la fréquence
 	public enum Frequency {

@@ -1,10 +1,13 @@
 package fr.seve.controller;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,12 +15,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fr.seve.entities.AMAP;
+import fr.seve.entities.AmapProducerUser;
+import fr.seve.entities.AmapSpace;
+import fr.seve.entities.AmapUser;
 import fr.seve.entities.Box;
+import fr.seve.entities.Configuration;
+import fr.seve.service.AmapProducerUserService;
 import fr.seve.service.AmapService;
+import fr.seve.service.AmapSpaceService;
 import fr.seve.service.BoxService;
 
 @Controller
@@ -30,14 +42,22 @@ public class BoxController {
 	@Autowired
 	private AmapService amapService;
 	
+	@Autowired
+	private AmapSpaceService amapSpaceService;
+	
+	@Autowired
+	private AmapProducerUserService amapProducerUserService;
+	
     @GetMapping
     public ModelAndView listBoxes(@PathVariable String slug, Model model) {
         AMAP amap = amapService.findBySlug(slug);
         if (amap == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
         }
+        
+        Long amapSpaceId = amap.getId();
 
-        List<Box> boxes = boxService.findAll();
+        List<Box> boxes = boxService.findByAmapSpaceId(amapSpaceId);
         model.addAttribute("boxes", boxes);
         model.addAttribute("amap", amap);
         model.addAttribute("slug", slug);
@@ -53,7 +73,9 @@ public class BoxController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
         }
 
-		List<Box> boxes = boxService.findAll();
+        Long amapSpaceId = amap.getId();
+        
+		List<Box> boxes = boxService.findByAmapSpaceId(amapSpaceId);
 		model.addAttribute("boxes", boxes);
 		model.addAttribute("slug", slug);
 		ModelAndView mv = new ModelAndView("admin-box-list");
@@ -87,13 +109,31 @@ public class BoxController {
 	}
 
 	@PostMapping("add")
-	public String saveBox(@PathVariable String slug, @ModelAttribute Box box) {
+	public String saveBox(@PathVariable String slug, @ModelAttribute Box box,
+			@ModelAttribute("amapUser") AmapUser amapUser,
+			@RequestParam("image") MultipartFile image, RedirectAttributes redirectAttributes) {
+		
 		AMAP amap = amapService.findBySlug(slug);
         if (amap == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
         }
         
+        AmapProducerUser aPU = amapUser.getProducerUser();
+        
+        
+        if (image != null && !image.isEmpty()) {
+			try {
+				box.setImageData(image.getBytes());
+			} catch (IOException e) {
+				redirectAttributes.addFlashAttribute("message", "Erreur lors de l'importation de l'image.");
+				e.printStackTrace();
+				return "redirect:/{slug}/box/admin";
+			}
+		}
+        
 		box.setCreationDate(LocalDate.now());
+		box.setAmapSpace(amap.getAmapSpace());
+		box.setAmapProducerUser(aPU);
 		boxService.save(box);
 		return "redirect:/{slug}/box/admin";
 	}
@@ -124,17 +164,54 @@ public class BoxController {
     }
 
 	@PostMapping("/edit/{id}")
-	public String updateBox(@PathVariable String slug, @PathVariable Long id, @ModelAttribute Box box) {
+	public String updateBox(@PathVariable String slug, @PathVariable Long id, @ModelAttribute Box box,
+			@ModelAttribute("amapUser") AmapUser amapUser,
+			@RequestParam("image") MultipartFile image, RedirectAttributes redirectAttributes) {
 		AMAP amap = amapService.findBySlug(slug);
         if (amap == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
         }
         
 		Box oldBox = boxService.findById(id);
+		AmapSpace amapSpace = amapSpaceService.findById(amap.getId());
+		AmapProducerUser aPU = amapUser.getProducerUser();
+		
 		box.setCreationDate(oldBox.getCreationDate());
 		box.setLastModifiedDate(LocalDate.now());
+		box.setAmapSpace(amapSpace);
+		box.setAmapProducerUser(aPU);
+		if (oldBox.getImageData() != null) {
+			box.setImageData(oldBox.getImageData());
+		} 
+		if (image != null && !image.isEmpty()) {
+			try {
+				box.setImageData(image.getBytes());
+			} catch (IOException e) {
+				redirectAttributes.addFlashAttribute("message", "Erreur lors de l'importation de l'image.");
+				e.printStackTrace();
+				return "redirect:/{slug}/box/admin";
+				}
+			} 
+		
     	boxService.save(box);
         return "redirect:/{slug}/box/admin";
     }
+	
+	@GetMapping("/image/{id}")
+	public ResponseEntity<byte[]> getImage(@PathVariable Long id) {
+	    Box box = boxService.findById(id);
+	    if (box == null) {
+	        System.out.println("Aucun panier trouvé avec l'ID : " + id);
+	        return ResponseEntity.notFound().build();
+	    }
 
+	    byte[] imageData = box.getImageData();
+	    if (imageData != null) {
+	        System.out.println("Image trouvée pour l'ID : " + id);
+	        return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(imageData);
+	    }
+
+	    System.out.println("Pas d'image pour l'ID : " + id);
+	    return ResponseEntity.notFound().build();
+	}
 }

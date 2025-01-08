@@ -4,14 +4,19 @@ import fr.seve.entities.AMAP;
 import fr.seve.entities.AmapIndividualUser;
 import fr.seve.entities.AmapSpace;
 import fr.seve.entities.AmapUser;
+import fr.seve.entities.SaasUser;
 import fr.seve.entities.enums.AmapUserRole;
 import fr.seve.entities.enums.AmapUserType;
 import fr.seve.service.AmapIndividualUserService;
+import fr.seve.utils.AmapUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,32 +24,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/{slug}")
+@RequestMapping("/{slug}/individual")
 public class AmapIndividualUserController {
 
     @Autowired
     private AmapIndividualUserService amapIndividualUserService;
 
-    private AMAP getAmapFromRequest(HttpServletRequest request) {
-        AMAP amap = (AMAP) request.getAttribute("amap");
-        if (amap == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
-        }
-        return amap;
-    }
     /**
      * Afficher le formulaire de création de compte.
      */
     @GetMapping("/signup")
     public String showSignupForm(HttpServletRequest request, Model model) {
 
-    	model.addAttribute("slug", getAmapFromRequest(request).getSlug());
-        model.addAttribute("amapUser", new AmapUser());
+    	model.addAttribute("slug", AmapUtils.getAmapFromRequest(request).getSlug());
         model.addAttribute("amapIndividualUser", new AmapIndividualUser());
         return "amap-individual-signup";
     }
@@ -55,43 +55,66 @@ public class AmapIndividualUserController {
     @PostMapping("/signup")
     public String processSignupForm(
             @Valid @ModelAttribute("amapIndividualUser") AmapIndividualUser amapIndividualUser,
-            @Valid @ModelAttribute("amapUser") AmapUser amapUser,
             BindingResult result,
             HttpServletRequest request,
             Model model) {
-    	AMAP amap = getAmapFromRequest(request);
+    	AMAP amap = AmapUtils.getAmapFromRequest(request);
     	String slug = amap.getSlug();
     	model.addAttribute("slug",slug);
-    	amapUser.setRole(AmapUserRole.AMAP_USER);
-        amapUser.setType(AmapUserType.INDIVIDUAL);
+    	amapIndividualUser.getAmapUser().setRole(AmapUserRole.AMAP_USER);
+    	amapIndividualUser.getAmapUser().setType(AmapUserType.INDIVIDUAL);
         amapIndividualUser.getAmapUser().setAmapSpace(amap.getAmapSpace());
-    	System.out.println("j'arrive ici");
-    	System.out.println(amapIndividualUser.getAmapUser().getEmail());
-    	System.out.println(amapIndividualUser.getAmapUser().getName());
-    	System.out.println(amapIndividualUser.getAmapUser().getFirstname());
-    	System.out.println(amapIndividualUser.getAmapUser().getPassword());
-    	System.out.println(amapIndividualUser.isVolunteer());
-    	System.out.println(amapUser.getType());
-    	System.out.println(amapIndividualUser.getAmapUser().getAmapSpace());
+
         if (result.hasErrors()) {
         	System.out.println( "Au moins une erreur est présente dans le formulaire.");
-            // Si erreurs, retourner au formulaire avec les erreurs
         	model.addAttribute("signupError", "Au moins une erreur est présente dans le formulaire.");
             return "amap-individual-signup";
         }
 
         try {
-        	System.out.println( "Au moins j'essaye");
-            // Créer l'utilisateur
             amapIndividualUserService.createIndividualUser(amapIndividualUser);
-
-            // Rediriger vers la page de connexion en cas de succès
             return "redirect:/{slug}/login";
         } catch (Exception e) {
-            // En cas d'erreur, retourner au formulaire avec un message d'erreur
             model.addAttribute("signupError", "Une erreur s'est produite lors de la création du compte.");
             return "amap-individual-signup";
         }
     }
+    
+    @Secured("ROLE_SAAS_CUSTOM")
+    @PostMapping("/createAdmin")
+    public String createAdmin(
+            @Valid @ModelAttribute("amapIndividualUser") AmapIndividualUser amapIndividualUser,
+            BindingResult result,
+            @ModelAttribute("globalSaasUser") SaasUser saasUser,
+            HttpServletRequest request,
+            RedirectAttributes redirectAttributes) {
+    	AMAP amap = AmapUtils.getAmapFromRequest(request);
+    	String slug = amap.getSlug();
+    	if (!slug.equals(saasUser.getAmap().getSlug())) {
+    		ObjectError error = new ObjectError("globalError", "Erreur de lien : les slug ne correspondent pas.");
+    		result.addError(error);
+    		request.getSession().setAttribute("formErrors", result.getAllErrors());
+    		return "redirect:/profile";
+    	};
+        if (result.hasErrors()) {
+            request.getSession().setAttribute("formErrors", result.getAllErrors());
+            return "redirect:/profile";
+        }
+        amapIndividualUser.getAmapUser().setRole(AmapUserRole.AMAP_ADMIN);
+    	amapIndividualUser.getAmapUser().setType(AmapUserType.INDIVIDUAL);
+        amapIndividualUser.getAmapUser().setAmapSpace(amap.getAmapSpace());
+        
+        try {
+            amapIndividualUserService.createIndividualUser(amapIndividualUser);
+            redirectAttributes.addFlashAttribute("successMessage", "L'administrateur a été créé avec succès.");
+            return "redirect:/profile";
+        } catch (Exception e) {
+            request.getSession().setAttribute("formErrors", List.of(
+                    new ObjectError("globalError", "Une erreur inattendue s'est produite.")
+            ));
+            return "redirect:/profile";
+        }
+    }
+
     
 }

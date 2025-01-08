@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.seve.entities.Box;
+import fr.seve.entities.Product;
 import fr.seve.repository.BoxRepository;
 import fr.seve.service.BoxService;
 
@@ -37,6 +38,16 @@ public class BoxServiceImpl implements BoxService{
 
 		boxRepository.deleteById(Id);
 		
+	}
+
+	@Override
+	public List<Box> findByAmapSpaceId(Long amapSpaceId) {
+		return boxRepository.findByAmapSpaceId(amapSpaceId);
+		
+	}
+	@Override
+	public List<Box> findByProducerId(Long id) {
+		return boxRepository.findByProducerId(id);
 	}
 
 }

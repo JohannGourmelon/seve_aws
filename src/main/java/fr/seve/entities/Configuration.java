@@ -37,7 +37,7 @@ public class Configuration {
 	
     @Enumerated(EnumType.STRING)
     @Column
-    private Police police;
+    private Police police = Police.ARIAL;
 	
 	@Column
 	private Boolean isRoundedBorders;
@@ -100,6 +100,7 @@ public class Configuration {
 
 	public Police getPolice() {
 		return police;
+//		return police != null ? police : Police.DEFAULT;
 	}
 
 	public void setPolice(Police police) {
@@ -143,6 +144,7 @@ public class Configuration {
 	    TAHOMA("Tahoma"),
 	    TIMES_NEW_ROMAN("Times New Roman"),
 	    VERDANA("Verdana");
+//	    DEFAULT("Arial");
 
 	    private final String displayName;
 

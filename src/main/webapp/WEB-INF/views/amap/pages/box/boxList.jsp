@@ -9,7 +9,7 @@
 			<div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-4 mb-5">
 				<div class="card">
 					<img
-						src="${pageContext.request.contextPath}/resources/images/amap/panier.jpeg"
+						src="${pageContext.request.contextPath}/${slug}/box/image/${box.id}"
 						class="card-img-top" alt="Image du panier">
 					<p class="card-title text-center">${box.name}</p>
 
@@ -42,6 +42,7 @@
 						<form action="${pageContext.request.contextPath}/${slug}/cart/add"
 							method="post" class="text-center mt-3">
 							<input type="hidden" name="boxId" value="${box.id}" />
+							<input type="hidden" name="genre" value="BOX" />
 							<button type="submit" class="btn btn-warning btn-sm">Commander</button>
 						</form>
 					</div>

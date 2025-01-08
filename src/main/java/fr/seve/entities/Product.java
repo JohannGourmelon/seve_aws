@@ -10,6 +10,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -58,13 +61,22 @@ public class Product {
 	private Category category;
 
 	
-//    @Column(nullable = true)
-//    private String imageUrl;
+	@Lob
+	@Column(name = "image")
+	private byte[] imageData;
+	
+	@ManyToOne
+	@JoinColumn(name = "amapSpace_id")
+	private AmapSpace amapSpace;
 
-	// Relation avec Producteur
-//    @ManyToOne
-//    @JoinColumn(name = "producer_id", nullable = true)
-//    private Producer producer;
+	@ManyToOne
+	   @JoinColumn(name = "producer_id", nullable = true)
+	   private AmapProducerUser amapProducerUser;
+
+	
+	
+	public Product() {
+	}
 
 	public Long getId() {
 		return id;
@@ -145,6 +157,14 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+	
+	public AmapSpace getAmapSpace() {
+		return amapSpace;
+	}
+
+	public void setAmapSpace(AmapSpace amapSpace) {
+		this.amapSpace = amapSpace;
+	}
 
 //    public String getImageUrl() {
 //        return imageUrl;
@@ -166,6 +186,14 @@ public class Product {
 	
 	// Formattage des dates
 	
+	public AmapProducerUser getAmapProducerUser() {
+		return amapProducerUser;
+	}
+
+	public void setAmapProducerUser(AmapProducerUser amapProducerUser) {
+		this.amapProducerUser = amapProducerUser;
+	}
+
 	private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 	public String getFormattedAvailableDate() {
@@ -185,9 +213,21 @@ public class Product {
 	}
 	
 		
+	public byte[] getImageData() {
+		return imageData;
+	}
+
+	public void setImageData(byte[] imageData) {
+		this.imageData = imageData;
+	}
+
+
+	
+
+
 	// Enum pour la catégorie
 	public enum Category {
-		FRUITS("Fruits"), VEGETABLES("Légumes"), EGGS("Oeufs"), BUTCHERY("Boucherie"), BAKERY("Boulangerie"), DAIRY("Produits laitiers"), DRINK("Boissons"), SWEET_GROCERY("Epicerie sucrée"), SALT_GROCERY("Epicerie salée");
+		FRUITS("Fruits"), VEGETABLES("Légumes"), BUTCHERY("Boucherie"), BAKERY("Boulangerie"), DAIRY("Produits laitiers et oeufs"), DRINK("Boissons"), SWEET_GROCERY("Epicerie sucrée"), SALT_GROCERY("Epicerie salée");
 
 		private final String displayName;
 

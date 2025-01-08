@@ -2,6 +2,48 @@
 
 <h1>Configuration du design de votre Amap</h1>
 
+<div class="design-theme mb-5">
+	<p>Thèmes prédéfinis</p>
+	<div class="themes-container">
+		<!-- Thème 1 -->
+		<div class="theme-card" id="theme1">
+			<div class="theme-preview">
+				<div class="triangle"
+					style="background-color: #87CEEB; clip-path: polygon(0 0, 100% 0, 0 100%);"></div>
+				<div class="triangle"
+					style="background-color: #B0E57C; clip-path: polygon(0 100%, 100% 0, 100% 100%);"></div>
+				<div class="triangle"
+					style="background-color: #F8F9FA; clip-path: polygon(0 0, 100% 100%, 0 100%);"></div>
+			</div>
+			<p>Dynamique</p>
+		</div>
+		<!-- Thème 2 -->
+		<div class="theme-card" id="theme2">
+			<div class="theme-preview">
+				<div class="triangle"
+					style="background-color: #D6B4E7; clip-path: polygon(0 0, 100% 0, 0 100%);"></div>
+				<div class="triangle"
+					style="background-color: #D1D1D1; clip-path: polygon(0 100%, 100% 0, 100% 100%);"></div>
+				<div class="triangle"
+					style="background-color: #FAFAFA; clip-path: polygon(0 0, 100% 100%, 0 100%);"></div>
+			</div>
+			<p>Élégant</p>
+		</div>
+		<!-- Thème 3 -->
+		<div class="theme-card" id="theme3">
+			<div class="theme-preview">
+				<div class="triangle"
+					style="background-color: #A8D5BA; clip-path: polygon(0 0, 100% 0, 0 100%);"></div>
+				<div class="triangle"
+					style="background-color: #F7D9C4; clip-path: polygon(0 100%, 100% 0, 100% 100%);"></div>
+				<div class="triangle"
+					style="background-color: #FFF9F2; clip-path: polygon(0 0, 100% 100%, 0 100%);"></div>
+			</div>
+			<p>Naturel</p>
+		</div>
+	</div>
+	</div>
+
 	<form
 		action="${pageContext.request.contextPath}/configuration/editDesign/${configuration.id}"
 		method="post">
@@ -9,46 +51,55 @@
 			<div class="designForm-side">
 				<div class="designForm-labels">
 					<label for="primaryColor" class="formItem">Couleur primaire</label>
-					<label for="secondaryColor" class="formItem">Couleur secondaire</label>
-					<label for="tertiaryColor" class="formItem">Couleur tertiaire</label>
+					<label for="secondaryColor" class="formItem">Couleur
+						secondaire</label> <label for="tertiaryColor" class="formItem">Couleur
+						tertiaire</label>
 				</div>
 				<div class="designForm-inputs">
-					<input type="color" id="primaryColor" name="primaryColor" value="${configuration.primaryColor}">
-					<input type="color" id="secondaryColor" name="secondaryColor" value="${configuration.secondaryColor}"> 
-					<input type="color" id="tertiaryColor" name="tertiaryColor" value="${configuration.tertiaryColor}">
+					<input type="color" id="primaryColor" name="primaryColor"
+						value="${empty configuration.primaryColor ? '#ffffff' : configuration.primaryColor}">
+					<input type="color" id="secondaryColor" name="secondaryColor"
+						value="${empty configuration.secondaryColor ? '#ffffff' : configuration.secondaryColor}">
+					<input type="color" id="tertiaryColor" name="tertiaryColor"
+						value="${empty configuration.tertiaryColor ? '#ffffff' : configuration.tertiaryColor}">
 				</div>
 			</div>
 			<div class="designForm-side">
 				<div class="designForm-labels">
-					<label for="police" class="formItem">Police</label> 
-					<label class="formItem">Style des bordures</label>
+					<label for="police" class="formItem">Police</label> <label
+						class="formItem">Style des bordures</label>
 				</div>
 				<div class="designForm-inputs">
 					<select id="police" name="police" class="formSelectItem">
-        				<c:forEach var="police" items="${polices}">
-            				<option value="${police}" ${police == configuration.police ? 'selected' : ''}>
-                				${police.displayName}
-            				</option>
-        				</c:forEach>
-    				</select>
+						<c:forEach var="police" items="${polices}">
+							<option value="${police}"
+								${police == configuration.police ? 'selected' : ''}>
+								${police.displayName}</option>
+						</c:forEach>
+					</select>
 					<div class="designForm-radios">
 						<div>
-							<input type="radio" id="roundedNo" name="isRoundedBorders" value="false" ${!configuration.isRoundedBorders ? 'checked' : ''}>
-							<label for="roundedNo">Droit</label> 
+							<input type="radio" id="roundedNo" name="isRoundedBorders"
+								value="false"
+								${!configuration.isRoundedBorders ? 'checked' : ''}> <label
+								for="roundedNo">Droit</label>
 						</div>
 						<div>
-							<input type="radio" id="roundedYes" name="isRoundedBorders" value="true" ${configuration.isRoundedBorders ? 'checked' : ''}>
+							<input type="radio" id="roundedYes" name="isRoundedBorders"
+								value="true" ${configuration.isRoundedBorders ? 'checked' : ''}>
 							<label for="roundedYes">Arrondi</label>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="configForm-submit">
+		<div class="configDesignForm-submit">
 			<button class="btn btn-secondary" type="submit">Enregistrer</button>
 		</div>
 	</form>
 
-<c:if test="${not empty message}">
-	<div class="alert alert-success mt-4">${message}</div>
-</c:if>
+	<c:if test="${not empty message}">
+		<div class="alert alert-success">${message}</div>
+	</c:if>
+
+	<script src="${pageContext.request.contextPath}/resources/js/themes.js"></script>

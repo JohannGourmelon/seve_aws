@@ -1,4 +1,4 @@
-package fr.seve.entities;
+package fr.seve.entities.enums;
 
 public enum SaasUserLevel {
 	

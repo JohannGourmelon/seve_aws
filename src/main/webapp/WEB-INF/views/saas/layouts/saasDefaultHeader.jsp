@@ -17,6 +17,10 @@
 			<li class="nav-item"><a class="nav-link"
 				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
 				onclick="window.location.href='${pageContext.request.contextPath}/saas/forfaits'">Nos offres</a></li>
+				
+				<li class="nav-item"><a class="nav-link"
+				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
+				onclick="window.location.href='${pageContext.request.contextPath}/saas/nos-amaps'">Notre réseau</a></li>
 
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" data-bs-toggle="dropdown"

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.seve.entities.AMAP;
+import fr.seve.entities.Activity;
 import fr.seve.entities.AmapSpace;
 import fr.seve.repository.AmapRepository;
 import fr.seve.repository.AmapSpaceRepository;
@@ -42,5 +43,6 @@ public class AmapSpaceServiceImpl implements AmapSpaceService{
 		amapSpaceRepository.deleteById(Id);
 		
 	}
+	
 
 }
