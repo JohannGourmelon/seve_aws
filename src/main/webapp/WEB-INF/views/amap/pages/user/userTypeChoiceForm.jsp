@@ -3,13 +3,14 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <div class="container mt-5">
-    <h1 class="mb-4 text-center">Sélectionner le type de compte utilisateur</h1>
+    <h1 class="mb-4 text-center">Vous êtes...</h1>
 
     <div class="d-flex flex-column align-items-center">
         <!-- Boucle sur les types définis -->
         <c:forEach var="type" items="${types}">
             <a href="${pageContext.request.contextPath}/${slug}/${type.key}/signup" 
-               class="btn btn-primary mb-3 w-50">
+               class="btn btn-secondary mb-3 w-50"
+               style="background-color: var(--secondary-color); color : black; font-family: var(--font-family);   ">
                 ${type.value}
             </a>
         </c:forEach>

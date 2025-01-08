@@ -63,7 +63,6 @@ public class AmapIndividualUserServiceImpl implements AmapIndividualUserService 
         amapUser.setFirstname(amapIndividualUser.getAmapUser().getFirstname());
         amapUser.setName(amapIndividualUser.getAmapUser().getName());
         amapUser.setEmail(amapIndividualUser.getAmapUser().getEmail());
-        amapUser.setPassword(amapIndividualUser.getAmapUser().getPassword());
         amapUser.setLastModifyDate(LocalDateTime.now().toString());
 
         amapUserRepository.save(amapUser);

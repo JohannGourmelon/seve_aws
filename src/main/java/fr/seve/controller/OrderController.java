@@ -2,6 +2,7 @@ package fr.seve.controller;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -30,6 +31,7 @@ import fr.seve.entities.Order;
 import fr.seve.entities.OrderItem;
 import fr.seve.entities.Product;
 import fr.seve.entities.enums.AmapUserType;
+import fr.seve.repository.CartRepository;
 import fr.seve.service.AmapService;
 import fr.seve.service.AmapSpaceService;
 import fr.seve.service.AmapUserService;
@@ -43,6 +45,9 @@ public class OrderController {
 	
 	@Autowired
 	private AmapService amapService;
+
+	@Autowired
+	private AmapUserService amapUserService;
 	
 	@Autowired
 	private AmapSpaceService amapSpaceService;
@@ -52,6 +57,9 @@ public class OrderController {
 	
 	@Autowired
 	private OrderItemService orderItemService;
+	
+	@Autowired
+    private CartRepository cartRepository; 
 	
 	
 	@GetMapping("/success")
@@ -78,6 +86,11 @@ public class OrderController {
 			ModelAndView mv = new ModelAndView("redirect:/" + slug + "/cart");
 			return mv;
 		}
+	    if (addContributionToCart(cart, amap, amapUser)) {
+	        model.addAttribute("error", "Les frais d'adhésion à l'AMAP ont été ajoutés au panier.");
+	        ModelAndView mv = new ModelAndView("redirect:/" + slug + "/cart");
+			return mv;
+	    }
 
 		Order order = new Order();
 		order.setOrderDate(LocalDateTime.now());
@@ -118,7 +131,9 @@ public class OrderController {
 		orderService.save(order);
 		
 		session.removeAttribute("cart");
-
+		amapUser.setContributionPaid(true);
+		amapUserService.update(amapUser);
+		
 		ModelAndView mv = new ModelAndView("amap-payment");
 		mv.addObject("order", order);
 		mv.addObject("orderItems", order.getOrderItems());
@@ -159,4 +174,45 @@ public class OrderController {
     	return "amap-order-details";
     }
 
+	private boolean addContributionToCart(Cart cart, AMAP amap, AmapUser amapUser) {
+	    // Si l'utilisateur a déjà payé sa contribution, ne rien faire
+	    if (amapUser.isContributionPaid()) {
+	        return false;
+	    }
+
+	    // Vérifier que le panier n'est pas null ou vide
+	    if (cart == null || cart.getItems().isEmpty()) {
+	        return false;
+	    }
+
+	    // Nom de l'article pour les frais d'adhésion
+	    String membershipFeeName = "Frais d'adhésion à l'AMAP " + amap.getName();
+
+	    // Rechercher l'article existant
+	    Optional<CartItem> optionalMembershipFeeItem = cart.getItems().stream()
+	            .filter(item -> membershipFeeName.equals(item.getName()))
+	            .findFirst();
+
+	    if (optionalMembershipFeeItem.isPresent()) {
+	        // L'article existe, vérifier et ajuster la quantité si nécessaire
+	        CartItem membershipFeeItem = optionalMembershipFeeItem.get();
+	        if (membershipFeeItem.getQuantity() != 1) {
+	            membershipFeeItem.setQuantity(1); // Réinitialiser la quantité
+	            cartRepository.save(cart);       // Sauvegarder uniquement si modifié
+	        }
+	        return false; // Aucun nouvel article ajouté
+	    }
+
+	    // Si l'article n'existe pas, le créer et l'ajouter au panier
+	    CartItem membershipFeeItem = new CartItem();
+	    membershipFeeItem.setName(membershipFeeName);
+	    membershipFeeItem.setPrice(amap.getMembershipFee());
+	    membershipFeeItem.setQuantity(1);
+	    membershipFeeItem.setCart(cart);
+
+	    cart.addItem(membershipFeeItem); // Ajouter au panier
+	    cartRepository.save(cart);       // Sauvegarder le panier
+
+	    return true; // Nouvel article ajouté
+	}
 }

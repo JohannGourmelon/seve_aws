@@ -46,10 +46,10 @@
 		<div class="signup-form-container shadow">
 			<p class="font-weight-bold pb-2">Remplissez le formulaire pour
 				démarrer votre abonnement</p>
-			<c:if test="${not empty errors}">
+			<c:if test="${not empty errorMessages}">
 				<div class="alert alert-danger">
 					<ul>
-						<c:forEach var="error" items="${errors}">
+						<c:forEach var="error" items="${errorMessages}">
 							<li>${error}</li>
 						</c:forEach>
 					</ul>
