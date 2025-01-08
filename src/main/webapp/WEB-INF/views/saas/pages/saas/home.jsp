@@ -33,7 +33,7 @@
 					paniers maraîchers</p>
 				<ul>
 					<li>Organisez la distribution de vos paniers maraîchers</li>
-					<li>Gerez vos commandes, adhésions et cotisations en toute simplicité</li>
+					<li>Gérez vos commandes, adhésions et cotisations en toute simplicité</li>
 				</ul>
 			</div>
 		</div>

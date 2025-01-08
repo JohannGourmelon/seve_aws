@@ -16,6 +16,8 @@
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/saas/main.css" />
+	<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/saas/favicon.ico">
+	
 
 <!-- CSS dynamiques -->
 <c:if test="${not empty css}">
