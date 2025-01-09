@@ -202,7 +202,7 @@ public class ConfigurationController {
 
 		// Police
 		css.append("body {\n");
-		css.append("    font-family: '").append(configuration.getPolice().getDisplayName()).append("', sans-serif;\n");
+		css.append("--font-family: '").append(configuration.getPolice().getDisplayName()).append("', sans-serif;\n");
 		css.append("}\n");
 
 		return css.toString();
