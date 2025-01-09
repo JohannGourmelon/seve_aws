@@ -18,8 +18,8 @@
                 <c:forEach var="order" items="${orders}">
                     <tr>
                         <td>0000000000${order.id}</td>
-                        <td>${order.orderDate}</td>
-                        <td><a href="${pageContext.request.contextPath}/${slug}/order/${order.id}" class="btn btn-info btn-sm btn-link">Détails</a></td>
+                        <td>${order.formattedOrderDate}</td>
+                        <td><a href="${pageContext.request.contextPath}/${slug}/order/${order.id}" class="btn btn-secondary" style=" color: black; background-color: var(--secondary-color)">Détails</a></td>
                         <td>${order.totalAmount} €</td>
                         
                     </tr>

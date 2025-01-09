@@ -10,7 +10,8 @@
 				<div class="card">
 					<img
 						src="${pageContext.request.contextPath}/${slug}/box/image/${box.id}"
-						class="card-img-top" alt="Image du panier">
+						class="card-img-top" alt="Image du panier"
+						style="width: 200; height: 200px; object-fit: cover; display: block; margin: 0 auto;">
 					<p class="card-title text-center">${box.name}</p>
 
 					<div class="card-body">
@@ -43,7 +44,7 @@
 							method="post" class="text-center mt-3">
 							<input type="hidden" name="boxId" value="${box.id}" />
 							<input type="hidden" name="genre" value="BOX" />
-							<button type="submit" class="btn btn-warning btn-sm">Commander</button>
+							<button type="submit" class="btn btn-secondary" style=" color: black; background-color: var(--secondary-color)">Commander</button>
 						</form>
 					</div>
 				</div>

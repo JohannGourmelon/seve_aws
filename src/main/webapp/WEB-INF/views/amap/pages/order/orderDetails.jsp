@@ -39,10 +39,12 @@
                         </tbody>
                     </table>
                 </div>
+                <a href="${pageContext.request.contextPath}/${slug}/order/list" class="btn btn-secondary" style=" color: black; background-color: var(--secondary-color)">Retour à la liste</a>
             </div>
             </div>
+            
         </div>
     </div>
 </div>
 
-<a href="${pageContext.request.contextPath}/${slug}/order/list" class="btn btn-secondary mt-3 mb-5">Retour à la liste</a>
+

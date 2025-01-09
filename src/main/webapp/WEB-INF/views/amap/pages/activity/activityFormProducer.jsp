@@ -9,12 +9,12 @@
 	<c:choose>
 		<c:when test="${activity.id != null}">
 			<form
-				action="${pageContext.request.contextPath}/${slug}/activity/edit/${activity.id}"
+				action="${pageContext.request.contextPath}/${slug}/activity/editProd/${activity.id}"
 				method="post" class="needs-validation" novalidate enctype="multipart/form-data">
 		</c:when>
 		<c:otherwise>
 			<form
-				action="${pageContext.request.contextPath}/${slug}/activity/add"
+				action="${pageContext.request.contextPath}/${slug}/activity/addProd"
 				method="post" class="needs-validation" novalidate enctype="multipart/form-data">
 		</c:otherwise>
 	</c:choose>
@@ -116,7 +116,7 @@
 	</div>
 
 	<div class="d-flex justify-content-center mt-4 mb-5">
-		<a href="${pageContext.request.contextPath}/${slug}/activity/admin"
+		<a href="${pageContext.request.contextPath}/${slug}/myproducts"
 			class="btn btn-secondary" style=" color: black; background-color: var(--secondary-color)">Annuler</a>
 
 		<button type="submit" class="btn btn-secondary" style=" margin-left: 10px; color: black; background-color: var(--secondary-color)">Enregistrer</button>

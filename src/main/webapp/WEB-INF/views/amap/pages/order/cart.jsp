@@ -54,7 +54,7 @@
 								</c:otherwise>
 							</c:choose> <input type="number" name="quantity" value="${item.quantity}"
 							min="0" class="form-control d-inline" style="width: 70px;" />
-							<button type="submit" class="btn btn-primary btn-sm">Modifier</button>
+							<button type="submit" class="btn btn-secondary" style=" color: black; background-color: var(--secondary-color)">Modifier</button>
 							</form>
 							</td>
 						<td>${item.totalPrice}€</td>
@@ -64,7 +64,7 @@
 								method="post">
 								<input type="hidden" name="itemId" value="${item.id}" /> <input
 									type="hidden" name="genre" value="BOX" />
-								<button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+								<button type="submit" class="btn btn-secondary" style=" color: white; background-color: red;">Supprimer</button>
 							</form>
 						</td>
 						<td class="">${genre}</td>
@@ -77,11 +77,11 @@
 			<h3>Total : ${cart.totalPrice} €</h3>
 			<form action="${pageContext.request.contextPath}/${slug}/order/add"
 				method="post">
-				<button type="submit" class="btn btn-success btn-sm">Valider la commande</button>
+				<button type="submit" class="btn btn-secondary" style=" color: white; background-color: green;">Valider la commande</button>
 			</form>
 			<form action="${pageContext.request.contextPath}/${slug}/cart/clear"
 				method="post">
-				<button type="submit" class="btn btn-danger btn-sm">Vider
+				<button type="submit" class="btn btn-secondary" style=" color: white; background-color: red;">Vider
 					le panier</button>
 			</form>
 			

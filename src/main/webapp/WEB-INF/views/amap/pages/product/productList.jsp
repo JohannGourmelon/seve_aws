@@ -10,11 +10,11 @@
 				<div class="card">
 					<img
 						src="${pageContext.request.contextPath}/${slug}/product/image/${product.id}"
-						class="card-img-top" alt="Image du produit">
+						class="card-img-top" alt="Image du produit" style="width: 200; height: 200px; object-fit: cover; display: block; margin: 0 auto;">
 					<p class="card-title text-center">${product.name}</p>
 
 					<div class="card-body">
-						<p class="card-text mb-4">${product.description}</p>
+						<p class="card-text mb-4" >${product.description}</p>
 						<div class="row">
 						<div class="col-12 col-md-6">
                          
@@ -49,7 +49,7 @@
 							method="post" class="text-center mt-3">
 							<input type="hidden" name="productId" value="${product.id}" />
 							<input type="hidden" name="genre" value="PRODUCT" />
-							<button type="submit" class="btn btn-warning btn-sm">Commander</button>
+							<button type="submit" class="btn btn-secondary" style=" color: black; background-color: var(--secondary-color)">Commander</button>
 						</form>
 				</div>
 				</div>

@@ -9,12 +9,12 @@
 	<c:choose>
 		<c:when test="${product.id != null}">
 			<form
-				action="${pageContext.request.contextPath}/${slug}/product/edit/${product.id}"
+				action="${pageContext.request.contextPath}/${slug}/product/editProd/${product.id}"
 				method="post" class="needs-validation" novalidate
 				enctype="multipart/form-data">
 		</c:when>
 		<c:otherwise>
-			<form action="${pageContext.request.contextPath}/${slug}/product/add"
+			<form action="${pageContext.request.contextPath}/${slug}/product/addProd"
 				method="post" class="needs-validation" novalidate
 				enctype="multipart/form-data">
 		</c:otherwise>
@@ -103,7 +103,7 @@
 	</div>
 
 	<div class="d-flex justify-content-center mt-4 mb-5">
-		<a href="${pageContext.request.contextPath}/${slug}/product/admin"
+		<a href="${pageContext.request.contextPath}/${slug}/myproducts"
 			class="btn btn-secondary" style=" color: black; background-color: var(--secondary-color)">Annuler</a>
 
 		<button type="submit" class="btn btn-secondary" style=" margin-left: 10px; color: black; background-color: var(--secondary-color)">Enregistrer</button>

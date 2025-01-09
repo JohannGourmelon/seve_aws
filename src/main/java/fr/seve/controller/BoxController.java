@@ -140,6 +140,49 @@ public class BoxController {
 		return "redirect:/{slug}/box/admin";
 	}
 
+	@GetMapping("/addProd")
+	public String showAddFormProducer(@PathVariable String slug, Model model) {
+		AMAP amap = amapService.findBySlug(slug);
+        if (amap == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
+        }
+        
+		model.addAttribute("categories", Box.Category.values());
+		model.addAttribute("frequencies", Box.Frequency.values());
+		model.addAttribute("box", new Box());
+		return "box-form-prod";
+	}
+
+	@PostMapping("addProd")
+	public String saveBoxProducer(@PathVariable String slug, @ModelAttribute Box box,
+			@ModelAttribute("amapUser") AmapUser amapUser,
+			@RequestParam("image") MultipartFile image, RedirectAttributes redirectAttributes) {
+		
+		AMAP amap = amapService.findBySlug(slug);
+        if (amap == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
+        }
+        
+        AmapProducerUser aPU = amapUser.getProducerUser();
+        
+        
+        if (image != null && !image.isEmpty()) {
+			try {
+				box.setImageData(image.getBytes());
+			} catch (IOException e) {
+				redirectAttributes.addFlashAttribute("message", "Erreur lors de l'importation de l'image.");
+				e.printStackTrace();
+				return "redirect:/{slug}/myproducts";
+			}
+		}
+        
+		box.setCreationDate(LocalDate.now());
+		box.setAmapSpace(amap.getAmapSpace());
+		box.setAmapProducerUser(aPU);
+		boxService.save(box);
+		return "redirect:/{slug}/myproducts";
+	}
+	
 	@GetMapping("/delete/{id}")
 	public String deleteBox(@PathVariable String slug, @PathVariable Long id) {
 		AMAP amap = amapService.findBySlug(slug);
@@ -149,6 +192,17 @@ public class BoxController {
         
 		boxService.deleteById(id);
 		return "redirect:/{slug}/box/admin";
+	}
+	
+	@GetMapping("/deleteProd/{id}")
+	public String deleteBoxProducer(@PathVariable String slug, @PathVariable Long id) {
+		AMAP amap = amapService.findBySlug(slug);
+        if (amap == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
+        }
+        
+		boxService.deleteById(id);
+		return "redirect:/{slug}/myproducts";
 	}
 	
     @GetMapping("/edit/{id}")
@@ -197,6 +251,54 @@ public class BoxController {
 		
     	boxService.save(box);
         return "redirect:/{slug}/box/admin";
+    }
+	
+	@GetMapping("/editProd/{id}")
+    public String showEditFormProducer(@PathVariable String slug, @PathVariable Long id, Model model) {
+    	AMAP amap = amapService.findBySlug(slug);
+        if (amap == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
+        }
+        
+        Box box = boxService.findById(id);
+        model.addAttribute("categories", Box.Category.values());
+        model.addAttribute("frequencies", Box.Frequency.values());
+        model.addAttribute("box", box);
+        return "box-form-prod";
+    }
+
+	@PostMapping("/editProd/{id}")
+	public String updateBoxProducer(@PathVariable String slug, @PathVariable Long id, @ModelAttribute Box box,
+			@ModelAttribute("amapUser") AmapUser amapUser,
+			@RequestParam("image") MultipartFile image, RedirectAttributes redirectAttributes) {
+		AMAP amap = amapService.findBySlug(slug);
+        if (amap == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "AMAP not found");
+        }
+        
+		Box oldBox = boxService.findById(id);
+		AmapSpace amapSpace = amapSpaceService.findById(amap.getId());
+		AmapProducerUser aPU = amapUser.getProducerUser();
+		
+		box.setCreationDate(oldBox.getCreationDate());
+		box.setLastModifiedDate(LocalDate.now());
+		box.setAmapSpace(amapSpace);
+		box.setAmapProducerUser(aPU);
+		if (oldBox.getImageData() != null) {
+			box.setImageData(oldBox.getImageData());
+		} 
+		if (image != null && !image.isEmpty()) {
+			try {
+				box.setImageData(image.getBytes());
+			} catch (IOException e) {
+				redirectAttributes.addFlashAttribute("message", "Erreur lors de l'importation de l'image.");
+				e.printStackTrace();
+				return "redirect:/{slug}/myproducts";
+				}
+			} 
+		
+    	boxService.save(box);
+        return "redirect:/{slug}/myproducts";
     }
 	
 	@GetMapping("/image/{id}")
