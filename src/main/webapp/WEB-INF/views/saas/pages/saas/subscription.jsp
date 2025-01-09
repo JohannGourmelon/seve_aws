@@ -179,7 +179,7 @@
 					<td>Gestion des ateliers</td>
 					<td class="text-center"><span class="text-danger">&#10007;</span>
 					</td>
-					<td class="text-center"><span class="text-danger">&#10003;</span>
+					<td class="text-center"><span class="text-danger">&#10007;</span>
 					</td>
 					<td class="text-center"><span class="text-success">&#10003;</span>
 					</td>

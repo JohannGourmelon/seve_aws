@@ -10,7 +10,7 @@
                     <th class="col-1">Numéro de commande</th>
                     <th class="col-1">Date de Paiement</th>
                     <th class="col-1"> </th>
-                    <th class="col-1">Prix Totale</th>
+                    <th class="col-1">Prix Total</th>
                     
                 </tr>
             </thead>

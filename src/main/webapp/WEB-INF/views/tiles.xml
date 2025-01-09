@@ -230,6 +230,7 @@
 	<!-- Pages /Home -->
 
 	<definition name="amap-account" extends="template-amap-account">
+	<put-attribute name="title" value="Mon compte" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/user/myaccount.jsp" />
 	</definition>
@@ -237,6 +238,7 @@
 	<!-- Pages /Home -->
 
 	<definition name="amap-home" extends="template-amap">
+	<put-attribute name="title" value="Accueil" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/home.jsp" />
 	</definition>
@@ -245,6 +247,7 @@
 
 	<definition name="amap-producer-view"
 		extends="template-amap-account">
+		<put-attribute name="title" value="Gestion producteur" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/producer-view.jsp" />
 	</definition>
@@ -257,6 +260,7 @@
 	</definition>
 
 	<definition name="amap-signup" extends="template-amap">
+	<put-attribute name="title" value="Choix utilisateur" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/user/userTypeChoiceForm.jsp" />
 	</definition>
@@ -266,20 +270,24 @@
 
 	<definition name="amap-individual-signup"
 		extends="template-amap">
+		<put-attribute name="title" value="Formulaire utilisateur" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/user/individualUserSignUpForm.jsp" />
 	</definition>
 	<definition name="amap-producer-signup"
 		extends="template-amap">
+		<put-attribute name="title" value="Formulaire producteur" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/user/producerUserSignUpForm.jsp" />
 	</definition>
 	<definition name="amap-wc-signup" extends="template-amap">
+	<put-attribute name="title" value="Formulaire CE" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/user/wcUserSignUpForm.jsp" />
 	</definition>
 
 	<definition name="amap-login" extends="template-amap">
+	<put-attribute name="title" value="Page de connexion" />
 		<put-attribute name="main"
 			value="/WEB-INF/views/amap/pages/user/loginAmap.jsp" />
 	</definition>
