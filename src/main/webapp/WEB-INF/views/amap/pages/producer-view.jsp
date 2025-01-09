@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
     <div class="container-fluid">
+    <c:if test="${showProducts}">
         <h3 class="text-center">Mes produits</h3>
         <div class="text-end mb-2">
             <a href="${pageContext.request.contextPath}/${slug}/product/addProd" class="btn btn-secondary px-5 py-2 rounded-pill shadow" style=" color: black; background-color: var(--secondary-color)" >Ajouter un produit</a>
@@ -41,6 +42,7 @@
                 </c:forEach>
             </tbody>
         </table>
+        </c:if>
         <h3 class="text-center">Mes paniers</h3>
         <div class="text-end mb-2">
             <a href="${pageContext.request.contextPath}/${slug}/box/addProd" class="btn btn-secondary px-5 py-2 rounded-pill shadow" style=" color: black; background-color: var(--secondary-color)">Ajouter un panier</a>
@@ -83,6 +85,7 @@
                 </c:forEach>
             </tbody>
         </table>
+        <c:if test="${showActivities}">
         <h3 class="text-center">Mes ateliers</h3>
         <div class="text-end mb-2">
             <a href="${pageContext.request.contextPath}/${slug}/activity/addProd" class="btn btn-secondary px-5 py-2 rounded-pill shadow" style=" color: black; background-color: var(--secondary-color)">Ajouter un atelier</a>
@@ -126,4 +129,5 @@
                 </c:forEach>
             </tbody>
         </table>
+        </c:if>
     </div>
