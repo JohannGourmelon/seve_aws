@@ -7,6 +7,6 @@
 	<div class="home-img">
 		<img src="${pageContext.request.contextPath}/configuration/presentationImage/${amap.id}.jpg" alt="" />
 	</div>
-	<pre>${amap.amapSpace.configuration.presentationText}</pre>
+	<pre class="text-home">${amap.amapSpace.configuration.presentationText}</pre>
 
 </div>

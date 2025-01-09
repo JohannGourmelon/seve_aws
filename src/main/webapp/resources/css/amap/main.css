@@ -60,6 +60,11 @@ a:hover {
     overflow: auto; /* Permet de scroller si le contenu dépasse */
 }
 
+.text-home {
+	overflow-x: hidden;
+	margin-bottom: 30px;
+}
+
 .home-img {
 	display: flex;
 	align-items: center;
