@@ -26,7 +26,7 @@
 	<div class="features">
 		<div class="feature-card shadow-o">
 			<img
-				src="${pageContext.request.contextPath}/resources/images/saas/panier.jpg"
+				src="${pageContext.request.contextPath}/resources/images/saas/box.png"
 				alt="" />
 			<div class="feature-card-content">
 				<p class="text-center feature-name pt-3 pb-2">Gestion des
@@ -39,7 +39,7 @@
 		</div>
 		<div class="feature-card shadow-b">
 			<img
-				src="${pageContext.request.contextPath}/resources/images/saas/package-pres.png"
+				src="${pageContext.request.contextPath}/resources/images/saas/actList.png"
 				alt="" />
 			<div class="feature-card-content">
 				<p class="text-center feature-name pt-3 pb-2">Boutique e-commerce et ateliers</p>

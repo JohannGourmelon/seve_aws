@@ -137,7 +137,7 @@
 			</div>
 		</div>
 		<img class="shadow"
-			src="${pageContext.request.contextPath}/resources/images/saas/panier.jpg"
+			src="${pageContext.request.contextPath}/resources/images/saas/box.png"
 			alt="" />
 	</div>
 </section>
