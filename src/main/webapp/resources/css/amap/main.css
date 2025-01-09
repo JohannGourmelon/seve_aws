@@ -60,6 +60,20 @@ a:hover {
     overflow: auto; /* Permet de scroller si le contenu dépasse */
 }
 
+.home-img {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 40px;
+}
+
+.home-img img {
+	border-radius: var(--border-radius);
+	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+	width: 60%;
+}
+
+
 /****************************** Navbar *******************************/
 #navbar {
 	background-color: var(--primary-color);
@@ -175,11 +189,7 @@ footer img {
    	margin-top : 20px;
     padding: 20px;
     background-color: var(--primary-color);
-	border-radius: var(--border-radius);
-	
-	
-
-    
+	border-radius: var(--border-radius);  
 }
 
 .vertical-nav ul {
@@ -224,4 +234,11 @@ footer img {
 
 .vertical-nav a:hover {
 	color: var(--secondary-color);
+}
+
+/* ------------------------ Format tablette ---------------------------*/
+@media screen and (max-width: 992px) {
+	.home-img img {
+	width: 100%;
+}
 }
