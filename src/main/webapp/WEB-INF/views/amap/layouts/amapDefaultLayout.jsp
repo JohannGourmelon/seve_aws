@@ -15,12 +15,13 @@
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet">
 
-	<link rel="stylesheet"
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/amap/main.css" />
-	<link rel="stylesheet"
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/style.css" />
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/configuration/css/${amap.amapSpace.configuration.id}">
-	
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/configuration/css/${amap.amapSpace.configuration.id}">
+
 
 <!-- CSS dynamiques -->
 <c:if test="${not empty css}">
@@ -45,7 +46,10 @@
 
 	<script
 		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.bundle.min.js"></script>
-
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap.bundle.min.js"></script>
+	<c:if test="${not empty js}">
+		<script src="${pageContext.request.contextPath}${js}"></script>
+	</c:if>
 </body>
 </html>

@@ -16,9 +16,10 @@
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/saas/main.css" />
-	<link rel="stylesheet"
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/saas/account.css" />
-		<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/saas/favicon.ico">
+<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/images/saas/favicon.ico">
 
 <!-- CSS dynamiques -->
 <c:if test="${not empty css}">
@@ -53,9 +54,13 @@
 
 	<script
 		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.bundle.min.js"></script>
-        <script src="${pageContext.request.contextPath}/resources/js/saasAccountNav.js"></script>
-    <script src="${pageContext.request.contextPath}${js}"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/saasAccountNav.js"></script>
+	<c:if test="${not empty js}">
+		<script src="${pageContext.request.contextPath}${js}"></script>
+	</c:if>
 
 </body>
 </html>

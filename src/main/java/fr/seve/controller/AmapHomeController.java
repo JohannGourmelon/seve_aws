@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import fr.seve.entities.AMAP;
 import fr.seve.entities.Activity;
@@ -47,6 +48,12 @@ public class AmapHomeController {
     public String handleAmapSlug(@PathVariable String slug, Model model, HttpServletRequest request) {        
     	model.addAttribute("amap", AmapUtils.getAmapFromRequest(request));
     	return "amap-home";
+    }
+    @GetMapping("/{slug}/contact")
+    public String Contact(@PathVariable String slug, Model model, HttpServletRequest request) {        
+    	model.addAttribute("amap", AmapUtils.getAmapFromRequest(request));
+    	model.addAttribute("js", "/resources/js/contact.js");
+    	return "amap-contact";
     }
     
     @Secured({"ROLE_AMAP_USER","ROLE_AMAP_ADMIN","ROLE_AMAP_SUPERVISOR"})

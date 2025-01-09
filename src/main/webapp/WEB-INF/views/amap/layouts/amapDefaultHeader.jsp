@@ -44,9 +44,10 @@
             	</li>
         	</c:if>
 			
-			<li class="nav-item"><a class="nav-link" href="index.html"
-				data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"><strong>Contactez-nous</strong></a>
-			</li>
+				<li class="nav-item">
+                	<a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
+                       onclick="window.location.href='${pageContext.request.contextPath}/${slug}/contact'"><strong>Contactez nous</strong></a>
+            	</li>
 			
 		</ul>
 		
