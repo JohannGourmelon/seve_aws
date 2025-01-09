@@ -59,7 +59,7 @@
                             <label for="cvv">CVV</label>
                             <input type="text" class="form-control" id="cvv">
                         </div>
-                        <button class="btn btn-primary btn-block" onclick="window.location.href='${pageContext.request.contextPath}/${slug}/order/success'">Payer maintenant</button>
+                        <button class="btn btn-secondary" style=" color: black; background-color: var(--secondary-color)" onclick="window.location.href='${pageContext.request.contextPath}/${slug}/order/success'">Payer maintenant</button>
                     </div>
                 </div>
             </div>
