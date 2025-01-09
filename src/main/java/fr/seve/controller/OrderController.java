@@ -120,6 +120,10 @@ public class OrderController {
 				orderItem.setItemId(cartItem.getActivity().getId());
 				orderItem.setName(cartItem.getActivity().getName());
 				break;
+			case "Cotisation annuelle":
+				orderItem.setItemId(cartItem.getId());
+				orderItem.setName(cartItem.getName());
+				break;
 			}
 
 			totalAmount += cartItem.getPrice() * cartItem.getQuantity();
@@ -173,7 +177,7 @@ public class OrderController {
     	return "amap-order-details";
     }
 
-	private boolean addContributionToCart(Cart cart, AMAP amap, AmapUser amapUser) {
+    private boolean addContributionToCart(Cart cart, AMAP amap, AmapUser amapUser) {
 	    // Si l'utilisateur a déjà payé sa contribution, ne rien faire
 	    if (amapUser.isContributionPaid()) {
 	        return false;
@@ -204,9 +208,10 @@ public class OrderController {
 
 	    // Si l'article n'existe pas, le créer et l'ajouter au panier
 	    CartItem membershipFeeItem = new CartItem();
-	    membershipFeeItem.setName(membershipFeeName);
+	    membershipFeeItem.setName("Frais d'adhésion à l'AMAP " + amap.getName());
 	    membershipFeeItem.setPrice(amap.getMembershipFee());
 	    membershipFeeItem.setQuantity(1);
+	    membershipFeeItem.setGenre("Cotisation annuelle");
 	    membershipFeeItem.setCart(cart);
 
 	    cart.addItem(membershipFeeItem); // Ajouter au panier

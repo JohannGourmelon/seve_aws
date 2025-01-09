@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -44,6 +45,7 @@ public class AmapController {
         return mv;
 	}
 	
+	@Secured({"ROLE_SAAS_CUSTOM"})
 	@GetMapping("{id}")
 	public String getAmap(@PathVariable Long id, Model model) {
 		
@@ -72,7 +74,7 @@ public class AmapController {
 		return "redirect:/amap";
 		
 	}
-	
+	@Secured({"ROLE_SAAS_CUSTOM"})
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable Long id, Model model) {
         AMAP amap = amapService.findById(id);
@@ -80,12 +82,14 @@ public class AmapController {
         return "amap-form";
     }
 
+	@Secured({"ROLE_SAAS_CUSTOM"})
     @PostMapping("/edit/{id}")
     public String updateAmap(@ModelAttribute AMAP amap) {
         amapService.save(amap);
         return "redirect:/amap";
     }
     
+	@Secured({"ROLE_SAAS_CUSTOM"})
 	@GetMapping("/info/{id}")
 	public ModelAndView configAmap(@PathVariable Long id, Model model) {
 	    SaasUser user = saasUserService.findById(id);
@@ -96,7 +100,7 @@ public class AmapController {
         return mv;
 		}
 	
-	
+	@Secured({"ROLE_SAAS_CUSTOM"})
 	@GetMapping("/info")
 	public ModelAndView configContent(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -115,7 +119,7 @@ public class AmapController {
         return mv;
 	}
 	
-	
+	@Secured({"ROLE_SAAS_CUSTOM"})
 	@PostMapping("editAmap/{id}")
 	public String editDesign(@PathVariable Long id, AMAP amap, RedirectAttributes redirectAttributes) {
 		AMAP newAmap = amapService.findById(id);
