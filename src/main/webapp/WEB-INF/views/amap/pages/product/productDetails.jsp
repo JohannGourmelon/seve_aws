@@ -20,14 +20,16 @@
                 <p><strong>Date limite d'achat :</strong> ${product.formattedPurchaseDeadlineDate}</p>
                 <p><strong>Date de création :</strong> ${product.formattedCreationDate}</p>
                 <p><strong>Date de dernière modification :</strong> ${product.formattedLastModifiedDate}</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<sec:authorize access="hasRole('AMAP_ADMIN') or hasRole('AMAP_SUPERVISOR')">
-<a href="${pageContext.request.contextPath}/${slug}/product/admin" class="btn btn-secondary mt-3 mb-5">Retour à la liste</a>
+                <sec:authorize access="hasRole('AMAP_ADMIN') or hasRole('AMAP_SUPERVISOR')">
+<a href="${pageContext.request.contextPath}/${slug}/product/admin" class="btn btn-secondary" style=" color: black; background-color: var(--secondary-color)">Retour à la liste</a>
 </sec:authorize>
 <c:if test="${amapUser.type == 'PRODUCER'}">
-<a href="${pageContext.request.contextPath}/${slug}/myproducts" class="btn btn-secondary mt-3 mb-5">Retour à la liste</a>
+<a href="${pageContext.request.contextPath}/${slug}/myproducts" class="btn btn-secondary" style=" color: black; background-color: var(--secondary-color)">Retour à la liste</a>
 </c:if>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
+

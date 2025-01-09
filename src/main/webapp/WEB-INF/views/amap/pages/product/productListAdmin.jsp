@@ -2,9 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
     <div class="container-fluid">
-        <h1 class="text-center">Gestion des produits</h1>
+        <h1 class="text-center">Produits de l'AMAP</h1>
         <div class="text-end mb-2">
-            <a href="${pageContext.request.contextPath}/${slug}/product/add" class="btn btn-success">Ajouter un produit</a>
+            <a href="${pageContext.request.contextPath}/${slug}/product/add" class="btn btn-secondary px-5 py-2 rounded-pill shadow" style=" color: black; background-color: var(--secondary-color)">Ajouter un produit</a>
         </div>
         <table class="table table-bordered table-striped table-hover mb-5">
             <thead>
@@ -17,8 +17,8 @@
                     <th class="col-1">Date de disponibilité</th>
                     <th class="col-1">Date limite d'achat</th>
                     <th class="col-1">Date de création</th>
-                    <th class="col-1">Dernière modification</th>
-                    <th class="col-2">Actions</th>
+                    <th class="col-1">Producteur</th>
+                    <th class="col-2"></th>
                 </tr>
             </thead>
             <tbody>
@@ -32,12 +32,12 @@
                         <td>${product.formattedAvailableDate}</td>
                         <td>${product.formattedPurchaseDeadlineDate}</td>
                         <td>${product.formattedCreationDate}</td>
-                        <td>${product.formattedLastModifiedDate}</td>
+                        <td>${product.amapProducerUser.amapUser.name} ${product.amapProducerUser.amapUser.firstname}</td>
                         <td>
                             <div class="btn-container">
-                                <a href="${pageContext.request.contextPath}/${slug}/product/${product.id}" class="btn btn-info btn-sm btn-link">Détails</a>
-                                <a href="${pageContext.request.contextPath}/${slug}/product/edit/${product.id}" class="btn btn-warning btn-sm btn-link">Modifier</a>
-                                <a href="${pageContext.request.contextPath}/${slug}/product/delete/${product.id}" class="btn btn-danger btn-sm btn-link" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')">Supprimer</a>
+                                <a href="${pageContext.request.contextPath}/${slug}/product/${product.id}" class="btn btn-secondary" style=" color: black; background-color: var(--secondary-color)">Détails</a>
+                                <a href="${pageContext.request.contextPath}/${slug}/product/edit/${product.id}" class="btn btn-secondary" style=" color: black; background-color: var(--secondary-color)">Modifier</a>
+                                <a href="${pageContext.request.contextPath}/${slug}/product/delete/${product.id}" class="btn btn-secondary" style="background-color: red; color: black;" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')">Supprimer</a>
                             </div>
                         </td>
                     </tr>

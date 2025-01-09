@@ -21,13 +21,13 @@
 				<p><strong>Date limite d'achat :</strong> ${activity.formattedPurchaseDeadlineDate}</p>               
                 <p><strong>Date de création :</strong> ${activity.formattedCreationDate}</p>
                 <p><strong>Date de dernière modification :</strong> ${activity.formattedLastModifiedDate}</p>
+                <sec:authorize access="hasRole('AMAP_ADMIN') or hasRole('AMAP_SUPERVISOR')">
+<a href="${pageContext.request.contextPath}/${slug}/activity/admin" class="btn btn-secondary" style=" color: black; background-color: var(--secondary-color)">Retour à la liste</a>
+</sec:authorize>
+<c:if test="${amapUser.type == 'PRODUCER'}">
+<a href="${pageContext.request.contextPath}/${slug}/myproducts" class="btn btn-secondary" style=" color: black; background-color: var(--secondary-color)">Retour à la liste</a>
+</c:if>
             </div>
         </div>
     </div>
 </div>
-<sec:authorize access="hasRole('AMAP_ADMIN') or hasRole('AMAP_SUPERVISOR')">
-<a href="${pageContext.request.contextPath}/${slug}/activity/admin" class="btn btn-secondary mt-3 mb-5">Retour à la liste</a>
-</sec:authorize>
-<c:if test="${amapUser.type == 'PRODUCER'}">
-<a href="${pageContext.request.contextPath}/${slug}/myproducts" class="btn btn-secondary mt-3 mb-5">Retour à la liste</a>
-</c:if>

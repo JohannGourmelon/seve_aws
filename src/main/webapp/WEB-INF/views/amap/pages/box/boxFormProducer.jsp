@@ -59,7 +59,15 @@
 				</select>
 				<div class="invalid-feedback">Veuillez choisir une fréquence.</div>
 			</div>
-
+<div class="mb-3">
+         <label for="image">Aperçu de l'image : </label>
+         <c:if test="${box.imageData != null}">
+            <img src="${pageContext.request.contextPath}/${slug}/box/image/${box.id}" alt="Aperçu de l'image" class="img-thumbnail mb-3" style="width: 50px; height: auto;">
+         </c:if>
+         </div>
+				<div class="mb-3">
+				<input type="file" id="image" name="image" accept="image/*" />
+			</div>
 		</div>
 
 		<div class="col-md-1"></div>
@@ -101,20 +109,14 @@
 
 		</div>
 
-		 <div class="mb-3">
-         <label for="image">Image de votre panier</label>
-         <c:if test="${box.imageData != null}">
-            <img src="${pageContext.request.contextPath}/${slug}/box/image/${box.id}" alt="Aperçu de l'image" class="img-thumbnail mb-3">
-         </c:if>
-         <input type="file" id="image" name="image" accept="image/*" />
-      </div>
+		 
 	</div>
 
 	<div class="d-flex justify-content-center mt-4 mb-5">
 		<a href="${pageContext.request.contextPath}/${slug}/myproducts"
-			class="btn btn-secondary mx-3">Annuler</a>
+			class="btn btn-secondary" style=" color: black; background-color: var(--secondary-color)">Annuler</a>
 
-		<button type="submit" class="btn btn-primary mx-3">Enregistrer</button>
+		<button type="submit" class="btn btn-secondary" style=" margin-left: 10px; color: black; background-color: var(--secondary-color)">Enregistrer</button>
 	</div>
 	</form>
 </div>

@@ -50,12 +50,14 @@
 			</div>
 
 			<div class="mb-3">
-				<label for="image">Image de votre panier</label>
+				<label for="image">Aperçu de l'image : </label>
 				<c:if test="${product.imageData != null}">
 					<img
 						src="${pageContext.request.contextPath}/${slug}/product/image/${product.id}"
-						alt="Aperçu de l'image" class="img-thumbnail mb-3">
+						alt="Aperçu de l'image" class="img-thumbnail mb-3" style="width: 50px; height: auto;">
 				</c:if>
+				</div>
+				<div class="mb-3">
 				<input type="file" id="image" name="image" accept="image/*" />
 			</div>
 		</div>
@@ -101,10 +103,10 @@
 	</div>
 
 	<div class="d-flex justify-content-center mt-4 mb-5">
-		<a href="${pageContext.request.contextPath}/${slug}/product"
-			class="btn btn-secondary mx-3">Annuler</a>
+		<a href="${pageContext.request.contextPath}/${slug}/product/admin"
+			class="btn btn-secondary" style=" color: black; background-color: var(--secondary-color)">Annuler</a>
 
-		<button type="submit" class="btn btn-primary mx-3">Enregistrer</button>
+		<button type="submit" class="btn btn-secondary" style=" margin-left: 10px; color: black; background-color: var(--secondary-color)">Enregistrer</button>
 	</div>
 	</form>
 </div>

@@ -16,7 +16,7 @@
                     <th class="col-1">Catégorie</th>
                     <th class="col-1">Date de disponibilité</th>
                     <th class="col-1">Date limite d'achat</th>    
-                    <th class="col-2"></th>
+                    <th class="col-3"></th>
                 </tr>
             </thead>
             <tbody>
@@ -57,7 +57,7 @@
                     <th class="col-1">Date de disponibilité</th>
                     <th class="col-1">Date limite d'achat</th>
                    
-                    <th class="col-2"></th>
+                    <th class="col-3"></th>
                 </tr>
             </thead>
             <tbody>
@@ -100,7 +100,7 @@
                     <th class="col-1">Lieu de l'atelier</th>
                     <th class="col-1">Date limite d'achat</th>
 
-                    <th class="col-2"></th>
+                    <th class="col-3"></th>
                 </tr>
             </thead>
             <tbody>
@@ -115,8 +115,6 @@
                         <td>${activity.formattedStartTime} - ${activity.formattedEndTime}</td>
                         <td>${activity.place}</td>
                         <td>${activity.formattedPurchaseDeadlineDate}</td>
-                        <td>${activity.formattedCreationDate}</td>
-                        <td>${activity.formattedLastModifiedDate}</td>
                         <td>
                             <div class="btn-container">
                                 <a href="${pageContext.request.contextPath}/${slug}/activity/${activity.id}" class="btn btn-secondary" style=" color: black; background-color: var(--secondary-color)">Détails</a>
