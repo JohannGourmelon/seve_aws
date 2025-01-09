@@ -47,7 +47,7 @@
 		</ul>
 		
 		<ul class="navbar-nav ml-auto">
-		<sec:authorize access="hasRole('AMAP_ADMIN') or hasRole('AMAP_USER') or hasRole('AMAP_MEMBER') or hasRole('AMAP_SUPERVISOR')">
+		<sec:authorize access="hasRole('AMAP_ADMIN') or hasRole('AMAP_USER') or hasRole('AMAP_SUPERVISOR')">
 			<li class="nav-item">
 				<a class="nav-link" href="index.html" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show"
 					onclick="window.location.href='${pageContext.request.contextPath}/${slug}/cart'">
@@ -56,7 +56,7 @@
 			</li>
 			</sec:authorize>
 			
-		        <sec:authorize access="isAnonymous() or hasRole('SAAS_CUSTOM')">
+		        <sec:authorize access="isAnonymous() or hasRole('SAAS_CUSTOM') or hasRole('SAAS_ADMIN')">
 					<li class="nav-item">
 						<a class="nav-link" href="${pageContext.request.contextPath}/${slug}/login" data-bs-toggle="" data-bs-target=".navbar-collapse.show">Se connecter</a>
 					</li>		
@@ -64,7 +64,7 @@
 						<a class="nav-link" href="${pageContext.request.contextPath}/${slug}/signup" data-bs-toggle="" data-bs-target=".navbar-collapse.show">Créer un compte</a>
 					</li>		
         		</sec:authorize>
-          		<sec:authorize access="hasRole('AMAP_ADMIN') or hasRole('AMAP_USER') or hasRole('AMAP_MEMBER') or hasRole('AMAP_SUPERVISOR')">
+          		<sec:authorize access="hasRole('AMAP_ADMIN') or hasRole('AMAP_USER') or hasRole('AMAP_SUPERVISOR')">
           		<li>
             		<a class="nav-link" href="${pageContext.request.contextPath}/${slug}/dashboard" data-bs-toggle="" data-bs-target=".navbar-collapse.show">Mon Compte</a>
             		</li>

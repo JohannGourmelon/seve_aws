@@ -72,7 +72,18 @@
             <p class="text-center fw-bold mb-4"><strong>Vous êtes Administrateur chez ${slug}.</strong></p>
             </sec:authorize>
 <div class="mt-5 text-center">
-            <a href="modifier-url" class="btn btn-secondary px-5 py-2 rounded-pill shadow" style="background-color: var(--secondary-color)" >Modifier</a>
+            <a href=<c:choose>
+            <c:when test="${amapUser.type == 'INDIVIDUAL'}">
+            "${pageContext.request.contextPath}/${slug}/individual/update"
+            </c:when>
+            <c:when test="${amapUser.type == 'PRODUCER'}">
+            "${pageContext.request.contextPath}/${slug}/producer/update"
+            </c:when>
+            <c:when test="${amapUser.type == 'WORKS_COMITTEE'}">
+            "${pageContext.request.contextPath}/${slug}/works-comittee/update"
+            </c:when>
+            </c:choose>
+             class="btn btn-secondary px-5 py-2 rounded-pill shadow" style="background-color: var(--secondary-color)" >Modifier</a>
         </div>
       
     </div>

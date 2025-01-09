@@ -80,6 +80,58 @@ public class AmapIndividualUserController {
         }
     }
     
+    @GetMapping("/update")
+    public String showUpdateForm(@ModelAttribute("amapUser") AmapUser amapUser, Model model) {
+        model.addAttribute("amapIndividualUser", amapUser.getIndividualUser());
+        return "amap-individual-signup"; 
+    }
+
+    
+    @PostMapping("/update")
+    public String updateUser(
+            @Valid @ModelAttribute("amapIndividualUser") AmapIndividualUser updatedIndividualUser,
+            BindingResult result,
+            HttpServletRequest request,
+            Model model) {
+        AMAP amap = AmapUtils.getAmapFromRequest(request);
+        String slug = amap.getSlug();
+        model.addAttribute("slug", slug);
+
+        if (result.hasErrors()) {
+            result.getAllErrors().forEach(error -> System.out.println(error));
+            model.addAttribute("signupError", "Veuillez corriger les erreurs dans le formulaire.");
+            return "amap-individual-signup";
+        }
+
+        try {
+            AmapIndividualUser existingIndividualUser = amapIndividualUserService.findById(updatedIndividualUser.getId());
+            if (existingIndividualUser == null) {
+                model.addAttribute("signupError", "Utilisateur individuel introuvable.");
+                return "amap-individual-signup";
+            }
+
+            existingIndividualUser.setVolunteer(updatedIndividualUser.isVolunteer());
+
+            AmapUser existingAmapUser = existingIndividualUser.getAmapUser();
+            AmapUser updatedAmapUser = updatedIndividualUser.getAmapUser();
+            existingAmapUser.setName(updatedAmapUser.getName());
+            existingAmapUser.setFirstname(updatedAmapUser.getFirstname());
+            existingAmapUser.setEmail(updatedAmapUser.getEmail());
+            existingAmapUser.setPhone(updatedAmapUser.getPhone());
+
+            amapIndividualUserService.updateIndividualUser(existingIndividualUser);
+
+            return "redirect:/" + slug + "/dashboard";
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            model.addAttribute("signupError", "Une erreur inattendue s'est produite. Veuillez réessayer.");
+            return "amap-individual-signup";
+        }
+    }
+
+
+    
     @Secured("ROLE_SAAS_CUSTOM")
     @PostMapping("/createAdmin")
     public String createAdmin(

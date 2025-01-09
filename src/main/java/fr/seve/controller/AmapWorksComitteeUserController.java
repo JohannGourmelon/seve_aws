@@ -78,4 +78,52 @@ public class AmapWorksComitteeUserController {
         }
     }
     
+    @GetMapping("/update")
+    public String showUpdateForm(@ModelAttribute("amapUser") AmapUser amapUser, Model model) {
+        model.addAttribute("amapWorksComitteeUser", amapUser.getWorksComitteeUser());
+        return "amap-wc-signup";
+    }
+
+    @PostMapping("/update")
+    public String updateUser(
+            @Valid @ModelAttribute("amapWorksComitteeUser") AmapWorksComitteeUser updatedWorksComitteeUser,
+            BindingResult result,
+            HttpServletRequest request,
+            Model model) {
+        AMAP amap = AmapUtils.getAmapFromRequest(request);
+        String slug = amap.getSlug();
+        model.addAttribute("slug", slug);
+
+        if (result.hasErrors()) {
+            model.addAttribute("signupError", "Veuillez corriger les erreurs dans le formulaire.");
+            return "amap-wc-signup";
+        }
+
+        try {
+            AmapWorksComitteeUser existingWorksComitteeUser = amapWorksComitteeUserService.findById(updatedWorksComitteeUser.getId());
+            if (existingWorksComitteeUser == null) {
+                model.addAttribute("signupError", "Utilisateur comité d'entreprise introuvable.");
+                return "amap-wc-signup";
+            }
+
+            existingWorksComitteeUser.setCompanyName(updatedWorksComitteeUser.getCompanyName());
+            existingWorksComitteeUser.setSiret(updatedWorksComitteeUser.getSiret());
+
+            AmapUser existingAmapUser = existingWorksComitteeUser.getAmapUser();
+            AmapUser updatedAmapUser = updatedWorksComitteeUser.getAmapUser();
+            existingAmapUser.setName(updatedAmapUser.getName());
+            existingAmapUser.setFirstname(updatedAmapUser.getFirstname());
+            existingAmapUser.setEmail(updatedAmapUser.getEmail());
+            existingAmapUser.setPhone(updatedAmapUser.getPhone());
+
+            amapWorksComitteeUserService.updateWorksComitteeUser(existingWorksComitteeUser);
+
+            return "redirect:/" + slug + "/dashboard";
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("signupError", "Une erreur inattendue s'est produite. Veuillez réessayer.");
+            return "amap-wc-signup";
+        }
+    }
+
 }

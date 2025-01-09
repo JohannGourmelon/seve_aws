@@ -52,7 +52,7 @@ public class AmapHomeController {
     	return "amap-home";
     }
     
-    @Secured({"ROLE_AMAP_USER","ROLE_AMAP_MEMBER","ROLE_AMAP_ADMIN","ROLE_AMAP_SUPERVISOR"})
+    @Secured({"ROLE_AMAP_USER","ROLE_AMAP_ADMIN","ROLE_AMAP_SUPERVISOR"})
     @GetMapping("/{slug}/dashboard")
     public String myAccount(Model model, HttpServletRequest request) {
     	model.addAttribute("amap", AmapUtils.getAmapFromRequest(request));
@@ -76,7 +76,7 @@ public class AmapHomeController {
     	model.addAttribute("slug", AmapUtils.getAmapFromRequest(request).getSlug());
         return "amap-signup";
     }
-    @Secured({"ROLE_AMAP_USER","ROLE_AMAP_MEMBER","ROLE_AMAP_ADMIN","ROLE_AMAP_SUPERVISOR"})
+    @Secured({"ROLE_AMAP_USER","ROLE_AMAP_ADMIN","ROLE_AMAP_SUPERVISOR"})
     @GetMapping("/{slug}/myproducts")
     public String showProducts(HttpServletRequest request, Model model, @ModelAttribute("amapUser") AmapUser amapUser) {
     	model.addAttribute("slug", AmapUtils.getAmapFromRequest(request).getSlug());

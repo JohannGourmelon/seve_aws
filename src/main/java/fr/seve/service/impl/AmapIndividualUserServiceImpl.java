@@ -57,17 +57,7 @@ public class AmapIndividualUserServiceImpl implements AmapIndividualUserService 
 
     @Override
     public AmapIndividualUser updateIndividualUser(AmapIndividualUser amapIndividualUser) {
-    	
-        // Mettre à jour les informations de l'AmapUser lié
-        AmapUser amapUser = amapIndividualUser.getAmapUser();
-        amapUser.setFirstname(amapIndividualUser.getAmapUser().getFirstname());
-        amapUser.setName(amapIndividualUser.getAmapUser().getName());
-        amapUser.setEmail(amapIndividualUser.getAmapUser().getEmail());
-        amapUser.setLastModifyDate(LocalDateTime.now().toString());
-
-        amapUserRepository.save(amapUser);
-
-        // Mettre à jour l'IndividualUser
+        amapUserRepository.save(amapIndividualUser.getAmapUser());
         return amapIndividualUserRepository.save(amapIndividualUser);
     }
 

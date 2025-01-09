@@ -39,6 +39,7 @@ import fr.seve.service.OrderItemService;
 import fr.seve.service.OrderService;
 import fr.seve.utils.AmapUtils;
 
+@Secured({"ROLE_AMAP_USER","ROLE_AMAP_ADMIN","ROLE_AMAP_SUPERVISOR"})
 @Controller
 @RequestMapping("/{slug}/order")
 public class OrderController {
@@ -142,7 +143,6 @@ public class OrderController {
 
 	}
 	
-	@Secured({"ROLE_AMAP_USER","ROLE_AMAP_MEMBER","ROLE_AMAP_ADMIN","ROLE_AMAP_SUPERVISOR"})
     @GetMapping("/list")
     public String showOrders(HttpServletRequest request, Model model, @ModelAttribute("amapUser") AmapUser amapUser) {
 		
@@ -157,7 +157,6 @@ public class OrderController {
     	return "amap-order-list";
     }
 	
-	@Secured({"ROLE_AMAP_USER","ROLE_AMAP_MEMBER","ROLE_AMAP_ADMIN","ROLE_AMAP_SUPERVISOR"})
     @GetMapping("/{id}")
     public String showDetailsOrder(HttpServletRequest request, Model model,@PathVariable Long id, @ModelAttribute("amapUser") AmapUser amapUser) {
 		

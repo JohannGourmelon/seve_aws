@@ -54,18 +54,7 @@ public class AmapProducerUserServiceImpl implements AmapProducerUserService {
 
     @Override
     public AmapProducerUser updateProducerUser(AmapProducerUser amapProducerUser) {
-    	
-        // Mettre à jour les informations de l'AmapUser lié
-        AmapUser amapUser = amapProducerUser.getAmapUser();
-        amapUser.setFirstname(amapProducerUser.getAmapUser().getFirstname());
-        amapUser.setName(amapProducerUser.getAmapUser().getName());
-        amapUser.setEmail(amapProducerUser.getAmapUser().getEmail());
-        amapUser.setPassword(amapProducerUser.getAmapUser().getPassword());
-        amapUser.setLastModifyDate(LocalDateTime.now().toString());
-
-        amapUserRepository.save(amapUser);
-
-        // Mettre à jour l'ProducerUser
+    	amapUserRepository.save(amapProducerUser.getAmapUser());
         return amapProducerUserRepository.save(amapProducerUser);
     }
 

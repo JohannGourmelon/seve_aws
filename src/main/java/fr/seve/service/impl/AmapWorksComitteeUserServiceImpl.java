@@ -54,18 +54,7 @@ public class AmapWorksComitteeUserServiceImpl implements AmapWorksComitteeUserSe
 
     @Override
     public AmapWorksComitteeUser updateWorksComitteeUser(AmapWorksComitteeUser amapWorksComitteeUser) {
-    	
-        // Mettre à jour les informations de l'AmapUser lié
-        AmapUser amapUser = amapWorksComitteeUser.getAmapUser();
-        amapUser.setFirstname(amapWorksComitteeUser.getAmapUser().getFirstname());
-        amapUser.setName(amapWorksComitteeUser.getAmapUser().getName());
-        amapUser.setEmail(amapWorksComitteeUser.getAmapUser().getEmail());
-        amapUser.setPassword(amapWorksComitteeUser.getAmapUser().getPassword());
-        amapUser.setLastModifyDate(LocalDateTime.now().toString());
-
-        amapUserRepository.save(amapUser);
-
-        // Mettre à jour l'WorksComitteeUser
+        amapUserRepository.save(amapWorksComitteeUser.getAmapUser());
         return amapWorksComitteeUserRepository.save(amapWorksComitteeUser);
     }
 

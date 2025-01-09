@@ -68,8 +68,8 @@ public class AmapProducerUserController {
         amapProducerUser.getAmapUser().setAmapSpace(amap.getAmapSpace());
 
         if (result.hasErrors()) {
-        	System.out.println( "Au moins une erreur est présente dans le formulaire.");
-        	model.addAttribute("signupError", "Au moins une erreur est présente dans le formulaire.");
+            result.getAllErrors().forEach(error -> System.out.println(error));
+            model.addAttribute("signupError", "Veuillez corriger les erreurs dans le formulaire.");
             return "amap-producer-signup";
         }
 
@@ -81,4 +81,67 @@ public class AmapProducerUserController {
             return "amap-producer-signup";
         }
     }
+    
+    
+    @GetMapping("/update")
+    public String showUpdateForm(@ModelAttribute("amapUser") AmapUser amapUser, Model model) {
+
+        model.addAttribute("amapProducerUser", amapUser.getProducerUser());
+        return "amap-producer-signup";
+    }
+    
+ 
+    @PostMapping("/update")
+    public String updateUser(
+            @Valid @ModelAttribute("amapProducerUser") AmapProducerUser updatedProducerUser,
+            BindingResult result,
+            HttpServletRequest request,
+            Model model) {
+        // Récupérer l'AMAP et ajouter le slug au modèle
+        AMAP amap = AmapUtils.getAmapFromRequest(request);
+        String slug = amap.getSlug();
+        model.addAttribute("slug", slug);
+
+        // Vérifier les erreurs de validation et retourner les messages d'erreur au formulaire
+        if (result.hasErrors()) {
+            result.getAllErrors().forEach(error -> System.out.println(error));
+            model.addAttribute("signupError", "Veuillez corriger les erreurs dans le formulaire.");
+            return "amap-producer-signup";
+        }
+
+        try {
+            // Récupérer l'utilisateur producteur existant à partir de l'ID
+            AmapProducerUser existingProducerUser = amapProducerUserService.findById(updatedProducerUser.getId());
+            if (existingProducerUser == null) {
+                model.addAttribute("signupError", "Utilisateur producteur introuvable.");
+                return "amap-producer-signup";
+            }
+
+            // Mettre à jour les champs modifiables
+            existingProducerUser.setRib(updatedProducerUser.getRib());
+            existingProducerUser.setAddress(updatedProducerUser.getAddress());
+
+            // Mise à jour des champs de l'objet `AmapUser` associé
+            AmapUser existingAmapUser = existingProducerUser.getAmapUser();
+            AmapUser updatedAmapUser = updatedProducerUser.getAmapUser();
+            existingAmapUser.setName(updatedAmapUser.getName());
+            existingAmapUser.setFirstname(updatedAmapUser.getFirstname());
+            existingAmapUser.setEmail(updatedAmapUser.getEmail());
+            existingAmapUser.setPhone(updatedAmapUser.getPhone());
+
+            // Sauvegarder les modifications via le service
+            amapProducerUserService.updateProducerUser(existingProducerUser);
+
+            // Redirection vers le tableau de bord après succès
+            return "redirect:/" + slug + "/dashboard";
+        } catch (Exception e) {
+            // Afficher l'exception dans les logs pour débogage
+            e.printStackTrace();
+
+            // Ajouter un message d'erreur global au modèle
+            model.addAttribute("signupError", "Une erreur inattendue s'est produite. Veuillez réessayer.");
+            return "amap-producer-signup";
+        }
+    }
+
 }

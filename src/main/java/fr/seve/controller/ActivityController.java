@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,6 +60,7 @@ public class ActivityController {
 	    return mv;
 	}
 
+	@Secured({"ROLE_AMAP_ADMIN","ROLE_AMAP_SUPERVISOR"})
 	@GetMapping("/admin")
 	public ModelAndView adminListActivities(@PathVariable String slug, Model model) {
 		AMAP amap = amapService.findBySlug(slug);
