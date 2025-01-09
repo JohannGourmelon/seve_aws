@@ -25,6 +25,9 @@
 	</div>
 </c:if>
 
+<a href="http://localhost:8080/seve/logout" class="d-block d-lg-none" style="text-decoration: underline;">Se déconnecter
+            </a>
+
 <c:if test="${not empty successMessage}">
     <div class="alert alert-success">
         ${successMessage}
