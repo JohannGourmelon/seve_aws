@@ -4,28 +4,28 @@
 	Bienvenue, <span>${username} </span>!
 </h1>
 
-<p>Vous bénéficiez du forfait ${subscription}.</p>
+<p>Vous bÃ©nÃ©ficiez du forfait ${subscription}.</p>
 
 <c:if test="${!empty amap.name}">
 <div>
 	<div>
-		<a href="http://localhost:8080/seve/${slug}" target="_blank">
-			<button class="btn btn-secondary mt-5">Accéder au site web de mon AMAP</button>
+		<a href="${pageContext.request.contextPath}/${slug}" target="_blank">
+			<button class="btn btn-secondary mt-5">AccÃ©der au site web de mon AMAP</button>
 		</a>
 	</div>
 	<div>
-		<button class="btn btn-secondary my-5" id="openSignupModal">Créer un compte administrateur</button>
+		<button class="btn btn-secondary my-5" id="openSignupModal">CrÃ©er un compte administrateur</button>
 	</div>
 </div>
 </c:if>
 
 <c:if test="${empty amap.name}">
 	<div class="alert alert-warning my-5">
-		 <a href="${pageContext.request.contextPath}/amap/info" style="color: #856404;">Complétez les informations de votre AMAP pour accéder à l'url de votre site web.</a> 
+		 <a href="${pageContext.request.contextPath}/amap/info" style="color: #856404;">ComplÃ©tez les informations de votre AMAP pour accÃ©der Ã  l'url de votre site web.</a> 
 	</div>
 </c:if>
 
-<a href="http://localhost:8080/seve/logout" class="d-block d-lg-none" style="text-decoration: underline;">Se déconnecter
+<a href="${pageContext.request.contextPath}/logout" class="d-block d-lg-none" style="text-decoration: underline;">Se dÃ©connecter
             </a>
 
 <c:if test="${not empty successMessage}">
@@ -46,7 +46,7 @@
     <div class="modal-content shadow">
         <span id="closeModal" class="close">&times;</span>
 <div class="container mt-3">
-	<h1 class="mb-4 text-center modal-title">Création d'un compte administrateur
+	<h1 class="mb-4 text-center modal-title">CrÃ©ation d'un compte administrateur
 	</h1>
 
 	<form
@@ -62,12 +62,12 @@
 		</div>
 
 		<div class="mb-3">
-			<label for="firstname" class="form-label">Prénom</label> <input
+			<label for="firstname" class="form-label">PrÃ©nom</label> <input
 				type="text" id="firstname" name="amapUser.firstname"
 				class="form-control"
 				value="${amapUser.firstname != null ? amapUser.firstname : ''}"
 				required>
-			<div class="invalid-feedback">Veuillez saisir un prénom.</div>
+			<div class="invalid-feedback">Veuillez saisir un prÃ©nom.</div>
 		</div>
 
 		<div class="mb-3">
@@ -79,12 +79,12 @@
 		</div>
 
 		<div class="mb-3">
-			<label for="phone" class="form-label">Numéro de téléphone</label> <input
+			<label for="phone" class="form-label">NumÃ©ro de tÃ©lÃ©phone</label> <input
 				type="tel" id="phone" name="amapUser.phone" class="form-control"
 				value="${amapUser.phone != null ? amapUser.phone : ''}"
 				required>
-			<div class="invalid-feedback">Veuillez saisir un numéro de
-				téléphone valide.</div>
+			<div class="invalid-feedback">Veuillez saisir un numÃ©ro de
+				tÃ©lÃ©phone valide.</div>
 		</div>
 
 		<div class="mb-3">
